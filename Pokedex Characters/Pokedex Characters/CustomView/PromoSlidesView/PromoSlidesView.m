@@ -46,10 +46,11 @@
     }
     [carouselPromoSlide setDataSource:self];
     [carouselPromoSlide setDelegate:self];
+    [carouselPromoSlide setPagingEnabled:YES];
     [carouselPromoSlide reloadData];
     [pageControl setNumberOfPages:numberItems];
     [pageControl setCurrentPage:0];
-    [NSTimer scheduledTimerWithTimeInterval:TIME_AUTO_SCROLLING_PROMOSLIDES_DEFAULT target:self selector:@selector(scrollCarousel) userInfo:nil repeats:YES];
+    timerAutoScroll = [NSTimer scheduledTimerWithTimeInterval:TIME_AUTO_SCROLLING_PROMOSLIDES_DEFAULT target:self selector:@selector(scrollCarousel) userInfo:nil repeats:YES];
 }
 - (void)scrollToItemAtIndex:(NSInteger)index animated:(BOOL)animated{
     if (index < 0) return;
@@ -62,6 +63,10 @@
     [self scrollToItemAtIndex:++currentIndex%numberItems animated:YES];
 }
 - (void) removeFromSuperview{
+    if (timerAutoScroll) {
+        [timerAutoScroll invalidate];
+        timerAutoScroll = nil;
+    }
     [super removeFromSuperview];
 }
 #pragma mark - iCarouselDataSource methods

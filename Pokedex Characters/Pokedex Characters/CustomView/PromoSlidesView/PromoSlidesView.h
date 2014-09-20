@@ -14,11 +14,13 @@
 @required
 
 - (NSUInteger) numberOfItemsInPromoSlides:(PromoSlidesView*) promoSlides;
-@optional
+
 - (NSURL*) promoSlidesView:(PromoSlidesView*) promoSlides
     urlImageForItemAtIndex:(NSInteger) indexItem;
+
 - (UIImage*) promoSlidesView:(PromoSlidesView*) promoSlides
-    imageForItemAtIndex:(NSInteger) indexItem;
+         imageForItemAtIndex:(NSInteger) indexItem;
+
 
 @end
 
@@ -34,6 +36,7 @@
     @private
     iCarousel *carouselPromoSlide;
     UIPageControl *pageControl;
+    NSTimer *timerAutoScroll;
     
 }
 @property (nonatomic, assign) IBOutlet id  <PromoSlidesViewDataSource> dataSource;

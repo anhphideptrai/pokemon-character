@@ -26,8 +26,20 @@ typedef enum {
 
 - (ContentGuideViewRowCarouselViewPosterView*)contentGuide:(ContentGuideViewRow*) viewRow
                                           posterViewIndex:(NSUInteger)index;
-- (CGRect)framePosterView:(ContentGuideViewRow*) viewRow posterViewIndex:(NSUInteger)index;
+
+- (CGRect)framePosterView:(ContentGuideViewRow*) viewRow
+          posterViewIndex:(NSUInteger)index;
+
 - (NSUInteger)beginVisiblePosterIndex:(ContentGuideViewRow*) viewRow;
+
+@optional
+
+- (UIImage*) imagePlayButtonForPosterView:(ContentGuideViewRow*) viewRow;
+
+- (UIImage*) imageBackgroundBottomPosterView:(ContentGuideViewRow*) viewRow;
+
+- (BOOL) showWating:(ContentGuideViewRow*) viewRow;
+
 @end
 
 @protocol ContentGuideViewRowDelegate <NSObject>
@@ -80,10 +92,12 @@ fromContentGuideViewRow:(ContentGuideViewRow*)viewRow;
 @property (nonatomic, assign) NSUInteger rowIndex;
 @property (nonatomic,readonly,copy) NSString *reuseIdentifier;
 @property (nonatomic, readonly) NSInteger style;
+@property (nonatomic, readonly) NSMutableArray *visiblePosters;
 - (void) prepareForReuse;
 - (id) initWithStyle:(ContentGuideViewRowStyle)style
      reuseIdentifier:(NSString *)reuseIdentifier;
 - (void) setFrame:(CGRect)frame;
-- (void) setBackground:(UIImage *)image;
+- (void) setBackgroundView:(UIView *)aBackgroundView;
 - (void) reloadData;
+- (void) showWaiting;
 @end

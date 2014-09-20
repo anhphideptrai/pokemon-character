@@ -10,14 +10,15 @@
 #import "ContentGuideViewRowHeader.h"
 #import "ContentGuideViewRowCarouselViewPosterView.h"
 
-@interface ContentGuideViewRow()<UIScrollViewDelegate, ContentGuideViewRowCarouselViewPosterViewDelegate>{
+@interface ContentGuideViewRow()<UIScrollViewDelegate, ContentGuideViewRowCarouselViewPosterViewDelegate, ContentGuideViewRowCarouselViewPosterViewDataSource>{
     BOOL isDidScroll;
+    ContentGuideViewRowCarouselViewPosterView *highLightedPoster;
+    UIActivityIndicatorView *loadingView;
 }
 @property (nonatomic, retain) UIScrollView *carouselScrollView;
 @property (nonatomic, retain) ContentGuideViewRowHeader *headerView;
 @property (nonatomic, assign) NSInteger beginVisiblePosterIndex;
 @property (nonatomic, assign) NSUInteger numberPosters;
-@property (nonatomic, retain) NSMutableArray *visiblePosters;
 - (void)_layOutForHeaderView;
 - (void) _performInitHeader;
 - (void) _performInitCarouselScrollView;
@@ -38,6 +39,7 @@
 @implementation ContentGuideViewRow
 @synthesize reuseIdentifier = _reuseIdentifier;
 @synthesize style = _style;
+@synthesize visiblePosters = _visiblePosters;
 - (id)initWithFrame:(CGRect)frame
 {
     return [self initWithStyle:ContentGuideViewRowStyleDefault reuseIdentifier:@"ContentGuideViewRowStyleDefault"];
@@ -54,7 +56,16 @@
 - (void)setFrame:(CGRect)frame{
     [super setFrame:frame];
 }
-
+- (void)setBackground:(UIImage *)image{
+    if (!backgroundView) {
+        CGRect frameBG = self.frame;
+        frameBG.origin.x = 0;
+        frameBG.origin.y = 0;
+        backgroundView = [[UIImageView alloc] initWithFrame:frameBG];
+        [self insertSubview:backgroundView atIndex:0];
+        [backgroundView setImage:image];
+    }
+}
 - (void)_layOutForHeaderView{
     if (!self.headerView) {
         [self _performInitHeader];
@@ -71,7 +82,7 @@
             frameHeader.origin.x = 0;
         }
         [self.headerView setFrame:frameHeader];
-        [self addSubview:self.headerView];
+        if (self.headerView) [self addSubview:self.headerView];
     }
 }
 - (void)_layOutForCarouselScrollView{
@@ -129,9 +140,11 @@
 -(void)_addVisibleToLeftPoster:(ContentGuideViewRowCarouselViewPosterView *)thisPoster posterViewIndex:(NSUInteger)index{
     
     if (!self.visiblePosters) {
-        self.visiblePosters= [[NSMutableArray alloc] init];
+        _visiblePosters= [[NSMutableArray alloc] init];
     }
     [thisPoster setDelegate:self];
+    [thisPoster setDataSource:self];
+    [thisPoster loadData];
     [thisPoster setIndex:index];
     [self.visiblePosters insertObject:thisPoster atIndex:0];
     [self.carouselScrollView addSubview:thisPoster];
@@ -146,9 +159,11 @@
 -(void)_addVisibleToRightPoster:(ContentGuideViewRowCarouselViewPosterView *)thisPoster posterViewIndex:(NSUInteger)index{
     
     if (!self.visiblePosters) {
-        self.visiblePosters= [[NSMutableArray alloc] init];
+        _visiblePosters= [[NSMutableArray alloc] init];
     }
     [thisPoster setDelegate:self];
+    [thisPoster setDataSource:self];
+    [thisPoster loadData];
     [thisPoster setIndex:index];
     [self.visiblePosters addObject:thisPoster];
     [self.carouselScrollView addSubview:thisPoster];
@@ -207,23 +222,37 @@
     [self.carouselScrollView setShowsHorizontalScrollIndicator:NO];
     [self.carouselScrollView setShowsVerticalScrollIndicator:NO];
     self.beginVisiblePosterIndex = 0;
-    self.visiblePosters= [[NSMutableArray alloc] init];
+    _visiblePosters= [[NSMutableArray alloc] init];
     [self.carouselScrollView setBackgroundColor:[UIColor clearColor]];
     [self addSubview:self.carouselScrollView];
 }
 
-
-- (void)setBackground:(UIImage *)image{
-    if (!backgroundView) {
-        CGRect frameBG = self.frame;
-        frameBG.origin.x = 0;
-        frameBG.origin.y = 0;
-        backgroundView = [[UIImageView alloc] initWithFrame:frameBG];
-        [self insertSubview:backgroundView atIndex:0];
+- (void) _performInitLoadingView{
+    loadingView = [[UIActivityIndicatorView alloc] init];
+    CGFloat heightHeader = [self.delegate heightForContentGuideViewRowHeader:self] + 2*[self.delegate pandingTopAndBottomOfRowHeader:self];
+    CGRect tmpRect = self.frame;
+    tmpRect.origin.x = tmpRect.size.width/2 - 20;
+    tmpRect.origin.y = (tmpRect.size.height + heightHeader)/2 - 20;
+    tmpRect.size.width = 40;
+    tmpRect.size.height = 40;
+    [loadingView setFrame:tmpRect];
+    [self addSubview:loadingView];
+    if ([self.dataSource respondsToSelector:@selector(showWating:)]) {
+        BOOL isShow = [self.dataSource showWating:self];
+        if (isShow) {
+            [self showWaiting];
+        }
     }
-    [backgroundView setImage:image];
+}
+
+- (void)setBackgroundView:(UIImageView *)aBackgroundView{
+    [backgroundView removeFromSuperview];
+    backgroundView = aBackgroundView;
+    [self insertSubview:backgroundView atIndex:0];
+    [self setNeedsLayout];
 }
 - (void)prepareForReuse{
+    [self setUserInteractionEnabled:YES];
     isDidScroll = false;
     self.headerView = nil;
     self.carouselScrollView = nil;
@@ -234,16 +263,25 @@
     [self removeOldSubviews];
     [self _performInitHeader];
     [self _performInitCarouselScrollView];
+    [self _performInitLoadingView];
     [self loadLayoutMetrics];
     if ([self.dataSource respondsToSelector:@selector(beginVisiblePosterIndex:)] && [self.dataSource beginVisiblePosterIndex:self] > 0) {
         self.beginVisiblePosterIndex = [self.dataSource beginVisiblePosterIndex:self] + 1;
     }
-    [self.carouselScrollView setContentOffset:CGPointMake([self _getOffsetXFromPosterIndex:self.beginVisiblePosterIndex], 0)];
+    CGFloat offsetX = [self _getOffsetXFromPosterIndex:self.beginVisiblePosterIndex];
+    if ((self.carouselScrollView.contentSize.width > self.carouselScrollView.frame.size.width) &&
+        (offsetX + self.carouselScrollView.frame.size.width > self.carouselScrollView.contentSize.width)) {
+        offsetX = (int)(self.carouselScrollView.contentSize.width - self.carouselScrollView.frame.size.width);
+    }
+    [self.carouselScrollView setContentOffset:CGPointMake(offsetX, 0)];
     [CATransaction begin];
     [CATransaction setDisableActions:YES];
     [CATransaction commit];
 }
-
+- (void) showWaiting{
+    [self setUserInteractionEnabled:NO];
+    [loadingView startAnimating];
+}
 - (void) loadLayoutMetrics
 {
     if (self.numberPosters < 1) return;
@@ -263,7 +301,6 @@
     totalGuideWidth += self.numberPosters*[self.delegate spaceBetweenCarouselViewPosterViews:self];
     
     self.carouselScrollView.contentSize = CGSizeMake(totalGuideWidth, totalGuideHeight);
-    
 }
 
 - (void)removeFromSuperview{
@@ -271,6 +308,7 @@
     [super removeFromSuperview];
 }
 - (void)removeOldSubviews{
+    highLightedPoster = nil;
     for (UIView* subView in self.subviews) {
         if ([self.delegate respondsToSelector:@selector(headerViewRemoved:fromContentGuideViewRow:)]&&[subView isKindOfClass:[ContentGuideViewRowHeader class]]) {
             [self.delegate headerViewRemoved:(ContentGuideViewRowHeader*)subView fromContentGuideViewRow:self];
@@ -281,9 +319,12 @@
                 }
                 [subViewOfCarouselView removeFromSuperview];
             }
+        }else if([subView isKindOfClass:[UIActivityIndicatorView class]]){
+            [((UIActivityIndicatorView*)subView) stopAnimating];
         }
         [subView removeFromSuperview];
     }
+    [self prepareForReuse];
 }
 #pragma mark - UIScrollViewDelegate methods
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
@@ -296,6 +337,9 @@
     NSInteger indexTarget = [self _getPosterIndexFromOffsetX:targetScrollContentOffset.x];
     CGFloat offsetX = [self _getOffsetXFromPosterIndex:indexTarget];
     targetScrollContentOffset.x = offsetX + round((targetScrollContentOffset.x - offsetX)/widthPosterView)*widthPosterView;
+    if (targetScrollContentOffset.x + scrollView.frame.size.width > scrollView.contentSize.width) {
+        targetScrollContentOffset.x = (int)(scrollView.contentSize.width - scrollView.frame.size.width);
+    }
     *targetContentOffset = targetScrollContentOffset;
 }
 #pragma mark -- Layout methods
@@ -306,8 +350,33 @@
 }
 #pragma mark - ContentGuideViewRowCarouselViewPosterViewDelegate methods
 - (void) didSelectPosterView:(ContentGuideViewRowCarouselViewPosterView*) posterView{
+    if (highLightedPoster && highLightedPoster.isHighLight) {
+        [highLightedPoster resetHighLight];
+        highLightedPoster = nil;
+    }
     if ([self.delegate respondsToSelector:@selector(contentGuideViewRow:didSelectPosterViewAtIndex:)]) {
         [self.delegate contentGuideViewRow:self didSelectPosterViewAtIndex:posterView.index];
     }
+}
+
+- (void) hightLightedPosterView:(ContentGuideViewRowCarouselViewPosterView*) posterView{
+    if (highLightedPoster && highLightedPoster.isHighLight) {
+        [highLightedPoster resetHighLight];
+    }
+    highLightedPoster = posterView;
+}
+
+#pragma mark - ContentGuideViewRowCarouselViewPosterViewDataSource methods
+- (UIImage*) imagePlayButtonForPosterView:(ContentGuideViewRowCarouselViewPosterView*) posterView{
+    if ([self.dataSource respondsToSelector:@selector(imagePlayButtonForPosterView:)]) {
+        return [self.dataSource imagePlayButtonForPosterView:self];
+    }
+    return nil;
+}
+- (UIImage*) imageBackgroundBottomPosterView:(ContentGuideViewRowCarouselViewPosterView*) posterView{
+    if ([self.dataSource respondsToSelector:@selector(imageBackgroundBottomPosterView:)]) {
+        return [self.dataSource imageBackgroundBottomPosterView:self];
+    }
+    return nil;
 }
 @end

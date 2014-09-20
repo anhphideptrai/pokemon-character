@@ -12,9 +12,8 @@
 #import "ContentGuideViewRowHeader.h"
 
 typedef enum {
-    ContentGuideViewScrollDirectionNone = 0,
-    ContentGuideViewScrollDirectionUp = 1,
-    ContentGuideViewScrollDirectionDown = 2
+    ContentGuideViewScrollDirectionUp = 0,
+    ContentGuideViewScrollDirectionDown = 1
 } ContentGuideViewScrollDirection;
 
 @class ContentGuideView;
@@ -27,16 +26,25 @@ typedef enum {
 - (ContentGuideViewRow*) contentGuide:(ContentGuideView*) contentGuide
                        rowForRowIndex:(NSUInteger)rowIndex;
 
-- (ContentGuideViewRowHeader*) contentGuide:(ContentGuideView*) contentGuide
-                       rowHeaderForRowIndex:(NSUInteger)rowIndex;
-
 - (ContentGuideViewRowCarouselViewPosterView*)contentGuide:(ContentGuideView*) contentGuide
                                      posterViewForRowIndex:(NSUInteger)rowIndex
                                            posterViewIndex:(NSUInteger)index;
 
 @optional
 
+- (ContentGuideViewRowHeader*) contentGuide:(ContentGuideView*) contentGuide
+                       rowHeaderForRowIndex:(NSUInteger)rowIndex;
+
 - (UIView*) topCustomViewForContentGuideView:(ContentGuideView*) contentGuide;
+
+- (UIImage*)    contentGuide:(ContentGuideView*) contentGuide
+imagePlayButtonForPosterView:(ContentGuideViewRow*) viewRow;
+
+- (UIImage*)       contentGuide:(ContentGuideView*) contentGuide
+imageBackgroundBottomPosterView:(ContentGuideViewRow*) viewRow;
+
+- (BOOL) contentGuide:(ContentGuideView*) contentGuide
+           showWating:(ContentGuideViewRow*) viewRow;
 
 @end
 
@@ -45,11 +53,11 @@ typedef enum {
 
 - (CGFloat)heightForContentGuideViewRow:(ContentGuideView*) contentGuide atRowIndex:(NSUInteger) rowIndex;
 
-- (CGFloat)heightForContentGuideViewRowHeader:(ContentGuideView*) contentGuide atRowIndex:(NSUInteger) rowIndex;
-
 - (CGFloat)widthForContentGuideViewRowCarouselViewPosterView:(ContentGuideView*) contentGuide atRowIndex:(NSUInteger) rowIndex;
 
 @optional
+
+- (CGFloat)heightForContentGuideViewRowHeader:(ContentGuideView*) contentGuide atRowIndex:(NSUInteger) rowIndex;
 
 - (CGFloat)spaceBetweenCarouselViewPosterViews:(ContentGuideView*) contentGuide  atRowIndex:(NSUInteger) rowIndex;
 
@@ -93,19 +101,25 @@ didScrollToVisibleRowIndex:(NSUInteger) rowIndex
 
 /** Causes the content guide view to reload its data from its data source and
  delegate.
- 
- Calling this method should maintain the current position (time and row) of the guide
- view.
  */
 - (void) reloadData;
 /**
  Causes the content guide view to reload its data from its data source and
  delegate.
+ 
+ Calling this method should maintain the current position (row) of the guide
+ view.
  */
 - (void) holdPositionReloadData;
 /**
  Change size of this view
  */
--(void) changeToSize:(CGSize) newSize;
+- (void) changeToSize:(CGSize) newSize;
+
 -(void) setBackground:(UIImage*)image;
+
+- (ContentGuideViewRow*)getVisibleViewRowAtIndex:(NSUInteger) index;
+
+- (ContentGuideViewRowCarouselViewPosterView*)getVisiblePosterViewAtRow:(NSUInteger) rowIndex
+                                                        withPosterIndex:(NSInteger) index;
 @end

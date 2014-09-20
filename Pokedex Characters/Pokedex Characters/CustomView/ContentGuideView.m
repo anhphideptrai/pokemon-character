@@ -7,9 +7,7 @@
 //
 
 #import "ContentGuideView.h"
-#import "Constant.h"
-
-#define ROWS_LIMITED 100
+#define ROWS_LIMITED 1000
 
 @interface ContentGuideView()<UIScrollViewDelegate, ContentGuideViewRowDataSource, ContentGuideViewRowDelegate>{
     NSMutableSet *dequeuedCells;
@@ -18,6 +16,7 @@
     NSInteger beginVisiblePosterAtRows[ROWS_LIMITED];
     CGFloat offsetYOfFirstRow;
     UIImageView *backbgroundView;
+    BOOL isDidScroll;
 }
 @property (nonatomic, retain) UIScrollView *contentScrollView;
 //layout metrics
@@ -37,6 +36,9 @@
 - (ContentGuideViewRow *)_removeVisibleAboveRow;
 - (ContentGuideViewRow *)_removeVisibleBelowRow;
 - (ContentGuideViewRow *)_contentGuideViewRowAtRowIndex:(NSUInteger) absoluteRowIndex;
+- (void) resetBeginVisiblePosterAtRows;
+- (void) removeDequeueds;
+- (void) removeOldSubviews;
 @end
 @implementation ContentGuideView
 
@@ -66,12 +68,11 @@
     offsetYOfFirstRow = 0;
     
     self.contentScrollView = [[UIScrollView alloc] initWithFrame:self.frame];
-    [self.contentScrollView setAutoresizingMask:UIViewAutoresizingFlexibleHeight];
     self.contentScrollView.delegate = self;
     [self addSubview:self.contentScrollView];
     [self.contentScrollView setShowsHorizontalScrollIndicator:NO];
     [self.contentScrollView setShowsVerticalScrollIndicator:NO];
-    
+    [self.contentScrollView setAutoresizingMask:UIViewAutoresizingFlexibleHeight];
     if (self.visibleRows) {// Reset all data
         for (ContentGuideViewRowHeader *thisAvaiRow in self.visibleRows) {
             for (UIView *subView in thisAvaiRow.subviews) {
@@ -80,11 +81,8 @@
             [thisAvaiRow removeFromSuperview];
         }
     }
-    for (int i = 0; i < ROWS_LIMITED; i++) {
-        beginVisiblePosterAtRows[i] = 0;
-    }
+    [self resetBeginVisiblePosterAtRows];
     self.visibleRows = [[NSMutableArray alloc] init];
-    [self setBackgroundColor:BACKGROUND_COLOR_CONTENTGUIDEVIEW];
     if (backbgroundView) {
         [backbgroundView removeFromSuperview];
         backbgroundView = nil;
@@ -95,11 +93,20 @@
     backbgroundView = [[UIImageView alloc] initWithFrame:frameBackgroundView];
     [backbgroundView setAutoresizingMask:UIViewAutoresizingFlexibleHeight];
     [self insertSubview:backbgroundView atIndex:0];
+
     
 }
-- (void) setFrame:(CGRect)frame{
-    [super setFrame:frame];
-    NSLog(@"");
+- (void) resetBeginVisiblePosterAtRows{
+    for (int i = 0; i < ROWS_LIMITED; i++) {
+        beginVisiblePosterAtRows[i] = 0;
+    }
+}
+
+-(void) setBackground:(UIImage*)image{
+    if (image) {
+        [backbgroundView setImage:image];
+    }
+
 }
 #pragma mark -- Layout methods
 -(void) layoutSubviews{
@@ -112,9 +119,6 @@
 - (void)_layOutForTopCustomView{
     if ([self.dataSource respondsToSelector:@selector(topCustomViewForContentGuideView:)]) {
         UIView *topCustomView = [self.dataSource topCustomViewForContentGuideView:self];
-        if (topCustomView) {
-            [topCustomView removeFromSuperview];
-        }
         CGRect frameTopCustomView = topCustomView.frame;
         frameTopCustomView.origin.x = 0;
         frameTopCustomView.origin.y = 0;
@@ -184,11 +188,6 @@
             [thisAvaiRow removeFromSuperview];
         }
     }
-    
-    dequeuedRowHeaderCells=[[NSMutableSet alloc] init];
-    dequeuedCells=[[NSMutableSet alloc] init];
-    dequeuedRowPosterCells=[[NSMutableSet alloc] init];
-    
     self.visibleRows = [[NSMutableArray alloc] init];
     NSUInteger beginRowIndex = [self _getRowIndexFromOffset:self.contentScrollView.contentOffset.y];
     self.beginVisibleRowsIndex = beginRowIndex;
@@ -225,9 +224,11 @@
     if (!self.visibleRows) {
         self.visibleRows =[[NSMutableArray alloc] init];
     }
-    
-    [self.visibleRows insertObject:thisCarousel atIndex:0];
     self.beginVisibleRowsIndex --;
+    if (isDidScroll && [self.delegate respondsToSelector:@selector(contentGuide:didScrollToVisibleRowIndex:withDirection:)]) {
+        [self.delegate contentGuide:self didScrollToVisibleRowIndex:self.beginVisibleRowsIndex withDirection:ContentGuideViewScrollDirectionDown];
+    }
+    [self.visibleRows insertObject:thisCarousel atIndex:0];
     [self.contentScrollView addSubview:thisCarousel];
     [thisCarousel reloadData];
     
@@ -237,8 +238,10 @@
     if (!self.visibleRows) {
         self.visibleRows =[[NSMutableArray alloc] init];
     }
+    if (isDidScroll && [self.delegate respondsToSelector:@selector(contentGuide:didScrollToVisibleRowIndex:withDirection:)]) {
+        [self.delegate contentGuide:self didScrollToVisibleRowIndex:[thisCarousel rowIndex] withDirection:ContentGuideViewScrollDirectionUp];
+    }
     [self.visibleRows addObject:thisCarousel];
-    
     [self.contentScrollView addSubview:thisCarousel];
     [thisCarousel reloadData];
     
@@ -313,12 +316,9 @@
     for (ContentGuideViewRow *aCell in dequeuedCells) {
         if ([aCell.reuseIdentifier isEqualToString:identifier]) {
             row = aCell;
+            [dequeuedCells removeObject:row];
             break;
         }
-    }
-    if (row) {
-        [dequeuedCells removeObject:row];
-        [row prepareForReuse];
     }
     return row;
 }
@@ -327,6 +327,12 @@
 }
 
 - (void) reloadData{
+    [self resetBeginVisiblePosterAtRows];
+    [self holdPositionReloadData];
+    [self.contentScrollView setContentOffset:CGPointMake(0, 0)];
+}
+
+- (void) holdPositionReloadData{
     if (!self.delegate || !self.dataSource) return;
     [self.layer removeAllAnimations];
     self.numberRows=[self.dataSource numberOfRowsInContentGuide:self];
@@ -335,33 +341,35 @@
     if ([self.delegate respondsToSelector:@selector(offsetYOfFirstRow:)]) {
         offsetYOfFirstRow = [self.delegate offsetYOfFirstRow:self];
     }
+    isDidScroll = false;
+    
     // 1) Remove all current subviews
     [self removeOldSubviews];
     
-    // 2) Reload layout metrics
+    // 2) Remove all dequeueds
+    [self removeDequeueds];
+    
+    // 3) Reload layout metrics
     [self loadLayoutMetrics];
     
-    // 3) Add TopCustomView
+    // 4) Add TopCustomView
     [self _layOutForTopCustomView];
     
-    // 4) Rebuild visible subviews
+    // 5) Rebuild visible subviews
     [CATransaction begin];
     [CATransaction setDisableActions:YES];
     [self layoutSubviews];
     [CATransaction commit];
 }
 
-- (void) holdPositionReloadData{
-    
-}
-
 -(void) changeToSize:(CGSize) newSize{
     
 }
--(void) setBackground:(UIImage*)image{
-    if (image) {
-        [backbgroundView setImage:image];
-    }
+- (void) removeDequeueds
+{
+    [dequeuedCells removeAllObjects];
+    [dequeuedRowHeaderCells removeAllObjects];
+    [dequeuedRowPosterCells removeAllObjects];
 }
 - (void) removeOldSubviews
 {
@@ -386,28 +394,36 @@
     self.contentScrollView.contentSize = CGSizeMake(totalGuideWidth, totalGuideHeight + offsetYOfFirstRow);
     
 }
-#pragma mark - UIScrollViewDelegate methods
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    
-    static CGFloat lastContentOffset = 0.0;
-    if (scrollView == self.contentScrollView) {
-        if ([self.delegate respondsToSelector:@selector(contentGuide:didScrollToVisibleRowIndex:withDirection:)]) {
-            ContentGuideViewScrollDirection direction;
-            CGFloat newContentOffset = [self _getRowOffsetYFromIndex:[self _getRowIndexFromOffset:self.contentScrollView.contentOffset.y + self.frame.size.height]];
-            if (lastContentOffset > newContentOffset)
-                direction = ContentGuideViewScrollDirectionDown;
-            else if (lastContentOffset < newContentOffset)
-                direction = ContentGuideViewScrollDirectionUp;
-            else
-                direction = ContentGuideViewScrollDirectionNone;
-            
-            lastContentOffset = newContentOffset;
-            [self.delegate contentGuide:self didScrollToVisibleRowIndex:[self _getRowIndexFromOffset:lastContentOffset] withDirection:direction];
+
+- (ContentGuideViewRow*)getVisibleViewRowAtIndex:(NSUInteger) index{
+    for (ContentGuideViewRow *row in self.visibleRows) {
+        if ([row rowIndex] == index) {
+            return row;
         }
     }
-    [self layoutSubviews];
-    
+    return nil;
 }
+
+- (ContentGuideViewRowCarouselViewPosterView*)getVisiblePosterViewAtRow:(NSUInteger) rowIndex
+                                                        withPosterIndex:(NSInteger) index{
+    ContentGuideViewRow *row = [self getVisibleViewRowAtIndex:rowIndex];
+    if (row) {
+        for (ContentGuideViewRowCarouselViewPosterView *poster in row.visiblePosters) {
+            if (poster.index == index) {
+                return poster;
+            }
+        }
+    }
+    return nil;
+}
+
+#pragma mark - UIScrollViewDelegate methods
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    isDidScroll = true;
+    [self layoutSubviews];
+}
+
 #pragma mark - ContentGuideViewRowDataSource methods
 - (NSUInteger) numberOfPostersInCarousel:(ContentGuideViewRow*) viewRow{
     if ([self.dataSource respondsToSelector:@selector(numberOfPostersInCarousel:atRowIndex:)]) {
@@ -444,6 +460,27 @@
 - (NSUInteger)beginVisiblePosterIndex:(ContentGuideViewRow*) viewRow{
     return beginVisiblePosterAtRows[[viewRow rowIndex]];
 }
+
+- (UIImage*) imagePlayButtonForPosterView:(ContentGuideViewRow*) viewRow{
+    if ([self.dataSource respondsToSelector:@selector(contentGuide:imagePlayButtonForPosterView:)]) {
+        return [self.dataSource contentGuide:self imagePlayButtonForPosterView:viewRow];
+    }
+    return nil;
+}
+
+- (UIImage*) imageBackgroundBottomPosterView:(ContentGuideViewRow*) viewRow{
+    if ([self.dataSource respondsToSelector:@selector(contentGuide:imageBackgroundBottomPosterView:)]) {
+        return [self.dataSource contentGuide:self imageBackgroundBottomPosterView:viewRow];
+    }
+    return nil;
+}
+- (BOOL) showWating:(ContentGuideViewRow *)viewRow{
+    if ([self.dataSource respondsToSelector:@selector(contentGuide:showWating:)]) {
+        return [self.dataSource contentGuide:self showWating:viewRow];
+    }
+    return NO;
+}
+
 #pragma mark - ContentGuideViewRowDelegate methods
 
 - (CGFloat)heightForContentGuideViewRowHeader:(ContentGuideViewRow*) viewRow{

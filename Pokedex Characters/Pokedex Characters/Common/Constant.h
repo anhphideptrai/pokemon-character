@@ -16,8 +16,10 @@
 #define PANDING_LEFT_CONTENT_GUIDE_ROW_HEADER_DEFAULT 10
 #define HEIGHT_TITLE_POSTER_DEFAULT 50
 #define TEXT_COLOR_TITLE_POSTER_DEFAULT [UIColor colorWithRed:220.0f/255.0f green:198.0f/255.0f blue:152.0f/255.0f alpha:1.0f]
-#define FONT_TITLE_POSTER_DEFAULT [UIFont systemFontOfSize:14.0f]
-#define FONT_TITLE_ROW_HEADER_DEFAULT [UIFont boldSystemFontOfSize:20.0f]
+#define TEXT_COLOR_RIGHT_LABEL_POSTER_DEFAULT [UIColor colorWithRed:0.0f/255.0f green:0.0f/255.0f blue:0.0f/255.0f alpha:1.0f]
+#define FONT_TITLE_POSTER_DEFAULT [UIFont fontWithName:@"Arial-BoldMT" size:14.0f]
+#define FONT_RIGHT_LABEL_POSTER_DEFAULT [UIFont fontWithName:@"ArialMT" size:IS_IPAD?14.0f:12.0f]
+#define FONT_TITLE_ROW_HEADER_DEFAULT [UIFont fontWithName:@"Arial-BoldMT" size:20.0f]
 #define TIME_AUTO_SCROLLING_PROMOSLIDES_DEFAULT 8
 /*
  ** END - CONSTANT OF CONTENT GUIDE VIEWS
