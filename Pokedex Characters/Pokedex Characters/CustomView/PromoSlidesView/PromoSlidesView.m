@@ -104,10 +104,7 @@
 - (CGFloat)carouselItemWidth:(iCarousel *)carousel{
     return carousel.frame.size.width;
 }
-- (CATransform3D)carousel:(iCarousel *)carousel itemTransformForOffset:(CGFloat)offset baseTransform:(CATransform3D)transform{
-    transform = CATransform3DRotate(transform, M_PI / 8.0f, 0.0f, 1.0f, 0.0f);
-    return CATransform3DTranslate(transform, 0.0f, 0.0f, offset * carouselPromoSlide.itemWidth);
-}
+
 - (CGFloat)carousel:(iCarousel *)carousel valueForOption:(iCarouselOption)option withDefault:(CGFloat)value{
     switch(option) {
         case iCarouselOptionVisibleItems:{
