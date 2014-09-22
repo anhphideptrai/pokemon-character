@@ -15,6 +15,8 @@
 
 - (NSUInteger) numberOfItemsInPromoSlides:(PromoSlidesView*) promoSlides;
 
+@optional
+
 - (NSURL*) promoSlidesView:(PromoSlidesView*) promoSlides
     urlImageForItemAtIndex:(NSInteger) indexItem;
 

@@ -1,0 +1,78 @@
+//
+//  PosterDetail.m
+//  Pokedex Characters
+//
+//  Created by Phi Nguyen on 9/22/14.
+//  Copyright (c) 2014 Duc Thien. All rights reserved.
+//
+
+#import "PosterDetail.h"
+#import "UIImageView+AFNetworking.h"
+
+#define POSTER_IMAGE_VIEW_FRAME CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)
+#define BG_BOTTOM_FRAME CGRectMake(0, self.frame.size.height - 130, self.frame.size.width, 130)
+#define LABEL_TITLE_FRAME CGRectMake(20, BG_BOTTOM_FRAME.origin.y + 10, self.frame.size.width - 20, 70)
+#define LABEL_DESCRIPTION_FRAME CGRectMake(20, BG_BOTTOM_FRAME.origin.y + 90, self.frame.size.width - 20, 30)
+
+@interface PosterDetail()
+- (void) initCommon;
+- (void) setFrameForViews;
+
+@end
+@implementation PosterDetail
+@synthesize posterImageView = _posterImageView;
+@synthesize bgBottom = _bgBottom;
+@synthesize lbTitle = _lbTitle;
+@synthesize lbDescription = _lbDescription;
+
+- (id)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self initCommon];
+    }
+    return self;
+}
+
+-(id)initWithCoder:(NSCoder *)aDecoder{
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self initCommon];
+    }
+    return self;
+}
+
+-(void) initCommon{
+    _posterImageView = [[UIImageView alloc] init];
+    _bgBottom = [[UIImageView alloc] init];
+    _lbTitle = [[UILabel alloc] init];
+    _lbDescription = [[UILabel alloc] init];
+    
+    [self addSubview:_posterImageView];
+    [self addSubview:_bgBottom];
+    [self addSubview:_lbTitle];
+    [self addSubview:_lbDescription];
+}
+
+- (void)setFrame:(CGRect)frame{
+    [super setFrame:frame];
+    [self setFrameForViews];
+}
+
+- (void) setFrameForViews{
+    [_posterImageView setFrame:POSTER_IMAGE_VIEW_FRAME];
+    [_bgBottom setFrame:BG_BOTTOM_FRAME];
+    [_lbTitle setFrame:LABEL_TITLE_FRAME];
+    [_lbDescription setFrame:LABEL_DESCRIPTION_FRAME];
+}
+
+#pragma mark -- Layout methods
+-(void) layoutSubviews{
+    [CATransaction begin];
+    [CATransaction setAnimationDuration:0];
+    [CATransaction setDisableActions:YES];
+    
+    [CATransaction commit];
+}
+
+@end

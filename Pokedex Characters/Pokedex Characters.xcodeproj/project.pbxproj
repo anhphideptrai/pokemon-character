@@ -1624,6 +1624,7 @@
 		B2CC8EF319B382E200BD1ABF /* Pokemon.m in Sources */ = {isa = PBXBuildFile; fileRef = B2CC8EF219B382E200BD1ABF /* Pokemon.m */; };
 		B2CC8EF419B382E200BD1ABF /* Pokemon.m in Sources */ = {isa = PBXBuildFile; fileRef = B2CC8EF219B382E200BD1ABF /* Pokemon.m */; };
 		B2CC8EF619B3837C00BD1ABF /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B2CC8EF519B3837C00BD1ABF /* libsqlite3.0.dylib */; };
+		B2E1562219D017E40084C8FF /* PosterDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E1562119D017E40084C8FF /* PosterDetail.m */; };
 		B2E9121B19B546BA00A715F0 /* promo_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B2E9121519B546BA00A715F0 /* promo_1.jpg */; };
 		B2E9121C19B546BA00A715F0 /* promo_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B2E9121519B546BA00A715F0 /* promo_1.jpg */; };
 		B2E9121D19B546BA00A715F0 /* promo_4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B2E9121619B546BA00A715F0 /* promo_4.jpg */; };
@@ -2522,6 +2523,8 @@
 		B2CC8EF119B382E200BD1ABF /* Pokemon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Pokemon.h; path = Entry/Pokemon.h; sourceTree = "<group>"; };
 		B2CC8EF219B382E200BD1ABF /* Pokemon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Pokemon.m; path = Entry/Pokemon.m; sourceTree = "<group>"; };
 		B2CC8EF519B3837C00BD1ABF /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		B2E1562019D017E40084C8FF /* PosterDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PosterDetail.h; path = CustomView/DetailView/PosterDetail.h; sourceTree = "<group>"; };
+		B2E1562119D017E40084C8FF /* PosterDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PosterDetail.m; path = CustomView/DetailView/PosterDetail.m; sourceTree = "<group>"; };
 		B2E9121519B546BA00A715F0 /* promo_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = promo_1.jpg; path = Resources/Images/PromoSlides/promo_1.jpg; sourceTree = "<group>"; };
 		B2E9121619B546BA00A715F0 /* promo_4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = promo_4.jpg; path = Resources/Images/PromoSlides/promo_4.jpg; sourceTree = "<group>"; };
 		B2E9121719B546BA00A715F0 /* promo_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = promo_5.jpg; path = Resources/Images/PromoSlides/promo_5.jpg; sourceTree = "<group>"; };
@@ -2573,6 +2576,8 @@
 				B2C8DB5219C303930095DE72 /* BaseStatsView.m */,
 				B2C8DB4E19C303660095DE72 /* EvolutionsView.h */,
 				B2C8DB4F19C303660095DE72 /* EvolutionsView.m */,
+				B2E1562019D017E40084C8FF /* PosterDetail.h */,
+				B2E1562119D017E40084C8FF /* PosterDetail.m */,
 			);
 			name = DetailView;
 			sourceTree = "<group>";
@@ -5368,6 +5373,7 @@
 				B2CC85EC19B36DE300BD1ABF /* AFNetworkReachabilityManager.m in Sources */,
 				B2CC85F419B36DE300BD1ABF /* AFURLResponseSerialization.m in Sources */,
 				B2CC860A19B36DE300BD1ABF /* UIWebView+AFNetworking.m in Sources */,
+				B2E1562219D017E40084C8FF /* PosterDetail.m in Sources */,
 				B2CC861E19B36E3500BD1ABF /* ContentGuideViewRowCarouselViewPosterView.m in Sources */,
 				B2CC85F619B36DE300BD1ABF /* AFURLSessionManager.m in Sources */,
 				B2CC85FC19B36DE300BD1ABF /* AFNetworkActivityIndicatorManager.m in Sources */,

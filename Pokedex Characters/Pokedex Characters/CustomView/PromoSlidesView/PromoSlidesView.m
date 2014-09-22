@@ -70,10 +70,10 @@
     [super removeFromSuperview];
 }
 #pragma mark - iCarouselDataSource methods
-- (NSUInteger)numberOfItemsInCarousel:(iCarousel *)carousel{
+- (NSInteger)numberOfItemsInCarousel:(iCarousel *)carousel{
     return numberItems;
 }
-- (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSUInteger)index reusingView:(UIView *)view{
+- (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view{
     UIImageView *subView = nil;
     if (view && [view isKindOfClass:[UIImageView class]]) {
         subView = (UIImageView*)view;
