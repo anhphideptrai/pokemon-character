@@ -1625,6 +1625,11 @@
 		B2CC8EF419B382E200BD1ABF /* Pokemon.m in Sources */ = {isa = PBXBuildFile; fileRef = B2CC8EF219B382E200BD1ABF /* Pokemon.m */; };
 		B2CC8EF619B3837C00BD1ABF /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B2CC8EF519B3837C00BD1ABF /* libsqlite3.0.dylib */; };
 		B2E1562219D017E40084C8FF /* PosterDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E1562119D017E40084C8FF /* PosterDetail.m */; };
+		B2E1562519D082AB0084C8FF /* gradient.png in Resources */ = {isa = PBXBuildFile; fileRef = B2E1562319D082AB0084C8FF /* gradient.png */; };
+		B2E1562619D082AB0084C8FF /* gradient@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2E1562419D082AB0084C8FF /* gradient@2x.png */; };
+		B2E1562819D083250084C8FF /* iPad_DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2E1562719D083250084C8FF /* iPad_DetailViewController.xib */; };
+		B2E1562A19D083400084C8FF /* iPhone_DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2E1562919D083400084C8FF /* iPhone_DetailViewController.xib */; };
+		B2E1562D19D083AC0084C8FF /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E1562C19D083AC0084C8FF /* DetailViewController.m */; };
 		B2E9121B19B546BA00A715F0 /* promo_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B2E9121519B546BA00A715F0 /* promo_1.jpg */; };
 		B2E9121C19B546BA00A715F0 /* promo_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B2E9121519B546BA00A715F0 /* promo_1.jpg */; };
 		B2E9121D19B546BA00A715F0 /* promo_4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B2E9121619B546BA00A715F0 /* promo_4.jpg */; };
@@ -2525,6 +2530,12 @@
 		B2CC8EF519B3837C00BD1ABF /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		B2E1562019D017E40084C8FF /* PosterDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PosterDetail.h; path = CustomView/DetailView/PosterDetail.h; sourceTree = "<group>"; };
 		B2E1562119D017E40084C8FF /* PosterDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PosterDetail.m; path = CustomView/DetailView/PosterDetail.m; sourceTree = "<group>"; };
+		B2E1562319D082AB0084C8FF /* gradient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gradient.png; path = Resources/Images/PromoSlides/gradient.png; sourceTree = "<group>"; };
+		B2E1562419D082AB0084C8FF /* gradient@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "gradient@2x.png"; path = "Resources/Images/PromoSlides/gradient@2x.png"; sourceTree = "<group>"; };
+		B2E1562719D083250084C8FF /* iPad_DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = iPad_DetailViewController.xib; path = Xib/iPad_DetailViewController.xib; sourceTree = "<group>"; };
+		B2E1562919D083400084C8FF /* iPhone_DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = iPhone_DetailViewController.xib; path = Xib/iPhone_DetailViewController.xib; sourceTree = "<group>"; };
+		B2E1562B19D083AC0084C8FF /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		B2E1562C19D083AC0084C8FF /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		B2E9121519B546BA00A715F0 /* promo_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = promo_1.jpg; path = Resources/Images/PromoSlides/promo_1.jpg; sourceTree = "<group>"; };
 		B2E9121619B546BA00A715F0 /* promo_4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = promo_4.jpg; path = Resources/Images/PromoSlides/promo_4.jpg; sourceTree = "<group>"; };
 		B2E9121719B546BA00A715F0 /* promo_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = promo_5.jpg; path = Resources/Images/PromoSlides/promo_5.jpg; sourceTree = "<group>"; };
@@ -2802,6 +2813,8 @@
 				B2CC859119B36D8E00BD1ABF /* ViewController.m */,
 				B2137B0C19BD39A000184C56 /* SearchViewController.h */,
 				B2137B0D19BD39A000184C56 /* SearchViewController.m */,
+				B2E1562B19D083AC0084C8FF /* DetailViewController.h */,
+				B2E1562C19D083AC0084C8FF /* DetailViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -3633,6 +3646,8 @@
 				B2E9122E19B60C9A00A715F0 /* iPhone_MainViewController.xib */,
 				B2137B1019BD39CA00184C56 /* iPad_SearchViewController.xib */,
 				B2137B1319BD39E100184C56 /* iPhone_SearchViewController.xib */,
+				B2E1562719D083250084C8FF /* iPad_DetailViewController.xib */,
+				B2E1562919D083400084C8FF /* iPhone_DetailViewController.xib */,
 			);
 			name = Xib;
 			sourceTree = "<group>";
@@ -3640,6 +3655,8 @@
 		B2E9123D19B62A5200A715F0 /* Customs */ = {
 			isa = PBXGroup;
 			children = (
+				B2E1562319D082AB0084C8FF /* gradient.png */,
+				B2E1562419D082AB0084C8FF /* gradient@2x.png */,
 				B24EF68A19BA313C00A56926 /* bottomnav_settings_normal.png */,
 				B24EF68B19BA313C00A56926 /* bottomnav_settings_normal@2x.png */,
 				B24EF68C19BA313C00A56926 /* placeholder_center.png */,
@@ -3798,6 +3815,7 @@
 				B2CC8DE619B379A100BD1ABF /* character_083.jpg in Resources */,
 				B2CC89A619B379A100BD1ABF /* character_650.jpg in Resources */,
 				B2CC8C2E19B379A100BD1ABF /* character_272.jpg in Resources */,
+				B2E1562619D082AB0084C8FF /* gradient@2x.png in Resources */,
 				B2CC8A0019B379A100BD1ABF /* character_594.jpg in Resources */,
 				B2CC8A8219B379A100BD1ABF /* character_561.jpg in Resources */,
 				B2CC892219B379A100BD1ABF /* character_687.jpg in Resources */,
@@ -4006,6 +4024,7 @@
 				B2CC8E8A19B379A200BD1ABF /* character_008.jpg in Resources */,
 				B2CC8D7819B379A100BD1ABF /* character_127.jpg in Resources */,
 				B2CC8D6019B379A100BD1ABF /* character_115.jpg in Resources */,
+				B2E1562819D083250084C8FF /* iPad_DetailViewController.xib in Resources */,
 				B2CC890819B379A100BD1ABF /* character_674.jpg in Resources */,
 				B2CC8AC219B379A100BD1ABF /* character_494.jpg in Resources */,
 				B2CC8BE419B379A100BD1ABF /* character_341.jpg in Resources */,
@@ -4114,6 +4133,7 @@
 				B2CC89A019B379A100BD1ABF /* character_647.jpg in Resources */,
 				B2CC8DAE19B379A100BD1ABF /* character_154.jpg in Resources */,
 				B2CC8B5019B379A100BD1ABF /* character_464.jpg in Resources */,
+				B2E1562A19D083400084C8FF /* iPhone_DetailViewController.xib in Resources */,
 				B2CC8C1C19B379A100BD1ABF /* character_263.jpg in Resources */,
 				B2CC8BA619B379A100BD1ABF /* character_409.jpg in Resources */,
 				B2CC8E8E19B379A200BD1ABF /* character_010.jpg in Resources */,
@@ -4283,6 +4303,7 @@
 				B2CC8BFC19B379A100BD1ABF /* character_353.jpg in Resources */,
 				B2CC8C3019B379A100BD1ABF /* character_273.jpg in Resources */,
 				B2CC8E6219B379A200BD1ABF /* character_047.jpg in Resources */,
+				B2E1562519D082AB0084C8FF /* gradient.png in Resources */,
 				B2CC89A819B379A100BD1ABF /* character_651.jpg in Resources */,
 				B2CC8E8219B379A200BD1ABF /* character_004.jpg in Resources */,
 				B2CC8D6819B379A100BD1ABF /* character_119.jpg in Resources */,
@@ -5364,6 +5385,7 @@
 				B2CC858919B36D8E00BD1ABF /* AppDelegate.m in Sources */,
 				B2CC861A19B36E3500BD1ABF /* ContentGuideView.m in Sources */,
 				B2CC862019B36E3500BD1ABF /* ContentGuideViewRowHeader.m in Sources */,
+				B2E1562D19D083AC0084C8FF /* DetailViewController.m in Sources */,
 				B2C8DB5619C303AD0095DE72 /* DetailView.m in Sources */,
 				B2CC85F219B36DE300BD1ABF /* AFURLRequestSerialization.m in Sources */,
 				B2CC861819B36E3500BD1ABF /* PromoSlidesView.m in Sources */,

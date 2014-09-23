@@ -10,9 +10,9 @@
 #import "UIImageView+AFNetworking.h"
 
 #define POSTER_IMAGE_VIEW_FRAME CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)
-#define BG_BOTTOM_FRAME CGRectMake(0, self.frame.size.height - 130, self.frame.size.width, 130)
-#define LABEL_TITLE_FRAME CGRectMake(20, BG_BOTTOM_FRAME.origin.y + 10, self.frame.size.width - 20, 70)
-#define LABEL_DESCRIPTION_FRAME CGRectMake(20, BG_BOTTOM_FRAME.origin.y + 90, self.frame.size.width - 20, 30)
+#define BG_BOTTOM_FRAME CGRectMake(0, self.frame.size.height - 50, self.frame.size.width, 50)
+#define LABEL_TITLE_FRAME CGRectMake(20, BG_BOTTOM_FRAME.origin.y + 5, self.frame.size.width - 20, 25)
+#define LABEL_DESCRIPTION_FRAME CGRectMake(20, BG_BOTTOM_FRAME.origin.y + 30, self.frame.size.width - 20, 15)
 
 @interface PosterDetail()
 - (void) initCommon;
@@ -47,6 +47,7 @@
     _bgBottom = [[UIImageView alloc] init];
     _lbTitle = [[UILabel alloc] init];
     _lbDescription = [[UILabel alloc] init];
+    
     
     [self addSubview:_posterImageView];
     [self addSubview:_bgBottom];
