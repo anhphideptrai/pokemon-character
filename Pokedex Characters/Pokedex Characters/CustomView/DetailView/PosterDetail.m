@@ -8,6 +8,7 @@
 
 #import "PosterDetail.h"
 #import "UIImageView+AFNetworking.h"
+#import "Constant.h"
 
 #define POSTER_IMAGE_VIEW_FRAME CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)
 #define BG_BOTTOM_FRAME CGRectMake(0, self.frame.size.height - 50, self.frame.size.width, 50)
@@ -15,6 +16,7 @@
 #define LABEL_DESCRIPTION_FRAME CGRectMake(20, BG_BOTTOM_FRAME.origin.y + 30, self.frame.size.width - 20, 15)
 
 @interface PosterDetail()
+@property(nonatomic, strong) UIImageView *bgBottom;
 - (void) initCommon;
 - (void) setFrameForViews;
 
@@ -43,16 +45,27 @@
 }
 
 -(void) initCommon{
+    [self.layer setCornerRadius:5.0f];
+    [self.layer setMasksToBounds:YES];
+    [self.layer setBorderColor:[UIColor grayColor].CGColor];
+    [self.layer setBorderWidth:2.0f];
+    
     _posterImageView = [[UIImageView alloc] init];
     _bgBottom = [[UIImageView alloc] init];
     _lbTitle = [[UILabel alloc] init];
     _lbDescription = [[UILabel alloc] init];
+    [_lbTitle setTextColor:TEXT_COLOR_TITLE_POSTER_DEFAULT];
+    [_lbTitle setFont:FONT_TITLE_ROW_HEADER_DEFAULT];
+    [_lbDescription setFont:FONT_TITLE_POSTER_DEFAULT];
+    [_lbDescription setTextColor:[UIColor whiteColor]];
     
+    [_bgBottom setImage:[UIImage imageNamed:@"gradient.png"]];
     
     [self addSubview:_posterImageView];
     [self addSubview:_bgBottom];
     [self addSubview:_lbTitle];
     [self addSubview:_lbDescription];
+    [self setFrameForViews];
 }
 
 - (void)setFrame:(CGRect)frame{

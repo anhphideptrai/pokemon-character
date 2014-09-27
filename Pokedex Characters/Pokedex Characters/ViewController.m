@@ -13,6 +13,7 @@
 #import "Pokemon.h"
 #import "Constant.h"
 #import "SearchViewController.h"
+#import "DetailViewController.h"
 
 @interface ViewController () <PromoSlidesViewDataSource, PromoSlidesViewDelegate>
 {
@@ -121,7 +122,8 @@
 - (void)         contentGuide:(ContentGuideView*) contentGuide
 didSelectPosterViewAtRowIndex:(NSUInteger) rowIndex
                   posterIndex:(NSUInteger) index{
-   
+    DetailViewController *detailViewController = [[DetailViewController alloc] init];
+    [self.navigationController pushViewController:detailViewController animated:YES];
 }
 
 #pragma mark - PromoSlidesViewDataSource methods

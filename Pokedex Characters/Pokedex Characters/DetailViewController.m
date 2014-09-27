@@ -7,31 +7,36 @@
 //
 
 #import "DetailViewController.h"
+#import "CustomNavigationBar.h"
+#import "Constant.h"
+#import "DetailView.h"
 
-@interface DetailViewController ()
+@interface DetailViewController ()<CustomNavigationBarDelegate>{
+    CustomNavigationBar *customNavigation;
+}
 
 @end
 
 @implementation DetailViewController
-
+-(void)loadView{
+    [super loadView];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [[self navigationController] setNavigationBarHidden:YES animated:YES];
+    UIImageView *bgImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    [bgImage setImage:[UIImage imageNamed:@"scrollview_bg.png"]];
+    [self.view addSubview:bgImage];
+    customNavigation = [[CustomNavigationBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, HEIGHT_NAVIGATION_BAR)];
+    [customNavigation setDelegate:self];
+    [self.view addSubview:customNavigation];
+    DetailView *detail = [[DetailView alloc] initWithFrame:CGRectMake(0, 50, self.view.frame.size.width, 400)];
+    [self.view addSubview:detail];
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (BOOL)prefersStatusBarHidden {
+    return YES;
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)clickBtnBack:(CustomNavigationBar *)customNavigationBar{
+    [self.navigationController popViewControllerAnimated:YES];
 }
-*/
-
 @end

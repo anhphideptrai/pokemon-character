@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 @interface PosterDetail : UIView
 @property(nonatomic, strong) UIImageView *posterImageView;
-@property(nonatomic, strong) UIImageView *bgBottom;
 @property(nonatomic, strong) UILabel *lbTitle;
 @property(nonatomic, strong) UILabel *lbDescription;
 - (void) setFrame:(CGRect)frame;

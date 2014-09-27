@@ -7,25 +7,28 @@
 //
 
 #import "DetailView.h"
-
+#import "PosterDetail.h"
+#define POSTER_FRAME CGRectMake(0, 0, 400, 400)
+@interface DetailView(){
+    PosterDetail *posterDetail;
+}
+@end
 @implementation DetailView
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
+        [self initCommon];
     }
     return self;
 }
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
+-(void)initCommon{
+    posterDetail = [[PosterDetail alloc] initWithFrame:POSTER_FRAME];
+    [posterDetail.posterImageView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"character_%@.jpg", @"070"]]];
+    [posterDetail.lbTitle setText:@"pokemon afs"];
+    [posterDetail.lbDescription setText:@"description ..."];
+    [self addSubview:posterDetail];
+    
 }
-*/
-
 @end
