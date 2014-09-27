@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Pokemon.h"
 @interface DetailViewController : UIViewController
-
+- (void)setPokemonForDetail:(Pokemon*)pokemon;
 @end

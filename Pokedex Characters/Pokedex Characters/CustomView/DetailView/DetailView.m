@@ -8,7 +8,9 @@
 
 #import "DetailView.h"
 #import "PosterDetail.h"
-#define POSTER_FRAME CGRectMake(0, 0, 400, 400)
+#import "Constant.h"
+
+#define POSTER_FRAME CGRectMake(0, 0, WIDTH_DETAIL_PAGE, WIDTH_DETAIL_PAGE)
 @interface DetailView(){
     PosterDetail *posterDetail;
 }
@@ -24,11 +26,18 @@
     return self;
 }
 -(void)initCommon{
+    [self setBackgroundColor:[UIColor grayColor]];
+    [self.layer setCornerRadius:5.0f];
+    [self.layer setMasksToBounds:YES];
+    [self.layer setBorderColor:[UIColor grayColor].CGColor];
+    [self.layer setBorderWidth:2.0f];
     posterDetail = [[PosterDetail alloc] initWithFrame:POSTER_FRAME];
-    [posterDetail.posterImageView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"character_%@.jpg", @"070"]]];
-    [posterDetail.lbTitle setText:@"pokemon afs"];
-    [posterDetail.lbDescription setText:@"description ..."];
     [self addSubview:posterDetail];
     
+}
+- (void)setData:(Pokemon*)pokemon{
+    [posterDetail.posterImageView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"character_%@.jpg", pokemon.iD]]];
+    [posterDetail.lbTitle setText:pokemon.name];
+    [posterDetail.lbDescription setText:@"description ..."];
 }
 @end

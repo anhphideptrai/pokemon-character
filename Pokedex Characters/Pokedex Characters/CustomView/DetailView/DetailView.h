@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Pokemon.h"
 
 @interface DetailView : UIView
-
+- (void)setData:(Pokemon*)pokemon;
 @end

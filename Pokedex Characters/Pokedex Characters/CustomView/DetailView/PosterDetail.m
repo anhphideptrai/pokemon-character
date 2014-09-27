@@ -45,11 +45,6 @@
 }
 
 -(void) initCommon{
-    [self.layer setCornerRadius:5.0f];
-    [self.layer setMasksToBounds:YES];
-    [self.layer setBorderColor:[UIColor grayColor].CGColor];
-    [self.layer setBorderWidth:2.0f];
-    
     _posterImageView = [[UIImageView alloc] init];
     _bgBottom = [[UIImageView alloc] init];
     _lbTitle = [[UILabel alloc] init];

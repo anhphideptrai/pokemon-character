@@ -13,6 +13,8 @@
 
 @interface DetailViewController ()<CustomNavigationBarDelegate>{
     CustomNavigationBar *customNavigation;
+    Pokemon *currentPokemon;
+    DetailView *detailPoster;
 }
 
 @end
@@ -30,13 +32,21 @@
     customNavigation = [[CustomNavigationBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, HEIGHT_NAVIGATION_BAR)];
     [customNavigation setDelegate:self];
     [self.view addSubview:customNavigation];
-    DetailView *detail = [[DetailView alloc] initWithFrame:CGRectMake(0, 50, self.view.frame.size.width, 400)];
-    [self.view addSubview:detail];
+    detailPoster = [[DetailView alloc] initWithFrame:CGRectMake(0, HEIGHT_NAVIGATION_BAR, self.view.frame.size.width, WIDTH_DETAIL_PAGE)];
+    [self.view addSubview:detailPoster];
+    [self reLoadData];
+    
 }
 - (BOOL)prefersStatusBarHidden {
     return YES;
 }
 -(void)clickBtnBack:(CustomNavigationBar *)customNavigationBar{
     [self.navigationController popViewControllerAnimated:YES];
+}
+- (void)setPokemonForDetail:(Pokemon*)pokemon{
+    currentPokemon = pokemon;
+}
+- (void)reLoadData{
+    [detailPoster setData:currentPokemon];
 }
 @end
