@@ -10,15 +10,18 @@
 #import "PosterDetail.h"
 #import "Constant.h"
 #import "TypeView.h"
+#import "DescriptionView.h"
 
 #define POSTER_FRAME CGRectMake(0, 0, WIDTH_DETAIL_PAGE, WIDTH_DETAIL_PAGE)
 #define TYPE_FRAME CGRectMake(0, WIDTH_DETAIL_PAGE, WIDTH_DETAIL_PAGE, 30)
 #define WEAKNESSES_FRAME CGRectMake(0, TYPE_FRAME.size.height + TYPE_FRAME.origin.y, WIDTH_DETAIL_PAGE, 30)
+#define DESCRIPTION_FRAME CGRectMake(0, WEAKNESSES_FRAME.size.height + WEAKNESSES_FRAME.origin.y, WIDTH_DETAIL_PAGE, 200)
 
 @interface DetailView(){
     PosterDetail *posterDetail;
     TypeView *typeView;
     TypeView *weaknessView;
+    DescriptionView *descriptionView;
 }
 @end
 @implementation DetailView
@@ -39,9 +42,11 @@
     posterDetail = [[PosterDetail alloc] initWithFrame:POSTER_FRAME];
     typeView = [[TypeView alloc] initWithFrame:TYPE_FRAME];
     weaknessView = [[TypeView alloc] initWithFrame:WEAKNESSES_FRAME];
+    descriptionView = [[DescriptionView alloc] initWithFrame:DESCRIPTION_FRAME];
     [self addSubview:posterDetail];
     [self addSubview:typeView];
     [self addSubview:weaknessView];
+    [self addSubview:descriptionView];
     
 }
 - (void)setData:(Pokemon*)pokemon{
@@ -50,5 +55,6 @@
     [posterDetail.lbDescription setText:@"description ..."];
     [typeView reLoadData:@"Type: " andArrType:pokemon.type];
     [weaknessView reLoadData:@"Weakness: " andArrType:pokemon.weakness];
+    [descriptionView reLoadData:[NSArray arrayWithObjects:pokemon.descriptionX, pokemon.descriptionY, nil]];
 }
 @end
