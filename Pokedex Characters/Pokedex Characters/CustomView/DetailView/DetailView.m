@@ -9,10 +9,14 @@
 #import "DetailView.h"
 #import "PosterDetail.h"
 #import "Constant.h"
+#import "TypeView.h"
 
 #define POSTER_FRAME CGRectMake(0, 0, WIDTH_DETAIL_PAGE, WIDTH_DETAIL_PAGE)
+#define TYPE_FRAME CGRectMake(0, WIDTH_DETAIL_PAGE, WIDTH_DETAIL_PAGE, 30)
+
 @interface DetailView(){
     PosterDetail *posterDetail;
+    TypeView *typeView;
 }
 @end
 @implementation DetailView
@@ -32,12 +36,15 @@
     [self.layer setBorderColor:[UIColor grayColor].CGColor];
     [self.layer setBorderWidth:2.0f];
     posterDetail = [[PosterDetail alloc] initWithFrame:POSTER_FRAME];
+    typeView = [[TypeView alloc] initWithFrame:TYPE_FRAME];
     [self addSubview:posterDetail];
+    [self addSubview:typeView];
     
 }
 - (void)setData:(Pokemon*)pokemon{
     [posterDetail.posterImageView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"character_%@.jpg", pokemon.iD]]];
     [posterDetail.lbTitle setText:pokemon.name];
     [posterDetail.lbDescription setText:@"description ..."];
+    [typeView reLoadData:@"Type : " andArrType:pokemon.weakness];
 }
 @end

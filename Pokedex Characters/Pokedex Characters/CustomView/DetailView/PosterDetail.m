@@ -75,13 +75,5 @@
     [_lbDescription setFrame:LABEL_DESCRIPTION_FRAME];
 }
 
-#pragma mark -- Layout methods
--(void) layoutSubviews{
-    [CATransaction begin];
-    [CATransaction setAnimationDuration:0];
-    [CATransaction setDisableActions:YES];
-    
-    [CATransaction commit];
-}
 
 @end

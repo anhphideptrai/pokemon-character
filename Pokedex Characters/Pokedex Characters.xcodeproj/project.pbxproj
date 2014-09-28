@@ -18,6 +18,7 @@
 		B203F8B819BB1AEA00767698 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B203F8AB19BB1AEA00767698 /* Default-568h@2x.png */; };
 		B203F8B919BB1AEA00767698 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B203F8AB19BB1AEA00767698 /* Default-568h@2x.png */; };
 		B209DBE119D6A591007CEB2C /* CustomNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = B209DBE019D6A591007CEB2C /* CustomNavigationBar.m */; };
+		B209DBE419D6ECDE007CEB2C /* TypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = B209DBE319D6ECDE007CEB2C /* TypeView.m */; };
 		B2137B0E19BD39A000184C56 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2137B0D19BD39A000184C56 /* SearchViewController.m */; };
 		B2137B0F19BD39A000184C56 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2137B0D19BD39A000184C56 /* SearchViewController.m */; };
 		B2137B1119BD39CA00184C56 /* iPad_SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2137B1019BD39CA00184C56 /* iPad_SearchViewController.xib */; };
@@ -1679,6 +1680,8 @@
 		B203F8AB19BB1AEA00767698 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		B209DBDF19D6A591007CEB2C /* CustomNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomNavigationBar.h; path = CustomView/DetailView/CustomNavigationBar.h; sourceTree = "<group>"; };
 		B209DBE019D6A591007CEB2C /* CustomNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomNavigationBar.m; path = CustomView/DetailView/CustomNavigationBar.m; sourceTree = "<group>"; };
+		B209DBE219D6ECDE007CEB2C /* TypeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TypeView.h; path = CustomView/DetailView/TypeView.h; sourceTree = "<group>"; };
+		B209DBE319D6ECDE007CEB2C /* TypeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TypeView.m; path = CustomView/DetailView/TypeView.m; sourceTree = "<group>"; };
 		B2137B0C19BD39A000184C56 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		B2137B0D19BD39A000184C56 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		B2137B1019BD39CA00184C56 /* iPad_SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = iPad_SearchViewController.xib; sourceTree = "<group>"; };
@@ -2590,6 +2593,8 @@
 				B2E1562119D017E40084C8FF /* PosterDetail.m */,
 				B209DBDF19D6A591007CEB2C /* CustomNavigationBar.h */,
 				B209DBE019D6A591007CEB2C /* CustomNavigationBar.m */,
+				B209DBE219D6ECDE007CEB2C /* TypeView.h */,
+				B209DBE319D6ECDE007CEB2C /* TypeView.m */,
 			);
 			name = DetailView;
 			sourceTree = "<group>";
@@ -5368,6 +5373,7 @@
 				B2CC860819B36DE300BD1ABF /* UIRefreshControl+AFNetworking.m in Sources */,
 				B2CC860019B36DE300BD1ABF /* UIAlertView+AFNetworking.m in Sources */,
 				B2CC861C19B36E3500BD1ABF /* ContentGuideViewRow.m in Sources */,
+				B209DBE419D6ECDE007CEB2C /* TypeView.m in Sources */,
 				B2CC8EEF19B3826500BD1ABF /* PokemonType.m in Sources */,
 				B2CC859219B36D8E00BD1ABF /* ViewController.m in Sources */,
 				B2CC85EE19B36DE300BD1ABF /* AFSecurityPolicy.m in Sources */,
