@@ -12,8 +12,8 @@
 
 #define POSTER_IMAGE_VIEW_FRAME CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)
 #define BG_BOTTOM_FRAME CGRectMake(0, self.frame.size.height - 50, self.frame.size.width, 50)
-#define LABEL_TITLE_FRAME CGRectMake(20, BG_BOTTOM_FRAME.origin.y + 5, self.frame.size.width - 20, 25)
-#define LABEL_DESCRIPTION_FRAME CGRectMake(20, BG_BOTTOM_FRAME.origin.y + 30, self.frame.size.width - 20, 15)
+#define LABEL_TITLE_FRAME CGRectMake(10, BG_BOTTOM_FRAME.origin.y + 5, self.frame.size.width - 10, 25)
+#define LABEL_DESCRIPTION_FRAME CGRectMake(10, BG_BOTTOM_FRAME.origin.y + 30, self.frame.size.width - 10, 15)
 
 @interface PosterDetail()
 @property(nonatomic, strong) UIImageView *bgBottom;

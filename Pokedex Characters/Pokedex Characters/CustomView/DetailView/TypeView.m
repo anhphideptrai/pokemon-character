@@ -10,9 +10,9 @@
 #import "Constant.h"
 
 #define BG_BOTTOM_FRAME CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)
-#define TITLE_FRAME CGRectMake(20, 0, 80, self.frame.size.height)
+#define TITLE_FRAME CGRectMake(10, 0, 120, self.frame.size.height)
 #define SIZE_TYPE CGSizeMake(self.frame.size.height, self.frame.size.height)
-#define OFFSET_X 90
+#define SCROLL_ICON CGRectMake(130, 0, self.frame.size.width - 130, self.frame.size.height)
 #define PANDING_X 5
 @interface TypeView()
 {
@@ -44,19 +44,24 @@
     [imageView setImage:[UIImage imageNamed:@"gradient.png"]];
     [self addSubview:imageView];
     title = [[UILabel alloc] initWithFrame:TITLE_FRAME];
+    [title setBackgroundColor:[UIColor clearColor]];
     [title setFont:FONT_TITLE_ROW_HEADER_DEFAULT];
     [title setTextColor:[UIColor whiteColor]];
     [title setText:strTitle];
     [self addSubview:title];
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:SCROLL_ICON];
+    [scrollView setBackgroundColor:[UIColor clearColor]];
+    [self addSubview:scrollView];
     CGRect frameIcon = CGRectZero;
     frameIcon.size = SIZE_TYPE;
-    frameIcon.origin.x = OFFSET_X;
+    CGFloat widthContentScroll = 0;
     for (NSString *type in arrType) {
         UIImageView *iconType = [[UIImageView alloc] initWithFrame:frameIcon];
         [iconType setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png", [[type lowercaseString] isEqualToString:@"water"]?@"watter":[type lowercaseString]]]];
-        [self addSubview:iconType];
+        [scrollView addSubview:iconType];
+        widthContentScroll = frameIcon.origin.x + frameIcon.size.width;
         frameIcon.origin.x += frameIcon.size.width + PANDING_X;
-        
     }
+    [scrollView setContentSize:CGSizeMake(widthContentScroll, self.frame.size.height)];
 }
 @end

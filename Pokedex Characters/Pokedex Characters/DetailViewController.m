@@ -32,7 +32,7 @@
     customNavigation = [[CustomNavigationBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, HEIGHT_NAVIGATION_BAR)];
     [customNavigation setDelegate:self];
     [self.view addSubview:customNavigation];
-    detailPoster = [[DetailView alloc] initWithFrame:CGRectMake(0, HEIGHT_NAVIGATION_BAR, self.view.frame.size.width, WIDTH_DETAIL_PAGE + 70)];
+    detailPoster = [[DetailView alloc] initWithFrame:CGRectMake(0, HEIGHT_NAVIGATION_BAR, self.view.frame.size.width, self.view.frame.size.height - HEIGHT_NAVIGATION_BAR)];
     [self.view addSubview:detailPoster];
     [self reLoadData];
     
