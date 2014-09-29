@@ -13,6 +13,7 @@
 #import "DescriptionView.h"
 #import "EvolutionsView.h"
 #import "BaseStatsView.h"
+#import "SQLiteManager.h"
 
 #define SCROLL_VIEW_FRAME CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)
 #define POSTER_FRAME CGRectMake(0, 0, WIDTH_DETAIL_PAGE, WIDTH_DETAIL_PAGE)
@@ -22,7 +23,7 @@
 #define DESCRIPTION_FRAME CGRectMake(WIDTH_DETAIL_PAGE, 0, self.frame.size.width - WIDTH_DETAIL_PAGE - 5, WIDTH_DETAIL_PAGE - 160)
 #define BASE_STATS_FRAME CGRectMake(WIDTH_DETAIL_PAGE, WIDTH_DETAIL_PAGE - 160, self.frame.size.width - WIDTH_DETAIL_PAGE - 5, 160)
 
-@interface DetailView(){
+@interface DetailView()<EvolutionsViewDelegate>{
     UIScrollView *scrollView;
     PosterDetail *posterDetail;
     TypeView *typeView;
@@ -55,6 +56,7 @@
     evolutionsView = [[EvolutionsView alloc] initWithFrame:EVOLUTION_FRAME];
     baseStatsView = [[BaseStatsView alloc] initWithFrame:BASE_STATS_FRAME];
     [scrollView setBackgroundColor:[UIColor clearColor]];
+    [evolutionsView setDelegate:self];
     [self addSubview:scrollView];
     [scrollView addSubview:posterDetail];
     [scrollView addSubview:typeView];
@@ -79,5 +81,11 @@
     [descriptionView reLoadData:[NSArray arrayWithObjects:pokemon.descriptionX, pokemon.descriptionY, nil]];
     [evolutionsView reLoadData:pokemon.evolutions];
     [baseStatsView reLoadData:pokemon.baseStats];
+}
+- (void)clickEvolutionItem:(NSString*)iDPokemon{
+    Pokemon *pokemon = [[SQLiteManager getInstance] getPokemonWithID:iDPokemon];
+    if (pokemon) {
+        [self setData:pokemon];
+    }
 }
 @end

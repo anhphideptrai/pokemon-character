@@ -7,6 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+@class EvolutionsView;
+@protocol EvolutionsViewDelegate <NSObject>
+@optional
+- (void)clickEvolutionItem:(NSString*)iDPokemon;
+@end
 @interface EvolutionsView : UIView
+@property (nonatomic, assign) IBOutlet id <EvolutionsViewDelegate> delegate;
 - (void) reLoadData:(NSArray*)arrPokemonID;
 @end

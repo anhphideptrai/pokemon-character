@@ -76,6 +76,7 @@
         [self addSubview:itemBGView];
 
         frameItem.size.width = (WIDTH_ITEM)*[[arrBaseStats objectAtIndex:i] integerValue]/10;
+        if(frameItem.size.width > WIDTH_ITEM) frameItem.size.width = WIDTH_ITEM;
         UIImageView *itemView = [[UIImageView alloc] initWithFrame:frameItem];
         [itemView setBackgroundColor:[UIColor colorWithRed:0.0f/255.0f green:204.0f/255.0f blue:255.0f/255.0f alpha:1.0f]];
         [self addSubview:itemView];

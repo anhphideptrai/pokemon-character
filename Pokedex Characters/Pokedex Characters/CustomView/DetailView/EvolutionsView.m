@@ -18,6 +18,7 @@
     UIImageView *bgView;
     UILabel *lbEvolution;
     UIScrollView *scrollView;
+    NSArray *arrData;
 }
 @end
 
@@ -42,6 +43,7 @@
     for (UIView *subView in self.subviews) {
         [subView removeFromSuperview];
     }
+    arrData = arrPokemonID;
     bgView      = [[UIImageView alloc] initWithFrame:BG_FRAME];
     lbEvolution = [[UILabel alloc] initWithFrame:LB_EVOLUTION_FRAME];
     scrollView  = [[UIScrollView alloc] initWithFrame:SCROLL_ICON_FRAME];
@@ -64,6 +66,13 @@
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:frameIcon];
         [imageView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"character_%@.jpg", [arrPokemonID objectAtIndex:i]]]];
         [scrollView addSubview:imageView];
+        
+        UIButton *button = [[UIButton alloc] initWithFrame:frameIcon];
+        [button setBackgroundColor:[UIColor clearColor]];
+        [button setTag:i+100];
+        [button addTarget:self action:@selector(clickItem:) forControlEvents:UIControlEventTouchUpInside];
+        [scrollView addSubview:button];
+        
         if (i + 1< arrPokemonID.count) {
             frameArrow.origin.x = frameIcon.origin.x + frameIcon.size.width + 2;
             UIImageView *arrowView = [[UIImageView alloc] initWithFrame:frameArrow];
@@ -72,6 +81,12 @@
         }
         [scrollView setContentSize:CGSizeMake(frameIcon.size.width + frameIcon.origin.x + 10, scrollView.frame.size.height)];
         frameIcon.origin.x = frameIcon.size.width + frameIcon.origin.x + 20;
+    }
+}
+-(IBAction)clickItem:(id)sender{
+    int index = ((UIButton*)sender).tag%100;
+    if (self.delegate && [self.delegate respondsToSelector:@selector(clickEvolutionItem:)]) {
+        [self.delegate clickEvolutionItem:[arrData objectAtIndex:index]];
     }
 }
 

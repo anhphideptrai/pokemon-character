@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+
 @interface BaseStatsView : UIView
 - (void) reLoadData:(NSArray*)arrBaseStats;
 @end
