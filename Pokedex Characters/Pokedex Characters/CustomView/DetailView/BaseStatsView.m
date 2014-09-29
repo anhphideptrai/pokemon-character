@@ -9,13 +9,13 @@
 #import "BaseStatsView.h"
 #import "Constant.h"
 
+#define OFFSET_X_LB_LEFT IS_IPAD?5:10
 #define BG_FRAME CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)
 #define BG_TOP_FRAME CGRectMake(0, 0, self.frame.size.width, 35)
-#define LB_BASE_STATS_FRAME CGRectMake(5, 0, self.frame.size.width - 10, 30)
+#define LB_BASE_STATS_FRAME CGRectMake(OFFSET_X_LB_LEFT, 0, self.frame.size.width - (OFFSET_X_LB_LEFT), 30)
 #define ITEM_FRAME CGRectMake(70, 40, 0, (self.frame.size.height - 70)/6)
 #define WIDTH_ITEM self.frame.size.width - 110
-#define SIZE_LB_ITEM_FRAME CGRectMake(5, 40, 70, (self.frame.size.height - 70)/6)
-#define OFFSET_X_LB_LEFT 5
+#define SIZE_LB_ITEM_FRAME CGRectMake(OFFSET_X_LB_LEFT, 40, 70, (self.frame.size.height - 70)/6)
 
 @interface BaseStatsView(){
     UIImageView *bgTopView;
@@ -41,8 +41,10 @@
 }
 
 - (void) reLoadData:(NSArray*)arrBaseStats{
-    [self.layer setCornerRadius:20.0f];
-    [self.layer setMasksToBounds:YES];
+    if (IS_IPAD) {
+        [self.layer setCornerRadius:20.0f];
+        [self.layer setMasksToBounds:YES];
+    }
     for (UIView *subView in self.subviews) {
         [subView removeFromSuperview];
     }

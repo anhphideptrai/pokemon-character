@@ -43,4 +43,7 @@
 
 #define HEIGHT_NAVIGATION_BAR (IS_IPAD?50:30)
 #define WIDTH_DETAIL_PAGE (IS_IPAD?384:320)
+
+
+
 #endif

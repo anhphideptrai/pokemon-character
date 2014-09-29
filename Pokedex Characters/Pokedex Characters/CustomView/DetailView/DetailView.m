@@ -17,11 +17,13 @@
 
 #define SCROLL_VIEW_FRAME CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)
 #define POSTER_FRAME CGRectMake(0, 0, WIDTH_DETAIL_PAGE, WIDTH_DETAIL_PAGE)
-#define TYPE_FRAME CGRectMake(0, WIDTH_DETAIL_PAGE, self.frame.size.width, 30)
-#define WEAKNESSES_FRAME CGRectMake(0, TYPE_FRAME.size.height + TYPE_FRAME.origin.y, self.frame.size.width, 30)
-#define EVOLUTION_FRAME CGRectMake(0, WEAKNESSES_FRAME.size.height + WEAKNESSES_FRAME.origin.y, self.frame.size.width, 150)
-#define DESCRIPTION_FRAME CGRectMake(WIDTH_DETAIL_PAGE, 0, self.frame.size.width - WIDTH_DETAIL_PAGE - 5, WIDTH_DETAIL_PAGE - 160)
-#define BASE_STATS_FRAME CGRectMake(WIDTH_DETAIL_PAGE, WIDTH_DETAIL_PAGE - 160, self.frame.size.width - WIDTH_DETAIL_PAGE - 5, 160)
+#define DESCRIPTION_FRAME IS_IPAD?CGRectMake(WIDTH_DETAIL_PAGE, 0, self.frame.size.width - WIDTH_DETAIL_PAGE - 5, WIDTH_DETAIL_PAGE - 160):CGRectMake(0, WIDTH_DETAIL_PAGE, self.frame.size.width, 130)
+#define BASE_STATS_FRAME IS_IPAD?CGRectMake(WIDTH_DETAIL_PAGE, WIDTH_DETAIL_PAGE - 160, self.frame.size.width - WIDTH_DETAIL_PAGE - 5, 160):CGRectMake(0, (DESCRIPTION_FRAME).size.height + (DESCRIPTION_FRAME).origin.y, self.frame.size.width, 142)
+#define TYPE_FRAME IS_IPAD?CGRectMake(0, WIDTH_DETAIL_PAGE, self.frame.size.width, 30):CGRectMake(0, (BASE_STATS_FRAME).size.height + (BASE_STATS_FRAME).origin.y, self.frame.size.width, 30)
+#define WEAKNESSES_FRAME CGRectMake(0, (TYPE_FRAME).size.height + (TYPE_FRAME).origin.y, self.frame.size.width, 30)
+#define EVOLUTION_FRAME CGRectMake(0, WEAKNESSES_FRAME.size.height + WEAKNESSES_FRAME.origin.y, self.frame.size.width, IS_IPAD?150:90)
+
+
 
 @interface DetailView()<EvolutionsViewDelegate>{
     UIScrollView *scrollView;
@@ -49,12 +51,12 @@
     [self.layer setBorderColor:[UIColor grayColor].CGColor];
     [self.layer setBorderWidth:2.0f];
     scrollView = [[UIScrollView alloc] initWithFrame:SCROLL_VIEW_FRAME];
+    descriptionView = [[DescriptionView alloc] initWithFrame:DESCRIPTION_FRAME];
     posterDetail = [[PosterDetail alloc] initWithFrame:POSTER_FRAME];
+    baseStatsView = [[BaseStatsView alloc] initWithFrame:BASE_STATS_FRAME];
     typeView = [[TypeView alloc] initWithFrame:TYPE_FRAME];
     weaknessView = [[TypeView alloc] initWithFrame:WEAKNESSES_FRAME];
-    descriptionView = [[DescriptionView alloc] initWithFrame:DESCRIPTION_FRAME];
     evolutionsView = [[EvolutionsView alloc] initWithFrame:EVOLUTION_FRAME];
-    baseStatsView = [[BaseStatsView alloc] initWithFrame:BASE_STATS_FRAME];
     [scrollView setBackgroundColor:[UIColor clearColor]];
     [evolutionsView setDelegate:self];
     [self addSubview:scrollView];
@@ -81,6 +83,7 @@
     [descriptionView reLoadData:[NSArray arrayWithObjects:pokemon.descriptionX, pokemon.descriptionY, nil]];
     [evolutionsView reLoadData:pokemon.evolutions];
     [baseStatsView reLoadData:pokemon.baseStats];
+    [scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
 }
 - (void)clickEvolutionItem:(NSString*)iDPokemon{
     Pokemon *pokemon = [[SQLiteManager getInstance] getPokemonWithID:iDPokemon];
