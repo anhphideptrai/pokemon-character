@@ -75,7 +75,7 @@
 - (void)setData:(Pokemon*)pokemon{
     [posterDetail.posterImageView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"character_%@.jpg", pokemon.iD]]];
     [posterDetail.lbTitle setText:[NSString stringWithFormat:@"%@ #%@", pokemon.name, pokemon.iD]];
-    [posterDetail.lbDescription setText:@"description ..."];
+    [posterDetail.lbDescription setText:[NSString stringWithFormat:@"Height: %@  Weight: %@", pokemon.height, pokemon.weight]];
     [typeView reLoadData:@"Type: " andArrType:pokemon.type];
     [weaknessView reLoadData:@"Weakness: " andArrType:pokemon.weakness];
     [descriptionView reLoadData:[NSArray arrayWithObjects:pokemon.descriptionX, pokemon.descriptionY, nil]];
