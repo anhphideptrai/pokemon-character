@@ -12,19 +12,24 @@
 #import "TypeView.h"
 #import "DescriptionView.h"
 #import "EvolutionsView.h"
+#import "BaseStatsView.h"
 
+#define SCROLL_VIEW_FRAME CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)
 #define POSTER_FRAME CGRectMake(0, 0, WIDTH_DETAIL_PAGE, WIDTH_DETAIL_PAGE)
-#define TYPE_FRAME CGRectMake(0, WIDTH_DETAIL_PAGE, WIDTH_DETAIL_PAGE, 30)
-#define WEAKNESSES_FRAME CGRectMake(0, TYPE_FRAME.size.height + TYPE_FRAME.origin.y, WIDTH_DETAIL_PAGE, 30)
-#define DESCRIPTION_FRAME CGRectMake(0, WEAKNESSES_FRAME.size.height + WEAKNESSES_FRAME.origin.y, WIDTH_DETAIL_PAGE, 200)
-#define EVOLUTION_FRAME CGRectMake(0, DESCRIPTION_FRAME.size.height + DESCRIPTION_FRAME.origin.y, WIDTH_DETAIL_PAGE, 90)
+#define TYPE_FRAME CGRectMake(0, WIDTH_DETAIL_PAGE, self.frame.size.width, 30)
+#define WEAKNESSES_FRAME CGRectMake(0, TYPE_FRAME.size.height + TYPE_FRAME.origin.y, self.frame.size.width, 30)
+#define EVOLUTION_FRAME CGRectMake(0, WEAKNESSES_FRAME.size.height + WEAKNESSES_FRAME.origin.y, self.frame.size.width, 150)
+#define DESCRIPTION_FRAME CGRectMake(WIDTH_DETAIL_PAGE, 0, self.frame.size.width - WIDTH_DETAIL_PAGE - 5, WIDTH_DETAIL_PAGE - 160)
+#define BASE_STATS_FRAME CGRectMake(WIDTH_DETAIL_PAGE, WIDTH_DETAIL_PAGE - 160, self.frame.size.width - WIDTH_DETAIL_PAGE - 5, 160)
 
 @interface DetailView(){
+    UIScrollView *scrollView;
     PosterDetail *posterDetail;
     TypeView *typeView;
     TypeView *weaknessView;
     DescriptionView *descriptionView;
     EvolutionsView * evolutionsView;
+    BaseStatsView *baseStatsView;
 }
 @end
 @implementation DetailView
@@ -42,17 +47,28 @@
     [self.layer setMasksToBounds:YES];
     [self.layer setBorderColor:[UIColor grayColor].CGColor];
     [self.layer setBorderWidth:2.0f];
+    scrollView = [[UIScrollView alloc] initWithFrame:SCROLL_VIEW_FRAME];
     posterDetail = [[PosterDetail alloc] initWithFrame:POSTER_FRAME];
     typeView = [[TypeView alloc] initWithFrame:TYPE_FRAME];
     weaknessView = [[TypeView alloc] initWithFrame:WEAKNESSES_FRAME];
     descriptionView = [[DescriptionView alloc] initWithFrame:DESCRIPTION_FRAME];
     evolutionsView = [[EvolutionsView alloc] initWithFrame:EVOLUTION_FRAME];
-    [self addSubview:posterDetail];
-    [self addSubview:typeView];
-    [self addSubview:weaknessView];
-    [self addSubview:descriptionView];
-    [self addSubview:evolutionsView];
-    
+    baseStatsView = [[BaseStatsView alloc] initWithFrame:BASE_STATS_FRAME];
+    [scrollView setBackgroundColor:[UIColor clearColor]];
+    [self addSubview:scrollView];
+    [scrollView addSubview:posterDetail];
+    [scrollView addSubview:typeView];
+    [scrollView addSubview:weaknessView];
+    [scrollView addSubview:descriptionView];
+    [scrollView addSubview:evolutionsView];
+    [scrollView addSubview:baseStatsView];
+    CGRect frameTmp = CGRectZero;
+    for (UIView *subView in scrollView.subviews) {
+        if (frameTmp.origin.y < subView.frame.origin.y) {
+            frameTmp = subView.frame;
+        }
+    }
+    [scrollView setContentSize:CGSizeMake(scrollView.frame.size.width, frameTmp.size.height + frameTmp.origin.y + 10)];
 }
 - (void)setData:(Pokemon*)pokemon{
     [posterDetail.posterImageView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"character_%@.jpg", pokemon.iD]]];
@@ -62,5 +78,6 @@
     [weaknessView reLoadData:@"Weakness: " andArrType:pokemon.weakness];
     [descriptionView reLoadData:[NSArray arrayWithObjects:pokemon.descriptionX, pokemon.descriptionY, nil]];
     [evolutionsView reLoadData:pokemon.evolutions];
+    [baseStatsView reLoadData:pokemon.baseStats];
 }
 @end

@@ -11,6 +11,7 @@
 #import "PokemonType.h"
 #import "Constant.h"
 #import "SQLiteManager.h"
+#import "DetailViewController.h"
 
 @interface SearchViewController (){
     NSMutableArray *result;
@@ -118,6 +119,9 @@
 - (void)         contentGuide:(ContentGuideView*) contentGuide
 didSelectPosterViewAtRowIndex:(NSUInteger) rowIndex
                   posterIndex:(NSUInteger) index{
+    DetailViewController *detailViewController = [[DetailViewController alloc] init];
+    [detailViewController setPokemonForDetail:[((PokemonType*)[result objectAtIndex:rowIndex]).pokemons objectAtIndex:index]];
+    [self.navigationController pushViewController:detailViewController animated:YES];
     
 }
 - (IBAction)clickBack:(id)sender {

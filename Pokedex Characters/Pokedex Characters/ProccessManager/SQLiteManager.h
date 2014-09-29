@@ -8,10 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import <sqlite3.h>
+#import "Pokemon.h"
 
 @interface SQLiteManager : NSObject
 + (SQLiteManager *) getInstance;
 - (NSMutableArray*)getArrPokemonWithType:(NSString*)type andSearchKey:(NSString*)searchKey;
 - (NSMutableArray*)getPokemonWithAllTypes;
 - (NSMutableArray*)getArrPokemonWithSearchKey:(NSString*)searchKey;
+- (Pokemon*)getPokemonWithID:(NSString*)iDPokemon;
 @end

@@ -7,7 +7,6 @@
 //
 
 #import "SQLiteManager.h"
-#import "Pokemon.h"
 #import "PokemonType.h"
 
 @interface SQLiteManager()
@@ -50,7 +49,7 @@ static SQLiteManager *thisInstance;
     Pokemon *pokemonItem;
     if (sqlite3_open(dbpath, &_contactDB) == SQLITE_OK)
     {
-        NSString *querySQL = [NSString stringWithFormat:@"select * from Pokemon WHERE TYPE LIKE \'%%%@%%\' AND Name LIKE \'%%%@%%\' group by iDPokemon", type, searchKey];
+        NSString *querySQL = [NSString stringWithFormat:@"select * from Pokemon WHERE TYPE LIKE \'%%%@%%\' AND (Name LIKE \'%%%@%%\' OR IDPokemon LIKE \'%%%@%%\') group by iDPokemon", type, searchKey, searchKey];
         const char *query_stmt = [querySQL UTF8String];
         if (sqlite3_prepare_v2(_contactDB,
                                query_stmt, -1, &statement, NULL) == SQLITE_OK)
@@ -129,5 +128,13 @@ static SQLiteManager *thisInstance;
         }
     }
     return resultArray;
+}
+- (Pokemon*)getPokemonWithID:(NSString*)iDPokemon{
+    Pokemon* result = nil;
+    NSArray* arr = [self getArrPokemonWithType:@"" andSearchKey:iDPokemon];
+    if (arr && arr.count > 0) {
+        result = [arr objectAtIndex:0];
+    }
+    return result;
 }
 @end

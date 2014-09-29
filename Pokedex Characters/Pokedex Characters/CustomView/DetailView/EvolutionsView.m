@@ -56,7 +56,7 @@
     [scrollView setBackgroundColor:[UIColor clearColor]];
     
     //set Data for items
-    [lbEvolution setText:@"Evolutions:"];
+    [lbEvolution setText:@"Evolutions"];
     CGRect frameIcon = CGRectZero;
     CGRect frameArrow = ARROW_FRAME;
     frameIcon.size = SIZE_ICON;
@@ -70,6 +70,7 @@
             [arrowView setImage:[UIImage imageNamed:@"arrow.png"]];
             [scrollView addSubview:arrowView];
         }
+        [scrollView setContentSize:CGSizeMake(frameIcon.size.width + frameIcon.origin.x + 10, scrollView.frame.size.height)];
         frameIcon.origin.x = frameIcon.size.width + frameIcon.origin.x + 20;
     }
 }

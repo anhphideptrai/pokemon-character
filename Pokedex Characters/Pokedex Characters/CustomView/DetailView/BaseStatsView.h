@@ -7,10 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@protocol BaseStatsViewDataSource <NSObject>
-@end
-
 @interface BaseStatsView : UIView
-@property (nonatomic, assign) IBOutlet id  <BaseStatsViewDataSource> dataSource;
+- (void) reLoadData:(NSArray*)arrBaseStats;
 @end
