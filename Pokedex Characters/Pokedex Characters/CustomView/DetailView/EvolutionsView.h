@@ -7,13 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@protocol EvolutionsViewDataSource <NSObject>
-
-@end
-
 @interface EvolutionsView : UIView
-
-@property (nonatomic, assign) IBOutlet id  <EvolutionsViewDataSource> dataSource;
-
+- (void) reLoadData:(NSArray*)arrPokemonID;
 @end

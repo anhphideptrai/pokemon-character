@@ -66,6 +66,7 @@
     [txtDescription setBackgroundColor:[UIColor clearColor]];
     [txtDescription setFont:FONT_TITLE_POSTER_DEFAULT];
     [txtDescription setTextColor:[UIColor whiteColor]];
+    [txtDescription setUserInteractionEnabled:NO];
     //set Data for items
     
     [buttonX setBackgroundImage:[UIImage imageNamed:@"x_normal.png"] forState:UIControlStateNormal];
