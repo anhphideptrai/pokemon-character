@@ -31,7 +31,7 @@
 		B227792619E23162000B1033 /* flag_us.png in Resources */ = {isa = PBXBuildFile; fileRef = B227792219E23162000B1033 /* flag_us.png */; };
 		B227792D19E23185000B1033 /* ASOBounceButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = B227792919E23185000B1033 /* ASOBounceButtonView.m */; };
 		B227792E19E23185000B1033 /* ASOTwoStateButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B227792C19E23185000B1033 /* ASOTwoStateButton.m */; };
-		B227793319E231AF000B1033 /* AnimationMenuCustom.xib in Resources */ = {isa = PBXBuildFile; fileRef = B227793119E231AF000B1033 /* AnimationMenuCustom.xib */; };
+		B227793319E231AF000B1033 /* iPad_AnimationMenuCustom.xib in Resources */ = {isa = PBXBuildFile; fileRef = B227793119E231AF000B1033 /* iPad_AnimationMenuCustom.xib */; };
 		B227793419E231AF000B1033 /* AnimationMenuCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = B227793219E231AF000B1033 /* AnimationMenuCustom.m */; };
 		B23016FB19D85A6A00D570B8 /* DescriptionView.m in Sources */ = {isa = PBXBuildFile; fileRef = B23016FA19D85A6A00D570B8 /* DescriptionView.m */; };
 		B230170019D8640E00D570B8 /* y_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = B23016FC19D8640E00D570B8 /* y_normal.png */; };
@@ -1640,6 +1640,7 @@
 		B2CC8EF319B382E200BD1ABF /* Pokemon.m in Sources */ = {isa = PBXBuildFile; fileRef = B2CC8EF219B382E200BD1ABF /* Pokemon.m */; };
 		B2CC8EF419B382E200BD1ABF /* Pokemon.m in Sources */ = {isa = PBXBuildFile; fileRef = B2CC8EF219B382E200BD1ABF /* Pokemon.m */; };
 		B2CC8EF619B3837C00BD1ABF /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B2CC8EF519B3837C00BD1ABF /* libsqlite3.0.dylib */; };
+		B2D40B1619E26603009A3F02 /* iPhone_AnimationMenuCustom.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2D40B1519E26603009A3F02 /* iPhone_AnimationMenuCustom.xib */; };
 		B2E1562219D017E40084C8FF /* PosterDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E1562119D017E40084C8FF /* PosterDetail.m */; };
 		B2E1562519D082AB0084C8FF /* gradient.png in Resources */ = {isa = PBXBuildFile; fileRef = B2E1562319D082AB0084C8FF /* gradient.png */; };
 		B2E1562619D082AB0084C8FF /* gradient@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2E1562419D082AB0084C8FF /* gradient@2x.png */; };
@@ -1710,7 +1711,7 @@
 		B227792B19E23185000B1033 /* ASOTwoStateButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASOTwoStateButton.h; path = Libs/ASOAnimatedButton/ASOTwoStateButton.h; sourceTree = "<group>"; };
 		B227792C19E23185000B1033 /* ASOTwoStateButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASOTwoStateButton.m; path = Libs/ASOAnimatedButton/ASOTwoStateButton.m; sourceTree = "<group>"; };
 		B227793019E231AF000B1033 /* AnimationMenuCustom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimationMenuCustom.h; path = CustomView/AnimationMenu/AnimationMenuCustom.h; sourceTree = "<group>"; };
-		B227793119E231AF000B1033 /* AnimationMenuCustom.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AnimationMenuCustom.xib; path = CustomView/AnimationMenu/AnimationMenuCustom.xib; sourceTree = "<group>"; };
+		B227793119E231AF000B1033 /* iPad_AnimationMenuCustom.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = iPad_AnimationMenuCustom.xib; path = CustomView/AnimationMenu/iPad_AnimationMenuCustom.xib; sourceTree = "<group>"; };
 		B227793219E231AF000B1033 /* AnimationMenuCustom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AnimationMenuCustom.m; path = CustomView/AnimationMenu/AnimationMenuCustom.m; sourceTree = "<group>"; };
 		B23016F919D85A6900D570B8 /* DescriptionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DescriptionView.h; path = CustomView/DetailView/DescriptionView.h; sourceTree = "<group>"; };
 		B23016FA19D85A6A00D570B8 /* DescriptionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DescriptionView.m; path = CustomView/DetailView/DescriptionView.m; sourceTree = "<group>"; };
@@ -2565,6 +2566,7 @@
 		B2CC8EF119B382E200BD1ABF /* Pokemon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Pokemon.h; path = Entry/Pokemon.h; sourceTree = "<group>"; };
 		B2CC8EF219B382E200BD1ABF /* Pokemon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Pokemon.m; path = Entry/Pokemon.m; sourceTree = "<group>"; };
 		B2CC8EF519B3837C00BD1ABF /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		B2D40B1519E26603009A3F02 /* iPhone_AnimationMenuCustom.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = iPhone_AnimationMenuCustom.xib; path = CustomView/AnimationMenu/iPhone_AnimationMenuCustom.xib; sourceTree = "<group>"; };
 		B2E1562019D017E40084C8FF /* PosterDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PosterDetail.h; path = CustomView/DetailView/PosterDetail.h; sourceTree = "<group>"; };
 		B2E1562119D017E40084C8FF /* PosterDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PosterDetail.m; path = CustomView/DetailView/PosterDetail.m; sourceTree = "<group>"; };
 		B2E1562319D082AB0084C8FF /* gradient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gradient.png; path = Resources/Images/PromoSlides/gradient.png; sourceTree = "<group>"; };
@@ -2629,8 +2631,9 @@
 			isa = PBXGroup;
 			children = (
 				B227793019E231AF000B1033 /* AnimationMenuCustom.h */,
-				B227793119E231AF000B1033 /* AnimationMenuCustom.xib */,
 				B227793219E231AF000B1033 /* AnimationMenuCustom.m */,
+				B227793119E231AF000B1033 /* iPad_AnimationMenuCustom.xib */,
+				B2D40B1519E26603009A3F02 /* iPhone_AnimationMenuCustom.xib */,
 			);
 			name = AnimationMenu;
 			sourceTree = "<group>";
@@ -4145,6 +4148,7 @@
 				B2CC8BFE19B379A100BD1ABF /* character_354.jpg in Resources */,
 				B2CC8CA819B379A100BD1ABF /* character_228.jpg in Resources */,
 				B2CC8C3E19B379A100BD1ABF /* character_280.jpg in Resources */,
+				B2D40B1619E26603009A3F02 /* iPhone_AnimationMenuCustom.xib in Resources */,
 				B2CC8C4019B379A100BD1ABF /* character_281.jpg in Resources */,
 				B2CC899C19B379A100BD1ABF /* character_645.jpg in Resources */,
 				B203F8B019BB1AEA00767698 /* Default.png in Resources */,
@@ -4255,7 +4259,7 @@
 				B2CC8A1219B379A100BD1ABF /* character_603.jpg in Resources */,
 				B2CC896E19B379A100BD1ABF /* character_622.jpg in Resources */,
 				B2CC8A9A19B379A100BD1ABF /* character_474.jpg in Resources */,
-				B227793319E231AF000B1033 /* AnimationMenuCustom.xib in Resources */,
+				B227793319E231AF000B1033 /* iPad_AnimationMenuCustom.xib in Resources */,
 				B2CC893419B379A100BD1ABF /* character_696.jpg in Resources */,
 				B2CC8B1C19B379A100BD1ABF /* character_438.jpg in Resources */,
 				B2CC8CFE19B379A100BD1ABF /* character_167.jpg in Resources */,

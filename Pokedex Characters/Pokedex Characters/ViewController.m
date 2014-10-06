@@ -36,7 +36,7 @@
     [self.menuButton setOnStateImageName:@"bottomnav_settings_normal.png"];
     [self.menuButton setOffStateImageName:@"bottomnav_settings_normal.png"];
     [self.menuButton initAnimationWithFadeEffectEnabled:YES];
-    self.menuItemView = [[[NSBundle mainBundle] loadNibNamed:@"AnimationMenuCustom" owner:self options:nil] lastObject];
+    self.menuItemView = [[[NSBundle mainBundle] loadNibNamed:NAME_XIB_ANIMATION_MENU_VIEW_CONTROLLER owner:self options:nil] lastObject];
     
     NSArray *arrMenuItemButtons = [[NSArray alloc] initWithObjects:self.menuItemView.menuItem1,
                                    self.menuItemView.menuItem2,
