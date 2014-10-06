@@ -37,7 +37,7 @@
     [self.menuButton setOffStateImageName:@"bottomnav_settings_normal.png"];
     [self.menuButton initAnimationWithFadeEffectEnabled:YES];
     self.menuItemView = [[[NSBundle mainBundle] loadNibNamed:NAME_XIB_ANIMATION_MENU_VIEW_CONTROLLER owner:self options:nil] lastObject];
-    
+    [self.menuItemView setBackgroundColor:[UIColor colorWithRed:153.0f/255.0f green:153.0f/255.0f blue:153.0f/255.0f alpha:0.3f]];
     NSArray *arrMenuItemButtons = [[NSArray alloc] initWithObjects:self.menuItemView.menuItem1,
                                    self.menuItemView.menuItem2,
                                    self.menuItemView.menuItem3,
