@@ -19,7 +19,7 @@
 {
     NSMutableArray *result;
 }
-
+@property (nonatomic) ASOAnimationStyle progressiveORConcurrentStyle;
 - (IBAction)clickSearch:(id)sender;
 @end
 
@@ -29,19 +29,64 @@
 {
     [super viewDidLoad];
     [[self navigationController] setNavigationBarHidden:YES animated:YES];
+    
     result = [[SQLiteManager getInstance] getPokemonWithAllTypes];
     [self.contentGuideView setBackground:[UIImage imageNamed:@"scrollview_bg.png"]];
     [self.contentGuideView reloadData];
+    [self.menuButton setOnStateImageName:@"bottomnav_settings_normal.png"];
+    [self.menuButton setOffStateImageName:@"bottomnav_settings_normal.png"];
+    [self.menuButton initAnimationWithFadeEffectEnabled:YES];
+    self.menuItemView = [[[NSBundle mainBundle] loadNibNamed:@"AnimationMenuCustom" owner:self options:nil] lastObject];
+    
+    NSArray *arrMenuItemButtons = [[NSArray alloc] initWithObjects:self.menuItemView.menuItem1,
+                                   self.menuItemView.menuItem2,
+                                   self.menuItemView.menuItem3,
+                                   self.menuItemView.menuItem4,
+                                   nil]; // Add all of the defined 'menu item button' to 'menu item view'
+    [self.menuItemView addBounceButtons:arrMenuItemButtons];
+    
+    // Set the bouncing distance, speed and fade-out effect duration here. Refer to the ASOBounceButtonView public properties
+    [self.menuItemView setSpeed:[NSNumber numberWithFloat:0.3f]];
+    [self.menuItemView setBouncingDistance:[NSNumber numberWithFloat:0.3f]];
+    
+    [self.menuItemView setAnimationStyle:ASOAnimationStyleRiseProgressively];
+    self.progressiveORConcurrentStyle = ASOAnimationStyleRiseProgressively;
+    
+    // Set as delegate of 'menu item view'
+    [self.menuItemView setDelegate:self];
 }
 
 - (BOOL)prefersStatusBarHidden {
     return YES;
 }
-
+- (void)viewDidAppear:(BOOL)animated
+{
+    // Tell 'menu button' position to 'menu item view'
+    [self.menuItemView setAnimationStartFromHere:self.menuButton.frame];
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+- (IBAction)menuButtonAction:(id)sender
+{
+    if ([sender isOn]) {
+        // Show 'menu item view' and expand its 'menu item button'
+        [self.menuButton addCustomView:self.menuItemView];
+        [self.menuItemView expandWithAnimationStyle:self.progressiveORConcurrentStyle];
+    }
+    else {
+        // Collapse all 'menu item button' and remove 'menu item view'
+        [self.menuItemView collapseWithAnimationStyle:self.progressiveORConcurrentStyle];
+        [self.menuButton removeCustomView:self.menuItemView interval:[self.menuItemView.collapsedViewDuration doubleValue]];
+    }
+}
+- (void)didSelectBounceButtonAtIndex:(NSUInteger)index
+{
+    [self.menuButton sendActionsForControlEvents:UIControlEventTouchUpInside];
 }
 #pragma mark - ContentGuideViewDataSource methods
 - (NSUInteger) numberOfPostersInCarousel:(ContentGuideView*) contentGuide atRowIndex:(NSUInteger) rowIndex{
