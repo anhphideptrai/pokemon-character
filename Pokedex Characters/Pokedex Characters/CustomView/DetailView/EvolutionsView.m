@@ -18,7 +18,7 @@
     UIImageView *bgView;
     UILabel *lbEvolution;
     UIScrollView *scrollView;
-    NSArray *arrData;
+    NSMutableArray *arrData;
 }
 @end
 
@@ -43,7 +43,10 @@
     for (UIView *subView in self.subviews) {
         [subView removeFromSuperview];
     }
-    arrData = arrPokemonID;
+    arrData = [[NSMutableArray alloc] init];
+    for (NSString *item in arrPokemonID) {
+        [arrData addObject:[[item stringByReplacingOccurrencesOfString:@"N.º" withString:@""] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
+    }
     bgView      = [[UIImageView alloc] initWithFrame:BG_FRAME];
     lbEvolution = [[UILabel alloc] initWithFrame:LB_EVOLUTION_FRAME];
     scrollView  = [[UIScrollView alloc] initWithFrame:SCROLL_ICON_FRAME];
@@ -62,9 +65,9 @@
     CGRect frameIcon = CGRectZero;
     CGRect frameArrow = ARROW_FRAME;
     frameIcon.size = SIZE_ICON;
-    for (int i = 0; i < arrPokemonID.count; i++) {
+    for (int i = 0; i < arrData.count; i++) {
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:frameIcon];
-        [imageView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"character_%@.jpg", [arrPokemonID objectAtIndex:i]]]];
+        [imageView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"character_%@.jpg", [arrData objectAtIndex:i]]]];
         [scrollView addSubview:imageView];
         
         UIButton *button = [[UIButton alloc] initWithFrame:frameIcon];
@@ -73,7 +76,7 @@
         [button addTarget:self action:@selector(clickItem:) forControlEvents:UIControlEventTouchUpInside];
         [scrollView addSubview:button];
         
-        if (i + 1< arrPokemonID.count) {
+        if (i + 1< arrData.count) {
             frameArrow.origin.x = frameIcon.origin.x + frameIcon.size.width + 2;
             UIImageView *arrowView = [[UIImageView alloc] initWithFrame:frameArrow];
             [arrowView setImage:[UIImage imageNamed:@"arrow.png"]];

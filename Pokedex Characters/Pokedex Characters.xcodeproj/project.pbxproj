@@ -1587,8 +1587,6 @@
 		B2CC8E9119B379A200BD1ABF /* character_011.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B2CC88F619B379A100BD1ABF /* character_011.jpg */; };
 		B2CC8E9219B379A200BD1ABF /* character_012.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B2CC88F719B379A100BD1ABF /* character_012.jpg */; };
 		B2CC8E9319B379A200BD1ABF /* character_012.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B2CC88F719B379A100BD1ABF /* character_012.jpg */; };
-		B2CC8E9519B379B200BD1ABF /* PokemonNew.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = B2CC8E9419B379B200BD1ABF /* PokemonNew.sqlite */; };
-		B2CC8E9619B379B200BD1ABF /* PokemonNew.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = B2CC8E9419B379B200BD1ABF /* PokemonNew.sqlite */; };
 		B2CC8EAF19B37D3700BD1ABF /* fairy.png in Resources */ = {isa = PBXBuildFile; fileRef = B2CC8E9919B37D3700BD1ABF /* fairy.png */; };
 		B2CC8EB019B37D3700BD1ABF /* fairy.png in Resources */ = {isa = PBXBuildFile; fileRef = B2CC8E9919B37D3700BD1ABF /* fairy.png */; };
 		B2CC8EB119B37D3700BD1ABF /* rock.png in Resources */ = {isa = PBXBuildFile; fileRef = B2CC8E9A19B37D3700BD1ABF /* rock.png */; };
@@ -1640,6 +1638,10 @@
 		B2CC8EF319B382E200BD1ABF /* Pokemon.m in Sources */ = {isa = PBXBuildFile; fileRef = B2CC8EF219B382E200BD1ABF /* Pokemon.m */; };
 		B2CC8EF419B382E200BD1ABF /* Pokemon.m in Sources */ = {isa = PBXBuildFile; fileRef = B2CC8EF219B382E200BD1ABF /* Pokemon.m */; };
 		B2CC8EF619B3837C00BD1ABF /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B2CC8EF519B3837C00BD1ABF /* libsqlite3.0.dylib */; };
+		B2CC92C619E4363F00FE0127 /* PokemonNew_en.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = B2CC92C219E4363F00FE0127 /* PokemonNew_en.sqlite */; };
+		B2CC92C719E4363F00FE0127 /* PokemonNew_es.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = B2CC92C319E4363F00FE0127 /* PokemonNew_es.sqlite */; };
+		B2CC92C819E4363F00FE0127 /* PokemonNew_fr.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = B2CC92C419E4363F00FE0127 /* PokemonNew_fr.sqlite */; };
+		B2CC92C919E4363F00FE0127 /* PokemonNew_it.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = B2CC92C519E4363F00FE0127 /* PokemonNew_it.sqlite */; };
 		B2D40B1619E26603009A3F02 /* iPhone_AnimationMenuCustom.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2D40B1519E26603009A3F02 /* iPhone_AnimationMenuCustom.xib */; };
 		B2E1562219D017E40084C8FF /* PosterDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E1562119D017E40084C8FF /* PosterDetail.m */; };
 		B2E1562519D082AB0084C8FF /* gradient.png in Resources */ = {isa = PBXBuildFile; fileRef = B2E1562319D082AB0084C8FF /* gradient.png */; };
@@ -2536,7 +2538,6 @@
 		B2CC88F519B379A100BD1ABF /* character_010.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = character_010.jpg; path = Resources/Images/character_010.jpg; sourceTree = "<group>"; };
 		B2CC88F619B379A100BD1ABF /* character_011.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = character_011.jpg; path = Resources/Images/character_011.jpg; sourceTree = "<group>"; };
 		B2CC88F719B379A100BD1ABF /* character_012.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = character_012.jpg; path = Resources/Images/character_012.jpg; sourceTree = "<group>"; };
-		B2CC8E9419B379B200BD1ABF /* PokemonNew.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = PokemonNew.sqlite; path = Resources/DB/PokemonNew.sqlite; sourceTree = "<group>"; };
 		B2CC8E9919B37D3700BD1ABF /* fairy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fairy.png; path = Resources/Images/Types/fairy.png; sourceTree = "<group>"; };
 		B2CC8E9A19B37D3700BD1ABF /* rock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rock.png; path = Resources/Images/Types/rock.png; sourceTree = "<group>"; };
 		B2CC8E9B19B37D3700BD1ABF /* steel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = steel.png; path = Resources/Images/Types/steel.png; sourceTree = "<group>"; };
@@ -2566,6 +2567,10 @@
 		B2CC8EF119B382E200BD1ABF /* Pokemon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Pokemon.h; path = Entry/Pokemon.h; sourceTree = "<group>"; };
 		B2CC8EF219B382E200BD1ABF /* Pokemon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Pokemon.m; path = Entry/Pokemon.m; sourceTree = "<group>"; };
 		B2CC8EF519B3837C00BD1ABF /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		B2CC92C219E4363F00FE0127 /* PokemonNew_en.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = PokemonNew_en.sqlite; path = Resources/DB/PokemonNew_en.sqlite; sourceTree = "<group>"; };
+		B2CC92C319E4363F00FE0127 /* PokemonNew_es.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = PokemonNew_es.sqlite; path = Resources/DB/PokemonNew_es.sqlite; sourceTree = "<group>"; };
+		B2CC92C419E4363F00FE0127 /* PokemonNew_fr.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = PokemonNew_fr.sqlite; path = Resources/DB/PokemonNew_fr.sqlite; sourceTree = "<group>"; };
+		B2CC92C519E4363F00FE0127 /* PokemonNew_it.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = PokemonNew_it.sqlite; path = Resources/DB/PokemonNew_it.sqlite; sourceTree = "<group>"; };
 		B2D40B1519E26603009A3F02 /* iPhone_AnimationMenuCustom.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = iPhone_AnimationMenuCustom.xib; path = CustomView/AnimationMenu/iPhone_AnimationMenuCustom.xib; sourceTree = "<group>"; };
 		B2E1562019D017E40084C8FF /* PosterDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PosterDetail.h; path = CustomView/DetailView/PosterDetail.h; sourceTree = "<group>"; };
 		B2E1562119D017E40084C8FF /* PosterDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PosterDetail.m; path = CustomView/DetailView/PosterDetail.m; sourceTree = "<group>"; };
@@ -2899,7 +2904,10 @@
 		B2CC862819B3795400BD1ABF /* DB */ = {
 			isa = PBXGroup;
 			children = (
-				B2CC8E9419B379B200BD1ABF /* PokemonNew.sqlite */,
+				B2CC92C219E4363F00FE0127 /* PokemonNew_en.sqlite */,
+				B2CC92C319E4363F00FE0127 /* PokemonNew_es.sqlite */,
+				B2CC92C419E4363F00FE0127 /* PokemonNew_fr.sqlite */,
+				B2CC92C519E4363F00FE0127 /* PokemonNew_it.sqlite */,
 			);
 			name = DB;
 			sourceTree = "<group>";
@@ -3886,6 +3894,7 @@
 				B2CC85E419B36DE300BD1ABF /* README.md in Resources */,
 				B2CC8A2E19B379A100BD1ABF /* character_519.jpg in Resources */,
 				B2CC89B219B379A100BD1ABF /* character_656.jpg in Resources */,
+				B2CC92C719E4363F00FE0127 /* PokemonNew_es.sqlite in Resources */,
 				B2CC8D9419B379A100BD1ABF /* character_141.jpg in Resources */,
 				B2CC8C4E19B379A100BD1ABF /* character_288.jpg in Resources */,
 				B2CC8DE619B379A100BD1ABF /* character_083.jpg in Resources */,
@@ -4015,7 +4024,6 @@
 				B2CC892A19B379A100BD1ABF /* character_691.jpg in Resources */,
 				B2CC8D4419B379A100BD1ABF /* character_202.jpg in Resources */,
 				B2CC8E5419B379A200BD1ABF /* character_040.jpg in Resources */,
-				B2CC8E9519B379B200BD1ABF /* PokemonNew.sqlite in Resources */,
 				B2CC898C19B379A100BD1ABF /* character_637.jpg in Resources */,
 				B2CC894819B379A100BD1ABF /* character_706.jpg in Resources */,
 				B2CC8E2419B379A100BD1ABF /* character_016.jpg in Resources */,
@@ -4169,6 +4177,7 @@
 				B2CC8A3A19B379A100BD1ABF /* character_525.jpg in Resources */,
 				B2CC894419B379A100BD1ABF /* character_704.jpg in Resources */,
 				B203F8B219BB1AEA00767698 /* Default-Portrait~ipad.png in Resources */,
+				B2CC92C819E4363F00FE0127 /* PokemonNew_fr.sqlite in Resources */,
 				B2CC8C6419B379A100BD1ABF /* character_299.jpg in Resources */,
 				B230170519D86AB700D570B8 /* arrow.png in Resources */,
 				B2CC8DE419B379A100BD1ABF /* character_082.jpg in Resources */,
@@ -4439,6 +4448,7 @@
 				B2CC8BAE19B379A100BD1ABF /* character_413.jpg in Resources */,
 				B24EF6C319BA313C00A56926 /* topnav_search@2x.png in Resources */,
 				B2CC8E8819B379A200BD1ABF /* character_007.jpg in Resources */,
+				B2CC92C619E4363F00FE0127 /* PokemonNew_en.sqlite in Resources */,
 				B2CC8D9619B379A100BD1ABF /* character_142.jpg in Resources */,
 				B2CC8CB219B379A100BD1ABF /* character_233.jpg in Resources */,
 				B2CC8A4419B379A100BD1ABF /* character_530.jpg in Resources */,
@@ -4637,6 +4647,7 @@
 				B2CC8EC919B37D3700BD1ABF /* ground.png in Resources */,
 				B2CC8A7819B379A100BD1ABF /* character_556.jpg in Resources */,
 				B2CC8D5E19B379A100BD1ABF /* character_114.jpg in Resources */,
+				B2CC92C919E4363F00FE0127 /* PokemonNew_it.sqlite in Resources */,
 				B2CC8B4619B379A100BD1ABF /* character_459.jpg in Resources */,
 				B2CC8D9E19B379A100BD1ABF /* character_146.jpg in Resources */,
 				B2CC8C6819B379A100BD1ABF /* character_301.jpg in Resources */,
@@ -5037,7 +5048,6 @@
 				B2CC8B6119B379A100BD1ABF /* character_374.jpg in Resources */,
 				B2CC8A6719B379A100BD1ABF /* character_547.jpg in Resources */,
 				B2CC8E3D19B379A200BD1ABF /* character_028.jpg in Resources */,
-				B2CC8E9619B379B200BD1ABF /* PokemonNew.sqlite in Resources */,
 				B2CC894919B379A100BD1ABF /* character_706.jpg in Resources */,
 				B2CC8D4719B379A100BD1ABF /* character_203.jpg in Resources */,
 				B2CC892519B379A100BD1ABF /* character_688.jpg in Resources */,
