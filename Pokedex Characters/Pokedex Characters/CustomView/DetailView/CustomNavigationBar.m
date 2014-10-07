@@ -15,11 +15,12 @@
 #define BG_IMAGE_FRAME CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)
 #define BACK_BUTTON_FRAME CGRectMake(PANDING_LEFT, PANDING_OFFSET, 30, self.frame.size.height - 2*PANDING_OFFSET)
 #define ICON_CENTER_FRAME CGRectMake((self.frame.size.width - WIDTH_ICON_CENTER)/2, PANDING_OFFSET, WIDTH_ICON_CENTER, self.frame.size.height - 2*PANDING_OFFSET)
-
+#define BACK_HIDE_BUTTON_FRAME CGRectMake(0, 0, self.frame.size.height, 60)
 @interface CustomNavigationBar()
 {
     UIImageView *bgImage;
     UIButton *backButton;
+    UIButton *backHideButton;
     UIImageView *iconCenter;
 }
 @end
@@ -44,14 +45,17 @@
 -(void) initCommon{
     bgImage = [[UIImageView alloc] init];
     backButton = [[UIButton alloc] init];
+    backHideButton = [[UIButton alloc] init];
     iconCenter = [[UIImageView alloc] init];
     [bgImage setImage:[UIImage imageNamed:@"reading_topnav_background.png"]];
     [backButton setImage:[UIImage imageNamed:@"topnav_back_grey.png"] forState:UIControlStateNormal];
     [iconCenter setImage:[UIImage imageNamed:@"placeholder_center.png"]];
     [backButton addTarget:self action:@selector(backClick) forControlEvents:UIControlEventTouchUpInside];
+    [backHideButton addTarget:self action:@selector(backClick) forControlEvents:UIControlEventTouchUpInside];
     [self setFrameForViews];
     [self addSubview:bgImage];
     [self addSubview:iconCenter];
+    [self addSubview:backHideButton];
     [self addSubview:backButton];
 }
 
@@ -63,6 +67,7 @@
 - (void) setFrameForViews{
     [bgImage setFrame:BG_IMAGE_FRAME];
     [backButton setFrame:BACK_BUTTON_FRAME];
+    [backHideButton setFrame:BACK_HIDE_BUTTON_FRAME];
     [iconCenter setFrame:ICON_CENTER_FRAME];
 }
 - (void)backClick{

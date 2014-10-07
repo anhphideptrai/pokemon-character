@@ -37,7 +37,7 @@
     [self.menuButton setOffStateImageName:@"bottomnav_settings_normal.png"];
     [self.menuButton initAnimationWithFadeEffectEnabled:YES];
     self.menuItemView = [[[NSBundle mainBundle] loadNibNamed:NAME_XIB_ANIMATION_MENU_VIEW_CONTROLLER owner:self options:nil] lastObject];
-    [self.menuItemView setBackgroundColor:[UIColor colorWithRed:153.0f/255.0f green:153.0f/255.0f blue:153.0f/255.0f alpha:0.3f]];
+    [self.menuItemView setBackgroundColor:[UIColor colorWithRed:0.0f/255.0f green:0.0f/255.0f blue:0.0f/255.0f alpha:0.7f]];
     NSArray *arrMenuItemButtons = [[NSArray alloc] initWithObjects:self.menuItemView.menuItem1,
                                    self.menuItemView.menuItem2,
                                    self.menuItemView.menuItem3,
@@ -46,7 +46,7 @@
     [self.menuItemView addBounceButtons:arrMenuItemButtons];
     
     // Set the bouncing distance, speed and fade-out effect duration here. Refer to the ASOBounceButtonView public properties
-    [self.menuItemView setSpeed:[NSNumber numberWithFloat:0.3f]];
+    [self.menuItemView setSpeed:[NSNumber numberWithFloat:0.2f]];
     [self.menuItemView setBouncingDistance:[NSNumber numberWithFloat:0.3f]];
     
     [self.menuItemView setAnimationStyle:ASOAnimationStyleRiseProgressively];
@@ -88,6 +88,11 @@
 {
     [self.menuButton sendActionsForControlEvents:UIControlEventTouchUpInside];
 }
+
+- (IBAction)sendActionForMenuButton:(id)sender{
+    [self.menuButton sendActionsForControlEvents:UIControlEventTouchUpInside];
+}
+
 #pragma mark - ContentGuideViewDataSource methods
 - (NSUInteger) numberOfPostersInCarousel:(ContentGuideView*) contentGuide atRowIndex:(NSUInteger) rowIndex{
     return ((PokemonType*)[result objectAtIndex:rowIndex]).pokemons.count;
