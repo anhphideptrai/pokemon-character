@@ -36,7 +36,9 @@
     detailPoster = [[DetailView alloc] initWithFrame:CGRectMake(0, HEIGHT_NAVIGATION_BAR, self.view.frame.size.width, self.view.frame.size.height - HEIGHT_NAVIGATION_BAR)];
     [self.view addSubview:detailPoster];
     [self reLoadData];
-    
+    UISwipeGestureRecognizer *swipeGestureRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(clickBtnBack:)];
+    [swipeGestureRight setDirection:UISwipeGestureRecognizerDirectionRight];
+    [self.view addGestureRecognizer: swipeGestureRight];
 }
 - (BOOL)prefersStatusBarHidden {
     return YES;
