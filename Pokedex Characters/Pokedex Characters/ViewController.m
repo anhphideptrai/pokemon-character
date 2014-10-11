@@ -90,10 +90,10 @@
 - (void)didSelectBounceButtonAtIndex:(NSUInteger)index
 {
     [self.menuButton sendActionsForControlEvents:UIControlEventTouchUpInside];
-    if (index < LanguageSettingEN || index > LanguageSettingIT) return;
+    if (index < LanguageSettingEN || index > LanguageSettingIT || index == appDelegate.languageDefault) return;
     [[NSUserDefaults standardUserDefaults] setValue:@(index) forKey:LANGUAGE_SETTING_TAG];
     [[NSUserDefaults standardUserDefaults] synchronize];
-    appDelegate.languageDefault = index;
+    appDelegate.languageDefault = (LanguageSetting)index;
     result = [[SQLiteManager getInstance] getPokemonWithAllTypes];
     [self.contentGuideView holdPositionReloadData];
 }

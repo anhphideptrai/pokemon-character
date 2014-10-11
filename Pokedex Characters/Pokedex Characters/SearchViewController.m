@@ -80,9 +80,9 @@
         header = [[ContentGuideViewRowHeader alloc] initWithStyle:ContentGuideViewRowHeaderStyleDefault reuseIdentifier:identifier];
     }
     NSString *type = ((PokemonType*)[result objectAtIndex:rowIndex]).type;
-    [header  setTextTitleRowHeader:[type uppercaseString]];
+    [header  setTextTitleRowHeader:[[Utils getStringType:type withLanguage:appDelegate.languageDefault] uppercaseString]];
     [header setBackground:[UIImage imageNamed:@"headercell_bg.png"]];
-    [header setIconLeft:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png", type]]];
+    [header setIconLeft:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png", [[Utils getStringType:type withLanguage:LanguageSettingEN] lowercaseString]]]];
     return header;
 }
 
@@ -96,7 +96,7 @@
     }
     Pokemon *pokemon = [((PokemonType*)[result objectAtIndex:rowIndex]).pokemons objectAtIndex:index];
     [posterView setImagePoster:[UIImage imageNamed:[NSString stringWithFormat:@"character_%@.jpg", pokemon.iD]]];
-    [posterView setTextTitlePoster:pokemon.name];
+    [posterView setTextTitlePoster:[NSString stringWithFormat:@"%@\n%@%@",pokemon.name, [Utils getStringOf:ORDER_ID_NAME_STRING withLanguage:appDelegate.languageDefault], pokemon.iD]];
     return posterView;
     
 }
