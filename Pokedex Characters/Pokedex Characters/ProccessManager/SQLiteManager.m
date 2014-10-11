@@ -34,10 +34,10 @@ static SQLiteManager *thisInstance;
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     
-    _databasePath = [documentsDirectory stringByAppendingPathComponent:@"PokemonNew_es.db"];
+    _databasePath = [documentsDirectory stringByAppendingPathComponent:@"PokemonNew_fr.db"];
     
     if ([fileManager fileExistsAtPath:_databasePath] == NO) {
-        NSString *resourcePath = [[NSBundle mainBundle] pathForResource:@"PokemonNew_es" ofType:@"sqlite"];
+        NSString *resourcePath = [[NSBundle mainBundle] pathForResource:@"PokemonNew_fr" ofType:@"sqlite"];
         [fileManager copyItemAtPath:resourcePath toPath:_databasePath error:&error];
     }
 }
