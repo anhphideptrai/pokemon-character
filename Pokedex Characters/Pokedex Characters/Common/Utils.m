@@ -80,8 +80,12 @@
 #define order_id_name_string_en @"#"
 #define order_id_name_string_es @"N.º "
 #define order_id_name_string_fr @"No. "
-#define order_id_name_string_it @"N°"
+#define order_id_name_string_it @"N° "
 
+#define db_name_string_en @"PokemonNew_en"
+#define db_name_string_es @"PokemonNew_es"
+#define db_name_string_fr @"PokemonNew_fr"
+#define db_name_string_it @"PokemonNew_it"
 
 #define fire_type       [NSArray arrayWithObjects:@"Fire", @"Fuego", @"Feu",	@"Fuoco", nil]
 #define flying_type     [NSArray arrayWithObjects:@"Flying",	@"Volador",	@"Vol",	@"Volante", nil]
@@ -158,6 +162,8 @@
             return speed_string_en;
         case ORDER_ID_NAME_STRING:
             return order_id_name_string_en;
+        case DB_NAME_STRING:
+            return db_name_string_en;
     }
 }
 + (NSString*)getStringOfLanguageES:(STRING_APP)stringApp{
@@ -192,6 +198,8 @@
             return speed_string_es;
         case ORDER_ID_NAME_STRING:
             return order_id_name_string_es;
+        case DB_NAME_STRING:
+            return db_name_string_es;
     }
 }
 + (NSString*)getStringOfLanguageFR:(STRING_APP)stringApp{
@@ -226,6 +234,8 @@
             return speed_string_fr;
         case ORDER_ID_NAME_STRING:
             return order_id_name_string_fr;
+        case DB_NAME_STRING:
+            return db_name_string_fr;
     }
 }
 + (NSString*)getStringOfLanguageIT:(STRING_APP)stringApp{
@@ -260,6 +270,8 @@
             return speed_string_it;
         case ORDER_ID_NAME_STRING:
             return order_id_name_string_it;
+        case DB_NAME_STRING:
+            return db_name_string_it;
     }
 }
 @end

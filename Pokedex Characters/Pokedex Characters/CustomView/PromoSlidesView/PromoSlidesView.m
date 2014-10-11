@@ -63,11 +63,11 @@
     [self scrollToItemAtIndex:++currentIndex%numberItems animated:YES];
 }
 - (void) removeFromSuperview{
+    [super removeFromSuperview];
     if (timerAutoScroll) {
         [timerAutoScroll invalidate];
         timerAutoScroll = nil;
     }
-    [super removeFromSuperview];
 }
 #pragma mark - iCarouselDataSource methods
 - (NSInteger)numberOfItemsInCarousel:(iCarousel *)carousel{

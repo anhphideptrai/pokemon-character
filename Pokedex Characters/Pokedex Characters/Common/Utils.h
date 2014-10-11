@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#define LANGUAGE_SETTING_TAG @"LANGUAGE_SETTING_TAG"
 typedef enum {
     LanguageSettingEN = 0,
     LanguageSettingES = 1,
@@ -30,7 +30,8 @@ typedef enum {
     SP_ATK_STRING,
     SP_DEF_STRING,
     SPEED_STRING,
-    ORDER_ID_NAME_STRING
+    ORDER_ID_NAME_STRING,
+    DB_NAME_STRING
 } STRING_APP;
 
 typedef enum {

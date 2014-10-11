@@ -46,7 +46,7 @@
     }
     arrData = [[NSMutableArray alloc] init];
     for (NSString *item in arrPokemonID) {
-        [arrData addObject:[[item stringByReplacingOccurrencesOfString:@"N.º" withString:@""] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
+        [arrData addObject:[[[item stringByReplacingOccurrencesOfString:@"N.º" withString:@""] stringByReplacingOccurrencesOfString:@"N°" withString:@""] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
     }
     bgView      = [[UIImageView alloc] initWithFrame:BG_FRAME];
     lbEvolution = [[UILabel alloc] initWithFrame:LB_EVOLUTION_FRAME];

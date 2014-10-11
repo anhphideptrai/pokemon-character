@@ -8,6 +8,7 @@
 
 #import "SQLiteManager.h"
 #import "PokemonType.h"
+#import "AppDelegate.h"
 
 @interface SQLiteManager()
 
@@ -28,16 +29,16 @@ static SQLiteManager *thisInstance;
     return thisInstance;
 }
 - (void)copyDatabase {
-
+    AppDelegate *appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSError *error;
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     
-    _databasePath = [documentsDirectory stringByAppendingPathComponent:@"PokemonNew_fr.db"];
+    _databasePath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.db", [Utils getStringOf:DB_NAME_STRING withLanguage:appDelegate.languageDefault]]];
     
     if ([fileManager fileExistsAtPath:_databasePath] == NO) {
-        NSString *resourcePath = [[NSBundle mainBundle] pathForResource:@"PokemonNew_fr" ofType:@"sqlite"];
+        NSString *resourcePath = [[NSBundle mainBundle] pathForResource:[Utils getStringOf:DB_NAME_STRING withLanguage:appDelegate.languageDefault] ofType:@"sqlite"];
         [fileManager copyItemAtPath:resourcePath toPath:_databasePath error:&error];
     }
 }

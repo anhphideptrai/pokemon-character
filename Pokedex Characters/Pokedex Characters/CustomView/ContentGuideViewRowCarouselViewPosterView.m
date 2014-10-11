@@ -197,6 +197,7 @@
 }
 
 -(void)removeFromSuperview{
+    [super removeFromSuperview];
     [imageView cancelImageRequestOperation];
     [iconLeft cancelImageRequestOperation];
     [imageView setImage:nil];
@@ -210,7 +211,6 @@
     [lbTitle setText:@""];
     _isHighLight = NO;
     _isNow = NO;
-    [super removeFromSuperview];
 }
 - (void) actionClickView{
     if (_isNow && !_isHighLight && [self.delegate respondsToSelector:@selector(hightLightedPosterView:)]) {

@@ -15,7 +15,13 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.languageDefault = LanguageSettingFR;
+    if (![[NSUserDefaults standardUserDefaults] objectForKey:LANGUAGE_SETTING_TAG]) {
+        [[NSUserDefaults standardUserDefaults] setValue:LanguageSettingEN forKey:LANGUAGE_SETTING_TAG];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        self.languageDefault = LanguageSettingEN;
+    }else{
+        self.languageDefault = (LanguageSetting)[[NSUserDefaults standardUserDefaults] objectForKey:LANGUAGE_SETTING_TAG];
+    }
     ViewController *mainViewController = [[ViewController alloc] initWithNibName:NAME_XIB_FILE_MAIN_VIEW_CONTROLLER bundle:nil];
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:mainViewController];
     self.window.rootViewController = self.navigationController;

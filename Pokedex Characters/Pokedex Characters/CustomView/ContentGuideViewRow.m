@@ -304,8 +304,8 @@
 }
 
 - (void)removeFromSuperview{
-    [self removeOldSubviews];
     [super removeFromSuperview];
+    [self removeOldSubviews];
 }
 - (void)removeOldSubviews{
     highLightedPoster = nil;
