@@ -12,11 +12,14 @@
 #import "Constant.h"
 #import "SQLiteManager.h"
 #import "DetailViewController.h"
+#import "AppDelegate.h"
 
 @interface SearchViewController (){
     NSMutableArray *result;
     NSTimer *timerSearch;
+    AppDelegate *appDelegate;
 }
+@property (strong, nonatomic) IBOutlet UILabel *title_Search;
 - (IBAction)clickBack:(id)sender;
 
 @end
@@ -35,6 +38,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    [self.title_Search setText:[Utils getStringOf:SEARCH_STRING withLanguage:appDelegate.languageDefault]];
     if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)]) {
         // iOS 7
         [self performSelector:@selector(setNeedsStatusBarAppearanceUpdate)];

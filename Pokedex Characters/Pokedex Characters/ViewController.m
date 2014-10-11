@@ -14,10 +14,12 @@
 #import "Constant.h"
 #import "SearchViewController.h"
 #import "DetailViewController.h"
+#import "AppDelegate.h"
 
 @interface ViewController () <PromoSlidesViewDataSource, PromoSlidesViewDelegate>
 {
     NSMutableArray *result;
+    AppDelegate *appDelegate;
 }
 @property (nonatomic) ASOAnimationStyle progressiveORConcurrentStyle;
 - (IBAction)clickSearch:(id)sender;
@@ -29,6 +31,7 @@
 {
     [super viewDidLoad];
     [[self navigationController] setNavigationBarHidden:YES animated:YES];
+    appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
     
     result = [[SQLiteManager getInstance] getPokemonWithAllTypes];
     [self.contentGuideView setBackground:[UIImage imageNamed:@"scrollview_bg.png"]];
@@ -118,9 +121,9 @@
         header = [[ContentGuideViewRowHeader alloc] initWithStyle:ContentGuideViewRowHeaderStyleDefault reuseIdentifier:identifier];
     }
     NSString *type = ((PokemonType*)[result objectAtIndex:rowIndex]).type;
-    [header  setTextTitleRowHeader:[type uppercaseString]];
+    [header  setTextTitleRowHeader:[[Utils getStringType:type withLanguage:appDelegate.languageDefault] uppercaseString]];
     [header setBackground:[UIImage imageNamed:@"headercell_bg.png"]];
-    [header setIconLeft:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png", type]]];
+    [header setIconLeft:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png", [[Utils getStringType:type withLanguage:LanguageSettingEN] lowercaseString]]]];
     return header;
 }
 

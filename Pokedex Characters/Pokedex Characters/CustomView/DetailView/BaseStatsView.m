@@ -8,14 +8,15 @@
 
 #import "BaseStatsView.h"
 #import "Constant.h"
+#import "AppDelegate.h"
 
 #define OFFSET_X_LB_LEFT IS_IPAD?5:10
 #define BG_FRAME CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)
 #define BG_TOP_FRAME CGRectMake(0, 0, self.frame.size.width, 35)
 #define LB_BASE_STATS_FRAME CGRectMake(OFFSET_X_LB_LEFT, 0, self.frame.size.width - (OFFSET_X_LB_LEFT), 30)
-#define ITEM_FRAME CGRectMake(70, 40, 0, (self.frame.size.height - 70)/6)
+#define ITEM_FRAME CGRectMake(75, 40, 0, (self.frame.size.height - 75)/6)
 #define WIDTH_ITEM self.frame.size.width - 110
-#define SIZE_LB_ITEM_FRAME CGRectMake(OFFSET_X_LB_LEFT, 40, 70, (self.frame.size.height - 70)/6)
+#define SIZE_LB_ITEM_FRAME CGRectMake(OFFSET_X_LB_LEFT, 40, 75, (self.frame.size.height - 75)/6)
 
 @interface BaseStatsView(){
     UIImageView *bgTopView;
@@ -63,11 +64,12 @@
     [lbBaseStat setBackgroundColor:[UIColor clearColor]];
     
     //set Data for items
-    [lbBaseStat setText:@"Base Stats"];
+    AppDelegate *appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    [lbBaseStat setText:[Utils getStringOf:BASE_STATS_STRING withLanguage:appDelegate.languageDefault]];
     
     CGRect frameItem = ITEM_FRAME;
     CGRect frameLb = SIZE_LB_ITEM_FRAME;
-    NSArray *arr = [NSArray arrayWithObjects:@"HP", @"Attack", @"Defense", @"Sp. Atk", @"Sp. Def", @"Speed", nil];
+    NSArray *arr = [NSArray arrayWithObjects:[Utils getStringOf:HP_STRING withLanguage:appDelegate.languageDefault], [Utils getStringOf:ATTACK_STRING withLanguage:appDelegate.languageDefault], [Utils getStringOf:DEFENSE_STRING withLanguage:appDelegate.languageDefault], [Utils getStringOf:SP_ATK_STRING withLanguage:appDelegate.languageDefault], [Utils getStringOf:SP_DEF_STRING withLanguage:appDelegate.languageDefault], [Utils getStringOf:SPEED_STRING withLanguage:appDelegate.languageDefault], nil];
     for (int i = 0; i < 6; i++) {
         
         frameItem.size.width = WIDTH_ITEM;

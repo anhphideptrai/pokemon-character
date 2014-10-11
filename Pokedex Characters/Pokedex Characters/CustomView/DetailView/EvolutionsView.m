@@ -8,6 +8,7 @@
 
 #import "EvolutionsView.h"
 #import "Constant.h"
+#import "AppDelegate.h"
 
 #define BG_FRAME CGRectMake(0, 0, self.frame.size.width, 35)
 #define LB_EVOLUTION_FRAME CGRectMake(10, 5, 120, 30)
@@ -61,7 +62,8 @@
     [scrollView setBackgroundColor:[UIColor clearColor]];
     
     //set Data for items
-    [lbEvolution setText:@"Evolutions"];
+    AppDelegate *appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    [lbEvolution setText:[Utils getStringOf:EVOLUTION_STRING withLanguage:appDelegate.languageDefault]];
     CGRect frameIcon = CGRectZero;
     CGRect frameArrow = ARROW_FRAME;
     frameIcon.size = SIZE_ICON;

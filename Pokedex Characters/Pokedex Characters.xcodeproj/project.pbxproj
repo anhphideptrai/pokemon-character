@@ -1642,6 +1642,7 @@
 		B2CC92C719E4363F00FE0127 /* PokemonNew_es.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = B2CC92C319E4363F00FE0127 /* PokemonNew_es.sqlite */; };
 		B2CC92C819E4363F00FE0127 /* PokemonNew_fr.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = B2CC92C419E4363F00FE0127 /* PokemonNew_fr.sqlite */; };
 		B2CC92C919E4363F00FE0127 /* PokemonNew_it.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = B2CC92C519E4363F00FE0127 /* PokemonNew_it.sqlite */; };
+		B2D2B90819E97AA50052F166 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D2B90719E97AA50052F166 /* Utils.m */; };
 		B2D40B1619E26603009A3F02 /* iPhone_AnimationMenuCustom.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2D40B1519E26603009A3F02 /* iPhone_AnimationMenuCustom.xib */; };
 		B2E1562219D017E40084C8FF /* PosterDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E1562119D017E40084C8FF /* PosterDetail.m */; };
 		B2E1562519D082AB0084C8FF /* gradient.png in Resources */ = {isa = PBXBuildFile; fileRef = B2E1562319D082AB0084C8FF /* gradient.png */; };
@@ -2571,6 +2572,8 @@
 		B2CC92C319E4363F00FE0127 /* PokemonNew_es.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = PokemonNew_es.sqlite; path = Resources/DB/PokemonNew_es.sqlite; sourceTree = "<group>"; };
 		B2CC92C419E4363F00FE0127 /* PokemonNew_fr.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = PokemonNew_fr.sqlite; path = Resources/DB/PokemonNew_fr.sqlite; sourceTree = "<group>"; };
 		B2CC92C519E4363F00FE0127 /* PokemonNew_it.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = PokemonNew_it.sqlite; path = Resources/DB/PokemonNew_it.sqlite; sourceTree = "<group>"; };
+		B2D2B90619E97AA50052F166 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utils.h; path = Common/Utils.h; sourceTree = "<group>"; };
+		B2D2B90719E97AA50052F166 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Utils.m; path = Common/Utils.m; sourceTree = "<group>"; };
 		B2D40B1519E26603009A3F02 /* iPhone_AnimationMenuCustom.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = iPhone_AnimationMenuCustom.xib; path = CustomView/AnimationMenu/iPhone_AnimationMenuCustom.xib; sourceTree = "<group>"; };
 		B2E1562019D017E40084C8FF /* PosterDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PosterDetail.h; path = CustomView/DetailView/PosterDetail.h; sourceTree = "<group>"; };
 		B2E1562119D017E40084C8FF /* PosterDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PosterDetail.m; path = CustomView/DetailView/PosterDetail.m; sourceTree = "<group>"; };
@@ -2867,6 +2870,8 @@
 			isa = PBXGroup;
 			children = (
 				B2CC862319B36E8C00BD1ABF /* Constant.h */,
+				B2D2B90619E97AA50052F166 /* Utils.h */,
+				B2D2B90719E97AA50052F166 /* Utils.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -5492,6 +5497,7 @@
 				B2CC85EA19B36DE300BD1ABF /* AFHTTPSessionManager.m in Sources */,
 				B2137B0E19BD39A000184C56 /* SearchViewController.m in Sources */,
 				B2CC85EC19B36DE300BD1ABF /* AFNetworkReachabilityManager.m in Sources */,
+				B2D2B90819E97AA50052F166 /* Utils.m in Sources */,
 				B209DBE119D6A591007CEB2C /* CustomNavigationBar.m in Sources */,
 				B2CC85F419B36DE300BD1ABF /* AFURLResponseSerialization.m in Sources */,
 				B2CC860A19B36DE300BD1ABF /* UIWebView+AFNetworking.m in Sources */,

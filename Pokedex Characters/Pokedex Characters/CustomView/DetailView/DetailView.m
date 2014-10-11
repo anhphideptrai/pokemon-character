@@ -14,6 +14,7 @@
 #import "EvolutionsView.h"
 #import "BaseStatsView.h"
 #import "SQLiteManager.h"
+#import "AppDelegate.h"
 
 #define SCROLL_VIEW_FRAME CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)
 #define POSTER_FRAME CGRectMake(0, 0, WIDTH_DETAIL_PAGE, WIDTH_DETAIL_PAGE)
@@ -33,6 +34,7 @@
     DescriptionView *descriptionView;
     EvolutionsView * evolutionsView;
     BaseStatsView *baseStatsView;
+    AppDelegate *appDelegate;
 }
 @end
 @implementation DetailView
@@ -50,6 +52,7 @@
     [self.layer setMasksToBounds:YES];
     [self.layer setBorderColor:[UIColor grayColor].CGColor];
     [self.layer setBorderWidth:2.0f];
+    appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
     scrollView = [[UIScrollView alloc] initWithFrame:SCROLL_VIEW_FRAME];
     descriptionView = [[DescriptionView alloc] initWithFrame:DESCRIPTION_FRAME];
     posterDetail = [[PosterDetail alloc] initWithFrame:POSTER_FRAME];
@@ -76,10 +79,10 @@
 }
 - (void)setData:(Pokemon*)pokemon{
     [posterDetail.posterImageView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"character_%@.jpg", pokemon.iD]]];
-    [posterDetail.lbTitle setText:[NSString stringWithFormat:@"%@ #%@", pokemon.name, pokemon.iD]];
-    [posterDetail.lbDescription setText:[NSString stringWithFormat:@"Height: %@  Weight: %@", pokemon.height, pokemon.weight]];
-    [typeView reLoadData:@"Type: " andArrType:pokemon.type];
-    [weaknessView reLoadData:@"Weakness: " andArrType:pokemon.weakness];
+    [posterDetail.lbTitle setText:[NSString stringWithFormat:@"%@ %@%@", pokemon.name, [Utils getStringOf:ORDER_ID_NAME_STRING withLanguage:appDelegate.languageDefault],pokemon.iD]];
+    [posterDetail.lbDescription setText:[NSString stringWithFormat:@"%@ %@  %@ %@", [Utils getStringOf:HEIGHT_STRING withLanguage:appDelegate.languageDefault], pokemon.height, [Utils getStringOf:WEIGHT_STRING withLanguage:appDelegate.languageDefault], pokemon.weight]];
+    [typeView reLoadData:[NSString stringWithFormat:@"%@ ", [Utils getStringOf:TYPE_STRING withLanguage:appDelegate.languageDefault]] andArrType:pokemon.type];
+    [weaknessView reLoadData:[NSString stringWithFormat:@"%@ ", [Utils getStringOf:WEAKNESS_STRING withLanguage:appDelegate.languageDefault]] andArrType:pokemon.weakness];
     [descriptionView reLoadData:[NSArray arrayWithObjects:pokemon.descriptionX, pokemon.descriptionY, nil]];
     [evolutionsView reLoadData:pokemon.evolutions];
     [baseStatsView reLoadData:pokemon.baseStats];

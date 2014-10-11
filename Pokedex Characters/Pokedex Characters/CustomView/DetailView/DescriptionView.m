@@ -8,6 +8,7 @@
 
 #import "DescriptionView.h"
 #import "Constant.h"
+#import "AppDelegate.h"
 
 #define BG_FRAME CGRectMake(0, 0, self.frame.size.width, 35)
 #define BUTTON_X_FRAME CGRectMake(130, 5, 30, 30)
@@ -73,7 +74,8 @@
     [buttonX setBackgroundImage:[UIImage imageNamed:@"x_selected.png"] forState:UIControlStateSelected];
     [buttonY setBackgroundImage:[UIImage imageNamed:@"y_normal.png"] forState:UIControlStateNormal];
     [buttonY setBackgroundImage:[UIImage imageNamed:@"y_selected.png"] forState:UIControlStateSelected];
-    [lbVersion setText:@"Versions:"];
+    AppDelegate *appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    [lbVersion setText:[Utils getStringOf:VERSION_STRING withLanguage:appDelegate.languageDefault]];
     [txtDescription setText:[arrDesc objectAtIndex:0]];
     
     [buttonX setSelected:YES];
