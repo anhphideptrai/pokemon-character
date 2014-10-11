@@ -10,9 +10,9 @@
 #import "Constant.h"
 
 #define BG_BOTTOM_FRAME CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)
-#define TITLE_FRAME CGRectMake(10, 0, 120, self.frame.size.height)
+#define TITLE_FRAME CGRectMake(10, 0, 130, self.frame.size.height)
 #define SIZE_TYPE CGSizeMake(self.frame.size.height, self.frame.size.height)
-#define SCROLL_ICON CGRectMake(130, 0, self.frame.size.width - 130, self.frame.size.height)
+#define SCROLL_ICON CGRectMake(140, 0, self.frame.size.width - 140, self.frame.size.height)
 #define PANDING_X 5
 @interface TypeView()
 {
