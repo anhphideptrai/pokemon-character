@@ -1595,8 +1595,8 @@
 		B2CC8EB419B37D3700BD1ABF /* steel.png in Resources */ = {isa = PBXBuildFile; fileRef = B2CC8E9B19B37D3700BD1ABF /* steel.png */; };
 		B2CC8EB519B37D3700BD1ABF /* unknow.png in Resources */ = {isa = PBXBuildFile; fileRef = B2CC8E9C19B37D3700BD1ABF /* unknow.png */; };
 		B2CC8EB619B37D3700BD1ABF /* unknow.png in Resources */ = {isa = PBXBuildFile; fileRef = B2CC8E9C19B37D3700BD1ABF /* unknow.png */; };
-		B2CC8EB719B37D3700BD1ABF /* watter.png in Resources */ = {isa = PBXBuildFile; fileRef = B2CC8E9D19B37D3700BD1ABF /* watter.png */; };
-		B2CC8EB819B37D3700BD1ABF /* watter.png in Resources */ = {isa = PBXBuildFile; fileRef = B2CC8E9D19B37D3700BD1ABF /* watter.png */; };
+		B2CC8EB719B37D3700BD1ABF /* water.png in Resources */ = {isa = PBXBuildFile; fileRef = B2CC8E9D19B37D3700BD1ABF /* water.png */; };
+		B2CC8EB819B37D3700BD1ABF /* water.png in Resources */ = {isa = PBXBuildFile; fileRef = B2CC8E9D19B37D3700BD1ABF /* water.png */; };
 		B2CC8EB919B37D3700BD1ABF /* dark.png in Resources */ = {isa = PBXBuildFile; fileRef = B2CC8E9E19B37D3700BD1ABF /* dark.png */; };
 		B2CC8EBA19B37D3700BD1ABF /* dark.png in Resources */ = {isa = PBXBuildFile; fileRef = B2CC8E9E19B37D3700BD1ABF /* dark.png */; };
 		B2CC8EBB19B37D3700BD1ABF /* electric.png in Resources */ = {isa = PBXBuildFile; fileRef = B2CC8E9F19B37D3700BD1ABF /* electric.png */; };
@@ -2543,7 +2543,7 @@
 		B2CC8E9A19B37D3700BD1ABF /* rock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rock.png; path = Resources/Images/Types/rock.png; sourceTree = "<group>"; };
 		B2CC8E9B19B37D3700BD1ABF /* steel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = steel.png; path = Resources/Images/Types/steel.png; sourceTree = "<group>"; };
 		B2CC8E9C19B37D3700BD1ABF /* unknow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = unknow.png; path = Resources/Images/Types/unknow.png; sourceTree = "<group>"; };
-		B2CC8E9D19B37D3700BD1ABF /* watter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = watter.png; path = Resources/Images/Types/watter.png; sourceTree = "<group>"; };
+		B2CC8E9D19B37D3700BD1ABF /* water.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = water.png; path = Resources/Images/Types/water.png; sourceTree = "<group>"; };
 		B2CC8E9E19B37D3700BD1ABF /* dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dark.png; path = Resources/Images/Types/dark.png; sourceTree = "<group>"; };
 		B2CC8E9F19B37D3700BD1ABF /* electric.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = electric.png; path = Resources/Images/Types/electric.png; sourceTree = "<group>"; };
 		B2CC8EA019B37D3700BD1ABF /* evil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = evil.png; path = Resources/Images/Types/evil.png; sourceTree = "<group>"; };
@@ -3665,7 +3665,7 @@
 				B2CC8E9A19B37D3700BD1ABF /* rock.png */,
 				B2CC8E9B19B37D3700BD1ABF /* steel.png */,
 				B2CC8E9C19B37D3700BD1ABF /* unknow.png */,
-				B2CC8E9D19B37D3700BD1ABF /* watter.png */,
+				B2CC8E9D19B37D3700BD1ABF /* water.png */,
 				B2CC8E9E19B37D3700BD1ABF /* dark.png */,
 				B2CC8E9F19B37D3700BD1ABF /* electric.png */,
 				B2CC8EA019B37D3700BD1ABF /* evil.png */,
@@ -4383,7 +4383,7 @@
 				B2CC8A2019B379A100BD1ABF /* character_610.jpg in Resources */,
 				B2CC8ECF19B37D3700BD1ABF /* poison.png in Resources */,
 				B24EF6B519BA313C00A56926 /* topnav_back_grey@2x~ipad.png in Resources */,
-				B2CC8EB719B37D3700BD1ABF /* watter.png in Resources */,
+				B2CC8EB719B37D3700BD1ABF /* water.png in Resources */,
 				B2CC8D0019B379A100BD1ABF /* character_168.jpg in Resources */,
 				B2CC8EB919B37D3700BD1ABF /* dark.png in Resources */,
 				B2CC8A0C19B379A100BD1ABF /* character_600.jpg in Resources */,
@@ -4823,7 +4823,7 @@
 				B24EF6C419BA313C00A56926 /* topnav_search@2x.png in Resources */,
 				B2CC8BBB19B379A100BD1ABF /* character_320.jpg in Resources */,
 				B2CC89F519B379A100BD1ABF /* character_588.jpg in Resources */,
-				B2CC8EB819B37D3700BD1ABF /* watter.png in Resources */,
+				B2CC8EB819B37D3700BD1ABF /* water.png in Resources */,
 				B2CC8C6319B379A100BD1ABF /* character_298.jpg in Resources */,
 				B2CC8C8B19B379A100BD1ABF /* character_213.jpg in Resources */,
 				B2CC8CE519B379A100BD1ABF /* character_258.jpg in Resources */,

@@ -57,7 +57,7 @@
     CGFloat widthContentScroll = 0;
     for (NSString *type in arrType) {
         UIImageView *iconType = [[UIImageView alloc] initWithFrame:frameIcon];
-        [iconType setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png", [[type lowercaseString] isEqualToString:@"water"]?@"watter":[[Utils getStringType:type withLanguage:LanguageSettingEN] lowercaseString]]]];
+        [iconType setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png", [[Utils getStringType:type withLanguage:LanguageSettingEN] lowercaseString]]]];
         [scrollView addSubview:iconType];
         widthContentScroll = frameIcon.origin.x + frameIcon.size.width;
         frameIcon.origin.x += frameIcon.size.width + PANDING_X;

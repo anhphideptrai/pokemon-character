@@ -90,6 +90,12 @@
 - (void)didSelectBounceButtonAtIndex:(NSUInteger)index
 {
     [self.menuButton sendActionsForControlEvents:UIControlEventTouchUpInside];
+    if (index < LanguageSettingEN || index > LanguageSettingIT) return;
+    [[NSUserDefaults standardUserDefaults] setValue:@(index) forKey:LANGUAGE_SETTING_TAG];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    appDelegate.languageDefault = index;
+    result = [[SQLiteManager getInstance] getPokemonWithAllTypes];
+    [self.contentGuideView holdPositionReloadData];
 }
 
 - (IBAction)sendActionForMenuButton:(id)sender{
