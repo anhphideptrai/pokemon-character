@@ -17,7 +17,7 @@
 #define ICON_CENTER_FRAME CGRectMake((self.frame.size.width - WIDTH_ICON_CENTER)/2, PANDING_OFFSET, WIDTH_ICON_CENTER, self.frame.size.height - 2*PANDING_OFFSET)
 #define BACK_HIDE_BUTTON_FRAME CGRectMake(0, 0, self.frame.size.height, 60)
 #define SHARE_BUTTON_FRAME CGRectMake(self.frame.size.width - PANDING_LEFT - 30, PANDING_OFFSET, 30, self.frame.size.height - 2*PANDING_OFFSET)
-#define SHARE_HIDE_BUTTON_FRAME CGRectMake(0, 0, self.frame.size.width - 60, 60)
+#define SHARE_HIDE_BUTTON_FRAME CGRectMake(self.frame.size.width - 60, 0, 60, self.frame.size.height)
 @interface CustomNavigationBar()
 {
     UIImageView *bgImage;
@@ -59,7 +59,7 @@
     [backButton addTarget:self action:@selector(backClick) forControlEvents:UIControlEventTouchUpInside];
     [backHideButton addTarget:self action:@selector(backClick) forControlEvents:UIControlEventTouchUpInside];
     [shareButton setImage:[UIImage imageNamed:@"topnav_share_normal.png"] forState:UIControlStateNormal];
-    [shareButton addTarget:self action:@selector(sharingClick) forControlEvents:UIControlEventTouchUpInside];
+   // [shareButton addTarget:self action:@selector(sharingClick) forControlEvents:UIControlEventTouchUpInside];
     [shareHideButton addTarget:self action:@selector(sharingClick) forControlEvents:UIControlEventTouchUpInside];
     [self setFrameForViews];
     [self addSubview:bgImage];

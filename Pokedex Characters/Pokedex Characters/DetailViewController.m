@@ -13,7 +13,7 @@
 #import <Social/Social.h>
 #import "AppDelegate.h"
 
-@interface DetailViewController ()<CustomNavigationBarDelegate>{
+@interface DetailViewController ()<CustomNavigationBarDelegate, DetailViewDelegate>{
     CustomNavigationBar *customNavigation;
     Pokemon *currentPokemon;
     DetailView *detailPoster;
@@ -36,6 +36,7 @@
     [customNavigation setDelegate:self];
     [self.view addSubview:customNavigation];
     detailPoster = [[DetailView alloc] initWithFrame:CGRectMake(0, HEIGHT_NAVIGATION_BAR, self.view.frame.size.width, self.view.frame.size.height - HEIGHT_NAVIGATION_BAR)];
+    [detailPoster setDelegate:self];
     [self.view addSubview:detailPoster];
     [self reLoadData];
     UISwipeGestureRecognizer *swipeGestureRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(clickBtnBack:)];
@@ -65,5 +66,10 @@
 }
 - (void)reLoadData{
     [detailPoster setData:currentPokemon];
+}
+- (void)didChangeCurrentPokemon:(DetailView*)detailView withNewPokemon:(Pokemon*)pokemonNew{
+    if (pokemonNew) {
+        currentPokemon = pokemonNew;
+    }
 }
 @end

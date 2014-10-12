@@ -8,7 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "Pokemon.h"
-
+@class DetailView;
+@protocol DetailViewDelegate <NSObject>
+@optional
+- (void)didChangeCurrentPokemon:(DetailView*)detailView withNewPokemon:(Pokemon*)pokemonNew;
+@end
 @interface DetailView : UIView
+@property (nonatomic, assign) IBOutlet id  <DetailViewDelegate> delegate;
 - (void)setData:(Pokemon*)pokemon;
 @end

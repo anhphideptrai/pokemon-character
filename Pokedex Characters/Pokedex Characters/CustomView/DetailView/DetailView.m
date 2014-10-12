@@ -92,6 +92,9 @@
     Pokemon *pokemon = [[SQLiteManager getInstance] getPokemonWithID:iDPokemon];
     if (pokemon) {
         [self setData:pokemon];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(didChangeCurrentPokemon:withNewPokemon:)]) {
+            [self.delegate didChangeCurrentPokemon:self withNewPokemon:pokemon];
+        }
     }
 }
 @end
