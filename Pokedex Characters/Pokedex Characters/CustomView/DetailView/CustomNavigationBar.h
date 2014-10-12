@@ -12,6 +12,7 @@
 @protocol CustomNavigationBarDelegate <NSObject>
 @optional
 - (void)clickBtnBack:(CustomNavigationBar*)customNavigationBar;
+- (void)clickBtnShare:(CustomNavigationBar*)customNavigationBar;
 @end
 @interface CustomNavigationBar : UIView
 - (void) setFrame:(CGRect)frame;

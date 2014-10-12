@@ -10,6 +10,8 @@
 #import "CustomNavigationBar.h"
 #import "Constant.h"
 #import "DetailView.h"
+#import <Social/Social.h>
+#import "AppDelegate.h"
 
 @interface DetailViewController ()<CustomNavigationBarDelegate>{
     CustomNavigationBar *customNavigation;
@@ -45,6 +47,18 @@
 }
 -(void)clickBtnBack:(CustomNavigationBar *)customNavigationBar{
     [self.navigationController popViewControllerAnimated:YES];
+}
+- (void)clickBtnShare:(CustomNavigationBar *)customNavigationBar{
+    if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
+        AppDelegate *appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+        SLComposeViewController *controller = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
+        [controller setInitialText:[NSString stringWithFormat:@"%@\n%@%@\n\n",currentPokemon.name, [Utils getStringOf:ORDER_ID_NAME_STRING withLanguage:appDelegate.languageDefault], currentPokemon.iD]];
+        [controller addURL:[NSURL URLWithString:@"http://www.pokemon.com"]];
+        [controller addImage:[UIImage imageNamed:[NSString stringWithFormat:@"character_%@.jpg", currentPokemon.iD]]];
+        
+        [self presentViewController:controller animated:YES completion:Nil];
+        
+    }
 }
 - (void)setPokemonForDetail:(Pokemon*)pokemon{
     currentPokemon = pokemon;
