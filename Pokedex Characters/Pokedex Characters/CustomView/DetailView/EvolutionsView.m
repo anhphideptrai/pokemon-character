@@ -9,6 +9,8 @@
 #import "EvolutionsView.h"
 #import "Constant.h"
 #import "AppDelegate.h"
+#import "SQLiteManager.h"
+#import "UIImageView+AFNetworking.h"
 
 #define BG_FRAME CGRectMake(0, 0, self.frame.size.width, 35)
 #define LB_EVOLUTION_FRAME CGRectMake(10, 5, 120, 30)
@@ -19,7 +21,7 @@
     UIImageView *bgView;
     UILabel *lbEvolution;
     UIScrollView *scrollView;
-    NSMutableArray *arrData;
+    NSArray *pokemons;
 }
 @end
 
@@ -44,10 +46,11 @@
     for (UIView *subView in self.subviews) {
         [subView removeFromSuperview];
     }
-    arrData = [[NSMutableArray alloc] init];
+    NSMutableArray *arrID = [[NSMutableArray alloc] init];
     for (NSString *item in arrPokemonID) {
-        [arrData addObject:[[[item stringByReplacingOccurrencesOfString:@"N.º" withString:@""] stringByReplacingOccurrencesOfString:@"N°" withString:@""] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
+        [arrID addObject:[[[item stringByReplacingOccurrencesOfString:@"N.º" withString:@""] stringByReplacingOccurrencesOfString:@"N°" withString:@""] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
     }
+    pokemons = [[SQLiteManager getInstance] getArrPokemonWithArrID:arrID];
     bgView      = [[UIImageView alloc] initWithFrame:BG_FRAME];
     lbEvolution = [[UILabel alloc] initWithFrame:LB_EVOLUTION_FRAME];
     scrollView  = [[UIScrollView alloc] initWithFrame:SCROLL_ICON_FRAME];
@@ -67,9 +70,9 @@
     CGRect frameIcon = CGRectZero;
     CGRect frameArrow = ARROW_FRAME;
     frameIcon.size = SIZE_ICON;
-    for (int i = 0; i < arrData.count; i++) {
+    for (int i = 0; i < pokemons.count; i++) {
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:frameIcon];
-        [imageView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"character_%@.jpg", [arrData objectAtIndex:i]]]];
+        [imageView setImageWithURL:[[NSURL alloc] initWithString:((Pokemon*)[pokemons objectAtIndex:i]).ThumbnailImage]];
         [scrollView addSubview:imageView];
         
         UIButton *button = [[UIButton alloc] initWithFrame:frameIcon];
@@ -78,7 +81,7 @@
         [button addTarget:self action:@selector(clickItem:) forControlEvents:UIControlEventTouchUpInside];
         [scrollView addSubview:button];
         
-        if (i + 1< arrData.count) {
+        if (i + 1< pokemons.count) {
             frameArrow.origin.x = frameIcon.origin.x + frameIcon.size.width + 2;
             UIImageView *arrowView = [[UIImageView alloc] initWithFrame:frameArrow];
             [arrowView setImage:[UIImage imageNamed:@"arrow.png"]];
@@ -91,7 +94,7 @@
 -(IBAction)clickItem:(id)sender{
     int index = ((UIButton*)sender).tag%100;
     if (self.delegate && [self.delegate respondsToSelector:@selector(clickEvolutionItem:)]) {
-        [self.delegate clickEvolutionItem:[arrData objectAtIndex:index]];
+        [self.delegate clickEvolutionItem:((Pokemon*)[pokemons objectAtIndex:index]).iD];
     }
 }
 

@@ -88,6 +88,9 @@
     [baseStatsView reLoadData:pokemon.baseStats];
     [scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
 }
+- (UIImage*)getImageDetail{
+    return posterDetail.posterImageView.image;
+}
 - (void)clickEvolutionItem:(NSString*)iDPokemon{
     Pokemon *pokemon = [[SQLiteManager getInstance] getPokemonWithID:iDPokemon];
     if (pokemon) {

@@ -16,4 +16,5 @@
 @interface DetailView : UIView
 @property (nonatomic, assign) IBOutlet id  <DetailViewDelegate> delegate;
 - (void)setData:(Pokemon*)pokemon;
+- (UIImage*)getImageDetail;
 @end

@@ -35,10 +35,10 @@ static SQLiteManager *thisInstance;
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     
-    _databasePath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.db", [Utils getStringOf:DB_NAME_STRING withLanguage:appDelegate.languageDefault]]];
+    _databasePath = [documentsDirectory stringByAppendingPathComponent:[Utils getStringOf:DB_NAME_STRING withLanguage:appDelegate.languageDefault]];
     
     if ([fileManager fileExistsAtPath:_databasePath] == NO) {
-        NSString *resourcePath = [[NSBundle mainBundle] pathForResource:[Utils getStringOf:DB_NAME_STRING withLanguage:appDelegate.languageDefault] ofType:@"sqlite"];
+        NSString *resourcePath = [[NSBundle mainBundle] pathForResource:[Utils getStringOf:DB_NAME_STRING withLanguage:appDelegate.languageDefault] ofType:@""];
         [fileManager copyItemAtPath:resourcePath toPath:_databasePath error:&error];
     }
 }

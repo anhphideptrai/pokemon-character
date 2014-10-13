@@ -12,6 +12,7 @@
 #import "DetailView.h"
 #import <Social/Social.h>
 #import "AppDelegate.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface DetailViewController ()<CustomNavigationBarDelegate, DetailViewDelegate>{
     CustomNavigationBar *customNavigation;
@@ -55,7 +56,7 @@
         SLComposeViewController *controller = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
         [controller setInitialText:[NSString stringWithFormat:@"%@\n%@%@\n\n",currentPokemon.name, [Utils getStringOf:ORDER_ID_NAME_STRING withLanguage:appDelegate.languageDefault], currentPokemon.iD]];
         [controller addURL:[NSURL URLWithString:@"http://www.pokemon.com"]];
-        [controller addImage:[UIImage imageNamed:[NSString stringWithFormat:@"character_%@.jpg", currentPokemon.iD]]];
+        [controller addImage:detailPoster.getImageDetail];
         
         [self presentViewController:controller animated:YES completion:Nil];
         

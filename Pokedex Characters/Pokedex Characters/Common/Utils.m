@@ -82,10 +82,10 @@
 #define order_id_name_string_fr @"No. "
 #define order_id_name_string_it @"N° "
 
-#define db_name_string_en @"PokemonNew_en"
-#define db_name_string_es @"PokemonNew_es"
-#define db_name_string_fr @"PokemonNew_fr"
-#define db_name_string_it @"PokemonNew_it"
+#define db_name_string_en @"00A2C633-5090-4F9E-A1DA-EF8E508FDC9A"
+#define db_name_string_es @"08E7CCA3-E0A7-48FA-8F09-BAEE19B835A9"
+#define db_name_string_fr @"020D14C1-66CF-4B4B-9727-6A54C6B7A5F2"
+#define db_name_string_it @"0407126C-F70D-4DF4-929D-474BCA9D6E87"
 
 #define fire_type       [NSArray arrayWithObjects:@"Fire", @"Fuego", @"Feu",	@"Fuoco", nil]
 #define flying_type     [NSArray arrayWithObjects:@"Flying",	@"Volador",	@"Vol",	@"Volante", nil]
