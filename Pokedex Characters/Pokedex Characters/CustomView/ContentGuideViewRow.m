@@ -252,6 +252,7 @@
     [self setNeedsLayout];
 }
 - (void)prepareForReuse{
+    [self removeOldSubviews];
     [self setUserInteractionEnabled:YES];
     isDidScroll = false;
     self.headerView = nil;
@@ -303,10 +304,6 @@
     self.carouselScrollView.contentSize = CGSizeMake(totalGuideWidth, totalGuideHeight);
 }
 
-- (void)removeFromSuperview{
-    [super removeFromSuperview];
-    [self removeOldSubviews];
-}
 - (void)removeOldSubviews{
     highLightedPoster = nil;
     for (UIView* subView in self.subviews) {
@@ -324,7 +321,6 @@
         }
         [subView removeFromSuperview];
     }
-    [self prepareForReuse];
 }
 #pragma mark - UIScrollViewDelegate methods
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{

@@ -254,6 +254,7 @@
     if(self.visibleRows && self.visibleRows.count > 0){
         ContentGuideViewRow *result = [self.visibleRows objectAtIndex:0];
         [self.visibleRows removeObjectAtIndex:0];
+        [result prepareForReuse];
         [result removeFromSuperview];
         self.beginVisibleRowsIndex ++;
         return result;
@@ -264,6 +265,7 @@
     if(self.visibleRows && self.visibleRows.count > 0){
         ContentGuideViewRow *result = [self.visibleRows lastObject];
         [self.visibleRows removeLastObject];
+        [result prepareForReuse];
         [result removeFromSuperview];
         return result;
     } else return nil;
