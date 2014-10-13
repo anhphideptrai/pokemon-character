@@ -8,6 +8,7 @@
 
 #import "CustomNavigationBar.h"
 #import "Constant.h"
+#import <Social/Social.h>
 
 #define PANDING_OFFSET (IS_IPAD?10:5)
 #define WIDTH_ICON_CENTER (IS_IPAD?48:32)
@@ -56,18 +57,18 @@
     [bgImage setImage:[UIImage imageNamed:@"reading_topnav_background.png"]];
     [backButton setImage:[UIImage imageNamed:@"topnav_back_grey.png"] forState:UIControlStateNormal];
     [iconCenter setImage:[UIImage imageNamed:@"placeholder_center.png"]];
-    [backButton addTarget:self action:@selector(backClick) forControlEvents:UIControlEventTouchUpInside];
     [backHideButton addTarget:self action:@selector(backClick) forControlEvents:UIControlEventTouchUpInside];
     [shareButton setImage:[UIImage imageNamed:@"topnav_share_normal.png"] forState:UIControlStateNormal];
-   // [shareButton addTarget:self action:@selector(sharingClick) forControlEvents:UIControlEventTouchUpInside];
     [shareHideButton addTarget:self action:@selector(sharingClick) forControlEvents:UIControlEventTouchUpInside];
     [self setFrameForViews];
     [self addSubview:bgImage];
     [self addSubview:iconCenter];
-    [self addSubview:backHideButton];
     [self addSubview:backButton];
-    [self addSubview:shareButton];
-    [self addSubview:shareHideButton];
+    [self addSubview:backHideButton];
+    if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
+        [self addSubview:shareButton];
+        [self addSubview:shareHideButton];
+    }
 }
 
 - (void)setFrame:(CGRect)frame{
