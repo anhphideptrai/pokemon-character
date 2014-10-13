@@ -16,4 +16,5 @@
 - (NSMutableArray*)getPokemonWithAllTypes;
 - (NSMutableArray*)getArrPokemonWithSearchKey:(NSString*)searchKey;
 - (Pokemon*)getPokemonWithID:(NSString*)iDPokemon;
+- (NSMutableArray*)getArrPokemonWithArrID:(NSArray*)arrID;
 @end

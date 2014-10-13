@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIImageView+AFNetworking.h"
+
 @interface PosterDetail : UIView
 @property(nonatomic, strong) UIImageView *posterImageView;
 @property(nonatomic, strong) UILabel *lbTitle;

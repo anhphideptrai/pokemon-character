@@ -7,7 +7,6 @@
 //
 
 #import "PosterDetail.h"
-#import "UIImageView+AFNetworking.h"
 #import "Constant.h"
 
 #define POSTER_IMAGE_VIEW_FRAME CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)

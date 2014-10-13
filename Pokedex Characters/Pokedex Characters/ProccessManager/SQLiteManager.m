@@ -138,4 +138,12 @@ static SQLiteManager *thisInstance;
     }
     return result;
 }
+- (NSMutableArray*)getArrPokemonWithArrID:(NSArray*)arrID
+{
+    NSMutableArray *result = [[NSMutableArray alloc] init];
+    for (NSString*iD in arrID) {
+        [result addObject:[self getPokemonWithID:iD]];
+    }
+    return result;
+}
 @end
