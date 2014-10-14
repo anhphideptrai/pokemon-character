@@ -55,5 +55,20 @@
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
+	<key>CFBundleIcons</key>
+	<dict>
+		<key>CFBundlePrimaryIcon</key>
+		<dict>
+			<key>CFBundleIconFiles</key>
+			<array>
+				<string>icon_120X120</string>
+				<string>icon_114X114</string>
+				<string>icon_57X57</string>
+				<string>icon_120X120</string>
+				<string>icon_114X114</string>
+				<string>icon_57X57</string>
+			</array>
+		</dict>
+	</dict>
 </dict>
 </plist>
