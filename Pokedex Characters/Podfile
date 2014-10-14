@@ -1,0 +1,9 @@
+# Uncomment this line to define a global platform for your project
+platform :ios, "6.0"
+
+link_with ['Pokedex Characters']
+
+inhibit_all_warnings!
+
+pod 'Google-AdMob-Ads-SDK', '6.12.0'
+
