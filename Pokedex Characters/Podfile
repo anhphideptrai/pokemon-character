@@ -1,0 +1,12 @@
+# Uncomment this line to define a global platform for your project
+platform :ios, "7.0"
+
+link_with ['Pokedex Guide']
+
+inhibit_all_warnings!
+
+pod 'AFNetworking', '2.4.1'
+pod 'iCarousel', '1.8.1'
+pod 'Google-AdMob-Ads-SDK', '6.12.0'
+pod 'ASOAnimatedButton', '1.0.1'
+

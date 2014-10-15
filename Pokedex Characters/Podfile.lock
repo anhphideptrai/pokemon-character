@@ -1,0 +1,43 @@
+PODS:
+  - AFNetworking (2.4.1):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+    - AFNetworking/UIKit
+  - AFNetworking/NSURLConnection (2.4.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.4.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.4.1)
+  - AFNetworking/Security (2.4.1)
+  - AFNetworking/Serialization (2.4.1)
+  - AFNetworking/UIKit (2.4.1):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+  - ASOAnimatedButton (1.0.1):
+    - ASOAnimatedButton/BounceButton
+    - ASOAnimatedButton/TwoStateButton
+  - ASOAnimatedButton/BounceButton (1.0.1)
+  - ASOAnimatedButton/TwoStateButton (1.0.1)
+  - Google-AdMob-Ads-SDK (6.12.0)
+  - iCarousel (1.8.1)
+
+DEPENDENCIES:
+  - AFNetworking (= 2.4.1)
+  - ASOAnimatedButton (= 1.0.1)
+  - Google-AdMob-Ads-SDK (= 6.12.0)
+  - iCarousel (= 1.8.1)
+
+SPEC CHECKSUMS:
+  AFNetworking: 0aabc6fae66d6e5d039eeb21c315843c7aae51ab
+  ASOAnimatedButton: 92bb13622b2a7f0f0b106525e21c7b2d21d6ab94
+  Google-AdMob-Ads-SDK: c6ef102829828ae16eec879afa2c8921413a8f06
+  iCarousel: 5acab560f10dc13da2440c89f35a0ad278b5147d
+
+COCOAPODS: 0.33.1
