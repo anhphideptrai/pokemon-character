@@ -8,6 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchViewController">
             <connections>
+                <outlet property="bannerView" destination="MSA-wJ-vQ4" id="gvg-qO-f1i"/>
                 <outlet property="contentGuideView" destination="bsS-6k-k7J" id="sv8-N9-gU1"/>
                 <outlet property="searchBar" destination="Eet-hg-Otw" id="Xdh-ZQ-WFF"/>
                 <outlet property="title_Search" destination="vZD-nk-Lgi" id="obr-h4-yS3"/>
@@ -63,10 +64,17 @@
                         <outlet property="delegate" destination="-1" id="db3-wa-Yd0"/>
                     </connections>
                 </view>
+                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MSA-wJ-vQ4" customClass="GADBannerView">
+                    <rect key="frame" x="0.0" y="400" width="320" height="50"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="MSA-wJ-vQ4" firstAttribute="leading" secondItem="yQg-bS-EfP" secondAttribute="leading" constant="224" id="CXQ-tm-sVQ"/>
+                <constraint firstAttribute="trailing" secondItem="MSA-wJ-vQ4" secondAttribute="trailing" constant="224" id="GGx-JP-5Dk"/>
                 <constraint firstItem="bsS-6k-k7J" firstAttribute="top" secondItem="Eet-hg-Otw" secondAttribute="bottom" id="UPM-sR-tUX"/>
+                <constraint firstAttribute="bottom" secondItem="MSA-wJ-vQ4" secondAttribute="bottom" id="ZCh-9h-Hk0"/>
                 <constraint firstAttribute="bottom" secondItem="bsS-6k-k7J" secondAttribute="bottom" id="vAP-l4-cmf"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>

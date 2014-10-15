@@ -13,13 +13,14 @@
 #import <Social/Social.h>
 #import "AppDelegate.h"
 #import "UIImageView+AFNetworking.h"
+#import "GADInterstitial.h"
 
-@interface DetailViewController ()<CustomNavigationBarDelegate, DetailViewDelegate>{
+@interface DetailViewController ()<CustomNavigationBarDelegate, DetailViewDelegate, GADInterstitialDelegate>{
     CustomNavigationBar *customNavigation;
     Pokemon *currentPokemon;
     DetailView *detailPoster;
 }
-
+@property(nonatomic, strong) GADInterstitial *interstitial;
 @end
 
 @implementation DetailViewController
@@ -43,7 +44,10 @@
     UISwipeGestureRecognizer *swipeGestureRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(clickBtnBack:)];
     [swipeGestureRight setDirection:UISwipeGestureRecognizerDirectionRight];
     [self.view addGestureRecognizer: swipeGestureRight];
+    
+    self.interstitial = [self createAndLoadInterstitial];
 }
+
 - (BOOL)prefersStatusBarHidden {
     return YES;
 }
@@ -68,5 +72,20 @@
     if (pokemonNew) {
         currentPokemon = pokemonNew;
     }
+}
+
+- (GADInterstitial *)createAndLoadInterstitial {
+    GADInterstitial *interstitial = [[GADInterstitial alloc] init];
+    interstitial.adUnitID = INTERSTITIAL_ID_ADMOB;
+    interstitial.delegate = self;
+    GADRequest *request = [GADRequest request];
+    // Requests test ads on simulators.
+    request.testDevices = @[ GAD_SIMULATOR_ID, [Utils admobDeviceID] ];
+    [interstitial loadRequest:request];
+    return interstitial;
+}
+
+- (void)interstitialDidReceiveAd:(GADInterstitial *)interstitial {
+    [self.interstitial presentFromRootViewController:self];
 }
 @end

@@ -8,6 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchViewController">
             <connections>
+                <outlet property="bannerView" destination="qLV-Us-Fo8" id="RAm-Nj-TqV"/>
                 <outlet property="contentGuideView" destination="4sp-Dt-pVm" id="Rrl-oE-lEO"/>
                 <outlet property="searchBar" destination="avL-dk-KtW" id="wWx-tT-HaZ"/>
                 <outlet property="title_Search" destination="2n8-S6-ofC" id="vBn-Ut-qbG"/>
@@ -75,9 +76,14 @@
                         <outlet property="delegate" destination="-1" id="Jdw-NQ-GV4"/>
                     </connections>
                 </view>
+                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qLV-Us-Fo8" customClass="GADBannerView">
+                    <rect key="frame" x="0.0" y="300" width="320" height="50"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="qLV-Us-Fo8" secondAttribute="bottom" id="gH6-Ka-4wu"/>
                 <constraint firstItem="4sp-Dt-pVm" firstAttribute="top" secondItem="avL-dk-KtW" secondAttribute="bottom" id="rKF-je-vxC"/>
                 <constraint firstAttribute="bottom" secondItem="4sp-Dt-pVm" secondAttribute="bottom" id="sBP-pL-bgf"/>
             </constraints>
