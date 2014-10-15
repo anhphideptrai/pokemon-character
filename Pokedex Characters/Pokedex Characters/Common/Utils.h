@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#define LANGUAGE_SETTING_TAG @"LANGUAGE_SETTING_TAG"
+
 typedef enum {
     LanguageSettingEN = 0,
     LanguageSettingES = 1,
@@ -58,5 +58,5 @@ typedef enum {
 @interface Utils : NSObject
 + (NSString*)getStringType:(NSString*)strType withLanguage:(LanguageSetting)language;
 + (NSString*)getStringOf:(STRING_APP)stringApp withLanguage:(LanguageSetting)language;
-+ (NSString *) admobDeviceID;
+// + (NSString *) admobDeviceID;
 @end

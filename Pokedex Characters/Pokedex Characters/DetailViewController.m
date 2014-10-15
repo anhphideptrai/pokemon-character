@@ -19,6 +19,7 @@
     CustomNavigationBar *customNavigation;
     Pokemon *currentPokemon;
     DetailView *detailPoster;
+    AppDelegate *appDelegate;
 }
 @property(nonatomic, strong) GADInterstitial *interstitial;
 @end
@@ -29,6 +30,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
     [self.view setBackgroundColor:[UIColor whiteColor]];
     [[self navigationController] setNavigationBarHidden:YES animated:YES];
     UIImageView *bgImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, HEIGHT_NAVIGATION_BAR, self.view.frame.size.width, self.view.frame.size.height - HEIGHT_NAVIGATION_BAR)];
@@ -44,8 +46,10 @@
     UISwipeGestureRecognizer *swipeGestureRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(clickBtnBack:)];
     [swipeGestureRight setDirection:UISwipeGestureRecognizerDirectionRight];
     [self.view addGestureRecognizer: swipeGestureRight];
-    
-    self.interstitial = [self createAndLoadInterstitial];
+    //Add Admob
+    if (![appDelegate.config.statusApp isEqualToString:STATUS_APP_DEFAUL]) {
+        self.interstitial = [self createAndLoadInterstitial];
+    }
 }
 
 - (BOOL)prefersStatusBarHidden {
@@ -55,7 +59,6 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)clickBtnShare:(CustomNavigationBar *)customNavigationBar{
-    AppDelegate *appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
     SLComposeViewController *controller = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
     [controller setInitialText:[NSString stringWithFormat:@"%@\n%@%@\n\n",currentPokemon.name, [Utils getStringOf:ORDER_ID_NAME_STRING withLanguage:appDelegate.languageDefault], currentPokemon.iD]];
     [controller addURL:[NSURL URLWithString:appDelegate.config.urlShare]];
@@ -80,12 +83,14 @@
     interstitial.delegate = self;
     GADRequest *request = [GADRequest request];
     // Requests test ads on simulators.
-    request.testDevices = @[ GAD_SIMULATOR_ID, [Utils admobDeviceID] ];
+    // request.testDevices = @[ GAD_SIMULATOR_ID, [Utils admobDeviceID] ];
     [interstitial loadRequest:request];
     return interstitial;
 }
 
 - (void)interstitialDidReceiveAd:(GADInterstitial *)interstitial {
-    [self.interstitial presentFromRootViewController:self];
+    if (![appDelegate.config.statusApp isEqualToString:STATUS_APP_DEFAUL]) {
+        [self.interstitial presentFromRootViewController:self];
+    }
 }
 @end

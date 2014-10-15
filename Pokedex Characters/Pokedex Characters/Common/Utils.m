@@ -7,8 +7,8 @@
 //
 
 #import "Utils.h"
-#import <AdSupport/ASIdentifierManager.h>
-#include <CommonCrypto/CommonDigest.h>
+// #import <AdSupport/ASIdentifierManager.h>
+// #include <CommonCrypto/CommonDigest.h>
 
 #define search_string_en @"SEARCH"
 #define search_string_es @"BUSCAR"
@@ -277,6 +277,7 @@
             return db_name_string_it;
     }
 }
+/*
 + (NSString *) admobDeviceID
 {
     NSUUID* adid = [[ASIdentifierManager sharedManager] advertisingIdentifier];
@@ -291,5 +292,5 @@
     
     return  output;
     
-}
+}*/
 @end
