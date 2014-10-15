@@ -20,7 +20,7 @@
         [[NSUserDefaults standardUserDefaults] synchronize];
         self.languageDefault = LanguageSettingEN;
     }else{
-        self.languageDefault = [[[NSUserDefaults standardUserDefaults] objectForKey:LANGUAGE_SETTING_TAG] integerValue];
+        self.languageDefault = (LanguageSetting)[[[NSUserDefaults standardUserDefaults] objectForKey:LANGUAGE_SETTING_TAG] integerValue];
     }
     SplashScreenViewController *splashScreenViewController = [[SplashScreenViewController alloc] init];
     self.window.rootViewController = splashScreenViewController;
