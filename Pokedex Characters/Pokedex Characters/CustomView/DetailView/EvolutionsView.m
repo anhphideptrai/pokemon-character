@@ -72,7 +72,7 @@
     frameIcon.size = SIZE_ICON;
     for (int i = 0; i < pokemons.count; i++) {
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:frameIcon];
-        [imageView setImageWithURL:[[NSURL alloc] initWithString:((Pokemon*)[pokemons objectAtIndex:i]).ThumbnailImage]];
+        [imageView setImageWithURL:[[NSURL alloc] initWithString:((Pokemon*)[pokemons objectAtIndex:i]).ThumbnailImage] placeholderImage:[UIImage imageNamed:@"icon_placeholder.png"]];
         [scrollView addSubview:imageView];
         
         UIButton *button = [[UIButton alloc] initWithFrame:frameIcon];
