@@ -621,6 +621,11 @@
 			attributes = {
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Duc Thien";
+				TargetAttributes = {
+					B2CC857419B36D8E00BD1ABF = {
+						DevelopmentTeam = J8EBSP3JMS;
+					};
+				};
 			};
 			buildConfigurationList = B2CC857019B36D8E00BD1ABF /* Build configuration list for PBXProject "Pokedex Guide" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -887,6 +892,7 @@
 			baseConfigurationReference = 1921BADE0B5945A1B5487E8C /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Pokedex Characters/Pokedex Guide-Prefix.pch";
 				INFOPLIST_FILE = "Pokedex Characters/Pokedex Guide-Info.plist";
@@ -901,6 +907,7 @@
 			baseConfigurationReference = 1921BADE0B5945A1B5487E8C /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Pokedex Characters/Pokedex Guide-Prefix.pch";
 				INFOPLIST_FILE = "Pokedex Characters/Pokedex Guide-Info.plist";
