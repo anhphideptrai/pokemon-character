@@ -139,6 +139,7 @@
 		B2E9124019B62A7E00A715F0 /* scrollview_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = B2E9123E19B62A7E00A715F0 /* scrollview_bg.png */; };
 		B2E9124219B62A7E00A715F0 /* scrollview_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2E9123F19B62A7E00A715F0 /* scrollview_bg@2x.png */; };
 		B2E9124519B62C6C00A715F0 /* headercell_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = B2E9124419B62C6C00A715F0 /* headercell_bg.png */; };
+		B2EDFED319EE416E0055D4E7 /* SplashScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2EDFED219EE416E0055D4E7 /* SplashScreenViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -326,6 +327,8 @@
 		B2E9123E19B62A7E00A715F0 /* scrollview_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = scrollview_bg.png; path = Resources/Images/PromoSlides/scrollview_bg.png; sourceTree = "<group>"; };
 		B2E9123F19B62A7E00A715F0 /* scrollview_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "scrollview_bg@2x.png"; path = "Resources/Images/PromoSlides/scrollview_bg@2x.png"; sourceTree = "<group>"; };
 		B2E9124419B62C6C00A715F0 /* headercell_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = headercell_bg.png; path = Resources/Images/PromoSlides/headercell_bg.png; sourceTree = "<group>"; };
+		B2EDFED119EE416E0055D4E7 /* SplashScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashScreenViewController.h; sourceTree = "<group>"; };
+		B2EDFED219EE416E0055D4E7 /* SplashScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashScreenViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -612,6 +615,8 @@
 				B2137B0D19BD39A000184C56 /* SearchViewController.m */,
 				B2E1562B19D083AC0084C8FF /* DetailViewController.h */,
 				B2E1562C19D083AC0084C8FF /* DetailViewController.m */,
+				B2EDFED119EE416E0055D4E7 /* SplashScreenViewController.h */,
+				B2EDFED219EE416E0055D4E7 /* SplashScreenViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -978,6 +983,7 @@
 				B2CC85EC19B36DE300BD1ABF /* AFNetworkReachabilityManager.m in Sources */,
 				B2D2B90819E97AA50052F166 /* Utils.m in Sources */,
 				B209DBE119D6A591007CEB2C /* CustomNavigationBar.m in Sources */,
+				B2EDFED319EE416E0055D4E7 /* SplashScreenViewController.m in Sources */,
 				B2CC85F419B36DE300BD1ABF /* AFURLResponseSerialization.m in Sources */,
 				B2CC860A19B36DE300BD1ABF /* UIWebView+AFNetworking.m in Sources */,
 				B2E1562219D017E40084C8FF /* PosterDetail.m in Sources */,

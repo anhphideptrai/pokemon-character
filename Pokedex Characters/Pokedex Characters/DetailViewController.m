@@ -54,7 +54,7 @@
     AppDelegate *appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
     SLComposeViewController *controller = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
     [controller setInitialText:[NSString stringWithFormat:@"%@\n%@%@\n\n",currentPokemon.name, [Utils getStringOf:ORDER_ID_NAME_STRING withLanguage:appDelegate.languageDefault], currentPokemon.iD]];
-    [controller addURL:[NSURL URLWithString:@"http://www.pokemon.com"]];
+    [controller addURL:[NSURL URLWithString:appDelegate.config.urlShare]];
     [controller addImage:detailPoster.getImageDetail];
     [self presentViewController:controller animated:YES completion:Nil];
 }

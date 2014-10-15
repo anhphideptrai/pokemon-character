@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "ViewController.h"
+#import "SplashScreenViewController.h"
 #import "Constant.h"
 
 @implementation AppDelegate
@@ -22,9 +22,8 @@
     }else{
         self.languageDefault = [[[NSUserDefaults standardUserDefaults] objectForKey:LANGUAGE_SETTING_TAG] integerValue];
     }
-    ViewController *mainViewController = [[ViewController alloc] initWithNibName:NAME_XIB_FILE_MAIN_VIEW_CONTROLLER bundle:nil];
-    self.navigationController = [[UINavigationController alloc] initWithRootViewController:mainViewController];
-    self.window.rootViewController = self.navigationController;
+    SplashScreenViewController *splashScreenViewController = [[SplashScreenViewController alloc] init];
+    self.window.rootViewController = splashScreenViewController;
     [self.window makeKeyAndVisible];
     return YES;
 }
