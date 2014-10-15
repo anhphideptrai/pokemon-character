@@ -65,7 +65,10 @@
     [self addSubview:iconCenter];
     [self addSubview:backButton];
     [self addSubview:backHideButton];
-    if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
+    if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]||
+       [SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]||
+       [SLComposeViewController isAvailableForServiceType:SLServiceTypeSinaWeibo]||
+       [SLComposeViewController isAvailableForServiceType:SLServiceTypeTencentWeibo]) {
         [self addSubview:shareButton];
         [self addSubview:shareHideButton];
     }

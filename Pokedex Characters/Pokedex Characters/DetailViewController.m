@@ -51,9 +51,19 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)clickBtnShare:(CustomNavigationBar *)customNavigationBar{
+    NSString *sLServiceType;
     if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
+        sLServiceType = SLServiceTypeFacebook;
+    }else if([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]) {
+        sLServiceType = SLServiceTypeTwitter;
+    }else if([SLComposeViewController isAvailableForServiceType:SLServiceTypeSinaWeibo]) {
+        sLServiceType = SLServiceTypeSinaWeibo;
+    }else if([SLComposeViewController isAvailableForServiceType:SLServiceTypeTencentWeibo]) {
+        sLServiceType = SLServiceTypeTencentWeibo;
+    }
+    if(sLServiceType) {
         AppDelegate *appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
-        SLComposeViewController *controller = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
+        SLComposeViewController *controller = [SLComposeViewController composeViewControllerForServiceType:sLServiceType];
         [controller setInitialText:[NSString stringWithFormat:@"%@\n%@%@\n\n",currentPokemon.name, [Utils getStringOf:ORDER_ID_NAME_STRING withLanguage:appDelegate.languageDefault], currentPokemon.iD]];
         [controller addURL:[NSURL URLWithString:@"http://www.pokemon.com"]];
         [controller addImage:detailPoster.getImageDetail];
