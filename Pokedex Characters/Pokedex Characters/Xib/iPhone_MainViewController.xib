@@ -8,6 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ViewController">
             <connections>
+                <outlet property="bannerView" destination="xbl-XB-PgT" id="XG0-JK-5S1"/>
                 <outlet property="contentGuideView" destination="kqB-O4-ptg" id="9Hx-kW-BSi"/>
                 <outlet property="menuButton" destination="J4g-zr-HFZ" id="kgQ-0E-Oqj"/>
                 <outlet property="view" destination="gfO-0Z-yUg" id="Crm-pC-P1e"/>
@@ -80,10 +81,15 @@
                         <action selector="menuButtonAction:" destination="-1" eventType="touchUpInside" id="h29-13-inZ"/>
                     </connections>
                 </button>
+                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xbl-XB-PgT" customClass="GADBannerView">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="kqB-O4-ptg" firstAttribute="top" secondItem="SNc-RJ-Baa" secondAttribute="bottom" id="bia-2d-NxW"/>
+                <constraint firstAttribute="bottom" secondItem="xbl-XB-PgT" secondAttribute="bottom" id="gDb-c2-Ik8"/>
                 <constraint firstAttribute="bottom" secondItem="kqB-O4-ptg" secondAttribute="bottom" id="pV0-tn-TlK"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

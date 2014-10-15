@@ -8,6 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ViewController">
             <connections>
+                <outlet property="bannerView" destination="ZlV-l9-dFr" id="pPk-lg-STN"/>
                 <outlet property="contentGuideView" destination="VWa-wm-iXD" id="lb0-bf-dO7"/>
                 <outlet property="menuButton" destination="TWK-9c-EFq" id="RhE-iT-FPk"/>
                 <outlet property="view" destination="V02-sy-VCp" id="BpK-n6-FP5"/>
@@ -56,10 +57,17 @@
                         <action selector="menuButtonAction:" destination="-1" eventType="touchUpInside" id="oYQ-vH-2BD"/>
                     </connections>
                 </button>
+                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZlV-l9-dFr" customClass="GADBannerView">
+                    <rect key="frame" x="174" y="974" width="320" height="50"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="ZlV-l9-dFr" secondAttribute="bottom" id="1kK-6f-H9q"/>
+                <constraint firstAttribute="trailing" secondItem="ZlV-l9-dFr" secondAttribute="trailing" constant="224" id="ES6-WW-hWl"/>
                 <constraint firstItem="VWa-wm-iXD" firstAttribute="top" secondItem="tZ7-Ix-8tZ" secondAttribute="bottom" id="ega-eY-5ue"/>
+                <constraint firstItem="ZlV-l9-dFr" firstAttribute="leading" secondItem="V02-sy-VCp" secondAttribute="leading" constant="224" id="gze-8h-VdS"/>
                 <constraint firstAttribute="bottom" secondItem="VWa-wm-iXD" secondAttribute="bottom" id="ybY-Wx-e4h"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
