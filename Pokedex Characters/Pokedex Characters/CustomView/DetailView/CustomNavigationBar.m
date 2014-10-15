@@ -8,7 +8,6 @@
 
 #import "CustomNavigationBar.h"
 #import "Constant.h"
-#import <Social/Social.h>
 
 #define PANDING_OFFSET (IS_IPAD?10:5)
 #define WIDTH_ICON_CENTER (IS_IPAD?48:32)
@@ -65,13 +64,8 @@
     [self addSubview:iconCenter];
     [self addSubview:backButton];
     [self addSubview:backHideButton];
-    if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]||
-       [SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]||
-       [SLComposeViewController isAvailableForServiceType:SLServiceTypeSinaWeibo]||
-       [SLComposeViewController isAvailableForServiceType:SLServiceTypeTencentWeibo]) {
-        [self addSubview:shareButton];
-        [self addSubview:shareHideButton];
-    }
+    [self addSubview:shareButton];
+    [self addSubview:shareHideButton];
 }
 
 - (void)setFrame:(CGRect)frame{
