@@ -58,7 +58,7 @@
     // Set as delegate of 'menu item view'
     [self.menuItemView setDelegate:self];
     // Add Admob
-    if (![appDelegate.config.statusApp isEqualToString:STATUS_APP_DEFAUL]) {
+  //  if (![appDelegate.config.statusApp isEqualToString:STATUS_APP_DEFAUL]) {
         // Replace this ad unit ID with your own ad unit ID.
         self.bannerView.adUnitID = BANNER_ID_ADMOB;
         self.bannerView.rootViewController = self;
@@ -67,7 +67,7 @@
         // an ad request is made.
         // request.testDevices = @[ GAD_SIMULATOR_ID, [Utils admobDeviceID] ];
         [self.bannerView loadRequest:request];
-    }
+   // }
 }
 
 - (BOOL)prefersStatusBarHidden {
