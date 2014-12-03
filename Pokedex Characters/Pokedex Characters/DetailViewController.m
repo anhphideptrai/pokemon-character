@@ -47,9 +47,9 @@
     [swipeGestureRight setDirection:UISwipeGestureRecognizerDirectionRight];
     [self.view addGestureRecognizer: swipeGestureRight];
     //Add Admob
-    if (![appDelegate.config.statusApp isEqualToString:STATUS_APP_DEFAUL]) {
-        self.interstitial = [self createAndLoadInterstitial];
-    }
+//    if (![appDelegate.config.statusApp isEqualToString:STATUS_APP_DEFAUL]) {
+//        self.interstitial = [self createAndLoadInterstitial];
+//    }
 }
 
 - (BOOL)prefersStatusBarHidden {

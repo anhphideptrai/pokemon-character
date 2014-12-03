@@ -99,6 +99,13 @@
 		B2CC92C719E4363F00FE0127 /* 08E7CCA3-E0A7-48FA-8F09-BAEE19B835A9 in Resources */ = {isa = PBXBuildFile; fileRef = B2CC92C319E4363F00FE0127 /* 08E7CCA3-E0A7-48FA-8F09-BAEE19B835A9 */; };
 		B2CC92C819E4363F00FE0127 /* 020D14C1-66CF-4B4B-9727-6A54C6B7A5F2 in Resources */ = {isa = PBXBuildFile; fileRef = B2CC92C419E4363F00FE0127 /* 020D14C1-66CF-4B4B-9727-6A54C6B7A5F2 */; };
 		B2CC92C919E4363F00FE0127 /* 0407126C-F70D-4DF4-929D-474BCA9D6E87 in Resources */ = {isa = PBXBuildFile; fileRef = B2CC92C519E4363F00FE0127 /* 0407126C-F70D-4DF4-929D-474BCA9D6E87 */; };
+		B2D0F0A61A2EA58D009CBF0F /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = B2D0F09A1A2EA58D009CBF0F /* ioapi.c */; };
+		B2D0F0A71A2EA58D009CBF0F /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = B2D0F09C1A2EA58D009CBF0F /* mztools.c */; };
+		B2D0F0A81A2EA58D009CBF0F /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = B2D0F09E1A2EA58D009CBF0F /* unzip.c */; };
+		B2D0F0A91A2EA58D009CBF0F /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = B2D0F0A01A2EA58D009CBF0F /* zip.c */; };
+		B2D0F0AA1A2EA58D009CBF0F /* ZipArchive.mm in Sources */ = {isa = PBXBuildFile; fileRef = B2D0F0A31A2EA58D009CBF0F /* ZipArchive.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B2D0F0AB1A2EA58D009CBF0F /* ZipManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D0F0A51A2EA58D009CBF0F /* ZipManager.m */; };
+		B2D0F0AD1A2EA9A2009CBF0F /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D0F0AC1A2EA9A2009CBF0F /* libz.1.2.5.dylib */; };
 		B2D2B90819E97AA50052F166 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D2B90719E97AA50052F166 /* Utils.m */; };
 		B2D40B1619E26603009A3F02 /* iPhone_AnimationMenuCustom.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2D40B1519E26603009A3F02 /* iPhone_AnimationMenuCustom.xib */; };
 		B2E1562219D017E40084C8FF /* PosterDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E1562119D017E40084C8FF /* PosterDetail.m */; };
@@ -237,6 +244,20 @@
 		B2CC92C319E4363F00FE0127 /* 08E7CCA3-E0A7-48FA-8F09-BAEE19B835A9 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "08E7CCA3-E0A7-48FA-8F09-BAEE19B835A9"; path = "Resources/DB/08E7CCA3-E0A7-48FA-8F09-BAEE19B835A9"; sourceTree = "<group>"; };
 		B2CC92C419E4363F00FE0127 /* 020D14C1-66CF-4B4B-9727-6A54C6B7A5F2 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "020D14C1-66CF-4B4B-9727-6A54C6B7A5F2"; path = "Resources/DB/020D14C1-66CF-4B4B-9727-6A54C6B7A5F2"; sourceTree = "<group>"; };
 		B2CC92C519E4363F00FE0127 /* 0407126C-F70D-4DF4-929D-474BCA9D6E87 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "0407126C-F70D-4DF4-929D-474BCA9D6E87"; path = "Resources/DB/0407126C-F70D-4DF4-929D-474BCA9D6E87"; sourceTree = "<group>"; };
+		B2D0F0991A2EA58D009CBF0F /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
+		B2D0F09A1A2EA58D009CBF0F /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
+		B2D0F09B1A2EA58D009CBF0F /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
+		B2D0F09C1A2EA58D009CBF0F /* mztools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mztools.c; sourceTree = "<group>"; };
+		B2D0F09D1A2EA58D009CBF0F /* mztools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mztools.h; sourceTree = "<group>"; };
+		B2D0F09E1A2EA58D009CBF0F /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
+		B2D0F09F1A2EA58D009CBF0F /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
+		B2D0F0A01A2EA58D009CBF0F /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
+		B2D0F0A11A2EA58D009CBF0F /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
+		B2D0F0A21A2EA58D009CBF0F /* ZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipArchive.h; sourceTree = "<group>"; };
+		B2D0F0A31A2EA58D009CBF0F /* ZipArchive.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ZipArchive.mm; sourceTree = "<group>"; };
+		B2D0F0A41A2EA58D009CBF0F /* ZipManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZipManager.h; path = ProccessManager/ZipManager.h; sourceTree = "<group>"; };
+		B2D0F0A51A2EA58D009CBF0F /* ZipManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZipManager.m; path = ProccessManager/ZipManager.m; sourceTree = "<group>"; };
+		B2D0F0AC1A2EA9A2009CBF0F /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		B2D2B90619E97AA50052F166 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utils.h; path = Common/Utils.h; sourceTree = "<group>"; };
 		B2D2B90719E97AA50052F166 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Utils.m; path = Common/Utils.m; sourceTree = "<group>"; };
 		B2D40B1519E26603009A3F02 /* iPhone_AnimationMenuCustom.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = iPhone_AnimationMenuCustom.xib; path = CustomView/AnimationMenu/iPhone_AnimationMenuCustom.xib; sourceTree = "<group>"; };
@@ -266,6 +287,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2D0F0AD1A2EA9A2009CBF0F /* libz.1.2.5.dylib in Frameworks */,
 				B2CC8EF619B3837C00BD1ABF /* libsqlite3.0.dylib in Frameworks */,
 				B2CC857B19B36D8E00BD1ABF /* CoreGraphics.framework in Frameworks */,
 				B2CC857D19B36D8E00BD1ABF /* UIKit.framework in Frameworks */,
@@ -344,6 +366,7 @@
 		B2CC857719B36D8E00BD1ABF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B2D0F0AC1A2EA9A2009CBF0F /* libz.1.2.5.dylib */,
 				B2CC8EF519B3837C00BD1ABF /* libsqlite3.0.dylib */,
 				B2CC857819B36D8E00BD1ABF /* Foundation.framework */,
 				B2CC857A19B36D8E00BD1ABF /* CoreGraphics.framework */,
@@ -526,10 +549,40 @@
 		B2CC8EDC19B37D9E00BD1ABF /* ProccessManager */ = {
 			isa = PBXGroup;
 			children = (
+				B2D0F0971A2EA58D009CBF0F /* ZipArchive */,
+				B2D0F0A41A2EA58D009CBF0F /* ZipManager.h */,
+				B2D0F0A51A2EA58D009CBF0F /* ZipManager.m */,
 				B2CC8EE919B381B500BD1ABF /* SQLiteManager.h */,
 				B2CC8EEA19B381B500BD1ABF /* SQLiteManager.m */,
 			);
 			name = ProccessManager;
+			sourceTree = "<group>";
+		};
+		B2D0F0971A2EA58D009CBF0F /* ZipArchive */ = {
+			isa = PBXGroup;
+			children = (
+				B2D0F0981A2EA58D009CBF0F /* minizip */,
+				B2D0F0A21A2EA58D009CBF0F /* ZipArchive.h */,
+				B2D0F0A31A2EA58D009CBF0F /* ZipArchive.mm */,
+			);
+			name = ZipArchive;
+			path = ProccessManager/ZipArchive;
+			sourceTree = "<group>";
+		};
+		B2D0F0981A2EA58D009CBF0F /* minizip */ = {
+			isa = PBXGroup;
+			children = (
+				B2D0F0991A2EA58D009CBF0F /* crypt.h */,
+				B2D0F09A1A2EA58D009CBF0F /* ioapi.c */,
+				B2D0F09B1A2EA58D009CBF0F /* ioapi.h */,
+				B2D0F09C1A2EA58D009CBF0F /* mztools.c */,
+				B2D0F09D1A2EA58D009CBF0F /* mztools.h */,
+				B2D0F09E1A2EA58D009CBF0F /* unzip.c */,
+				B2D0F09F1A2EA58D009CBF0F /* unzip.h */,
+				B2D0F0A01A2EA58D009CBF0F /* zip.c */,
+				B2D0F0A11A2EA58D009CBF0F /* zip.h */,
+			);
+			path = minizip;
 			sourceTree = "<group>";
 		};
 		B2E911FC19B5438300A715F0 /* PromoSlides */ = {
@@ -775,24 +828,30 @@
 			files = (
 				B2CC8EF319B382E200BD1ABF /* Pokemon.m in Sources */,
 				B2CC861C19B36E3500BD1ABF /* ContentGuideViewRow.m in Sources */,
+				B2D0F0A71A2EA58D009CBF0F /* mztools.c in Sources */,
 				B209DBE419D6ECDE007CEB2C /* TypeView.m in Sources */,
+				B2D0F0AA1A2EA58D009CBF0F /* ZipArchive.mm in Sources */,
 				B227793419E231AF000B1033 /* AnimationMenuCustom.m in Sources */,
 				B23016FB19D85A6A00D570B8 /* DescriptionView.m in Sources */,
 				B2CC8EEF19B3826500BD1ABF /* PokemonType.m in Sources */,
 				B213CC3719ED2C5E00B79AF1 /* ConfigManager.m in Sources */,
 				B2CC859219B36D8E00BD1ABF /* ViewController.m in Sources */,
 				B2C8DB5319C303930095DE72 /* BaseStatsView.m in Sources */,
+				B2D0F0AB1A2EA58D009CBF0F /* ZipManager.m in Sources */,
+				B2D0F0A91A2EA58D009CBF0F /* zip.c in Sources */,
 				B2C8DB5019C303660095DE72 /* EvolutionsView.m in Sources */,
 				B2CC858919B36D8E00BD1ABF /* AppDelegate.m in Sources */,
 				B2CC861A19B36E3500BD1ABF /* ContentGuideView.m in Sources */,
 				B2CC862019B36E3500BD1ABF /* ContentGuideViewRowHeader.m in Sources */,
 				B2E1562D19D083AC0084C8FF /* DetailViewController.m in Sources */,
+				B2D0F0A61A2EA58D009CBF0F /* ioapi.c in Sources */,
 				B2C8DB5619C303AD0095DE72 /* DetailView.m in Sources */,
 				B213CC3419ED2A5700B79AF1 /* ConfigApp.m in Sources */,
 				B2CC861819B36E3500BD1ABF /* PromoSlidesView.m in Sources */,
 				B2CC8EEB19B381B500BD1ABF /* SQLiteManager.m in Sources */,
 				B2137B0E19BD39A000184C56 /* SearchViewController.m in Sources */,
 				B2D2B90819E97AA50052F166 /* Utils.m in Sources */,
+				B2D0F0A81A2EA58D009CBF0F /* unzip.c in Sources */,
 				B209DBE119D6A591007CEB2C /* CustomNavigationBar.m in Sources */,
 				B2EDFED319EE416E0055D4E7 /* SplashScreenViewController.m in Sources */,
 				B2E1562219D017E40084C8FF /* PosterDetail.m in Sources */,

@@ -7,6 +7,7 @@
 //
 
 #import "Utils.h"
+#import "ZipManager.h"
 // #import <AdSupport/ASIdentifierManager.h>
 // #include <CommonCrypto/CommonDigest.h>
 
@@ -277,6 +278,33 @@
             return db_name_string_it;
     }
 }
+
++ (void) downloadFile:(NSString*)urlFile andSaveWithName:(NSString*)nameFile{
+    NSURL *contributorsUrl = [NSURL URLWithString:urlFile];
+    NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:contributorsUrl cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:60];
+    NSHTTPURLResponse *response = nil;
+    NSError *error = nil;
+    NSData *urlData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    if ( urlData )
+    {
+        NSArray       *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString  *documentsDirectory = [paths objectAtIndex:0];
+        
+        NSString  *filePath = [NSString stringWithFormat:@"%@/%@.zip", documentsDirectory,nameFile];
+        NSString *fileDec = [NSString stringWithFormat:@"%@/%@", documentsDirectory,nameFile];
+        [urlData writeToFile:filePath atomically:YES];
+        if ([ZipManager unzipFile:filePath withDecPath:fileDec]) {
+            [Utils removeFileWithPath:filePath];
+        }
+    }
+    urlData = nil;
+}
+
++ (BOOL) removeFileWithPath:(NSString*)path{
+    NSError *error=nil;
+    BOOL succes = [[NSFileManager defaultManager]removeItemAtPath:path error:&error];
+    return succes;
+}
 /*
 + (NSString *) admobDeviceID
 {
@@ -293,4 +321,5 @@
     return  output;
     
 }*/
+
 @end
