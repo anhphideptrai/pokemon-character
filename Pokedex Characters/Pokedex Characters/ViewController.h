@@ -7,15 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ASOBounceButtonView.h"
-#import "ASOBounceButtonViewDelegate.h"
-#import "AnimationMenuCustom.h"
 #import "ContentGuideView.h"
 #import "GADBannerView.h"
 #import "GADRequest.h"
 
-@interface ViewController : UIViewController <ContentGuideViewDataSource, ContentGuideViewDelegate, ASOBounceButtonViewDelegate>
-@property (strong, nonatomic) AnimationMenuCustom *menuItemView;
+@interface ViewController : UIViewController <ContentGuideViewDataSource, ContentGuideViewDelegate>
 @property (strong, nonatomic) IBOutlet ContentGuideView *contentGuideView;
 @property (weak, nonatomic) IBOutlet GADBannerView *bannerView;
 

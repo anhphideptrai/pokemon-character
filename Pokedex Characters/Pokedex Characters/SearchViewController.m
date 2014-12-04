@@ -11,7 +11,6 @@
 #import "LessonObject.h"
 #import "Constant.h"
 #import "SQLiteManager.h"
-#import "DetailViewController.h"
 #import "AppDelegate.h"
 
 @interface SearchViewController (){

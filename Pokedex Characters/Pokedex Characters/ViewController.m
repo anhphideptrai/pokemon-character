@@ -11,7 +11,6 @@
 #import "PromoSlidesView.h"
 #import "Constant.h"
 #import "SearchViewController.h"
-#import "DetailViewController.h"
 #import "AppDelegate.h"
 #import "AppObject.h"
 #import "LessonObject.h"
@@ -21,7 +20,6 @@
     NSMutableArray *result;
     AppDelegate *appDelegate;
 }
-@property (nonatomic) ASOAnimationStyle progressiveORConcurrentStyle;
 - (IBAction)clickSearch:(id)sender;
 @end
 
@@ -36,24 +34,6 @@
     result = [[SQLiteManager getInstance] getHowToDrawAllApps];
     [self.contentGuideView setBackground:[UIImage imageNamed:@"scrollview_bg.png"]];
     [self.contentGuideView reloadData];
-    self.menuItemView = [[[NSBundle mainBundle] loadNibNamed:NAME_XIB_ANIMATION_MENU_VIEW_CONTROLLER owner:self options:nil] lastObject];
-    [self.menuItemView setBackgroundColor:[UIColor colorWithRed:0.0f/255.0f green:0.0f/255.0f blue:0.0f/255.0f alpha:0.7f]];
-    NSArray *arrMenuItemButtons = [[NSArray alloc] initWithObjects:self.menuItemView.menuItem1,
-                                   self.menuItemView.menuItem2,
-                                   self.menuItemView.menuItem3,
-                                   self.menuItemView.menuItem4,
-                                   nil]; // Add all of the defined 'menu item button' to 'menu item view'
-    [self.menuItemView addBounceButtons:arrMenuItemButtons];
-    
-    // Set the bouncing distance, speed and fade-out effect duration here. Refer to the ASOBounceButtonView public properties
-    [self.menuItemView setSpeed:[NSNumber numberWithFloat:0.2f]];
-    [self.menuItemView setBouncingDistance:[NSNumber numberWithFloat:0.3f]];
-    
-    [self.menuItemView setAnimationStyle:ASOAnimationStyleRiseProgressively];
-    self.progressiveORConcurrentStyle = ASOAnimationStyleRiseProgressively;
-    
-    // Set as delegate of 'menu item view'
-    [self.menuItemView setDelegate:self];
     // Add Admob
   //  if (![appDelegate.config.statusApp isEqualToString:STATUS_APP_DEFAUL]) {
         // Replace this ad unit ID with your own ad unit ID.
@@ -69,12 +49,6 @@
 
 - (BOOL)prefersStatusBarHidden {
     return YES;
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - ContentGuideViewDataSource methods

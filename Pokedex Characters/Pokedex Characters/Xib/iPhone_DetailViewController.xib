@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController">
+            <connections>
+                <outlet property="contentView" destination="opi-tl-Ues" id="1A2-6K-YnU"/>
+                <outlet property="lbSteps" destination="YI7-Ka-DBo" id="keS-9s-Ikj"/>
+                <outlet property="view" destination="iN0-l3-epB" id="xpk-PB-KTo"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tdo-ir-JhI">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="30"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reading_topnav_background.png" translatesAutoresizingMaskIntoConstraints="NO" id="Djb-B8-t2F">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="30"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3/13" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YI7-Ka-DBo">
+                            <rect key="frame" x="60" y="0.0" width="540" height="30"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RKw-Yo-dYV">
+                            <rect key="frame" x="9" y="2" width="26" height="26"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="26" id="Ush-Ix-q17"/>
+                                <constraint firstAttribute="height" constant="26" id="njp-ea-YFd"/>
+                            </constraints>
+                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <state key="normal" image="topnav_back_grey.png">
+                                <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="actionBack:" destination="-1" eventType="touchUpInside" id="ky4-eK-M2T"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KfZ-1H-rBb">
+                            <rect key="frame" x="0.0" y="0.0" width="60" height="30"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="60" id="CNa-Qg-U0A"/>
+                                <constraint firstAttribute="height" constant="30" id="o9X-aJ-Sbz"/>
+                            </constraints>
+                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <state key="normal" title="Button">
+                                <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="actionBack:" destination="-1" eventType="touchUpInside" id="ISE-P7-wkF"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="YI7-Ka-DBo" firstAttribute="top" secondItem="Tdo-ir-JhI" secondAttribute="top" id="3lZ-Id-r3k"/>
+                        <constraint firstItem="Djb-B8-t2F" firstAttribute="top" secondItem="Tdo-ir-JhI" secondAttribute="top" id="7m4-sg-XVy"/>
+                        <constraint firstItem="Djb-B8-t2F" firstAttribute="leading" secondItem="Tdo-ir-JhI" secondAttribute="leading" id="CXx-aI-DIl"/>
+                        <constraint firstAttribute="bottom" secondItem="Djb-B8-t2F" secondAttribute="bottom" id="Egr-iS-s74"/>
+                        <constraint firstItem="YI7-Ka-DBo" firstAttribute="leading" secondItem="KfZ-1H-rBb" secondAttribute="trailing" id="EhK-H9-WNu"/>
+                        <constraint firstItem="RKw-Yo-dYV" firstAttribute="leading" secondItem="Tdo-ir-JhI" secondAttribute="leading" constant="9" id="Sq0-9B-Gzx"/>
+                        <constraint firstAttribute="trailing" secondItem="YI7-Ka-DBo" secondAttribute="trailing" id="TrP-Ox-dB8"/>
+                        <constraint firstItem="KfZ-1H-rBb" firstAttribute="leading" secondItem="Tdo-ir-JhI" secondAttribute="leading" id="Url-dF-q3u"/>
+                        <constraint firstAttribute="height" constant="30" id="afY-MQ-2en"/>
+                        <constraint firstAttribute="trailing" secondItem="Djb-B8-t2F" secondAttribute="trailing" id="eI8-aV-jit"/>
+                        <constraint firstItem="KfZ-1H-rBb" firstAttribute="top" secondItem="Tdo-ir-JhI" secondAttribute="top" id="iCe-kN-Xne"/>
+                        <constraint firstAttribute="bottom" secondItem="YI7-Ka-DBo" secondAttribute="bottom" id="qiw-cr-uQp"/>
+                        <constraint firstItem="RKw-Yo-dYV" firstAttribute="top" secondItem="Tdo-ir-JhI" secondAttribute="top" constant="2" id="z7x-UH-H7m"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="opi-tl-Ues">
+                    <rect key="frame" x="0.0" y="30" width="600" height="520"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yha-4q-gbw">
+                    <rect key="frame" x="140" y="550" width="320" height="50"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="320" id="B8l-Ab-F0M"/>
+                        <constraint firstAttribute="height" constant="50" id="zmY-ia-xmI"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Tdo-ir-JhI" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="1D0-5S-pi2"/>
+                <constraint firstAttribute="bottom" secondItem="opi-tl-Ues" secondAttribute="bottom" constant="50" id="5u5-QM-qCd"/>
+                <constraint firstAttribute="centerX" secondItem="yha-4q-gbw" secondAttribute="centerX" id="IEN-Jw-U1Q"/>
+                <constraint firstItem="opi-tl-Ues" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="NMG-2k-lf8"/>
+                <constraint firstAttribute="trailing" secondItem="Tdo-ir-JhI" secondAttribute="trailing" id="RMg-K6-w7q"/>
+                <constraint firstAttribute="trailing" secondItem="opi-tl-Ues" secondAttribute="trailing" id="XsV-ON-rFv"/>
+                <constraint firstItem="yha-4q-gbw" firstAttribute="top" secondItem="opi-tl-Ues" secondAttribute="bottom" id="jci-PA-msr"/>
+                <constraint firstItem="opi-tl-Ues" firstAttribute="top" secondItem="Tdo-ir-JhI" secondAttribute="bottom" id="kEP-8y-Kmp"/>
+                <constraint firstItem="Tdo-ir-JhI" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="tDK-Im-86h"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="reading_topnav_background.png" width="5" height="66"/>
+        <image name="topnav_back_grey.png" width="58" height="24"/>
+    </resources>
+</document>

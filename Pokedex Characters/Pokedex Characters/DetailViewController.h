@@ -1,13 +1,16 @@
 //
 //  DetailViewController.h
-//  Pokedex Characters
+//  Pokedex Guide
 //
-//  Created by Phi Nguyen on 9/22/14.
+//  Created by Phi Nguyen on 12/4/14.
 //  Copyright (c) 2014 Duc Thien. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "Pokemon.h"
+
 @interface DetailViewController : UIViewController
-- (void)setPokemonForDetail:(Pokemon*)pokemon;
+@property (strong, nonatomic) IBOutlet UILabel *lbSteps;
+- (IBAction)actionBack:(id)sender;
+@property (strong, nonatomic) IBOutlet UIView *contentView;
+
 @end
