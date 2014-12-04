@@ -41,111 +41,6 @@ static SQLiteManager *thisInstance;
         [fileManager copyItemAtPath:resourcePath toPath:_databasePath error:&error];
     }
 }
-- (NSMutableArray*)getArrPokemonWithType:(NSString*)type andSearchKey:(NSString*)searchKey{
-    [self copyDatabase];
-    NSMutableArray *resultArray = [[NSMutableArray alloc]init];
-    sqlite3_stmt    *statement;
-    const char *dbpath = [_databasePath UTF8String];
-    Pokemon *pokemonItem;
-    if (sqlite3_open(dbpath, &_contactDB) == SQLITE_OK)
-    {
-        NSString *querySQL = [NSString stringWithFormat:@"select * from Pokemon WHERE TYPE LIKE \'%%%@%%\' AND (Name LIKE \'%%%@%%\' OR IDPokemon LIKE \'%%%@%%\') group by iDPokemon", type, searchKey, searchKey];
-        const char *query_stmt = [querySQL UTF8String];
-        if (sqlite3_prepare_v2(_contactDB,
-                               query_stmt, -1, &statement, NULL) == SQLITE_OK)
-        {
-            while (sqlite3_step(statement) == SQLITE_ROW)
-            {
-                pokemonItem = [[Pokemon alloc] init];
-                pokemonItem.iD = [NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 0)];
-                pokemonItem.abilities = [[NSMutableArray alloc] initWithArray:[[NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 1)] componentsSeparatedByString:@" "]];
-                pokemonItem.weight = [NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 2)];
-                pokemonItem.height = [NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 3)];
-                pokemonItem.name = [NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 4)];
-                pokemonItem.ThumbnailImage = [NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 5)];
-                pokemonItem.weakness = [[NSMutableArray alloc] initWithArray:[[NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 6)] componentsSeparatedByString:@"---"]];
-                pokemonItem.type = [[NSMutableArray alloc] initWithArray:[[NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 7)] componentsSeparatedByString:@"---"]];
-                pokemonItem.descriptionX = [NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 8)];
-                pokemonItem.descriptionY = [NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 9)];
-                pokemonItem.evolutions = [[NSMutableArray alloc] initWithArray:[[NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 10)] componentsSeparatedByString:@"---"]];
-                pokemonItem.baseStats = [[NSMutableArray alloc] initWithArray:[[NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 11)] componentsSeparatedByString:@"---"]];
-                [resultArray addObject:pokemonItem];
-            }
-            sqlite3_finalize(statement);
-        }
-        
-        
-        sqlite3_close(_contactDB);
-    }
-    return resultArray;
-}
-- (NSMutableArray*)getPokemonWithAllTypes{
-    NSMutableArray *resultArray = [[NSMutableArray alloc]init];
-    NSArray *arrType = [self getTypes];
-    for (NSString *type in arrType) {
-        PokemonType *pokemonType = [[PokemonType alloc] init];
-        [pokemonType setType:type];
-        [pokemonType setPokemons:[self getArrPokemonWithType:pokemonType.type andSearchKey:@""]];
-        [resultArray addObject:pokemonType];
-    }
-    return resultArray;
-
-}
-- (NSMutableArray*)getTypes{
-    [self copyDatabase];
-    NSMutableArray *resultArray = [[NSMutableArray alloc]init];
-    sqlite3_stmt    *statement;
-    const char *dbpath = [_databasePath UTF8String];
-    if (sqlite3_open(dbpath, &_contactDB) == SQLITE_OK)
-    {
-        NSString *querySQL = [NSString stringWithFormat:@"select * from Type group by Type"];
-        const char *query_stmt = [querySQL UTF8String];
-        if (sqlite3_prepare_v2(_contactDB,
-                               query_stmt, -1, &statement, NULL) == SQLITE_OK)
-        {
-            while (sqlite3_step(statement) == SQLITE_ROW)
-            {
-                [resultArray addObject:[NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 0)]];
-            }
-            sqlite3_finalize(statement);
-        }
-        
-        
-        sqlite3_close(_contactDB);
-    }
-    return resultArray;
-
-}
-- (NSMutableArray*)getArrPokemonWithSearchKey:(NSString*)searchKey{
-    NSMutableArray *resultArray = [[NSMutableArray alloc]init];
-    NSArray *arrType = [self getTypes];
-    for (NSString *type in arrType) {
-        PokemonType *pokemonType = [[PokemonType alloc] init];
-        [pokemonType setType:type];
-        [pokemonType setPokemons:[self getArrPokemonWithType:pokemonType.type andSearchKey:searchKey]];
-        if (pokemonType.pokemons.count > 0) {
-            [resultArray addObject:pokemonType];
-        }
-    }
-    return resultArray;
-}
-- (Pokemon*)getPokemonWithID:(NSString*)iDPokemon{
-    Pokemon* result = nil;
-    NSArray* arr = [self getArrPokemonWithType:@"" andSearchKey:iDPokemon];
-    if (arr && arr.count > 0) {
-        result = [arr objectAtIndex:0];
-    }
-    return result;
-}
-- (NSMutableArray*)getArrPokemonWithArrID:(NSArray*)arrID
-{
-    NSMutableArray *result = [[NSMutableArray alloc] init];
-    for (NSString*iD in arrID) {
-        [result addObject:[self getPokemonWithID:iD]];
-    }
-    return result;
-}
-
 - (NSMutableArray*)getHowToDrawAllApps{
     [self copyDatabase];
     NSMutableArray *resultArray = [[NSMutableArray alloc]init];
@@ -156,7 +51,50 @@ static SQLiteManager *thisInstance;
     }
     return resultArray;
 }
-
+- (NSMutableArray*)getArrHowToDrawAppsWithSearchKey:(NSString*)searchKey{
+    NSMutableArray *resultArray = [[NSMutableArray alloc]init];
+    NSArray *arrApps = [self getAllIDApps];
+    for (AppObject *app in arrApps) {
+        [app setLessons:[self getArrLessonWithIDApp:app.iD andSearchKey:searchKey]];
+        if (app.lessons.count > 0) {
+            [resultArray addObject:app];
+        }
+    }
+    return resultArray;
+}
+- (NSMutableArray*)getArrLessonWithIDApp:(NSString*)iDApp andSearchKey:(NSString*)searchKey{
+    [self copyDatabase];
+    NSMutableArray *resultArray = [[NSMutableArray alloc]init];
+    sqlite3_stmt    *statement;
+    const char *dbpath = [_databasePath UTF8String];
+    LessonObject *lesson;
+    if (sqlite3_open(dbpath, &_contactDB) == SQLITE_OK)
+    {
+        NSString *querySQL = [NSString stringWithFormat:@"select * from LESSON WHERE ID_APP = \"%@\" AND NAME LIKE \'%%%@%%\' group by NAME", iDApp, searchKey];
+        const char *query_stmt = [querySQL UTF8String];
+        if (sqlite3_prepare_v2(_contactDB,
+                               query_stmt, -1, &statement, NULL) == SQLITE_OK)
+        {
+            while (sqlite3_step(statement) == SQLITE_ROW)
+            {
+                lesson = [[LessonObject alloc] init];
+                lesson.appID = [NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 0)];
+                lesson.iD = [NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 1)];
+                lesson.name = [NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 2)];
+                lesson.steps = sqlite3_column_int(statement, 3);
+                lesson.rate = sqlite3_column_int(statement, 4);
+                lesson.urlIcon = [NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 5)];
+                lesson.downloaded = sqlite3_column_int(statement, 6);
+                [resultArray addObject:lesson];
+            }
+            sqlite3_finalize(statement);
+        }
+        
+        
+        sqlite3_close(_contactDB);
+    }
+    return resultArray;
+}
 - (NSMutableArray*)getAllLessonOfAppWithIDApp:(NSString*)iDApp{
     [self copyDatabase];
     NSMutableArray *resultArray = [[NSMutableArray alloc]init];
@@ -197,7 +135,7 @@ static SQLiteManager *thisInstance;
     const char *dbpath = [_databasePath UTF8String];
     if (sqlite3_open(dbpath, &_contactDB) == SQLITE_OK)
     {
-        NSString *querySQL = [NSString stringWithFormat:@"select * from APP group by ID_APP"];
+        NSString *querySQL = [NSString stringWithFormat:@"select * from APP order by NAME"];
         const char *query_stmt = [querySQL UTF8String];
         if (sqlite3_prepare_v2(_contactDB,
                                query_stmt, -1, &statement, NULL) == SQLITE_OK)

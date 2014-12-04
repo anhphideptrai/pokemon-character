@@ -7,8 +7,8 @@
 //
 
 #import "SearchViewController.h"
-#import "Pokemon.h"
-#import "PokemonType.h"
+#import "AppObject.h"
+#import "LessonObject.h"
 #import "Constant.h"
 #import "SQLiteManager.h"
 #import "DetailViewController.h"
@@ -68,7 +68,7 @@
 }
 #pragma mark - ContentGuideViewDataSource methods
 - (NSUInteger) numberOfPostersInCarousel:(ContentGuideView*) contentGuide atRowIndex:(NSUInteger) rowIndex{
-    return ((PokemonType*)[result objectAtIndex:rowIndex]).pokemons.count;
+    return ((AppObject*)[result objectAtIndex:rowIndex]).lessons.count;
 }
 - (NSUInteger) numberOfRowsInContentGuide:(ContentGuideView*) contentGuide{
     return result.count;
@@ -90,8 +90,8 @@
     if (!header) {
         header = [[ContentGuideViewRowHeader alloc] initWithStyle:ContentGuideViewRowHeaderStyleDefault reuseIdentifier:identifier];
     }
-    NSString *type = ((PokemonType*)[result objectAtIndex:rowIndex]).type;
-    [header  setTextTitleRowHeader:[[Utils getStringType:type withLanguage:appDelegate.languageDefault] uppercaseString]];
+    AppObject *app = (AppObject*)[result objectAtIndex:rowIndex];
+    [header  setTextTitleRowHeader:[app.name uppercaseString]];
     [header setBackground:[UIImage imageNamed:@"headercell_bg.png"]];
     return header;
 }
@@ -104,9 +104,9 @@
     if (!posterView) {
         posterView = [[ContentGuideViewRowCarouselViewPosterView alloc] initWithStyle:ContentGuideViewRowCarouselViewPosterViewStyleDefault reuseIdentifier:identifier];
     }
-    Pokemon *pokemon = [((PokemonType*)[result objectAtIndex:rowIndex]).pokemons objectAtIndex:index];
-    [posterView setURLImagePoster:pokemon.ThumbnailImage placeholderImage:[UIImage imageNamed:@"icon_placeholder.png"]];
-    [posterView setTextTitlePoster:[NSString stringWithFormat:@"%@\n%@%@",pokemon.name, [Utils getStringOf:ORDER_ID_NAME_STRING withLanguage:appDelegate.languageDefault], pokemon.iD]];
+    LessonObject *lesson = [((AppObject*)[result objectAtIndex:rowIndex]).lessons objectAtIndex:index];
+    [posterView setURLImagePoster:lesson.urlIcon placeholderImage:[UIImage imageNamed:@"icon_placeholder.png"]];
+    [posterView setTextTitlePoster:lesson.name];
     return posterView;
     
 }
@@ -134,9 +134,9 @@
 - (void)         contentGuide:(ContentGuideView*) contentGuide
 didSelectPosterViewAtRowIndex:(NSUInteger) rowIndex
                   posterIndex:(NSUInteger) index{
-    DetailViewController *detailViewController = [[DetailViewController alloc] init];
-    [detailViewController setPokemonForDetail:[((PokemonType*)[result objectAtIndex:rowIndex]).pokemons objectAtIndex:index]];
-    [self.navigationController pushViewController:detailViewController animated:YES];
+//    DetailViewController *detailViewController = [[DetailViewController alloc] init];
+//    [detailViewController setPokemonForDetail:[((PokemonType*)[result objectAtIndex:rowIndex]).pokemons objectAtIndex:index]];
+//    [self.navigationController pushViewController:detailViewController animated:YES];
     
 }
 - (IBAction)clickBack:(id)sender {
@@ -161,7 +161,7 @@ didSelectPosterViewAtRowIndex:(NSUInteger) rowIndex
               [NSCharacterSet whitespaceAndNewlineCharacterSet]] isEqualToString:@""]) {
             [result removeAllObjects];
         }else{
-            result = [[SQLiteManager getInstance] getArrPokemonWithSearchKey:searchText];
+            result = [[SQLiteManager getInstance] getArrHowToDrawAppsWithSearchKey:searchText];
             
         }
         dispatch_async(dispatch_get_main_queue(), ^{

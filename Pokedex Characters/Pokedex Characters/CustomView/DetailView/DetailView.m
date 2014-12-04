@@ -92,7 +92,7 @@
     return posterDetail.posterImageView.image;
 }
 - (void)clickEvolutionItem:(NSString*)iDPokemon{
-    Pokemon *pokemon = [[SQLiteManager getInstance] getPokemonWithID:iDPokemon];
+    Pokemon *pokemon = nil;
     if (pokemon) {
         [self setData:pokemon];
         if (self.delegate && [self.delegate respondsToSelector:@selector(didChangeCurrentPokemon:withNewPokemon:)]) {

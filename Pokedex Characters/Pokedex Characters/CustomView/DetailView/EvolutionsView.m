@@ -50,7 +50,7 @@
     for (NSString *item in arrPokemonID) {
         [arrID addObject:[[[item stringByReplacingOccurrencesOfString:@"N.º" withString:@""] stringByReplacingOccurrencesOfString:@"N°" withString:@""] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
     }
-    pokemons = [[SQLiteManager getInstance] getArrPokemonWithArrID:arrID];
+    pokemons = nil;
     bgView      = [[UIImageView alloc] initWithFrame:BG_FRAME];
     lbEvolution = [[UILabel alloc] initWithFrame:LB_EVOLUTION_FRAME];
     scrollView  = [[UIScrollView alloc] initWithFrame:SCROLL_ICON_FRAME];
