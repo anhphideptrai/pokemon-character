@@ -14,6 +14,7 @@
 #import "AppDelegate.h"
 #import "AppObject.h"
 #import "LessonObject.h"
+#import "DetailViewController.h"
 
 @interface ViewController () <PromoSlidesViewDataSource, PromoSlidesViewDelegate>
 {
@@ -129,9 +130,8 @@
 - (void)         contentGuide:(ContentGuideView*) contentGuide
 didSelectPosterViewAtRowIndex:(NSUInteger) rowIndex
                   posterIndex:(NSUInteger) index{
-//    DetailViewController *detailViewController = [[DetailViewController alloc] init];
-//    [detailViewController setPokemonForDetail:[((AppObject*)[result objectAtIndex:rowIndex]).lessons objectAtIndex:index]];
-//    [self.navigationController pushViewController:detailViewController animated:YES];
+    DetailViewController *detailViewController = [[DetailViewController alloc] initWithNibName:NAME_XIB_FILE_DETAIL_VIEW_CONTROLLER bundle:nil];
+    [self.navigationController pushViewController:detailViewController animated:YES];
 }
 
 #pragma mark - PromoSlidesViewDataSource methods

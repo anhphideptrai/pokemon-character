@@ -12,6 +12,7 @@
 #import "Constant.h"
 #import "SQLiteManager.h"
 #import "AppDelegate.h"
+#import "DetailViewController.h"
 
 @interface SearchViewController (){
     NSMutableArray *result;
@@ -64,6 +65,10 @@
 }
 - (BOOL)prefersStatusBarHidden {
     return YES;
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    [self.view endEditing:NO];
 }
 #pragma mark - ContentGuideViewDataSource methods
 - (NSUInteger) numberOfPostersInCarousel:(ContentGuideView*) contentGuide atRowIndex:(NSUInteger) rowIndex{
@@ -133,9 +138,8 @@
 - (void)         contentGuide:(ContentGuideView*) contentGuide
 didSelectPosterViewAtRowIndex:(NSUInteger) rowIndex
                   posterIndex:(NSUInteger) index{
-//    DetailViewController *detailViewController = [[DetailViewController alloc] init];
-//    [detailViewController setPokemonForDetail:[((PokemonType*)[result objectAtIndex:rowIndex]).pokemons objectAtIndex:index]];
-//    [self.navigationController pushViewController:detailViewController animated:YES];
+    DetailViewController *detailViewController = [[DetailViewController alloc] initWithNibName:NAME_XIB_FILE_DETAIL_VIEW_CONTROLLER bundle:nil];
+    [self.navigationController pushViewController:detailViewController animated:YES];
     
 }
 - (IBAction)clickBack:(id)sender {
