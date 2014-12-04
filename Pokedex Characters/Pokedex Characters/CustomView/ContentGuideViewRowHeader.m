@@ -17,7 +17,6 @@
 
 }
 @property (nonatomic, retain) UILabel *lbTitleRowHeader;
-@property (nonatomic, retain) UIImageView *iconHeader;
 
 - (void)initCommon;
 @end
@@ -40,9 +39,6 @@
         fontTitleRowHeader = FONT_TITLE_ROW_HEADER_DEFAULT;
         [self addSubview:self.lbTitleRowHeader];
         pandingLeft = PANDING_LEFT_CONTENT_GUIDE_ROW_HEADER_DEFAULT;
-        self.iconHeader = [[UIImageView alloc] init];
-        [self.iconHeader setBackgroundColor:[UIColor clearColor]];
-        [self addSubview:self.iconHeader];
 
     }
     return self;
@@ -63,12 +59,6 @@
         [self insertSubview:backgroundView atIndex:0];
     }
     [backgroundView setImage:image];
-}
-
-- (void) setIconLeft: (UIImage *)image{
-    if (image) {
-        [self.iconHeader setImage:image];
-    }
 }
 
 - (void)initCommon{
@@ -95,13 +85,7 @@
     pandingLeft = _pandingLeft;
     CGRect frame = self.frame;
     frame.origin.x = pandingLeft;
-    frame.origin.y = 2;
-    frame.size.height -= 4;
-    frame.size.width = frame.size.height;
-    [self.iconHeader setFrame:frame];
-    frame = self.frame;
-    frame.origin.x = (self.iconHeader.frame.size.width + pandingLeft + 10);
-    frame.size.width = self.frame.size.width - self.iconHeader.frame.origin.x;
+    frame.size.width = self.frame.size.width - pandingLeft;
     [self.lbTitleRowHeader setFrame:frame];
 
 }

@@ -93,7 +93,6 @@
     NSString *type = ((PokemonType*)[result objectAtIndex:rowIndex]).type;
     [header  setTextTitleRowHeader:[[Utils getStringType:type withLanguage:appDelegate.languageDefault] uppercaseString]];
     [header setBackground:[UIImage imageNamed:@"headercell_bg.png"]];
-    [header setIconLeft:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png", [[Utils getStringType:type withLanguage:LanguageSettingEN] lowercaseString]]]];
     return header;
 }
 

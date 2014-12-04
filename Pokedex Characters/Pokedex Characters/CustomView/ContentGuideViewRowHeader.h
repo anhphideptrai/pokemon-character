@@ -22,5 +22,4 @@ typedef enum {
 - (void) setBackgroundRowHeader:(UIColor *)backgroundColor;
 - (void) setPandingLeftTitle:(CGFloat) pandingLeft;
 - (void) setBackground:(UIImage *)image;
-- (void) setIconLeft: (UIImage *)image;
 @end

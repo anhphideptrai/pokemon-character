@@ -36,9 +36,6 @@
     result = [[SQLiteManager getInstance] getHowToDrawAllApps];
     [self.contentGuideView setBackground:[UIImage imageNamed:@"scrollview_bg.png"]];
     [self.contentGuideView reloadData];
-    [self.menuButton setOnStateImageName:@"bottomnav_settings_normal.png"];
-    [self.menuButton setOffStateImageName:@"bottomnav_settings_normal.png"];
-    [self.menuButton initAnimationWithFadeEffectEnabled:YES];
     self.menuItemView = [[[NSBundle mainBundle] loadNibNamed:NAME_XIB_ANIMATION_MENU_VIEW_CONTROLLER owner:self options:nil] lastObject];
     [self.menuItemView setBackgroundColor:[UIColor colorWithRed:0.0f/255.0f green:0.0f/255.0f blue:0.0f/255.0f alpha:0.7f]];
     NSArray *arrMenuItemButtons = [[NSArray alloc] initWithObjects:self.menuItemView.menuItem1,
@@ -73,44 +70,11 @@
 - (BOOL)prefersStatusBarHidden {
     return YES;
 }
-- (void)viewDidAppear:(BOOL)animated
-{
-    // Tell 'menu button' position to 'menu item view'
-    [self.menuItemView setAnimationStartFromHere:self.menuButton.frame];
-}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-
-- (IBAction)menuButtonAction:(id)sender
-{
-    if ([sender isOn]) {
-        // Show 'menu item view' and expand its 'menu item button'
-        [self.menuButton addCustomView:self.menuItemView];
-        [self.menuItemView expandWithAnimationStyle:self.progressiveORConcurrentStyle];
-    }
-    else {
-        // Collapse all 'menu item button' and remove 'menu item view'
-        [self.menuItemView collapseWithAnimationStyle:self.progressiveORConcurrentStyle];
-        [self.menuButton removeCustomView:self.menuItemView interval:[self.menuItemView.collapsedViewDuration doubleValue]];
-    }
-}
-- (void)didSelectBounceButtonAtIndex:(NSUInteger)index
-{
-    [self.menuButton sendActionsForControlEvents:UIControlEventTouchUpInside];
-    if (index < LanguageSettingEN || index > LanguageSettingIT || index == appDelegate.languageDefault) return;
-    [[NSUserDefaults standardUserDefaults] setValue:@(index) forKey:LANGUAGE_SETTING_TAG];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    appDelegate.languageDefault = (LanguageSetting)index;
-    result = [[SQLiteManager getInstance] getHowToDrawAllApps];
-    [self.contentGuideView holdPositionReloadData];
-}
-
-- (IBAction)sendActionForMenuButton:(id)sender{
-    [self.menuButton sendActionsForControlEvents:UIControlEventTouchUpInside];
 }
 
 #pragma mark - ContentGuideViewDataSource methods
@@ -140,7 +104,6 @@
     AppObject *app = (AppObject*)[result objectAtIndex:rowIndex];
     [header  setTextTitleRowHeader:[app.name uppercaseString]];
     [header setBackground:[UIImage imageNamed:@"headercell_bg.png"]];
-    //[header setIconLeft:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png", [[Utils getStringType:type withLanguage:LanguageSettingEN] lowercaseString]]]];
     return header;
 }
 
@@ -192,9 +155,9 @@
 - (void)         contentGuide:(ContentGuideView*) contentGuide
 didSelectPosterViewAtRowIndex:(NSUInteger) rowIndex
                   posterIndex:(NSUInteger) index{
-    DetailViewController *detailViewController = [[DetailViewController alloc] init];
-    [detailViewController setPokemonForDetail:[((AppObject*)[result objectAtIndex:rowIndex]).lessons objectAtIndex:index]];
-    [self.navigationController pushViewController:detailViewController animated:YES];
+//    DetailViewController *detailViewController = [[DetailViewController alloc] init];
+//    [detailViewController setPokemonForDetail:[((AppObject*)[result objectAtIndex:rowIndex]).lessons objectAtIndex:index]];
+//    [self.navigationController pushViewController:detailViewController animated:YES];
 }
 
 #pragma mark - PromoSlidesViewDataSource methods

@@ -338,7 +338,6 @@
     if (!self.delegate || !self.dataSource) return;
     [self.layer removeAllAnimations];
     self.numberRows=[self.dataSource numberOfRowsInContentGuide:self];
-    self.numberRows = self.numberRows > 100 ? ROWS_LIMITED : self.numberRows;
     offsetYOfFirstRow = 0;
     if ([self.delegate respondsToSelector:@selector(offsetYOfFirstRow:)]) {
         offsetYOfFirstRow = [self.delegate offsetYOfFirstRow:self];
