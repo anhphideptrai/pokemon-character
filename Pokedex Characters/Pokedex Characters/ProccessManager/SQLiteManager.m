@@ -8,8 +8,8 @@
 
 #import "SQLiteManager.h"
 #import "PokemonType.h"
-#import "AppDelegate.h"
 
+#define DB_NAME_STRING @"HowToDraw.sqlite"
 @interface SQLiteManager()
 
 @property (strong, nonatomic) NSString *databasePath;
@@ -29,16 +29,15 @@ static SQLiteManager *thisInstance;
     return thisInstance;
 }
 - (void)copyDatabase {
-    AppDelegate *appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSError *error;
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     
-    _databasePath = [documentsDirectory stringByAppendingPathComponent:[Utils getStringOf:DB_NAME_STRING withLanguage:appDelegate.languageDefault]];
+    _databasePath = [documentsDirectory stringByAppendingPathComponent:DB_NAME_STRING];
     
     if ([fileManager fileExistsAtPath:_databasePath] == NO) {
-        NSString *resourcePath = [[NSBundle mainBundle] pathForResource:[Utils getStringOf:DB_NAME_STRING withLanguage:appDelegate.languageDefault] ofType:@""];
+        NSString *resourcePath = [[NSBundle mainBundle] pathForResource:DB_NAME_STRING ofType:@""];
         [fileManager copyItemAtPath:resourcePath toPath:_databasePath error:&error];
     }
 }
@@ -145,5 +144,78 @@ static SQLiteManager *thisInstance;
         [result addObject:[self getPokemonWithID:iD]];
     }
     return result;
+}
+
+- (NSMutableArray*)getHowToDrawAllApps{
+    [self copyDatabase];
+    NSMutableArray *resultArray = [[NSMutableArray alloc]init];
+    NSMutableArray *arrIDApps = [self getAllIDApps];
+    for (AppObject *app in arrIDApps) {
+        [app setLessons:[self getAllLessonOfAppWithIDApp:app.iD]];
+        [resultArray addObject:app];
+    }
+    return resultArray;
+}
+
+- (NSMutableArray*)getAllLessonOfAppWithIDApp:(NSString*)iDApp{
+    [self copyDatabase];
+    NSMutableArray *resultArray = [[NSMutableArray alloc]init];
+    sqlite3_stmt    *statement;
+    const char *dbpath = [_databasePath UTF8String];
+    if (sqlite3_open(dbpath, &_contactDB) == SQLITE_OK)
+    {
+        NSString *querySQL = [NSString stringWithFormat:@"select * from LESSON where ID_APP = \"%@\" order by ID_APP", iDApp];
+        const char *query_stmt = [querySQL UTF8String];
+        if (sqlite3_prepare_v2(_contactDB,
+                               query_stmt, -1, &statement, NULL) == SQLITE_OK)
+        {
+            while (sqlite3_step(statement) == SQLITE_ROW)
+            {
+                LessonObject *lesson = [[LessonObject alloc] init];
+                [lesson setAppID:[NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 0)]];
+                [lesson setID:[NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 1)]];
+                [lesson setName:[NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 2)]];
+                [lesson setSteps:sqlite3_column_int(statement, 3)];
+                [lesson setRate:sqlite3_column_int(statement, 4)];
+                [lesson setUrlIcon:[NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 5)]];
+                [lesson setDownloaded:sqlite3_column_int(statement, 6)];
+                [resultArray addObject:lesson];
+            }
+            sqlite3_finalize(statement);
+        }
+        
+        
+        sqlite3_close(_contactDB);
+    }
+    return resultArray;
+
+}
+- (NSMutableArray*)getAllIDApps{
+    [self copyDatabase];
+    NSMutableArray *resultArray = [[NSMutableArray alloc]init];
+    sqlite3_stmt    *statement;
+    const char *dbpath = [_databasePath UTF8String];
+    if (sqlite3_open(dbpath, &_contactDB) == SQLITE_OK)
+    {
+        NSString *querySQL = [NSString stringWithFormat:@"select * from APP group by ID_APP"];
+        const char *query_stmt = [querySQL UTF8String];
+        if (sqlite3_prepare_v2(_contactDB,
+                               query_stmt, -1, &statement, NULL) == SQLITE_OK)
+        {
+            while (sqlite3_step(statement) == SQLITE_ROW)
+            {
+                AppObject *app = [[AppObject alloc] init];
+                [app setID:[NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 0)]];
+                [app setName:[NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 1)]];
+                [resultArray addObject:app];
+            }
+            sqlite3_finalize(statement);
+        }
+        
+        
+        sqlite3_close(_contactDB);
+    }
+    return resultArray;
+
 }
 @end

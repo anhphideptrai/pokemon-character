@@ -106,6 +106,9 @@
 		B2D0F0AA1A2EA58D009CBF0F /* ZipArchive.mm in Sources */ = {isa = PBXBuildFile; fileRef = B2D0F0A31A2EA58D009CBF0F /* ZipArchive.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B2D0F0AB1A2EA58D009CBF0F /* ZipManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D0F0A51A2EA58D009CBF0F /* ZipManager.m */; };
 		B2D0F0AD1A2EA9A2009CBF0F /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D0F0AC1A2EA9A2009CBF0F /* libz.1.2.5.dylib */; };
+		B2D0F0B31A2FF0A1009CBF0F /* AppObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D0F0B01A2FF0A1009CBF0F /* AppObject.m */; };
+		B2D0F0B41A2FF0A1009CBF0F /* LessonObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D0F0B21A2FF0A1009CBF0F /* LessonObject.m */; };
+		B2D0F0B61A2FF0DC009CBF0F /* HowToDraw.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = B2D0F0B51A2FF0DC009CBF0F /* HowToDraw.sqlite */; };
 		B2D2B90819E97AA50052F166 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D2B90719E97AA50052F166 /* Utils.m */; };
 		B2D40B1619E26603009A3F02 /* iPhone_AnimationMenuCustom.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2D40B1519E26603009A3F02 /* iPhone_AnimationMenuCustom.xib */; };
 		B2E1562219D017E40084C8FF /* PosterDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = B2E1562119D017E40084C8FF /* PosterDetail.m */; };
@@ -258,6 +261,11 @@
 		B2D0F0A41A2EA58D009CBF0F /* ZipManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZipManager.h; path = ProccessManager/ZipManager.h; sourceTree = "<group>"; };
 		B2D0F0A51A2EA58D009CBF0F /* ZipManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZipManager.m; path = ProccessManager/ZipManager.m; sourceTree = "<group>"; };
 		B2D0F0AC1A2EA9A2009CBF0F /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
+		B2D0F0AF1A2FF0A1009CBF0F /* AppObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppObject.h; path = Entry/AppObject.h; sourceTree = "<group>"; };
+		B2D0F0B01A2FF0A1009CBF0F /* AppObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppObject.m; path = Entry/AppObject.m; sourceTree = "<group>"; };
+		B2D0F0B11A2FF0A1009CBF0F /* LessonObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LessonObject.h; path = Entry/LessonObject.h; sourceTree = "<group>"; };
+		B2D0F0B21A2FF0A1009CBF0F /* LessonObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LessonObject.m; path = Entry/LessonObject.m; sourceTree = "<group>"; };
+		B2D0F0B51A2FF0DC009CBF0F /* HowToDraw.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = HowToDraw.sqlite; path = Resources/DB/HowToDraw.sqlite; sourceTree = "<group>"; };
 		B2D2B90619E97AA50052F166 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utils.h; path = Common/Utils.h; sourceTree = "<group>"; };
 		B2D2B90719E97AA50052F166 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Utils.m; path = Common/Utils.m; sourceTree = "<group>"; };
 		B2D40B1519E26603009A3F02 /* iPhone_AnimationMenuCustom.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = iPhone_AnimationMenuCustom.xib; path = CustomView/AnimationMenu/iPhone_AnimationMenuCustom.xib; sourceTree = "<group>"; };
@@ -480,6 +488,7 @@
 		B2CC862819B3795400BD1ABF /* DB */ = {
 			isa = PBXGroup;
 			children = (
+				B2D0F0B51A2FF0DC009CBF0F /* HowToDraw.sqlite */,
 				B2CC92C219E4363F00FE0127 /* 00A2C633-5090-4F9E-A1DA-EF8E508FDC9A */,
 				B2CC92C319E4363F00FE0127 /* 08E7CCA3-E0A7-48FA-8F09-BAEE19B835A9 */,
 				B2CC92C419E4363F00FE0127 /* 020D14C1-66CF-4B4B-9727-6A54C6B7A5F2 */,
@@ -536,6 +545,10 @@
 		B2CC8EDB19B37D9700BD1ABF /* Entry */ = {
 			isa = PBXGroup;
 			children = (
+				B2D0F0AF1A2FF0A1009CBF0F /* AppObject.h */,
+				B2D0F0B01A2FF0A1009CBF0F /* AppObject.m */,
+				B2D0F0B11A2FF0A1009CBF0F /* LessonObject.h */,
+				B2D0F0B21A2FF0A1009CBF0F /* LessonObject.m */,
 				B2CC8EED19B3826500BD1ABF /* PokemonType.h */,
 				B2CC8EEE19B3826500BD1ABF /* PokemonType.m */,
 				B2CC8EF119B382E200BD1ABF /* Pokemon.h */,
@@ -759,6 +772,7 @@
 				B2CC8ECF19B37D3700BD1ABF /* poison.png in Resources */,
 				B24EF6B519BA313C00A56926 /* topnav_back_grey@2x~ipad.png in Resources */,
 				B2CC8EB719B37D3700BD1ABF /* water.png in Resources */,
+				B2D0F0B61A2FF0DC009CBF0F /* HowToDraw.sqlite in Resources */,
 				B2CC8EB919B37D3700BD1ABF /* dark.png in Resources */,
 				B2CC859419B36D8E00BD1ABF /* Images.xcassets in Resources */,
 				B2E1562519D082AB0084C8FF /* gradient.png in Resources */,
@@ -831,6 +845,7 @@
 				B2D0F0A71A2EA58D009CBF0F /* mztools.c in Sources */,
 				B209DBE419D6ECDE007CEB2C /* TypeView.m in Sources */,
 				B2D0F0AA1A2EA58D009CBF0F /* ZipArchive.mm in Sources */,
+				B2D0F0B41A2FF0A1009CBF0F /* LessonObject.m in Sources */,
 				B227793419E231AF000B1033 /* AnimationMenuCustom.m in Sources */,
 				B23016FB19D85A6A00D570B8 /* DescriptionView.m in Sources */,
 				B2CC8EEF19B3826500BD1ABF /* PokemonType.m in Sources */,
@@ -856,6 +871,7 @@
 				B2EDFED319EE416E0055D4E7 /* SplashScreenViewController.m in Sources */,
 				B2E1562219D017E40084C8FF /* PosterDetail.m in Sources */,
 				B2CC861E19B36E3500BD1ABF /* ContentGuideViewRowCarouselViewPosterView.m in Sources */,
+				B2D0F0B31A2FF0A1009CBF0F /* AppObject.m in Sources */,
 				B2CC858519B36D8E00BD1ABF /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

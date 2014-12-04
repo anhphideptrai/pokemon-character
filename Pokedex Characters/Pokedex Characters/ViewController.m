@@ -9,12 +9,12 @@
 #import "ViewController.h"
 #import "SQLiteManager.h"
 #import "PromoSlidesView.h"
-#import "PokemonType.h"
-#import "Pokemon.h"
 #import "Constant.h"
 #import "SearchViewController.h"
 #import "DetailViewController.h"
 #import "AppDelegate.h"
+#import "AppObject.h"
+#import "LessonObject.h"
 
 @interface ViewController () <PromoSlidesViewDataSource, PromoSlidesViewDelegate>
 {
@@ -33,7 +33,7 @@
     [[self navigationController] setNavigationBarHidden:YES animated:YES];
     appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
     
-    result = [[SQLiteManager getInstance] getPokemonWithAllTypes];
+    result = [[SQLiteManager getInstance] getHowToDrawAllApps];
     [self.contentGuideView setBackground:[UIImage imageNamed:@"scrollview_bg.png"]];
     [self.contentGuideView reloadData];
     [self.menuButton setOnStateImageName:@"bottomnav_settings_normal.png"];
@@ -105,7 +105,7 @@
     [[NSUserDefaults standardUserDefaults] setValue:@(index) forKey:LANGUAGE_SETTING_TAG];
     [[NSUserDefaults standardUserDefaults] synchronize];
     appDelegate.languageDefault = (LanguageSetting)index;
-    result = [[SQLiteManager getInstance] getPokemonWithAllTypes];
+    result = [[SQLiteManager getInstance] getHowToDrawAllApps];
     [self.contentGuideView holdPositionReloadData];
 }
 
@@ -115,7 +115,7 @@
 
 #pragma mark - ContentGuideViewDataSource methods
 - (NSUInteger) numberOfPostersInCarousel:(ContentGuideView*) contentGuide atRowIndex:(NSUInteger) rowIndex{
-    return ((PokemonType*)[result objectAtIndex:rowIndex]).pokemons.count;
+    return ((AppObject*)[result objectAtIndex:rowIndex]).lessons.count;
 }
 - (NSUInteger) numberOfRowsInContentGuide:(ContentGuideView*) contentGuide{
     return result.count;
@@ -137,10 +137,10 @@
     if (!header) {
         header = [[ContentGuideViewRowHeader alloc] initWithStyle:ContentGuideViewRowHeaderStyleDefault reuseIdentifier:identifier];
     }
-    NSString *type = ((PokemonType*)[result objectAtIndex:rowIndex]).type;
-    [header  setTextTitleRowHeader:[[Utils getStringType:type withLanguage:appDelegate.languageDefault] uppercaseString]];
+    AppObject *app = (AppObject*)[result objectAtIndex:rowIndex];
+    [header  setTextTitleRowHeader:[app.name uppercaseString]];
     [header setBackground:[UIImage imageNamed:@"headercell_bg.png"]];
-    [header setIconLeft:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png", [[Utils getStringType:type withLanguage:LanguageSettingEN] lowercaseString]]]];
+    //[header setIconLeft:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png", [[Utils getStringType:type withLanguage:LanguageSettingEN] lowercaseString]]]];
     return header;
 }
 
@@ -152,9 +152,9 @@
     if (!posterView) {
         posterView = [[ContentGuideViewRowCarouselViewPosterView alloc] initWithStyle:ContentGuideViewRowCarouselViewPosterViewStyleDefault reuseIdentifier:identifier];
     }
-    Pokemon *pokemon = [((PokemonType*)[result objectAtIndex:rowIndex]).pokemons objectAtIndex:index];
-    [posterView setURLImagePoster:pokemon.ThumbnailImage placeholderImage:[UIImage imageNamed:@"icon_placeholder.png"]];
-    [posterView setTextTitlePoster:[NSString stringWithFormat:@"%@\n%@%@",pokemon.name, [Utils getStringOf:ORDER_ID_NAME_STRING withLanguage:appDelegate.languageDefault], pokemon.iD]];
+    LessonObject *lesson = [((AppObject*)[result objectAtIndex:rowIndex]).lessons objectAtIndex:index];
+    [posterView setURLImagePoster:lesson.urlIcon placeholderImage:[UIImage imageNamed:@"icon_placeholder.png"]];
+    [posterView setTextTitlePoster:lesson.name];
     return posterView;
     
 }
@@ -193,7 +193,7 @@
 didSelectPosterViewAtRowIndex:(NSUInteger) rowIndex
                   posterIndex:(NSUInteger) index{
     DetailViewController *detailViewController = [[DetailViewController alloc] init];
-    [detailViewController setPokemonForDetail:[((PokemonType*)[result objectAtIndex:rowIndex]).pokemons objectAtIndex:index]];
+    [detailViewController setPokemonForDetail:[((AppObject*)[result objectAtIndex:rowIndex]).lessons objectAtIndex:index]];
     [self.navigationController pushViewController:detailViewController animated:YES];
 }
 
