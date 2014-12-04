@@ -7,7 +7,6 @@
 //
 
 #import "SQLiteManager.h"
-#import "PokemonType.h"
 
 #define DB_NAME_STRING @"HowToDraw.sqlite"
 @interface SQLiteManager()

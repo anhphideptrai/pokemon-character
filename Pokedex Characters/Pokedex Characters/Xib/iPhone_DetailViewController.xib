@@ -8,7 +8,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController">
             <connections>
                 <outlet property="bannerView" destination="yha-4q-gbw" id="VEr-CE-8B2"/>
-                <outlet property="contentView" destination="opi-tl-Ues" id="1A2-6K-YnU"/>
+                <outlet property="btBackStep" destination="9Dw-xS-Rtq" id="Evu-dX-THU"/>
+                <outlet property="btNextStep" destination="97q-tW-Bz3" id="tMO-9K-V4n"/>
+                <outlet property="contentView" destination="3QX-KV-PSD" id="qpv-OF-Gvo"/>
                 <outlet property="lbSteps" destination="YI7-Ka-DBo" id="keS-9s-Ikj"/>
                 <outlet property="view" destination="iN0-l3-epB" id="xpk-PB-KTo"/>
             </connections>
@@ -81,13 +83,73 @@
                         <constraint firstAttribute="bottom" secondItem="YI7-Ka-DBo" secondAttribute="bottom" id="qiw-cr-uQp"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="opi-tl-Ues" customClass="iCarousel">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="opi-tl-Ues">
                     <rect key="frame" x="0.0" y="30" width="600" height="520"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3QX-KV-PSD" customClass="iCarousel">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="490"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="1mU-et-LnU"/>
+                                <outlet property="delegate" destination="-1" id="A9u-e7-d9B"/>
+                            </connections>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bIp-Rd-jgR">
+                            <rect key="frame" x="0.0" y="490" width="600" height="30"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Dw-xS-Rtq">
+                                    <rect key="frame" x="10" y="0.0" width="50" height="30"/>
+                                    <color key="backgroundColor" red="0.3803921569" green="0.89019607840000003" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="50" id="y6A-1a-s5E"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                    <state key="normal" title="Back">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="actionBackStep:" destination="-1" eventType="touchUpInside" id="pAM-RM-ucg"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="97q-tW-Bz3">
+                                    <rect key="frame" x="540" y="0.0" width="50" height="30"/>
+                                    <color key="backgroundColor" red="0.3803921569" green="0.89019607840000003" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="50" id="0it-0R-Ce8"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                    <state key="normal" title="Next">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="actionNextStep:" destination="-1" eventType="touchUpInside" id="ygt-Se-R6c"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="97q-tW-Bz3" firstAttribute="top" secondItem="bIp-Rd-jgR" secondAttribute="top" id="0PK-K9-zVP"/>
+                                <constraint firstAttribute="bottom" secondItem="9Dw-xS-Rtq" secondAttribute="bottom" id="9hK-MS-1fK"/>
+                                <constraint firstAttribute="trailing" secondItem="97q-tW-Bz3" secondAttribute="trailing" constant="10" id="P0M-Ts-PTD"/>
+                                <constraint firstItem="9Dw-xS-Rtq" firstAttribute="top" secondItem="bIp-Rd-jgR" secondAttribute="top" id="TLw-Uf-EbF"/>
+                                <constraint firstAttribute="bottom" secondItem="97q-tW-Bz3" secondAttribute="bottom" id="fw0-Sd-m0A"/>
+                                <constraint firstItem="9Dw-xS-Rtq" firstAttribute="leading" secondItem="bIp-Rd-jgR" secondAttribute="leading" constant="10" id="xED-lc-rOf"/>
+                            </constraints>
+                        </view>
+                    </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="PhY-iR-x1f"/>
-                        <outlet property="delegate" destination="-1" id="5iq-Qr-YRQ"/>
-                    </connections>
+                    <constraints>
+                        <constraint firstItem="3QX-KV-PSD" firstAttribute="top" secondItem="opi-tl-Ues" secondAttribute="top" id="0n3-3M-jon"/>
+                        <constraint firstItem="bIp-Rd-jgR" firstAttribute="leading" secondItem="opi-tl-Ues" secondAttribute="leading" id="8Na-bd-t6I"/>
+                        <constraint firstAttribute="trailing" secondItem="bIp-Rd-jgR" secondAttribute="trailing" id="E9F-Y7-Kxx"/>
+                        <constraint firstAttribute="bottom" secondItem="3QX-KV-PSD" secondAttribute="bottom" constant="30" id="FGV-ON-AUk"/>
+                        <constraint firstItem="3QX-KV-PSD" firstAttribute="leading" secondItem="opi-tl-Ues" secondAttribute="leading" id="Z7s-VC-V9h"/>
+                        <constraint firstAttribute="trailing" secondItem="3QX-KV-PSD" secondAttribute="trailing" id="b5g-Ru-Eek"/>
+                        <constraint firstAttribute="bottom" secondItem="bIp-Rd-jgR" secondAttribute="bottom" id="fOy-fg-w8G"/>
+                        <constraint firstItem="bIp-Rd-jgR" firstAttribute="top" secondItem="3QX-KV-PSD" secondAttribute="bottom" id="wUt-jo-KCg"/>
+                    </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yha-4q-gbw" customClass="GADBannerView">
                     <rect key="frame" x="140" y="550" width="320" height="50"/>

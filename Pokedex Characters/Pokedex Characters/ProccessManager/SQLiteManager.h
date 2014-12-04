@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import <sqlite3.h>
-#import "Pokemon.h"
 #import "AppObject.h"
 #import "LessonObject.h"
 

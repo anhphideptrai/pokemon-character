@@ -8,7 +8,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController">
             <connections>
                 <outlet property="bannerView" destination="oWj-lY-GdV" id="Uid-oV-f1i"/>
-                <outlet property="contentView" destination="vFt-iQ-L17" id="OwK-cb-IRb"/>
+                <outlet property="btBackStep" destination="F18-yG-Z2T" id="pvC-99-5kW"/>
+                <outlet property="btNextStep" destination="nyP-aQ-oU4" id="Zy4-sT-YpU"/>
+                <outlet property="contentView" destination="SmO-Kp-Lwc" id="YvW-sh-8wm"/>
                 <outlet property="lbSteps" destination="dnL-NN-cut" id="czS-OA-T7Y"/>
                 <outlet property="view" destination="iN0-l3-epB" id="pAR-tC-0zF"/>
             </connections>
@@ -66,13 +68,73 @@
                         <constraint firstItem="dnL-NN-cut" firstAttribute="leading" secondItem="WZr-Pb-Go1" secondAttribute="leading" id="w78-e0-9EO"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vFt-iQ-L17" customClass="iCarousel">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vFt-iQ-L17">
                     <rect key="frame" x="0.0" y="50" width="600" height="500"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SmO-Kp-Lwc" customClass="iCarousel">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="450"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="0F5-lG-fFN"/>
+                                <outlet property="delegate" destination="-1" id="37i-Sg-7MJ"/>
+                            </connections>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZBv-n4-2Os">
+                            <rect key="frame" x="0.0" y="450" width="600" height="50"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F18-yG-Z2T">
+                                    <rect key="frame" x="10" y="0.0" width="70" height="50"/>
+                                    <color key="backgroundColor" red="0.3803921569" green="0.89019607840000003" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="70" id="xBu-YE-x1e"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                    <state key="normal" title="Back">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="actionBackStep:" destination="-1" eventType="touchUpInside" id="43q-w1-r16"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nyP-aQ-oU4">
+                                    <rect key="frame" x="520" y="0.0" width="70" height="50"/>
+                                    <color key="backgroundColor" red="0.3803921569" green="0.89019607840000003" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="70" id="9Vh-Dc-rlo"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                    <state key="normal" title="Next">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="actionNextStep:" destination="-1" eventType="touchUpInside" id="lpe-HC-WuT"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="F18-yG-Z2T" firstAttribute="leading" secondItem="ZBv-n4-2Os" secondAttribute="leading" constant="10" id="AXu-Xr-oPE"/>
+                                <constraint firstAttribute="trailing" secondItem="nyP-aQ-oU4" secondAttribute="trailing" constant="10" id="DOh-0Y-p76"/>
+                                <constraint firstItem="F18-yG-Z2T" firstAttribute="top" secondItem="ZBv-n4-2Os" secondAttribute="top" id="FSb-Sy-fgB"/>
+                                <constraint firstAttribute="bottom" secondItem="nyP-aQ-oU4" secondAttribute="bottom" id="Pks-RU-tAa"/>
+                                <constraint firstAttribute="bottom" secondItem="F18-yG-Z2T" secondAttribute="bottom" id="WdY-ki-VdR"/>
+                                <constraint firstItem="nyP-aQ-oU4" firstAttribute="top" secondItem="ZBv-n4-2Os" secondAttribute="top" id="Zun-gC-mh7"/>
+                            </constraints>
+                        </view>
+                    </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="upZ-lz-hGf"/>
-                        <outlet property="delegate" destination="-1" id="TPr-AX-PjJ"/>
-                    </connections>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="SmO-Kp-Lwc" secondAttribute="trailing" id="AM0-W2-hWY"/>
+                        <constraint firstItem="SmO-Kp-Lwc" firstAttribute="top" secondItem="vFt-iQ-L17" secondAttribute="top" id="O7S-jH-zQv"/>
+                        <constraint firstAttribute="bottom" secondItem="SmO-Kp-Lwc" secondAttribute="bottom" constant="50" id="Stc-ru-ZNa"/>
+                        <constraint firstItem="ZBv-n4-2Os" firstAttribute="leading" secondItem="vFt-iQ-L17" secondAttribute="leading" id="TAn-ca-AzB"/>
+                        <constraint firstAttribute="trailing" secondItem="ZBv-n4-2Os" secondAttribute="trailing" id="VI8-ii-sW3"/>
+                        <constraint firstItem="ZBv-n4-2Os" firstAttribute="top" secondItem="SmO-Kp-Lwc" secondAttribute="bottom" id="f1b-rd-3F5"/>
+                        <constraint firstAttribute="bottom" secondItem="ZBv-n4-2Os" secondAttribute="bottom" id="fFD-qi-0Jj"/>
+                        <constraint firstItem="SmO-Kp-Lwc" firstAttribute="leading" secondItem="vFt-iQ-L17" secondAttribute="leading" id="oj0-Kz-H4m"/>
+                    </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oWj-lY-GdV" customClass="GADBannerView">
                     <rect key="frame" x="140" y="550" width="320" height="50"/>

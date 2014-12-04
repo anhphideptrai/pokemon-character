@@ -131,6 +131,12 @@
 didSelectPosterViewAtRowIndex:(NSUInteger) rowIndex
                   posterIndex:(NSUInteger) index{
     DetailViewController *detailViewController = [[DetailViewController alloc] initWithNibName:NAME_XIB_FILE_DETAIL_VIEW_CONTROLLER bundle:nil];
+    LessonObject *lesson = [[LessonObject alloc] init];
+    [lesson setID:@"11"];
+    [lesson setAppID:@"133"];
+    [lesson setSteps:14];
+    [detailViewController setLesson:lesson];
+    
     [self.navigationController pushViewController:detailViewController animated:YES];
 }
 

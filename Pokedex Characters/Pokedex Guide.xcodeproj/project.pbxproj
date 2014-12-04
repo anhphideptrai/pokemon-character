@@ -41,7 +41,7 @@
 		B24EF6C519BA313C00A56926 /* topnav_share_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = B24EF69D19BA313C00A56926 /* topnav_share_normal.png */; };
 		B24EF6C719BA313C00A56926 /* topnav_share_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B24EF69E19BA313C00A56926 /* topnav_share_normal@2x.png */; };
 		B25638CD1A30A36C00FAF531 /* iPhone_DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B25638CC1A30A36C00FAF531 /* iPhone_DetailViewController.xib */; };
-		B25638CF1A30A39300FAF531 /* iPad_ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B25638CE1A30A39300FAF531 /* iPad_ViewController.xib */; };
+		B25638CF1A30A39300FAF531 /* iPad_DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B25638CE1A30A39300FAF531 /* iPad_DetailViewController.xib */; };
 		B25638D21A30A84700FAF531 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B25638D11A30A84700FAF531 /* DetailViewController.m */; };
 		B257900B19EE503300A30000 /* icon_placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = B257900A19EE503300A30000 /* icon_placeholder.png */; };
 		B2940C4119ECF129008A97C3 /* icon_57X57.png in Resources */ = {isa = PBXBuildFile; fileRef = B2940C3A19ECF129008A97C3 /* icon_57X57.png */; };
@@ -87,8 +87,6 @@
 		B2CC8ED719B37D3700BD1ABF /* colorless.png in Resources */ = {isa = PBXBuildFile; fileRef = B2CC8EAD19B37D3700BD1ABF /* colorless.png */; };
 		B2CC8ED919B37D3700BD1ABF /* bug.png in Resources */ = {isa = PBXBuildFile; fileRef = B2CC8EAE19B37D3700BD1ABF /* bug.png */; };
 		B2CC8EEB19B381B500BD1ABF /* SQLiteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B2CC8EEA19B381B500BD1ABF /* SQLiteManager.m */; };
-		B2CC8EEF19B3826500BD1ABF /* PokemonType.m in Sources */ = {isa = PBXBuildFile; fileRef = B2CC8EEE19B3826500BD1ABF /* PokemonType.m */; };
-		B2CC8EF319B382E200BD1ABF /* Pokemon.m in Sources */ = {isa = PBXBuildFile; fileRef = B2CC8EF219B382E200BD1ABF /* Pokemon.m */; };
 		B2CC8EF619B3837C00BD1ABF /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B2CC8EF519B3837C00BD1ABF /* libsqlite3.0.dylib */; };
 		B2CC92C619E4363F00FE0127 /* 00A2C633-5090-4F9E-A1DA-EF8E508FDC9A in Resources */ = {isa = PBXBuildFile; fileRef = B2CC92C219E4363F00FE0127 /* 00A2C633-5090-4F9E-A1DA-EF8E508FDC9A */; };
 		B2CC92C719E4363F00FE0127 /* 08E7CCA3-E0A7-48FA-8F09-BAEE19B835A9 in Resources */ = {isa = PBXBuildFile; fileRef = B2CC92C319E4363F00FE0127 /* 08E7CCA3-E0A7-48FA-8F09-BAEE19B835A9 */; };
@@ -160,7 +158,7 @@
 		B24EF69D19BA313C00A56926 /* topnav_share_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = topnav_share_normal.png; path = Resources/Images/PromoSlides/topnav_share_normal.png; sourceTree = "<group>"; };
 		B24EF69E19BA313C00A56926 /* topnav_share_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "topnav_share_normal@2x.png"; path = "Resources/Images/PromoSlides/topnav_share_normal@2x.png"; sourceTree = "<group>"; };
 		B25638CC1A30A36C00FAF531 /* iPhone_DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = iPhone_DetailViewController.xib; path = Xib/iPhone_DetailViewController.xib; sourceTree = "<group>"; };
-		B25638CE1A30A39300FAF531 /* iPad_ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = iPad_ViewController.xib; path = Xib/iPad_ViewController.xib; sourceTree = "<group>"; };
+		B25638CE1A30A39300FAF531 /* iPad_DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = iPad_DetailViewController.xib; path = Xib/iPad_DetailViewController.xib; sourceTree = "<group>"; };
 		B25638D01A30A84700FAF531 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		B25638D11A30A84700FAF531 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		B257900A19EE503300A30000 /* icon_placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_placeholder.png; path = Resources/Images/PromoSlides/icon_placeholder.png; sourceTree = "<group>"; };
@@ -219,10 +217,6 @@
 		B2CC8EAE19B37D3700BD1ABF /* bug.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bug.png; path = Resources/Images/Types/bug.png; sourceTree = "<group>"; };
 		B2CC8EE919B381B500BD1ABF /* SQLiteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SQLiteManager.h; path = ProccessManager/SQLiteManager.h; sourceTree = "<group>"; };
 		B2CC8EEA19B381B500BD1ABF /* SQLiteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SQLiteManager.m; path = ProccessManager/SQLiteManager.m; sourceTree = "<group>"; };
-		B2CC8EED19B3826500BD1ABF /* PokemonType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PokemonType.h; path = Entry/PokemonType.h; sourceTree = "<group>"; };
-		B2CC8EEE19B3826500BD1ABF /* PokemonType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PokemonType.m; path = Entry/PokemonType.m; sourceTree = "<group>"; };
-		B2CC8EF119B382E200BD1ABF /* Pokemon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Pokemon.h; path = Entry/Pokemon.h; sourceTree = "<group>"; };
-		B2CC8EF219B382E200BD1ABF /* Pokemon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Pokemon.m; path = Entry/Pokemon.m; sourceTree = "<group>"; };
 		B2CC8EF519B3837C00BD1ABF /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		B2CC92C219E4363F00FE0127 /* 00A2C633-5090-4F9E-A1DA-EF8E508FDC9A */ = {isa = PBXFileReference; lastKnownFileType = file; name = "00A2C633-5090-4F9E-A1DA-EF8E508FDC9A"; path = "Resources/DB/00A2C633-5090-4F9E-A1DA-EF8E508FDC9A"; sourceTree = "<group>"; };
 		B2CC92C319E4363F00FE0127 /* 08E7CCA3-E0A7-48FA-8F09-BAEE19B835A9 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "08E7CCA3-E0A7-48FA-8F09-BAEE19B835A9"; path = "Resources/DB/08E7CCA3-E0A7-48FA-8F09-BAEE19B835A9"; sourceTree = "<group>"; };
@@ -491,10 +485,6 @@
 				B2D0F0B01A2FF0A1009CBF0F /* AppObject.m */,
 				B2D0F0B11A2FF0A1009CBF0F /* LessonObject.h */,
 				B2D0F0B21A2FF0A1009CBF0F /* LessonObject.m */,
-				B2CC8EED19B3826500BD1ABF /* PokemonType.h */,
-				B2CC8EEE19B3826500BD1ABF /* PokemonType.m */,
-				B2CC8EF119B382E200BD1ABF /* Pokemon.h */,
-				B2CC8EF219B382E200BD1ABF /* Pokemon.m */,
 				B213CC3219ED2A5700B79AF1 /* ConfigApp.h */,
 				B213CC3319ED2A5700B79AF1 /* ConfigApp.m */,
 			);
@@ -561,7 +551,7 @@
 				B2137B1019BD39CA00184C56 /* iPad_SearchViewController.xib */,
 				B2137B1319BD39E100184C56 /* iPhone_SearchViewController.xib */,
 				B25638CC1A30A36C00FAF531 /* iPhone_DetailViewController.xib */,
-				B25638CE1A30A39300FAF531 /* iPad_ViewController.xib */,
+				B25638CE1A30A39300FAF531 /* iPad_DetailViewController.xib */,
 			);
 			name = Xib;
 			sourceTree = "<group>";
@@ -678,7 +668,7 @@
 				B24EF6C119BA313C00A56926 /* topnav_search.png in Resources */,
 				B227792619E23162000B1033 /* flag_us.png in Resources */,
 				B2E9122319B546BA00A715F0 /* promo_6.jpg in Resources */,
-				B25638CF1A30A39300FAF531 /* iPad_ViewController.xib in Resources */,
+				B25638CF1A30A39300FAF531 /* iPad_DetailViewController.xib in Resources */,
 				B2E9124519B62C6C00A715F0 /* headercell_bg.png in Resources */,
 				B24EF69F19BA313C00A56926 /* bottomnav_settings_normal.png in Resources */,
 				B25638CD1A30A36C00FAF531 /* iPhone_DetailViewController.xib in Resources */,
@@ -784,12 +774,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B2CC8EF319B382E200BD1ABF /* Pokemon.m in Sources */,
 				B2CC861C19B36E3500BD1ABF /* ContentGuideViewRow.m in Sources */,
 				B2D0F0A71A2EA58D009CBF0F /* mztools.c in Sources */,
 				B2D0F0AA1A2EA58D009CBF0F /* ZipArchive.mm in Sources */,
 				B2D0F0B41A2FF0A1009CBF0F /* LessonObject.m in Sources */,
-				B2CC8EEF19B3826500BD1ABF /* PokemonType.m in Sources */,
 				B213CC3719ED2C5E00B79AF1 /* ConfigManager.m in Sources */,
 				B2CC859219B36D8E00BD1ABF /* ViewController.m in Sources */,
 				B2D0F0AB1A2EA58D009CBF0F /* ZipManager.m in Sources */,

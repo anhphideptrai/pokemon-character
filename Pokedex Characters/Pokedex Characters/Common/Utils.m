@@ -321,5 +321,16 @@
     return  output;
     
 }*/
-
++ (NSURL*)getURLImageWith:(NSString*)appID andWithLessonID:(NSString*)lessonID andWithStep:(int)step{
+    NSURL *url = nil;
+    NSString *strUrl = [Utils documentsPathForFileName:[NSString stringWithFormat:@"%@-%@/step_%@.png",appID, lessonID, [NSString stringWithFormat:step > 9 ? @"%d":@"0%d",step]]];
+    url = [NSURL fileURLWithPath:strUrl];
+    return url;
+}
++ (NSString *)documentsPathForFileName:(NSString *)name
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES);
+    NSString *documentsPath = [paths objectAtIndex:0];
+    return [documentsPath stringByAppendingPathComponent:name];
+}
 @end

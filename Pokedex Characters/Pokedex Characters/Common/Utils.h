@@ -59,5 +59,6 @@ typedef enum {
 + (NSString*)getStringType:(NSString*)strType withLanguage:(LanguageSetting)language;
 + (NSString*)getStringOf:(STRING_APP)stringApp withLanguage:(LanguageSetting)language;
 + (void) downloadFile:(NSString*)urlFile andSaveWithName:(NSString*)nameFile;
++ (NSURL*)getURLImageWith:(NSString*)appID andWithLessonID:(NSString*)lessonID andWithStep:(int)step;
 // + (NSString *) admobDeviceID;
 @end

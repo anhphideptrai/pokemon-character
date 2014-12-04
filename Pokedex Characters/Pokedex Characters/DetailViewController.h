@@ -10,10 +10,15 @@
 #import "GADBannerView.h"
 #import "GADRequest.h"
 #import <iCarousel.h>
-
+#import "LessonObject.h"
 @interface DetailViewController : UIViewController <iCarouselDataSource, iCarouselDelegate>
 @property (strong, nonatomic) IBOutlet UILabel *lbSteps;
 @property (weak, nonatomic) IBOutlet GADBannerView *bannerView;
 @property (strong, nonatomic) IBOutlet iCarousel *contentView;
+@property (strong, nonatomic) IBOutlet UIButton *btBackStep;
+@property (strong, nonatomic) IBOutlet UIButton *btNextStep;
 - (IBAction)actionBack:(id)sender;
+- (IBAction)actionBackStep:(id)sender;
+- (IBAction)actionNextStep:(id)sender;
+- (void)setLesson:(LessonObject*)lesson;
 @end
