@@ -50,4 +50,10 @@
 #define LANGUAGE_SETTING_TAG @"LANGUAGE_SETTING_TAG"
 #define CONFIG_SETTING_TAG @"CONFIG_SETTING_TAG"
 #define STATUS_APP_DEFAUL @"beta"
+
+#define _red_color_         [UIColor colorWithRed:1.0 green:65.0/255 blue:54.0/255 alpha:1.0]
+#define _green_color_       [UIColor colorWithRed:46.0/255 green:204.0/255 blue:64.0/255 alpha:1.0]
+#define _blue_color_        [UIColor colorWithRed:0 green:116.0/255 blue:217.0/255 alpha:1.0]
+#define _orange_color_      [UIColor colorWithRed:1.0 green:133.0/255 blue:27.0/255 alpha:1.0]
+#define _grayButton_color_  [UIColor darkGrayColor]
 #endif

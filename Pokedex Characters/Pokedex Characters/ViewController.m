@@ -42,6 +42,8 @@
     downloadManager = [[DownloadManager alloc] init];
     [downloadManager setDelegate:self];
     isDownloading = NO;
+    [self.loadingView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:.5f]];
+    [self.loadingView setHidden:!isDownloading];
     // Add Admob
   //  if (![appDelegate.config.statusApp isEqualToString:STATUS_APP_DEFAUL]) {
         // Replace this ad unit ID with your own ad unit ID.
@@ -143,6 +145,8 @@ didSelectPosterViewAtRowIndex:(NSUInteger) rowIndex
     }else{
         if (!isDownloading) {
             isDownloading = YES;
+            [self.squaresLoading setColor:_red_color_];
+            [self.loadingView setHidden:!isDownloading];
             [downloadManager downloadFileWithUrl:[NSString stringWithFormat:@"http://www.how2draw.biz/how2draw/app%@/lesson%@.zip", lessonSelected.appID, [Utils formatLessonID:lessonSelected.iD]]];
         }
     }
@@ -183,8 +187,29 @@ didSelectPosterViewAtRowIndex:(NSUInteger) rowIndex
     }else{
         isDownloading = NO;
     }
+    [self.loadingView setHidden:!isDownloading];
 }
 - (void)completePercent:(NSInteger)percent{
-    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        switch (percent/20) {
+            case 0:
+                [self.squaresLoading setColor:_red_color_];
+                break;
+            case 1:
+                [self.squaresLoading setColor:_green_color_];
+                break;
+            case 2:
+                [self.squaresLoading setColor:_blue_color_];
+                break;
+            case 3:
+                [self.squaresLoading setColor:_orange_color_];
+                break;
+            case 4:
+                [self.squaresLoading setColor:_grayButton_color_];
+                break;
+            default:
+                break;
+        }
+    });
 }
 @end
