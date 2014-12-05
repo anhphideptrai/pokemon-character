@@ -81,7 +81,13 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    result = [[SQLiteManager getInstance] getHowToDrawAllApps];
+    if ([[keySearch stringByTrimmingCharactersInSet:
+          [NSCharacterSet whitespaceAndNewlineCharacterSet]] isEqualToString:@""]) {
+        [result removeAllObjects];
+    }else{
+        result = [[SQLiteManager getInstance] getArrHowToDrawAppsWithSearchKey:keySearch];
+        
+    }
     [self.contentGuideView holdPositionReloadData];
 }
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
