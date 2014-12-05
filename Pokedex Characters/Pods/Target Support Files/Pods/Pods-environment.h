@@ -72,6 +72,12 @@
 #define COCOAPODS_VERSION_MINOR_Google_AdMob_Ads_SDK 12
 #define COCOAPODS_VERSION_PATCH_Google_AdMob_Ads_SDK 0
 
+// RZSquaresLoading
+#define COCOAPODS_POD_AVAILABLE_RZSquaresLoading
+#define COCOAPODS_VERSION_MAJOR_RZSquaresLoading 1
+#define COCOAPODS_VERSION_MINOR_RZSquaresLoading 1
+#define COCOAPODS_VERSION_PATCH_RZSquaresLoading 0
+
 // iCarousel
 #define COCOAPODS_POD_AVAILABLE_iCarousel
 #define COCOAPODS_VERSION_MAJOR_iCarousel 1
