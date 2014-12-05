@@ -12,6 +12,7 @@
 #import <iCarousel.h>
 #import "LessonObject.h"
 @interface DetailViewController : UIViewController <iCarouselDataSource, iCarouselDelegate>
+@property (strong, nonatomic) IBOutlet UILabel *lbLessonName;
 @property (strong, nonatomic) IBOutlet UILabel *lbSteps;
 @property (weak, nonatomic) IBOutlet GADBannerView *bannerView;
 @property (strong, nonatomic) IBOutlet iCarousel *contentView;

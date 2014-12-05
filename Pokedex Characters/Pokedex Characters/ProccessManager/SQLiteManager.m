@@ -8,7 +8,7 @@
 
 #import "SQLiteManager.h"
 
-#define DB_NAME_STRING @"HowToDraw.sqlite"
+#define DB_NAME_STRING @"01b908e725eb512c86b0d96d086ec3f5"
 @interface SQLiteManager()
 
 @property (strong, nonatomic) NSString *databasePath;

@@ -14,7 +14,6 @@
 #import "AppDelegate.h"
 #import "DetailViewController.h"
 #import "DownloadManager.h"
-#import "Utils.h"
 #import "ZipManager.h"
 
 @interface SearchViewController () <DownloadManagerDelegate>{
@@ -47,7 +46,7 @@
     [super viewDidLoad];
     keySearch = @"";
     appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
-    [self.title_Search setText:[Utils getStringOf:SEARCH_STRING withLanguage:appDelegate.languageDefault]];
+    [self.title_Search setText:search_string_en];
     if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)]) {
         // iOS 7
         [self performSelector:@selector(setNeedsStatusBarAppearanceUpdate)];
@@ -65,16 +64,12 @@
     [self.loadingView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:.3f]];
     [self.loadingView setHidden:!isDownloading];
     //Add Admob
-   // if (![appDelegate.config.statusApp isEqualToString:STATUS_APP_DEFAUL]) {
-        // Replace this ad unit ID with your own ad unit ID.
-//        self.bannerView.adUnitID = BANNER_ID_ADMOB;
-//        self.bannerView.rootViewController = self;
-//        GADRequest *request = [GADRequest request];
-//        // Requests test ads on devices you specify. Your test device ID is printed to the console when
-//        // an ad request is made.
-//        // request.testDevices = @[ GAD_SIMULATOR_ID, [Utils admobDeviceID] ];
-//        [self.bannerView loadRequest:request];
-   // }
+    if (![appDelegate.config.statusApp isEqualToString:STATUS_APP_DEFAUL]) {
+        self.bannerView.adUnitID = BANNER_ID_ADMOB;
+        self.bannerView.rootViewController = self;
+        GADRequest *request = [GADRequest request];
+        [self.bannerView loadRequest:request];
+    }
 }
 - (BOOL)prefersStatusBarHidden {
     return YES;

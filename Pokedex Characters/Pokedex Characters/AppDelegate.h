@@ -12,6 +12,5 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 @property (nonatomic, retain) UINavigationController *navigationController;
 @property (strong, nonatomic) UIWindow *window;
-@property (nonatomic) LanguageSetting languageDefault;
 @property (nonatomic, strong) ConfigApp *config;
 @end

@@ -11,6 +11,7 @@
 #import "Utils.h"
 #import <Social/Social.h>
 #import "AppDelegate.h"
+#import "Constant.h"
 
 @interface DetailViewController (){
     AppDelegate *appDelegate;
@@ -31,7 +32,16 @@
     [self.btBackStep.layer setMasksToBounds:YES];
     [self.btNextStep.layer setCornerRadius:4.0f];
     [self.btNextStep.layer setMasksToBounds:YES];
+    [self.lbLessonName setText:_lesson.name];
     appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    
+    //Add Admob
+  if (![appDelegate.config.statusApp isEqualToString:STATUS_APP_DEFAUL]) {
+        self.bannerView.adUnitID = BANNER_ID_ADMOB;
+        self.bannerView.rootViewController = self;
+        GADRequest *request = [GADRequest request];
+        [self.bannerView loadRequest:request];
+    }
 }
 - (BOOL)prefersStatusBarHidden {
     return YES;
