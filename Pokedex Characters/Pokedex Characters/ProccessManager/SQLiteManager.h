@@ -15,4 +15,5 @@
 + (SQLiteManager *) getInstance;
 - (NSMutableArray*)getHowToDrawAllApps;
 - (NSMutableArray*)getArrHowToDrawAppsWithSearchKey:(NSString*)searchKey;
+- (BOOL)didDownloadedLesson:(LessonObject*)lesson;
 @end

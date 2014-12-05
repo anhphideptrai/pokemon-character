@@ -1,6 +1,0 @@
-GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/AFNetworking" "${PODS_ROOT}/Headers/ASOAnimatedButton" "${PODS_ROOT}/Headers/Google-AdMob-Ads-SDK" "${PODS_ROOT}/Headers/iCarousel"
-LIBRARY_SEARCH_PATHS = "$(PODS_ROOT)/Google-AdMob-Ads-SDK/GoogleMobileAdsSdkiOS-6.12.0"
-OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers" -isystem "${PODS_ROOT}/Headers/AFNetworking" -isystem "${PODS_ROOT}/Headers/ASOAnimatedButton" -isystem "${PODS_ROOT}/Headers/Google-AdMob-Ads-SDK" -isystem "${PODS_ROOT}/Headers/iCarousel"
-OTHER_LDFLAGS = -ObjC -lGoogleAdMobAds -framework AVFoundation -framework AdSupport -framework AudioToolbox -framework CoreGraphics -framework CoreTelephony -framework EventKit -framework EventKitUI -framework MessageUI -framework MobileCoreServices -framework QuartzCore -framework Security -framework StoreKit -framework SystemConfiguration
-PODS_ROOT = ${SRCROOT}/Pods

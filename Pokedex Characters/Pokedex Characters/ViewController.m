@@ -15,11 +15,16 @@
 #import "AppObject.h"
 #import "LessonObject.h"
 #import "DetailViewController.h"
+#import "DownloadManager.h"
+#import "ZipManager.h"
 
-@interface ViewController () <PromoSlidesViewDataSource, PromoSlidesViewDelegate>
+@interface ViewController () <PromoSlidesViewDataSource, PromoSlidesViewDelegate, DownloadManagerDelegate>
 {
     NSMutableArray *result;
     AppDelegate *appDelegate;
+    DownloadManager *downloadManager;
+    LessonObject *lessonSelected;
+    BOOL isDownloading;
 }
 - (IBAction)clickSearch:(id)sender;
 @end
@@ -31,10 +36,12 @@
     [super viewDidLoad];
     [[self navigationController] setNavigationBarHidden:YES animated:YES];
     appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
-    
     result = [[SQLiteManager getInstance] getHowToDrawAllApps];
     [self.contentGuideView setBackground:[UIImage imageNamed:@"scrollview_bg.png"]];
     [self.contentGuideView reloadData];
+    downloadManager = [[DownloadManager alloc] init];
+    [downloadManager setDelegate:self];
+    isDownloading = NO;
     // Add Admob
   //  if (![appDelegate.config.statusApp isEqualToString:STATUS_APP_DEFAUL]) {
         // Replace this ad unit ID with your own ad unit ID.
@@ -130,14 +137,15 @@
 - (void)         contentGuide:(ContentGuideView*) contentGuide
 didSelectPosterViewAtRowIndex:(NSUInteger) rowIndex
                   posterIndex:(NSUInteger) index{
-    DetailViewController *detailViewController = [[DetailViewController alloc] initWithNibName:NAME_XIB_FILE_DETAIL_VIEW_CONTROLLER bundle:nil];
-    LessonObject *lesson = [[LessonObject alloc] init];
-    [lesson setID:@"11"];
-    [lesson setAppID:@"133"];
-    [lesson setSteps:14];
-    [detailViewController setLesson:lesson];
-    
-    [self.navigationController pushViewController:detailViewController animated:YES];
+    lessonSelected = [((AppObject*)[result objectAtIndex:rowIndex]).lessons objectAtIndex:index];
+    if (lessonSelected.downloaded) {
+        [self navigationToDetailView];
+    }else{
+        if (!isDownloading) {
+            isDownloading = YES;
+            [downloadManager downloadFileWithUrl:[NSString stringWithFormat:@"http://www.how2draw.biz/how2draw/app%@/lesson%@.zip", lessonSelected.appID, [Utils formatLessonID:lessonSelected.iD]]];
+        }
+    }
 }
 
 #pragma mark - PromoSlidesViewDataSource methods
@@ -153,5 +161,30 @@ didSelectPosterViewAtRowIndex:(NSUInteger) rowIndex
 - (IBAction)clickSearch:(id)sender {
     SearchViewController *searchViewCotroller = [[SearchViewController alloc] initWithNibName:NAME_XIB_FILE_SEARCH_VIEW_CONTROLLER bundle:nil];
     [self.navigationController pushViewController:searchViewCotroller animated:YES ];
+}
+- (void)navigationToDetailView{
+    DetailViewController *detailViewController = [[DetailViewController alloc] initWithNibName:NAME_XIB_FILE_DETAIL_VIEW_CONTROLLER bundle:nil];
+    [detailViewController setLesson:lessonSelected];
+    [self.navigationController pushViewController:detailViewController animated:YES];
+    isDownloading = NO;
+}
+#pragma mark - DownloadManagerDelegate methods
+- (void)didFinishedDownloadFileWith:(NSURL*)filePath{
+    if (filePath) {
+        NSString *pathNew = [Utils documentsPathForFileName:[NSString stringWithFormat:@"%@-%@", lessonSelected.appID, lessonSelected.iD]];
+        if ([ZipManager unzipFile:filePath.path withDecPath:pathNew]) {
+            [Utils removeFileWithPath:filePath.path];
+            [[SQLiteManager getInstance] didDownloadedLesson:lessonSelected];
+            lessonSelected.downloaded = YES;
+            [self navigationToDetailView];
+        }else{
+            isDownloading = NO;
+        }
+    }else{
+        isDownloading = NO;
+    }
+}
+- (void)completePercent:(NSInteger)percent{
+    
 }
 @end

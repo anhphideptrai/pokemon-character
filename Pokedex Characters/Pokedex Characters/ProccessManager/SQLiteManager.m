@@ -155,4 +155,22 @@ static SQLiteManager *thisInstance;
     return resultArray;
 
 }
+- (BOOL)didDownloadedLesson:(LessonObject*)lesson{
+    [self copyDatabase];
+    BOOL result = NO;
+    sqlite3_stmt *statement;
+    const char *dbpath = [_databasePath UTF8String];
+    if (sqlite3_open(dbpath, &_contactDB) == SQLITE_OK)
+    {
+        NSString *insertSQL = [NSString stringWithFormat:
+                               @"UPDATE LESSON SET DOWNLOADED = \"1\" WHERE ID_APP = '%@' AND ID_LESSON = '%@'",lesson.appID, lesson.iD];
+        const char *insert_stmt = [insertSQL UTF8String];
+        sqlite3_prepare_v2(_contactDB, insert_stmt,
+                           -1, &statement, NULL);
+        result = (sqlite3_step(statement) == SQLITE_DONE);
+        sqlite3_finalize(statement);
+        sqlite3_close(_contactDB);
+    }
+    return result;
+}
 @end
