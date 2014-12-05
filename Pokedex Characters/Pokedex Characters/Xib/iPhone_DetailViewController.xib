@@ -62,23 +62,53 @@
                                 <action selector="actionBack:" destination="-1" eventType="touchUpInside" id="qCl-Bb-gO4"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aKF-6w-Zac">
+                            <rect key="frame" x="565" y="2" width="26" height="26"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="26" id="jfj-Ur-CCc"/>
+                                <constraint firstAttribute="width" constant="26" id="wLO-Ct-b9e"/>
+                            </constraints>
+                            <state key="normal" image="topnav_share_normal.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O0J-3n-sp2">
+                            <rect key="frame" x="540" y="0.0" width="60" height="30"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="dtW-Tc-mbM"/>
+                                <constraint firstAttribute="width" constant="60" id="wg6-Fv-IkG"/>
+                            </constraints>
+                            <state key="normal">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="actionShare:" destination="-1" eventType="touchUpInside" id="TKe-m5-l4D"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="YI7-Ka-DBo" secondAttribute="bottom" id="1aE-9M-x5H"/>
                         <constraint firstAttribute="trailing" secondItem="YI7-Ka-DBo" secondAttribute="trailing" id="3Xp-QY-hNC"/>
                         <constraint firstItem="YI7-Ka-DBo" firstAttribute="top" secondItem="Tdo-ir-JhI" secondAttribute="top" id="3lZ-Id-r3k"/>
+                        <constraint firstAttribute="trailing" secondItem="O0J-3n-sp2" secondAttribute="trailing" id="4tV-EN-kl5"/>
                         <constraint firstItem="Djb-B8-t2F" firstAttribute="top" secondItem="Tdo-ir-JhI" secondAttribute="top" id="7m4-sg-XVy"/>
+                        <constraint firstAttribute="trailing" secondItem="aKF-6w-Zac" secondAttribute="trailing" constant="9" id="9QV-l9-1Pa"/>
                         <constraint firstItem="YI7-Ka-DBo" firstAttribute="leading" secondItem="Tdo-ir-JhI" secondAttribute="leading" id="Bqg-QP-Klb"/>
                         <constraint firstItem="Djb-B8-t2F" firstAttribute="leading" secondItem="Tdo-ir-JhI" secondAttribute="leading" id="CXx-aI-DIl"/>
                         <constraint firstAttribute="bottom" secondItem="Djb-B8-t2F" secondAttribute="bottom" id="Egr-iS-s74"/>
                         <constraint firstItem="MgA-EM-GUy" firstAttribute="leading" secondItem="Tdo-ir-JhI" secondAttribute="leading" constant="9" id="Fw4-qo-Qbd"/>
                         <constraint firstItem="ckh-em-EZs" firstAttribute="leading" secondItem="Tdo-ir-JhI" secondAttribute="leading" id="Iew-dM-GxX"/>
+                        <constraint firstItem="aKF-6w-Zac" firstAttribute="top" secondItem="Tdo-ir-JhI" secondAttribute="top" constant="2" id="QDv-sd-hM6"/>
                         <constraint firstAttribute="trailing" secondItem="YI7-Ka-DBo" secondAttribute="trailing" id="TrP-Ox-dB8"/>
                         <constraint firstAttribute="height" constant="30" id="afY-MQ-2en"/>
+                        <constraint firstAttribute="bottom" secondItem="O0J-3n-sp2" secondAttribute="bottom" id="cCl-6m-Gsz"/>
                         <constraint firstItem="YI7-Ka-DBo" firstAttribute="top" secondItem="Tdo-ir-JhI" secondAttribute="top" id="dc2-Wc-YdL"/>
                         <constraint firstAttribute="trailing" secondItem="Djb-B8-t2F" secondAttribute="trailing" id="eI8-aV-jit"/>
                         <constraint firstItem="MgA-EM-GUy" firstAttribute="top" secondItem="Tdo-ir-JhI" secondAttribute="top" constant="2" id="gHB-7A-D9g"/>
+                        <constraint firstItem="O0J-3n-sp2" firstAttribute="top" secondItem="Tdo-ir-JhI" secondAttribute="top" id="hLf-c9-9Kl"/>
                         <constraint firstItem="ckh-em-EZs" firstAttribute="top" secondItem="Tdo-ir-JhI" secondAttribute="top" id="iyp-VJ-tfN"/>
                         <constraint firstAttribute="bottom" secondItem="YI7-Ka-DBo" secondAttribute="bottom" id="qiw-cr-uQp"/>
                     </constraints>
@@ -178,5 +208,6 @@
     <resources>
         <image name="reading_topnav_background.png" width="5" height="66"/>
         <image name="topnav_back_grey.png" width="58" height="24"/>
+        <image name="topnav_share_normal.png" width="44" height="44"/>
     </resources>
 </document>

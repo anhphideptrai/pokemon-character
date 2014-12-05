@@ -9,8 +9,12 @@
 #import "DetailViewController.h"
 #import <UIImageView+AFNetworking.h>
 #import "Utils.h"
+#import <Social/Social.h>
+#import "AppDelegate.h"
 
-@interface DetailViewController ()
+@interface DetailViewController (){
+    AppDelegate *appDelegate;
+}
 @property (nonatomic, strong)LessonObject *lesson;
 @end
 
@@ -27,6 +31,7 @@
     [self.btBackStep.layer setMasksToBounds:YES];
     [self.btNextStep.layer setCornerRadius:4.0f];
     [self.btNextStep.layer setMasksToBounds:YES];
+    appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
 }
 - (BOOL)prefersStatusBarHidden {
     return YES;
@@ -41,6 +46,15 @@
 
 - (IBAction)actionNextStep:(id)sender {
     [self.contentView scrollToItemAtIndex:self.contentView.currentItemIndex + 1 animated:NO];
+}
+
+- (IBAction)actionShare:(id)sender {
+    SLComposeViewController *controller = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
+    [controller setInitialText:_lesson.name];
+    [controller addURL:[NSURL URLWithString:appDelegate.config.urlShare]];
+    [controller addImage:[UIImage imageWithContentsOfFile:[Utils getURLImageWith:_lesson.appID andWithLessonID:_lesson.iD andWithStep:0].path]];
+    [self presentViewController:controller animated:YES completion:Nil];
+
 }
 - (void)setLesson:(LessonObject*)lesson{
     _lesson = lesson;

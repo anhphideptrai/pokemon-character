@@ -20,5 +20,6 @@
 - (IBAction)actionBack:(id)sender;
 - (IBAction)actionBackStep:(id)sender;
 - (IBAction)actionNextStep:(id)sender;
+- (IBAction)actionShare:(id)sender;
 - (void)setLesson:(LessonObject*)lesson;
 @end
