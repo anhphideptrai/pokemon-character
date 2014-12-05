@@ -88,14 +88,6 @@
                         <constraint firstAttribute="trailing" secondItem="U2Y-fS-0Lz" secondAttribute="trailing" id="sKI-yX-mNL"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xbl-XB-PgT" customClass="GADBannerView">
-                    <rect key="frame" x="0.0" y="518" width="320" height="50"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="320" id="TCS-ZI-yXl"/>
-                        <constraint firstAttribute="height" constant="50" id="iw1-Mh-AgT"/>
-                    </constraints>
-                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fi6-va-fJq">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <subviews>
@@ -126,6 +118,14 @@
                         <constraint firstItem="LFu-Cy-8YV" firstAttribute="leading" secondItem="Fi6-va-fJq" secondAttribute="leading" id="KOf-EP-ZG3"/>
                         <constraint firstAttribute="centerY" secondItem="uJj-YN-a1x" secondAttribute="centerY" id="kos-a7-KIl"/>
                         <constraint firstAttribute="centerX" secondItem="uJj-YN-a1x" secondAttribute="centerX" id="lfW-aY-Pha"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xbl-XB-PgT" customClass="GADBannerView">
+                    <rect key="frame" x="0.0" y="518" width="320" height="50"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="320" id="TCS-ZI-yXl"/>
+                        <constraint firstAttribute="height" constant="50" id="iw1-Mh-AgT"/>
                     </constraints>
                 </view>
             </subviews>

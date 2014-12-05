@@ -194,12 +194,17 @@
         [imageView setImage:image];
     }
 }
-
+- (void) setBlurredImagePoster:(CGFloat)alpha{
+    if (alpha >= 0 && alpha <= 1.0f ) {
+        [imageView setAlpha:alpha];
+    }
+}
 -(void)removeFromSuperview{
     [super removeFromSuperview];
     [imageView cancelImageRequestOperation];
     [iconLeft cancelImageRequestOperation];
     [imageView setImage:nil];
+    [imageView setAlpha:1.0f];
     [iconLeft setImage:nil];
     [btnPlay setImage:nil];
     [bgBottomLeft setImage:nil];

@@ -105,14 +105,6 @@
                         <outlet property="delegate" destination="-1" id="Jdw-NQ-GV4"/>
                     </connections>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qLV-Us-Fo8" customClass="GADBannerView">
-                    <rect key="frame" x="0.0" y="518" width="320" height="50"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="320" id="0FG-JJ-XV5"/>
-                        <constraint firstAttribute="height" constant="50" id="zQK-cL-V8v"/>
-                    </constraints>
-                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I2i-0G-xST">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <subviews>
@@ -141,6 +133,14 @@
                         <constraint firstAttribute="centerY" secondItem="wks-u8-jhl" secondAttribute="centerY" id="Uit-G9-RRb"/>
                         <constraint firstAttribute="centerX" secondItem="wks-u8-jhl" secondAttribute="centerX" id="cJM-SR-DWr"/>
                         <constraint firstItem="R4W-CF-thd" firstAttribute="top" secondItem="wks-u8-jhl" secondAttribute="bottom" id="dqW-Ut-qV9"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qLV-Us-Fo8" customClass="GADBannerView">
+                    <rect key="frame" x="0.0" y="518" width="320" height="50"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="320" id="0FG-JJ-XV5"/>
+                        <constraint firstAttribute="height" constant="50" id="zQK-cL-V8v"/>
                     </constraints>
                 </view>
             </subviews>

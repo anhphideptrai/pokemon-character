@@ -24,6 +24,7 @@
     DownloadManager *downloadManager;
     LessonObject *lessonSelected;
     BOOL isDownloading;
+    NSString *keySearch;
 }
 @property (strong, nonatomic) IBOutlet UILabel *title_Search;
 - (IBAction)clickBack:(id)sender;
@@ -44,6 +45,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    keySearch = @"";
     appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
     [self.title_Search setText:[Utils getStringOf:SEARCH_STRING withLanguage:appDelegate.languageDefault]];
     if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)]) {
@@ -60,7 +62,7 @@
     downloadManager = [[DownloadManager alloc] init];
     [downloadManager setDelegate:self];
     isDownloading = NO;
-    [self.loadingView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:.5f]];
+    [self.loadingView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:.3f]];
     [self.loadingView setHidden:!isDownloading];
     //Add Admob
    // if (![appDelegate.config.statusApp isEqualToString:STATUS_APP_DEFAUL]) {
@@ -77,7 +79,11 @@
 - (BOOL)prefersStatusBarHidden {
     return YES;
 }
-
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    result = [[SQLiteManager getInstance] getHowToDrawAllApps];
+    [self.contentGuideView holdPositionReloadData];
+}
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     [self.view endEditing:NO];
 }
@@ -123,6 +129,7 @@
     if (lesson.downloaded) {
         [posterView setURLImagePoster:[NSURL fileURLWithPath:[Utils documentsPathForFileName:[NSString stringWithFormat:@"%@-%@/icon.png",lesson.appID, lesson.iD]]] placeholderImage:[UIImage imageNamed:@"icon_placeholder.png"]];
     }else{
+        [posterView setBlurredImagePoster:0.5f];
         [posterView setURLImagePoster:[NSURL URLWithString:lesson.urlIcon] placeholderImage:[UIImage imageNamed:@"icon_placeholder.png"]];
     }
     [posterView setTextTitlePoster:lesson.name];
@@ -189,13 +196,15 @@ didSelectPosterViewAtRowIndex:(NSUInteger) rowIndex
    [self.view endEditing:YES];
 }
 - (void)searching{
-   NSString *searchText =  [timerSearch userInfo];
+    if ([timerSearch userInfo]) {
+     keySearch =  [timerSearch userInfo];
+    }
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-        if ([[searchText stringByTrimmingCharactersInSet:
+        if ([[keySearch stringByTrimmingCharactersInSet:
               [NSCharacterSet whitespaceAndNewlineCharacterSet]] isEqualToString:@""]) {
             [result removeAllObjects];
         }else{
-            result = [[SQLiteManager getInstance] getArrHowToDrawAppsWithSearchKey:searchText];
+            result = [[SQLiteManager getInstance] getArrHowToDrawAppsWithSearchKey:keySearch];
             
         }
         dispatch_async(dispatch_get_main_queue(), ^{

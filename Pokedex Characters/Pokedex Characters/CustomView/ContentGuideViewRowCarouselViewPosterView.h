@@ -49,4 +49,5 @@ typedef enum {
 - (void) resetHighLight;
 - (void) loadData;
 - (void) setImagePoster:(UIImage*) image;
+- (void) setBlurredImagePoster:(CGFloat)alpha;
 @end

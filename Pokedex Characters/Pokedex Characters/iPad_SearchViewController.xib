@@ -87,14 +87,6 @@
                         <outlet property="delegate" destination="-1" id="db3-wa-Yd0"/>
                     </connections>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MSA-wJ-vQ4" customClass="GADBannerView">
-                    <rect key="frame" x="224" y="974" width="320" height="50"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="320" id="6vy-vU-Wrl"/>
-                        <constraint firstAttribute="height" constant="50" id="yNg-gl-41f"/>
-                    </constraints>
-                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="beT-0P-H3j">
                     <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                     <subviews>
@@ -125,6 +117,14 @@
                         <constraint firstAttribute="centerY" secondItem="xfZ-6O-oGC" secondAttribute="centerY" id="okZ-EX-5gR"/>
                         <constraint firstItem="Gk8-UC-h4F" firstAttribute="leading" secondItem="beT-0P-H3j" secondAttribute="leading" id="q3p-Zx-NUA"/>
                         <constraint firstItem="Gk8-UC-h4F" firstAttribute="top" secondItem="xfZ-6O-oGC" secondAttribute="bottom" id="rES-j4-XcA"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MSA-wJ-vQ4" customClass="GADBannerView">
+                    <rect key="frame" x="224" y="974" width="320" height="50"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="320" id="6vy-vU-Wrl"/>
+                        <constraint firstAttribute="height" constant="50" id="yNg-gl-41f"/>
                     </constraints>
                 </view>
             </subviews>

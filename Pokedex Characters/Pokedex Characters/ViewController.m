@@ -36,7 +36,6 @@
     [super viewDidLoad];
     [[self navigationController] setNavigationBarHidden:YES animated:YES];
     appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
-    result = [[SQLiteManager getInstance] getHowToDrawAllApps];
     [self.contentGuideView setBackground:[UIImage imageNamed:@"scrollview_bg.png"]];
     [self.contentGuideView reloadData];
     downloadManager = [[DownloadManager alloc] init];
@@ -59,6 +58,12 @@
 
 - (BOOL)prefersStatusBarHidden {
     return YES;
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    result = [[SQLiteManager getInstance] getHowToDrawAllApps];
+    [self.contentGuideView holdPositionReloadData];
 }
 
 #pragma mark - ContentGuideViewDataSource methods
@@ -103,7 +108,8 @@
     if (lesson.downloaded) {
         [posterView setURLImagePoster:[NSURL fileURLWithPath:[Utils documentsPathForFileName:[NSString stringWithFormat:@"%@-%@/icon.png",lesson.appID, lesson.iD]]] placeholderImage:nil];
     }else{
-     [posterView setURLImagePoster:[NSURL URLWithString:lesson.urlIcon] placeholderImage:[UIImage imageNamed:@"icon_placeholder.png"]];
+        [posterView setBlurredImagePoster:0.3f];
+        [posterView setURLImagePoster:[NSURL URLWithString:lesson.urlIcon] placeholderImage:[UIImage imageNamed:@"icon_placeholder.png"]];
     }
     [posterView setTextTitlePoster:lesson.name];
     return posterView;
