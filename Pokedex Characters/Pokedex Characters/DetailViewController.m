@@ -60,7 +60,7 @@
 
 - (IBAction)actionShare:(id)sender {
     SLComposeViewController *controller = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
-    [controller setInitialText:_lesson.name];
+    [controller setInitialText:[NSString stringWithFormat:@"%@\n\n", _lesson.name]];
     [controller addURL:[NSURL URLWithString:appDelegate.config.urlShare]];
     [controller addImage:[UIImage imageWithContentsOfFile:[Utils getURLImageWith:_lesson.appID andWithLessonID:_lesson.iD andWithStep:0].path]];
     [self presentViewController:controller animated:YES completion:Nil];
