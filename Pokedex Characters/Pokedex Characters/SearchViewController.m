@@ -175,7 +175,7 @@ didSelectPosterViewAtRowIndex:(NSUInteger) rowIndex
             [self.squaresLoading setColor:_red_color_];
             [self.lbDownloading setText:@"Downloading... [0%]"];
             [self.loadingView setHidden:!isDownloading];
-            [downloadManager downloadFileWithUrl:[NSString stringWithFormat:@"http://www.how2draw.biz/how2draw/app%@/lesson%@.zip", lessonSelected.appID, [Utils formatLessonID:lessonSelected.iD]]];
+            [downloadManager downloadFileWithUrl:[NSString stringWithFormat:@"%@app%@/lesson%@.zip", appDelegate.config.urlServer, lessonSelected.appID, [Utils formatLessonID:lessonSelected.iD]]];
         }
     }
     

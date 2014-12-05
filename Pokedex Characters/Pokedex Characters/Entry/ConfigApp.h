@@ -11,6 +11,7 @@
 @interface ConfigApp : NSObject
 @property(nonatomic, strong) NSString *statusApp;
 @property(nonatomic, strong) NSString *urlShare;
+@property(nonatomic, strong) NSString *urlServer;
 @property(nonatomic, strong) NSString *version;
 @property(nonatomic, strong) NSString *expriredDay;
 - (id)init;

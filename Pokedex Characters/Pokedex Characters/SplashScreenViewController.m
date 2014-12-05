@@ -30,19 +30,19 @@
     [super viewDidLoad];
     [[self navigationController] setNavigationBarHidden:YES animated:YES];
     [self initSubView];
-    [[ConfigManager getInstance] loadConfig:@"https://character-app.googlecode.com/git/get_config_character_app.json" finished:^(BOOL success, ConfigApp *configApp) {
+    [[ConfigManager getInstance] loadConfig:@"https://how-to-draw-everything.googlecode.com/git/get_config_character_app.json" finished:^(BOOL success, ConfigApp *configApp) {
         [loadingView stopAnimating];
         AppDelegate *appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
         if (success) {
             appDelegate.config = configApp;
-            [[NSUserDefaults standardUserDefaults] setValue:appDelegate.config.statusApp forKey:CONFIG_SETTING_TAG];
+            [[NSUserDefaults standardUserDefaults] setValue:appDelegate.config.urlServer forKey:CONFIG_SETTING_TAG];
             [[NSUserDefaults standardUserDefaults] synchronize];
         }else{
             appDelegate.config = [[ConfigApp alloc] init];
             if ([[NSUserDefaults standardUserDefaults] objectForKey:CONFIG_SETTING_TAG]) {
-                appDelegate.config.statusApp = [[NSUserDefaults standardUserDefaults] objectForKey:CONFIG_SETTING_TAG];
+                appDelegate.config.urlServer = [[NSUserDefaults standardUserDefaults] objectForKey:CONFIG_SETTING_TAG];
             }else{
-                appDelegate.config.statusApp = STATUS_APP_DEFAUL;
+                appDelegate.config.urlServer = _url_server_default_;
             }
         }
         ViewController *mainViewController = [[ViewController alloc] initWithNibName:NAME_XIB_FILE_MAIN_VIEW_CONTROLLER bundle:nil];

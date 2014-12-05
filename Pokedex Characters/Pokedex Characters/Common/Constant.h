@@ -56,4 +56,5 @@
 #define _blue_color_        [UIColor colorWithRed:0 green:116.0/255 blue:217.0/255 alpha:1.0]
 #define _orange_color_      [UIColor colorWithRed:1.0 green:133.0/255 blue:27.0/255 alpha:1.0]
 #define _grayButton_color_  [UIColor darkGrayColor]
+#define _url_server_default_ @"http://www.how2draw.biz/how2draw/"
 #endif
