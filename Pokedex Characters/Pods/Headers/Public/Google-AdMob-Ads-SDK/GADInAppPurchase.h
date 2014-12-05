@@ -1,1 +1,1 @@
-../../../Google-AdMob-Ads-SDK/GoogleMobileAdsSdkiOS-6.12.0/GADInAppPurchase.h
+../../../Google-AdMob-Ads-SDK/GoogleMobileAdsSdkiOS-6.12.2/GADInAppPurchase.h

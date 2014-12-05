@@ -1,1 +1,1 @@
-../../../Google-AdMob-Ads-SDK/GoogleMobileAdsSdkiOS-6.12.0/GADAdNetworkExtras.h
+../../../Google-AdMob-Ads-SDK/GoogleMobileAdsSdkiOS-6.12.2/GADAdNetworkExtras.h

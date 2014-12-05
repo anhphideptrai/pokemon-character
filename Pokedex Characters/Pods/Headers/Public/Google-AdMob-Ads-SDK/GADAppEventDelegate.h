@@ -1,1 +1,1 @@
-../../../Google-AdMob-Ads-SDK/GoogleMobileAdsSdkiOS-6.12.0/Add-ons/DoubleClick/GADAppEventDelegate.h
+../../../Google-AdMob-Ads-SDK/GoogleMobileAdsSdkiOS-6.12.2/Add-ons/DoubleClick/GADAppEventDelegate.h

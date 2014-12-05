@@ -48,29 +48,11 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking_UIKit 5
 #define COCOAPODS_VERSION_PATCH_AFNetworking_UIKit 0
 
-// ASOAnimatedButton
-#define COCOAPODS_POD_AVAILABLE_ASOAnimatedButton
-#define COCOAPODS_VERSION_MAJOR_ASOAnimatedButton 1
-#define COCOAPODS_VERSION_MINOR_ASOAnimatedButton 0
-#define COCOAPODS_VERSION_PATCH_ASOAnimatedButton 1
-
-// ASOAnimatedButton/BounceButton
-#define COCOAPODS_POD_AVAILABLE_ASOAnimatedButton_BounceButton
-#define COCOAPODS_VERSION_MAJOR_ASOAnimatedButton_BounceButton 1
-#define COCOAPODS_VERSION_MINOR_ASOAnimatedButton_BounceButton 0
-#define COCOAPODS_VERSION_PATCH_ASOAnimatedButton_BounceButton 1
-
-// ASOAnimatedButton/TwoStateButton
-#define COCOAPODS_POD_AVAILABLE_ASOAnimatedButton_TwoStateButton
-#define COCOAPODS_VERSION_MAJOR_ASOAnimatedButton_TwoStateButton 1
-#define COCOAPODS_VERSION_MINOR_ASOAnimatedButton_TwoStateButton 0
-#define COCOAPODS_VERSION_PATCH_ASOAnimatedButton_TwoStateButton 1
-
 // Google-AdMob-Ads-SDK
 #define COCOAPODS_POD_AVAILABLE_Google_AdMob_Ads_SDK
 #define COCOAPODS_VERSION_MAJOR_Google_AdMob_Ads_SDK 6
 #define COCOAPODS_VERSION_MINOR_Google_AdMob_Ads_SDK 12
-#define COCOAPODS_VERSION_PATCH_Google_AdMob_Ads_SDK 0
+#define COCOAPODS_VERSION_PATCH_Google_AdMob_Ads_SDK 2
 
 // RZSquaresLoading
 #define COCOAPODS_POD_AVAILABLE_RZSquaresLoading
