@@ -13,11 +13,17 @@
 #import "SQLiteManager.h"
 #import "AppDelegate.h"
 #import "DetailViewController.h"
+#import "DownloadManager.h"
+#import "Utils.h"
+#import "ZipManager.h"
 
-@interface SearchViewController (){
+@interface SearchViewController () <DownloadManagerDelegate>{
     NSMutableArray *result;
     NSTimer *timerSearch;
     AppDelegate *appDelegate;
+    DownloadManager *downloadManager;
+    LessonObject *lessonSelected;
+    BOOL isDownloading;
 }
 @property (strong, nonatomic) IBOutlet UILabel *title_Search;
 - (IBAction)clickBack:(id)sender;
@@ -51,6 +57,11 @@
 
     [self.contentGuideView setBackground:[UIImage imageNamed:@"scrollview_bg.png"]];
     [self.contentGuideView reloadData];
+    downloadManager = [[DownloadManager alloc] init];
+    [downloadManager setDelegate:self];
+    isDownloading = NO;
+    [self.loadingView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:.5f]];
+    [self.loadingView setHidden:!isDownloading];
     //Add Admob
    // if (![appDelegate.config.statusApp isEqualToString:STATUS_APP_DEFAUL]) {
         // Replace this ad unit ID with your own ad unit ID.
@@ -109,7 +120,11 @@
         posterView = [[ContentGuideViewRowCarouselViewPosterView alloc] initWithStyle:ContentGuideViewRowCarouselViewPosterViewStyleDefault reuseIdentifier:identifier];
     }
     LessonObject *lesson = [((AppObject*)[result objectAtIndex:rowIndex]).lessons objectAtIndex:index];
-    [posterView setURLImagePoster:lesson.urlIcon placeholderImage:[UIImage imageNamed:@"icon_placeholder.png"]];
+    if (lesson.downloaded) {
+        [posterView setURLImagePoster:[NSURL fileURLWithPath:[Utils documentsPathForFileName:[NSString stringWithFormat:@"%@-%@/icon.png",lesson.appID, lesson.iD]]] placeholderImage:[UIImage imageNamed:@"icon_placeholder.png"]];
+    }else{
+        [posterView setURLImagePoster:[NSURL URLWithString:lesson.urlIcon] placeholderImage:[UIImage imageNamed:@"icon_placeholder.png"]];
+    }
     [posterView setTextTitlePoster:lesson.name];
     return posterView;
     
@@ -138,9 +153,25 @@
 - (void)         contentGuide:(ContentGuideView*) contentGuide
 didSelectPosterViewAtRowIndex:(NSUInteger) rowIndex
                   posterIndex:(NSUInteger) index{
-    DetailViewController *detailViewController = [[DetailViewController alloc] initWithNibName:NAME_XIB_FILE_DETAIL_VIEW_CONTROLLER bundle:nil];
-    [self.navigationController pushViewController:detailViewController animated:YES];
+    lessonSelected = [((AppObject*)[result objectAtIndex:rowIndex]).lessons objectAtIndex:index];
+    if (lessonSelected.downloaded) {
+        [self navigationToDetailView];
+    }else{
+        if (!isDownloading) {
+            isDownloading = YES;
+            [self.squaresLoading setColor:_red_color_];
+            [self.lbDownloading setText:@"Downloading... [0%]"];
+            [self.loadingView setHidden:!isDownloading];
+            [downloadManager downloadFileWithUrl:[NSString stringWithFormat:@"http://www.how2draw.biz/how2draw/app%@/lesson%@.zip", lessonSelected.appID, [Utils formatLessonID:lessonSelected.iD]]];
+        }
+    }
     
+}
+- (void)navigationToDetailView{
+    DetailViewController *detailViewController = [[DetailViewController alloc] initWithNibName:NAME_XIB_FILE_DETAIL_VIEW_CONTROLLER bundle:nil];
+    [detailViewController setLesson:lessonSelected];
+    [self.navigationController pushViewController:detailViewController animated:YES];
+    isDownloading = NO;
 }
 - (IBAction)clickBack:(id)sender {
      [self.navigationController popViewControllerAnimated:YES];
@@ -170,6 +201,47 @@ didSelectPosterViewAtRowIndex:(NSUInteger) rowIndex
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.contentGuideView reloadData];
         });
+    });
+}
+#pragma mark - DownloadManagerDelegate methods
+- (void)didFinishedDownloadFileWith:(NSURL*)filePath{
+    if (filePath) {
+        NSString *pathNew = [Utils documentsPathForFileName:[NSString stringWithFormat:@"%@-%@", lessonSelected.appID, lessonSelected.iD]];
+        if ([ZipManager unzipFile:filePath.path withDecPath:pathNew]) {
+            [Utils removeFileWithPath:filePath.path];
+            [[SQLiteManager getInstance] didDownloadedLesson:lessonSelected];
+            lessonSelected.downloaded = YES;
+            [self navigationToDetailView];
+        }else{
+            isDownloading = NO;
+        }
+    }else{
+        isDownloading = NO;
+    }
+    [self.loadingView setHidden:!isDownloading];
+}
+- (void)completePercent:(NSInteger)percent{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.lbDownloading setText:[NSString stringWithFormat:@"Downloading... [%ld%%]", (long)percent]];
+        switch (percent/20) {
+            case 0:
+                [self.squaresLoading setColor:_red_color_];
+                break;
+            case 1:
+                [self.squaresLoading setColor:_green_color_];
+                break;
+            case 2:
+                [self.squaresLoading setColor:_blue_color_];
+                break;
+            case 3:
+                [self.squaresLoading setColor:_orange_color_];
+                break;
+            case 4:
+                [self.squaresLoading setColor:_grayButton_color_];
+                break;
+            default:
+                break;
+        }
     });
 }
 @end

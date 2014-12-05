@@ -129,13 +129,12 @@
     }
 }
 
-- (void)setURLImagePoster:(NSString*)strURL placeholderImage:(UIImage *)placeholderImage{
-    if (strURL && ![strURL isEqualToString:@""] && imageView) {
-        NSURL *url = [NSURL URLWithString:strURL];
+- (void)setURLImagePoster:(NSURL*)uRL placeholderImage:(UIImage *)placeholderImage{
+    if (uRL && imageView) {
         if (placeholderImage) {
-            [imageView setImageWithURL:url placeholderImage:placeholderImage];
+            [imageView setImageWithURL:uRL placeholderImage:placeholderImage];
         }else{
-            [imageView setImageWithURL:url];
+            [imageView setImageWithURL:uRL];
         }
     }
 }

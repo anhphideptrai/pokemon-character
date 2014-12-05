@@ -100,7 +100,11 @@
         posterView = [[ContentGuideViewRowCarouselViewPosterView alloc] initWithStyle:ContentGuideViewRowCarouselViewPosterViewStyleDefault reuseIdentifier:identifier];
     }
     LessonObject *lesson = [((AppObject*)[result objectAtIndex:rowIndex]).lessons objectAtIndex:index];
-    [posterView setURLImagePoster:lesson.urlIcon placeholderImage:[UIImage imageNamed:@"icon_placeholder.png"]];
+    if (lesson.downloaded) {
+        [posterView setURLImagePoster:[NSURL fileURLWithPath:[Utils documentsPathForFileName:[NSString stringWithFormat:@"%@-%@/icon.png",lesson.appID, lesson.iD]]] placeholderImage:nil];
+    }else{
+     [posterView setURLImagePoster:[NSURL URLWithString:lesson.urlIcon] placeholderImage:[UIImage imageNamed:@"icon_placeholder.png"]];
+    }
     [posterView setTextTitlePoster:lesson.name];
     return posterView;
     
@@ -146,6 +150,7 @@ didSelectPosterViewAtRowIndex:(NSUInteger) rowIndex
         if (!isDownloading) {
             isDownloading = YES;
             [self.squaresLoading setColor:_red_color_];
+            [self.lbDownloading setText:@"Downloading... [0%]"];
             [self.loadingView setHidden:!isDownloading];
             [downloadManager downloadFileWithUrl:[NSString stringWithFormat:@"http://www.how2draw.biz/how2draw/app%@/lesson%@.zip", lessonSelected.appID, [Utils formatLessonID:lessonSelected.iD]]];
         }
@@ -191,6 +196,7 @@ didSelectPosterViewAtRowIndex:(NSUInteger) rowIndex
 }
 - (void)completePercent:(NSInteger)percent{
     dispatch_async(dispatch_get_main_queue(), ^{
+        [self.lbDownloading setText:[NSString stringWithFormat:@"Downloading... [%ld%%]", (long)percent]];
         switch (percent/20) {
             case 0:
                 [self.squaresLoading setColor:_red_color_];
