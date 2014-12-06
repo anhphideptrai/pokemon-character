@@ -45,10 +45,10 @@
     [self.loadingView setHidden:!isDownloading];
     
     // Add Admob
-//    self.bannerView.adUnitID = BANNER_ID_ADMOB;
-//    self.bannerView.rootViewController = self;
-//    GADRequest *request = [GADRequest request];
-//    [self.bannerView loadRequest:request];
+    self.bannerView.adUnitID = BANNER_ID_ADMOB_HOME_PAGE;
+    self.bannerView.rootViewController = self;
+    GADRequest *request = [GADRequest request];
+    [self.bannerView loadRequest:request];
     
 }
 

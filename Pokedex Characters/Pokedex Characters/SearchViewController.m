@@ -65,7 +65,7 @@
     [self.loadingView setHidden:!isDownloading];
     //Add Admob
     if (![appDelegate.config.statusApp isEqualToString:STATUS_APP_DEFAUL]) {
-        self.bannerView.adUnitID = BANNER_ID_ADMOB;
+        self.bannerView.adUnitID = BANNER_ID_ADMOB_SEARCH_PAGE;
         self.bannerView.rootViewController = self;
         GADRequest *request = [GADRequest request];
         [self.bannerView loadRequest:request];
