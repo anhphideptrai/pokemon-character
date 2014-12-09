@@ -20,18 +20,25 @@ PODS:
   - AFNetworking/UIKit (2.5.0):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - ASOAnimatedButton (1.0.1):
+    - ASOAnimatedButton/BounceButton (= 1.0.1)
+    - ASOAnimatedButton/TwoStateButton (= 1.0.1)
+  - ASOAnimatedButton/BounceButton (1.0.1)
+  - ASOAnimatedButton/TwoStateButton (1.0.1)
   - Google-AdMob-Ads-SDK (6.12.2)
   - iCarousel (1.8.1)
   - RZSquaresLoading (1.1)
 
 DEPENDENCIES:
   - AFNetworking (= 2.5.0)
+  - ASOAnimatedButton (= 1.0.1)
   - Google-AdMob-Ads-SDK (= 6.12.2)
   - iCarousel (= 1.8.1)
   - RZSquaresLoading (= 1.1)
 
 SPEC CHECKSUMS:
   AFNetworking: 0f54cb5d16ce38c1b76948faffb8d5fb705021c7
+  ASOAnimatedButton: 92bb13622b2a7f0f0b106525e21c7b2d21d6ab94
   Google-AdMob-Ads-SDK: 9776de20c7904bd29dc37f81e24707cdee9c706c
   iCarousel: 5acab560f10dc13da2440c89f35a0ad278b5147d
   RZSquaresLoading: 516569ef5c5fa476eed56c6e7cc28415c532c34b
