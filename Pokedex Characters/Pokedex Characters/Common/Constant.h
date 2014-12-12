@@ -61,4 +61,5 @@
 #define _grayButton_color_  [UIColor darkGrayColor]
 #define _url_server_default_ @"http://www.how2draw.biz/how2draw/"
 #define search_string_en @"SEARCH"
+#define _IMAGE_NAME_STEP_(STEP) [NSString stringWithFormat:@"%ld.jpg", STEP]
 #endif

@@ -8,7 +8,6 @@
 
 #import "PromoSlidesView.h"
 #import "UIImageView+AFNetworking.h"
-#import "Constant.h"
 
 @interface PromoSlidesView(){
     NSInteger numberItems;

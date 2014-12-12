@@ -7,19 +7,17 @@
 //
 
 #import "SearchViewController.h"
-#import "Constant.h"
 #import "SQLiteManager.h"
 #import "AppDelegate.h"
 #import "DetailViewController.h"
 #import "DownloadManager.h"
-#import "ZipManager.h"
 
 @interface SearchViewController () <DownloadManagerDelegate>{
     NSMutableArray *result;
     NSTimer *timerSearch;
     AppDelegate *appDelegate;
     DownloadManager *downloadManager;
-    LessonObject *lessonSelected;
+    OrigamiScheme *schemeSelected;
     BOOL isDownloading;
     NSString *keySearch;
 }
@@ -126,6 +124,7 @@
     }
     OrigamiScheme *scheme = ((OrigamiGroup*)result[rowIndex]).schemes[index];
     [posterView setURLImagePoster: [[NSBundle mainBundle] URLForResource:[NSString stringWithFormat:@"icon-%@", scheme.ident] withExtension:@"jpg"] placeholderImage:nil];
+    [posterView setBlurredImagePoster:scheme.isDownloaded?1.f:0.3f];
     [posterView setTextTitlePoster:scheme.name];
     return posterView;
     
@@ -154,23 +153,31 @@
 - (void)         contentGuide:(ContentGuideView*) contentGuide
 didSelectPosterViewAtRowIndex:(NSUInteger) rowIndex
                   posterIndex:(NSUInteger) index{
-//    lessonSelected = [((AppObject*)[result objectAtIndex:rowIndex]).lessons objectAtIndex:index];
-//    if (lessonSelected.downloaded) {
-//        [self navigationToDetailView];
-//    }else{
-//        if (!isDownloading) {
-//            isDownloading = YES;
-//            [self.squaresLoading setColor:_red_color_];
-//            [self.lbDownloading setText:@"Downloading... [0%]"];
-//            [self.loadingView setHidden:!isDownloading];
-//            [downloadManager downloadFileWithUrl:[NSString stringWithFormat:@"%@app%@/lesson%@.zip", appDelegate.config.urlServer, lessonSelected.appID, [Utils formatLessonID:lessonSelected.iD]]];
-//        }
-//    }
-    
+    schemeSelected = ((OrigamiGroup*)result[rowIndex]).schemes[index];
+    if (schemeSelected.isDownloaded) {
+        [self navigationToDetailView];
+    }else{
+        if (!isDownloading) {
+            isDownloading = YES;
+            [self.squaresLoading setColor:_red_color_];
+            [self.lbDownloading setText:@"Downloading... [0%]"];
+            [self.loadingView setHidden:!isDownloading];
+            NSMutableArray *files = [[NSMutableArray alloc] init];
+            for (OrigamiStep *step in schemeSelected.steps) {
+                DownloadEntry *entry = [[DownloadEntry alloc] init];
+                entry.strUrl = step.img;
+                entry.dir = step.schemeID;
+                entry.fileName = _IMAGE_NAME_STEP_(step.sort_order);
+                entry.size = step.size;
+                [files addObject:entry];
+            }
+            [downloadManager dowloadFilesWith:files];
+        }
+    }
 }
 - (void)navigationToDetailView{
     DetailViewController *detailViewController = [[DetailViewController alloc] initWithNibName:NAME_XIB_FILE_DETAIL_VIEW_CONTROLLER bundle:nil];
-    [detailViewController setLesson:lessonSelected];
+    [detailViewController setScheme:schemeSelected];
     [self.navigationController pushViewController:detailViewController animated:YES];
     isDownloading = NO;
 }
@@ -207,20 +214,11 @@ didSelectPosterViewAtRowIndex:(NSUInteger) rowIndex
     });
 }
 #pragma mark - DownloadManagerDelegate methods
-- (void)didFinishedDownloadFileWith:(NSURL*)filePath{
-    if (filePath) {
-        NSString *pathNew = [Utils documentsPathForFileName:[NSString stringWithFormat:@"%@-%@", lessonSelected.appID, lessonSelected.iD]];
-        if ([ZipManager unzipFile:filePath.path withDecPath:pathNew]) {
-            [Utils removeFileWithPath:filePath.path];
-            [[SQLiteManager getInstance] didDownloadedLesson:lessonSelected];
-            lessonSelected.downloaded = YES;
-            [self navigationToDetailView];
-        }else{
-            isDownloading = NO;
-        }
-    }else{
-        isDownloading = NO;
-    }
+- (void)didFinishedDownloadFilesWith:(NSArray *)filePaths{
+    [[SQLiteManager getInstance] didDownloadedScheme:schemeSelected];
+    schemeSelected.isDownloaded = YES;
+    [self navigationToDetailView];
+    isDownloading = NO;
     [self.loadingView setHidden:!isDownloading];
 }
 - (void)completePercent:(NSInteger)percent{

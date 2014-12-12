@@ -72,7 +72,7 @@ static SQLiteManager *thisInstance;
     return resultArray;
 }
 
-- (BOOL)didDownloadedLesson:(LessonObject*)lesson{
+- (BOOL)didDownloadedScheme:(OrigamiScheme*)scheme{
     [self copyDatabase];
     BOOL result = NO;
     sqlite3_stmt *statement;
@@ -80,7 +80,7 @@ static SQLiteManager *thisInstance;
     if (sqlite3_open(dbpath, &_contactDB) == SQLITE_OK)
     {
         NSString *insertSQL = [NSString stringWithFormat:
-                               @"UPDATE LESSON SET DOWNLOADED = \"1\" WHERE ID_APP = '%@' AND ID_LESSON = '%@'",lesson.appID, lesson.iD];
+                               @"UPDATE origami_scheme SET isdownloaded = \"1\" WHERE schemeID = '%@'",scheme.rowid];
         const char *insert_stmt = [insertSQL UTF8String];
         sqlite3_prepare_v2(_contactDB, insert_stmt,
                            -1, &statement, NULL);
@@ -118,6 +118,7 @@ static SQLiteManager *thisInstance;
                 scheme.changed = [NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 4)];
                 scheme.steps_count = sqlite3_column_int(statement, 5);
                 scheme.iDGroup = sqlite3_column_int(statement, 7);
+                scheme.isDownloaded = sqlite3_column_int(statement, 8) > 0;
                 scheme.steps = [self getArrStepWithIDScheme:scheme.rowid];
                 [resultArray addObject:scheme];
             }
@@ -138,7 +139,7 @@ static SQLiteManager *thisInstance;
     OrigamiStep *step;
     if (sqlite3_open(dbpath, &_contactDB) == SQLITE_OK)
     {
-        NSString *querySQL = [NSString stringWithFormat:@"select * from origami_step where schemeID = \"%@\"", iDScheme];
+        NSString *querySQL = [NSString stringWithFormat:@"select * from origami_step where schemeID = \"%@\" order by sort_order", iDScheme];
         const char *query_stmt = [querySQL UTF8String];
         if (sqlite3_prepare_v2(_contactDB,
                                query_stmt, -1, &statement, NULL) == SQLITE_OK)

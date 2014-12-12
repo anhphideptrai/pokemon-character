@@ -7,7 +7,6 @@
 //
 
 #import "ContentGuideViewRowCarouselViewPosterView.h"
-#import "Constant.h"
 
 #define POSTER_IMAGE_VIEW_FRAME CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - heightTitlePoster)
 #define ICON_LEFT_FRAME   CGRectMake(0, POSTER_IMAGE_VIEW_FRAME.size.height - 30, self.frame.size.width/3, 30)

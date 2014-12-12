@@ -11,12 +11,11 @@
 #import "Utils.h"
 #import <Social/Social.h>
 #import "AppDelegate.h"
-#import "Constant.h"
 
 @interface DetailViewController (){
     AppDelegate *appDelegate;
 }
-@property (nonatomic, strong)LessonObject *lesson;
+@property (nonatomic, strong)OrigamiScheme *scheme;
 @end
 
 @implementation DetailViewController
@@ -32,7 +31,7 @@
     [self.btBackStep.layer setMasksToBounds:YES];
     [self.btNextStep.layer setCornerRadius:4.0f];
     [self.btNextStep.layer setMasksToBounds:YES];
-    [self.lbLessonName setText:_lesson.name];
+    [self.lbLessonName setText:_scheme.name];
     appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
     
     //Add Admob
@@ -59,22 +58,23 @@
 }
 
 - (IBAction)actionShare:(id)sender {
+    OrigamiStep *step = _scheme.steps[_scheme.steps.count - 1];
     SLComposeViewController *controller = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
-    [controller setInitialText:[NSString stringWithFormat:@"%@\n\n", _lesson.name]];
+    [controller setInitialText:[NSString stringWithFormat:@"%@\n\n", _scheme.name]];
     [controller addURL:[NSURL URLWithString:appDelegate.config.urlShare]];
-    [controller addImage:[UIImage imageWithContentsOfFile:[Utils getURLImageWith:_lesson.appID andWithLessonID:_lesson.iD andWithStep:0].path]];
+    [controller addImage:[UIImage imageWithContentsOfFile:[Utils getURLImageWith:_scheme.rowid andWithStep:step.sort_order].path]];
     [self presentViewController:controller animated:YES completion:Nil];
 
 }
-- (void)setLesson:(LessonObject*)lesson{
-    _lesson = lesson;
+- (void)setScheme:(OrigamiScheme*)scheme{
+    _scheme = scheme;
 }
 - (void)updateTitleStep{
-    [self.lbSteps setText:[NSString stringWithFormat:@"%ld/%ld",self.contentView.currentItemIndex, _lesson.steps]];
+    [self.lbSteps setText:[NSString stringWithFormat:@"%ld/%ld",self.contentView.currentItemIndex, _scheme.steps_count]];
 }
 #pragma mark - iCarouselDataSource methods
 - (NSInteger)numberOfItemsInCarousel:(iCarousel *)carousel{
-    return _lesson.steps + 1;
+    return _scheme.steps_count;
 }
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view{
     UIImageView *subView = nil;
@@ -88,7 +88,8 @@
         subView = [[UIImageView alloc] initWithFrame:frame];
     }
     [subView setContentMode:UIViewContentModeScaleAspectFit];
-    [subView setImageWithURL:[Utils getURLImageWith:_lesson.appID andWithLessonID:_lesson.iD andWithStep:(int)index]];
+    OrigamiStep *step = _scheme.steps[index];
+    [subView setImageWithURL:[Utils getURLImageWith:_scheme.rowid andWithStep:step.sort_order]];
     return subView;
 }
 #pragma mark - iCarouselDelegate methods

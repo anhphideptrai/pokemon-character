@@ -166,13 +166,6 @@
 		B2CC862019B36E3500BD1ABF /* ContentGuideViewRowHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = B2CC861719B36E3500BD1ABF /* ContentGuideViewRowHeader.m */; };
 		B2CC8EEB19B381B500BD1ABF /* SQLiteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B2CC8EEA19B381B500BD1ABF /* SQLiteManager.m */; };
 		B2CC8EF619B3837C00BD1ABF /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B2CC8EF519B3837C00BD1ABF /* libsqlite3.0.dylib */; };
-		B2D0F0A61A2EA58D009CBF0F /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = B2D0F09A1A2EA58D009CBF0F /* ioapi.c */; };
-		B2D0F0A71A2EA58D009CBF0F /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = B2D0F09C1A2EA58D009CBF0F /* mztools.c */; };
-		B2D0F0A81A2EA58D009CBF0F /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = B2D0F09E1A2EA58D009CBF0F /* unzip.c */; };
-		B2D0F0A91A2EA58D009CBF0F /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = B2D0F0A01A2EA58D009CBF0F /* zip.c */; };
-		B2D0F0AA1A2EA58D009CBF0F /* ZipArchive.mm in Sources */ = {isa = PBXBuildFile; fileRef = B2D0F0A31A2EA58D009CBF0F /* ZipArchive.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		B2D0F0AB1A2EA58D009CBF0F /* ZipManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D0F0A51A2EA58D009CBF0F /* ZipManager.m */; };
-		B2D0F0AD1A2EA9A2009CBF0F /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D0F0AC1A2EA9A2009CBF0F /* libz.1.2.5.dylib */; };
 		B2D0F0B31A2FF0A1009CBF0F /* AppObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D0F0B01A2FF0A1009CBF0F /* AppObject.m */; };
 		B2D0F0B41A2FF0A1009CBF0F /* LessonObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B2D0F0B21A2FF0A1009CBF0F /* LessonObject.m */; };
 		B2D0F0B61A2FF0DC009CBF0F /* 01b908e725eb512c86b0d96d086ec3f5 in Resources */ = {isa = PBXBuildFile; fileRef = B2D0F0B51A2FF0DC009CBF0F /* 01b908e725eb512c86b0d96d086ec3f5 */; };
@@ -375,19 +368,6 @@
 		B2CC8EE919B381B500BD1ABF /* SQLiteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SQLiteManager.h; path = ProccessManager/SQLiteManager.h; sourceTree = "<group>"; };
 		B2CC8EEA19B381B500BD1ABF /* SQLiteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SQLiteManager.m; path = ProccessManager/SQLiteManager.m; sourceTree = "<group>"; };
 		B2CC8EF519B3837C00BD1ABF /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
-		B2D0F0991A2EA58D009CBF0F /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
-		B2D0F09A1A2EA58D009CBF0F /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
-		B2D0F09B1A2EA58D009CBF0F /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
-		B2D0F09C1A2EA58D009CBF0F /* mztools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mztools.c; sourceTree = "<group>"; };
-		B2D0F09D1A2EA58D009CBF0F /* mztools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mztools.h; sourceTree = "<group>"; };
-		B2D0F09E1A2EA58D009CBF0F /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
-		B2D0F09F1A2EA58D009CBF0F /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
-		B2D0F0A01A2EA58D009CBF0F /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
-		B2D0F0A11A2EA58D009CBF0F /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
-		B2D0F0A21A2EA58D009CBF0F /* ZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipArchive.h; sourceTree = "<group>"; };
-		B2D0F0A31A2EA58D009CBF0F /* ZipArchive.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ZipArchive.mm; sourceTree = "<group>"; };
-		B2D0F0A41A2EA58D009CBF0F /* ZipManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZipManager.h; path = ProccessManager/ZipManager.h; sourceTree = "<group>"; };
-		B2D0F0A51A2EA58D009CBF0F /* ZipManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZipManager.m; path = ProccessManager/ZipManager.m; sourceTree = "<group>"; };
 		B2D0F0AC1A2EA9A2009CBF0F /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		B2D0F0AF1A2FF0A1009CBF0F /* AppObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppObject.h; path = Entry/AppObject.h; sourceTree = "<group>"; };
 		B2D0F0B01A2FF0A1009CBF0F /* AppObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppObject.m; path = Entry/AppObject.m; sourceTree = "<group>"; };
@@ -420,7 +400,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B2D0F0AD1A2EA9A2009CBF0F /* libz.1.2.5.dylib in Frameworks */,
 				B2CC8EF619B3837C00BD1ABF /* libsqlite3.0.dylib in Frameworks */,
 				B2CC857B19B36D8E00BD1ABF /* CoreGraphics.framework in Frameworks */,
 				B2CC857D19B36D8E00BD1ABF /* UIKit.framework in Frameworks */,
@@ -727,42 +706,12 @@
 		B2CC8EDC19B37D9E00BD1ABF /* ProccessManager */ = {
 			isa = PBXGroup;
 			children = (
-				B2D0F0971A2EA58D009CBF0F /* ZipArchive */,
-				B2D0F0A41A2EA58D009CBF0F /* ZipManager.h */,
-				B2D0F0A51A2EA58D009CBF0F /* ZipManager.m */,
 				B2CC8EE919B381B500BD1ABF /* SQLiteManager.h */,
 				B2CC8EEA19B381B500BD1ABF /* SQLiteManager.m */,
 				B2D126761A30CC2B0097FF39 /* DownloadManager.h */,
 				B2D126771A30CC2B0097FF39 /* DownloadManager.m */,
 			);
 			name = ProccessManager;
-			sourceTree = "<group>";
-		};
-		B2D0F0971A2EA58D009CBF0F /* ZipArchive */ = {
-			isa = PBXGroup;
-			children = (
-				B2D0F0981A2EA58D009CBF0F /* minizip */,
-				B2D0F0A21A2EA58D009CBF0F /* ZipArchive.h */,
-				B2D0F0A31A2EA58D009CBF0F /* ZipArchive.mm */,
-			);
-			name = ZipArchive;
-			path = ProccessManager/ZipArchive;
-			sourceTree = "<group>";
-		};
-		B2D0F0981A2EA58D009CBF0F /* minizip */ = {
-			isa = PBXGroup;
-			children = (
-				B2D0F0991A2EA58D009CBF0F /* crypt.h */,
-				B2D0F09A1A2EA58D009CBF0F /* ioapi.c */,
-				B2D0F09B1A2EA58D009CBF0F /* ioapi.h */,
-				B2D0F09C1A2EA58D009CBF0F /* mztools.c */,
-				B2D0F09D1A2EA58D009CBF0F /* mztools.h */,
-				B2D0F09E1A2EA58D009CBF0F /* unzip.c */,
-				B2D0F09F1A2EA58D009CBF0F /* unzip.h */,
-				B2D0F0A01A2EA58D009CBF0F /* zip.c */,
-				B2D0F0A11A2EA58D009CBF0F /* zip.h */,
-			);
-			path = minizip;
 			sourceTree = "<group>";
 		};
 		B2E911FC19B5438300A715F0 /* PromoSlides */ = {
@@ -1068,24 +1017,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2CC861C19B36E3500BD1ABF /* ContentGuideViewRow.m in Sources */,
-				B2D0F0A71A2EA58D009CBF0F /* mztools.c in Sources */,
-				B2D0F0AA1A2EA58D009CBF0F /* ZipArchive.mm in Sources */,
 				B2D0F0B41A2FF0A1009CBF0F /* LessonObject.m in Sources */,
 				B213CC3719ED2C5E00B79AF1 /* ConfigManager.m in Sources */,
 				B2CC859219B36D8E00BD1ABF /* ViewController.m in Sources */,
-				B2D0F0AB1A2EA58D009CBF0F /* ZipManager.m in Sources */,
-				B2D0F0A91A2EA58D009CBF0F /* zip.c in Sources */,
 				B2CC858919B36D8E00BD1ABF /* AppDelegate.m in Sources */,
 				B21219D51A375FF900DBE8B1 /* OrigamiStep.m in Sources */,
 				B2CC861A19B36E3500BD1ABF /* ContentGuideView.m in Sources */,
 				B2CC862019B36E3500BD1ABF /* ContentGuideViewRowHeader.m in Sources */,
-				B2D0F0A61A2EA58D009CBF0F /* ioapi.c in Sources */,
 				B213CC3419ED2A5700B79AF1 /* ConfigApp.m in Sources */,
 				B2CC861819B36E3500BD1ABF /* PromoSlidesView.m in Sources */,
 				B2CC8EEB19B381B500BD1ABF /* SQLiteManager.m in Sources */,
 				B2137B0E19BD39A000184C56 /* SearchViewController.m in Sources */,
 				B2D2B90819E97AA50052F166 /* Utils.m in Sources */,
-				B2D0F0A81A2EA58D009CBF0F /* unzip.c in Sources */,
 				B25638D21A30A84700FAF531 /* DetailViewController.m in Sources */,
 				B2EDFED319EE416E0055D4E7 /* SplashScreenViewController.m in Sources */,
 				B2CC861E19B36E3500BD1ABF /* ContentGuideViewRowCarouselViewPosterView.m in Sources */,

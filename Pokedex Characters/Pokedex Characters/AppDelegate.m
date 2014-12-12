@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "SplashScreenViewController.h"
-#import "Constant.h"
 
 @implementation AppDelegate
 

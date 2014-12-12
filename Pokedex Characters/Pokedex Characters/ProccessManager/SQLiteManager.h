@@ -11,12 +11,10 @@
 #import "AppObject.h"
 #import "LessonObject.h"
 #import "OrigamiGroup.h"
-#import "OrigamiScheme.h"
-#import "OrigamiStep.h"
 
 @interface SQLiteManager : NSObject
 + (SQLiteManager *) getInstance;
-- (BOOL)didDownloadedLesson:(LessonObject*)lesson;
+- (BOOL)didDownloadedScheme:(OrigamiScheme*)scheme;
 
 - (NSMutableArray*)getArrGroupsWithSearchKey:(NSString*)searchKey;
 - (NSMutableArray*)getArrGroups;

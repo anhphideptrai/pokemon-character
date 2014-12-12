@@ -10,7 +10,7 @@
 #import "GADBannerView.h"
 #import "GADRequest.h"
 #import <iCarousel.h>
-#import "LessonObject.h"
+#import "OrigamiScheme.h"
 @interface DetailViewController : UIViewController <iCarouselDataSource, iCarouselDelegate>
 @property (strong, nonatomic) IBOutlet UILabel *lbLessonName;
 @property (strong, nonatomic) IBOutlet UILabel *lbSteps;
@@ -22,5 +22,5 @@
 - (IBAction)actionBackStep:(id)sender;
 - (IBAction)actionNextStep:(id)sender;
 - (IBAction)actionShare:(id)sender;
-- (void)setLesson:(LessonObject*)lesson;
+- (void)setScheme:(OrigamiScheme*)scheme;
 @end

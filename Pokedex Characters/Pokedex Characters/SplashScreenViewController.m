@@ -11,7 +11,6 @@
 #import "ConfigManager.h"
 #import "ViewController.h"
 #import "AppDelegate.h"
-#import "Constant.h"
 
 @interface SplashScreenViewController (){
     UIImageView *bgView;

@@ -7,7 +7,6 @@
 //
 
 #import "ContentGuideViewRowHeader.h"
-#import "Constant.h"
 
 @interface ContentGuideViewRowHeader()
 {

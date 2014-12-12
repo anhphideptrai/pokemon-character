@@ -9,9 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface Utils : NSObject
-+ (BOOL) removeFileWithPath:(NSString*)path;
-+ (NSURL*)getURLImageWith:(NSString*)appID andWithLessonID:(NSString*)lessonID andWithStep:(int)step;
++ (NSURL*)getURLImageWith:(NSString*)schemeID andWithStep:(NSInteger)step;
 + (NSString *)documentsPathForFileName:(NSString *)name;
-+ (NSString*)formatLessonID:(NSString*)lessonID;
 //+ (NSString *) admobDeviceID;
 @end

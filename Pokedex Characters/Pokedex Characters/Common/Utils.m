@@ -7,19 +7,13 @@
 //
 
 #import "Utils.h"
-#import "ZipManager.h"
 //#import <AdSupport/ASIdentifierManager.h>
 //#include <CommonCrypto/CommonDigest.h>
 
 @implementation Utils
-+ (BOOL) removeFileWithPath:(NSString*)path{
-    NSError *error=nil;
-    BOOL succes = [[NSFileManager defaultManager]removeItemAtPath:path error:&error];
-    return succes;
-}
-+ (NSURL*)getURLImageWith:(NSString*)appID andWithLessonID:(NSString*)lessonID andWithStep:(int)step{
++ (NSURL*)getURLImageWith:(NSString*)schemeID andWithStep:(NSInteger)step{
     NSURL *url = nil;
-    NSString *strUrl = [Utils documentsPathForFileName:[NSString stringWithFormat:@"%@-%@/step_%@.png",appID, lessonID, [NSString stringWithFormat:step > 9 ? @"%d":@"0%d",step]]];
+    NSString *strUrl = [Utils documentsPathForFileName:[NSString stringWithFormat:@"%@/%@",schemeID, _IMAGE_NAME_STEP_(step)]];
     url = [NSURL fileURLWithPath:strUrl];
     return url;
 }

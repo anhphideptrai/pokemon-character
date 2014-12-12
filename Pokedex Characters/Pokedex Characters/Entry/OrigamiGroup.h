@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "OrigamiScheme.h"
 @interface OrigamiGroup : NSObject
 @property (nonatomic, strong) NSString *groupName;
 @property (nonatomic) NSInteger groupID;
