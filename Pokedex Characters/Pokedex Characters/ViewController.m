@@ -101,7 +101,7 @@
         posterView = [[ContentGuideViewRowCarouselViewPosterView alloc] initWithStyle:ContentGuideViewRowCarouselViewPosterViewStyleDefault reuseIdentifier:identifier];
     }
     OrigamiScheme *scheme = ((OrigamiGroup*)result[rowIndex]).schemes[index];
-    [posterView setImagePoster:[UIImage imageNamed:[NSString stringWithFormat:@"icon-%@.jpg", scheme.ident]]];
+    [posterView setURLImagePoster: [[NSBundle mainBundle] URLForResource:[NSString stringWithFormat:@"icon-%@", scheme.ident] withExtension:@"jpg"] placeholderImage:nil];
     [posterView setTextTitlePoster:scheme.name];
     return posterView;
     
@@ -158,12 +158,10 @@ didSelectPosterViewAtRowIndex:(NSUInteger) rowIndex
 - (NSUInteger) numberOfItemsInPromoSlides:(PromoSlidesView*) promoSlides{
     return 6;
 }
-- (UIImage*) promoSlidesView:(PromoSlidesView*) promoSlides
-         imageForItemAtIndex:(NSInteger) indexItem{
-    return [UIImage imageNamed:[NSString stringWithFormat:@"promo_%d.jpg",(int)indexItem + 1]];
-    
+- (NSURL*) promoSlidesView:(PromoSlidesView*) promoSlides
+    urlImageForItemAtIndex:(NSInteger) indexItem{
+    return [[NSBundle mainBundle] URLForResource:[NSString stringWithFormat:@"promo_%d",(int)indexItem + 1] withExtension:@"jpg"];
 }
-
 - (IBAction)clickSearch:(id)sender {
     SearchViewController *searchViewCotroller = [[SearchViewController alloc] initWithNibName:NAME_XIB_FILE_SEARCH_VIEW_CONTROLLER bundle:nil];
     [self.navigationController pushViewController:searchViewCotroller animated:YES ];

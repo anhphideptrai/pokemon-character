@@ -40,51 +40,28 @@ static SQLiteManager *thisInstance;
         [fileManager copyItemAtPath:resourcePath toPath:_databasePath error:&error];
     }
 }
-- (NSMutableArray*)getHowToDrawAllApps{
-    [self copyDatabase];
-    NSMutableArray *resultArray = [[NSMutableArray alloc]init];
-    NSMutableArray *arrIDApps = [self getAllIDApps];
-    for (AppObject *app in arrIDApps) {
-        [app setLessons:[self getAllLessonOfAppWithIDApp:app.iD]];
-        [resultArray addObject:app];
-    }
-    return resultArray;
-}
-- (NSMutableArray*)getArrHowToDrawAppsWithSearchKey:(NSString*)searchKey{
-    NSMutableArray *resultArray = [[NSMutableArray alloc]init];
-    NSArray *arrApps = [self getAllIDApps];
-    for (AppObject *app in arrApps) {
-        [app setLessons:[self getArrLessonWithIDApp:app.iD andSearchKey:searchKey]];
-        if (app.lessons.count > 0) {
-            [resultArray addObject:app];
-        }
-    }
-    return resultArray;
-}
-- (NSMutableArray*)getArrLessonWithIDApp:(NSString*)iDApp andSearchKey:(NSString*)searchKey{
+- (NSMutableArray*)getArrGroupsWithSearchKey:(NSString*)searchKey{
     [self copyDatabase];
     NSMutableArray *resultArray = [[NSMutableArray alloc]init];
     sqlite3_stmt    *statement;
     const char *dbpath = [_databasePath UTF8String];
-    LessonObject *lesson;
+    OrigamiGroup *group;
     if (sqlite3_open(dbpath, &_contactDB) == SQLITE_OK)
     {
-        NSString *querySQL = [NSString stringWithFormat:@"select * from LESSON WHERE ID_APP = \"%@\" AND NAME LIKE \'%%%@%%\' group by NAME", iDApp, searchKey];
+        NSString *querySQL = [NSString stringWithFormat:@"select * from 'origami_group'"];
         const char *query_stmt = [querySQL UTF8String];
         if (sqlite3_prepare_v2(_contactDB,
                                query_stmt, -1, &statement, NULL) == SQLITE_OK)
         {
             while (sqlite3_step(statement) == SQLITE_ROW)
             {
-                lesson = [[LessonObject alloc] init];
-                lesson.appID = [NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 0)];
-                lesson.iD = [NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 1)];
-                lesson.name = [NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 2)];
-                lesson.steps = sqlite3_column_int(statement, 3);
-                lesson.rate = sqlite3_column_int(statement, 4);
-                lesson.urlIcon = [NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 5)];
-                lesson.downloaded = sqlite3_column_int(statement, 6);
-                [resultArray addObject:lesson];
+                group = [[OrigamiGroup alloc] init];
+                group.groupID = sqlite3_column_int(statement, 0);
+                group.groupName = [NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 1)];
+                group.schemes = [self getArrSchemesWithGroupID:group.groupID andSearchKey:searchKey];
+                if (group.schemes.count > 0) {
+                    [resultArray addObject:group];
+                }
             }
             sqlite3_finalize(statement);
         }
@@ -94,67 +71,7 @@ static SQLiteManager *thisInstance;
     }
     return resultArray;
 }
-- (NSMutableArray*)getAllLessonOfAppWithIDApp:(NSString*)iDApp{
-    [self copyDatabase];
-    NSMutableArray *resultArray = [[NSMutableArray alloc]init];
-    sqlite3_stmt    *statement;
-    const char *dbpath = [_databasePath UTF8String];
-    if (sqlite3_open(dbpath, &_contactDB) == SQLITE_OK)
-    {
-        NSString *querySQL = [NSString stringWithFormat:@"select * from LESSON where ID_APP = \"%@\" order by ID_APP", iDApp];
-        const char *query_stmt = [querySQL UTF8String];
-        if (sqlite3_prepare_v2(_contactDB,
-                               query_stmt, -1, &statement, NULL) == SQLITE_OK)
-        {
-            while (sqlite3_step(statement) == SQLITE_ROW)
-            {
-                LessonObject *lesson = [[LessonObject alloc] init];
-                [lesson setAppID:[NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 0)]];
-                [lesson setID:[NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 1)]];
-                [lesson setName:[NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 2)]];
-                [lesson setSteps:sqlite3_column_int(statement, 3)];
-                [lesson setRate:sqlite3_column_int(statement, 4)];
-                [lesson setUrlIcon:[NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 5)]];
-                [lesson setDownloaded:sqlite3_column_int(statement, 6)];
-                [resultArray addObject:lesson];
-            }
-            sqlite3_finalize(statement);
-        }
-        
-        
-        sqlite3_close(_contactDB);
-    }
-    return resultArray;
 
-}
-- (NSMutableArray*)getAllIDApps{
-    [self copyDatabase];
-    NSMutableArray *resultArray = [[NSMutableArray alloc]init];
-    sqlite3_stmt    *statement;
-    const char *dbpath = [_databasePath UTF8String];
-    if (sqlite3_open(dbpath, &_contactDB) == SQLITE_OK)
-    {
-        NSString *querySQL = [NSString stringWithFormat:@"select * from APP order by NAME"];
-        const char *query_stmt = [querySQL UTF8String];
-        if (sqlite3_prepare_v2(_contactDB,
-                               query_stmt, -1, &statement, NULL) == SQLITE_OK)
-        {
-            while (sqlite3_step(statement) == SQLITE_ROW)
-            {
-                AppObject *app = [[AppObject alloc] init];
-                [app setID:[NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 0)]];
-                [app setName:[NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 1)]];
-                [resultArray addObject:app];
-            }
-            sqlite3_finalize(statement);
-        }
-        
-        
-        sqlite3_close(_contactDB);
-    }
-    return resultArray;
-
-}
 - (BOOL)didDownloadedLesson:(LessonObject*)lesson{
     [self copyDatabase];
     BOOL result = NO;
@@ -175,36 +92,10 @@ static SQLiteManager *thisInstance;
 }
 
 - (NSMutableArray*)getArrGroups{
-    [self copyDatabase];
-    NSMutableArray *resultArray = [[NSMutableArray alloc]init];
-    sqlite3_stmt    *statement;
-    const char *dbpath = [_databasePath UTF8String];
-    OrigamiGroup *group;
-    if (sqlite3_open(dbpath, &_contactDB) == SQLITE_OK)
-    {
-        NSString *querySQL = [NSString stringWithFormat:@"select * from 'origami_group'"];
-        const char *query_stmt = [querySQL UTF8String];
-        if (sqlite3_prepare_v2(_contactDB,
-                               query_stmt, -1, &statement, NULL) == SQLITE_OK)
-        {
-            while (sqlite3_step(statement) == SQLITE_ROW)
-            {
-                group = [[OrigamiGroup alloc] init];
-                group.groupID = sqlite3_column_int(statement, 0);
-                group.groupName = [NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 1)];
-                group.schemes = [self getArrSchemesWithGroupID:group.groupID];
-                [resultArray addObject:group];
-            }
-            sqlite3_finalize(statement);
-        }
-        
-        
-        sqlite3_close(_contactDB);
-    }
-    return resultArray;
+    return [self getArrGroupsWithSearchKey:@""];
 }
 
-- (NSMutableArray*)getArrSchemesWithGroupID:(NSInteger)groupID{
+- (NSMutableArray*)getArrSchemesWithGroupID:(NSInteger)groupID andSearchKey:(NSString*)searchKey{
     [self copyDatabase];
     NSMutableArray *resultArray = [[NSMutableArray alloc]init];
     sqlite3_stmt    *statement;
@@ -212,7 +103,7 @@ static SQLiteManager *thisInstance;
     OrigamiScheme *scheme;
     if (sqlite3_open(dbpath, &_contactDB) == SQLITE_OK)
     {
-        NSString *querySQL = [NSString stringWithFormat:@"select * from origami_scheme where iDGroup = \"%d\"", groupID];
+        NSString *querySQL = [NSString stringWithFormat:@"select * from origami_scheme where iDGroup = \"%ld\" and name LIKE \'%%%@%%\'", (long)groupID, searchKey];
         const char *query_stmt = [querySQL UTF8String];
         if (sqlite3_prepare_v2(_contactDB,
                                query_stmt, -1, &statement, NULL) == SQLITE_OK)

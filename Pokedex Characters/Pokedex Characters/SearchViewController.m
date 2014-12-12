@@ -7,8 +7,6 @@
 //
 
 #import "SearchViewController.h"
-#import "AppObject.h"
-#import "LessonObject.h"
 #import "Constant.h"
 #import "SQLiteManager.h"
 #import "AppDelegate.h"
@@ -80,7 +78,7 @@
           [NSCharacterSet whitespaceAndNewlineCharacterSet]] isEqualToString:@""]) {
         [result removeAllObjects];
     }else{
-        result = [[SQLiteManager getInstance] getArrHowToDrawAppsWithSearchKey:keySearch];
+        result = [[SQLiteManager getInstance] getArrGroupsWithSearchKey:keySearch];
         
     }
     [self.contentGuideView holdPositionReloadData];
@@ -90,7 +88,7 @@
 }
 #pragma mark - ContentGuideViewDataSource methods
 - (NSUInteger) numberOfPostersInCarousel:(ContentGuideView*) contentGuide atRowIndex:(NSUInteger) rowIndex{
-    return ((AppObject*)[result objectAtIndex:rowIndex]).lessons.count;
+    return ((OrigamiGroup*)result[rowIndex]).schemes.count;
 }
 - (NSUInteger) numberOfRowsInContentGuide:(ContentGuideView*) contentGuide{
     return result.count;
@@ -112,8 +110,8 @@
     if (!header) {
         header = [[ContentGuideViewRowHeader alloc] initWithStyle:ContentGuideViewRowHeaderStyleDefault reuseIdentifier:identifier];
     }
-    AppObject *app = (AppObject*)[result objectAtIndex:rowIndex];
-    [header  setTextTitleRowHeader:[app.name uppercaseString]];
+    OrigamiGroup *group = (OrigamiGroup*)result[rowIndex];
+    [header  setTextTitleRowHeader:[group.groupName uppercaseString]];
     [header setBackground:[UIImage imageNamed:@"headercell_bg.png"]];
     return header;
 }
@@ -126,14 +124,9 @@
     if (!posterView) {
         posterView = [[ContentGuideViewRowCarouselViewPosterView alloc] initWithStyle:ContentGuideViewRowCarouselViewPosterViewStyleDefault reuseIdentifier:identifier];
     }
-    LessonObject *lesson = [((AppObject*)[result objectAtIndex:rowIndex]).lessons objectAtIndex:index];
-    if (lesson.downloaded) {
-        [posterView setURLImagePoster:[NSURL fileURLWithPath:[Utils documentsPathForFileName:[NSString stringWithFormat:@"%@-%@/icon.png",lesson.appID, lesson.iD]]] placeholderImage:[UIImage imageNamed:@"icon_placeholder.png"]];
-    }else{
-        [posterView setBlurredImagePoster:0.5f];
-        [posterView setURLImagePoster:[NSURL URLWithString:lesson.urlIcon] placeholderImage:[UIImage imageNamed:@"icon_placeholder.png"]];
-    }
-    [posterView setTextTitlePoster:lesson.name];
+    OrigamiScheme *scheme = ((OrigamiGroup*)result[rowIndex]).schemes[index];
+    [posterView setURLImagePoster: [[NSBundle mainBundle] URLForResource:[NSString stringWithFormat:@"icon-%@", scheme.ident] withExtension:@"jpg"] placeholderImage:nil];
+    [posterView setTextTitlePoster:scheme.name];
     return posterView;
     
 }
@@ -161,18 +154,18 @@
 - (void)         contentGuide:(ContentGuideView*) contentGuide
 didSelectPosterViewAtRowIndex:(NSUInteger) rowIndex
                   posterIndex:(NSUInteger) index{
-    lessonSelected = [((AppObject*)[result objectAtIndex:rowIndex]).lessons objectAtIndex:index];
-    if (lessonSelected.downloaded) {
-        [self navigationToDetailView];
-    }else{
-        if (!isDownloading) {
-            isDownloading = YES;
-            [self.squaresLoading setColor:_red_color_];
-            [self.lbDownloading setText:@"Downloading... [0%]"];
-            [self.loadingView setHidden:!isDownloading];
-            [downloadManager downloadFileWithUrl:[NSString stringWithFormat:@"%@app%@/lesson%@.zip", appDelegate.config.urlServer, lessonSelected.appID, [Utils formatLessonID:lessonSelected.iD]]];
-        }
-    }
+//    lessonSelected = [((AppObject*)[result objectAtIndex:rowIndex]).lessons objectAtIndex:index];
+//    if (lessonSelected.downloaded) {
+//        [self navigationToDetailView];
+//    }else{
+//        if (!isDownloading) {
+//            isDownloading = YES;
+//            [self.squaresLoading setColor:_red_color_];
+//            [self.lbDownloading setText:@"Downloading... [0%]"];
+//            [self.loadingView setHidden:!isDownloading];
+//            [downloadManager downloadFileWithUrl:[NSString stringWithFormat:@"%@app%@/lesson%@.zip", appDelegate.config.urlServer, lessonSelected.appID, [Utils formatLessonID:lessonSelected.iD]]];
+//        }
+//    }
     
 }
 - (void)navigationToDetailView{
@@ -205,7 +198,7 @@ didSelectPosterViewAtRowIndex:(NSUInteger) rowIndex
               [NSCharacterSet whitespaceAndNewlineCharacterSet]] isEqualToString:@""]) {
             [result removeAllObjects];
         }else{
-            result = [[SQLiteManager getInstance] getArrHowToDrawAppsWithSearchKey:keySearch];
+            result = [[SQLiteManager getInstance] getArrGroupsWithSearchKey:keySearch];
             
         }
         dispatch_async(dispatch_get_main_queue(), ^{

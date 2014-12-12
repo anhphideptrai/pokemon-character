@@ -16,8 +16,8 @@
 
 @interface SQLiteManager : NSObject
 + (SQLiteManager *) getInstance;
-- (NSMutableArray*)getHowToDrawAllApps;
-- (NSMutableArray*)getArrHowToDrawAppsWithSearchKey:(NSString*)searchKey;
 - (BOOL)didDownloadedLesson:(LessonObject*)lesson;
+
+- (NSMutableArray*)getArrGroupsWithSearchKey:(NSString*)searchKey;
 - (NSMutableArray*)getArrGroups;
 @end
