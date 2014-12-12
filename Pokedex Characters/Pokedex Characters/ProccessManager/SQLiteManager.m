@@ -8,7 +8,7 @@
 
 #import "SQLiteManager.h"
 
-#define DB_NAME_STRING @"01b908e725eb512c86b0d96d086ec3f5"
+#define DB_NAME_STRING @"origami.sqlite"
 @interface SQLiteManager()
 
 @property (strong, nonatomic) NSString *databasePath;
@@ -172,5 +172,105 @@ static SQLiteManager *thisInstance;
         sqlite3_close(_contactDB);
     }
     return result;
+}
+
+- (NSMutableArray*)getArrGroups{
+    [self copyDatabase];
+    NSMutableArray *resultArray = [[NSMutableArray alloc]init];
+    sqlite3_stmt    *statement;
+    const char *dbpath = [_databasePath UTF8String];
+    OrigamiGroup *group;
+    if (sqlite3_open(dbpath, &_contactDB) == SQLITE_OK)
+    {
+        NSString *querySQL = [NSString stringWithFormat:@"select * from 'origami_group'"];
+        const char *query_stmt = [querySQL UTF8String];
+        if (sqlite3_prepare_v2(_contactDB,
+                               query_stmt, -1, &statement, NULL) == SQLITE_OK)
+        {
+            while (sqlite3_step(statement) == SQLITE_ROW)
+            {
+                group = [[OrigamiGroup alloc] init];
+                group.groupID = sqlite3_column_int(statement, 0);
+                group.groupName = [NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 1)];
+                group.schemes = [self getArrSchemesWithGroupID:group.groupID];
+                [resultArray addObject:group];
+            }
+            sqlite3_finalize(statement);
+        }
+        
+        
+        sqlite3_close(_contactDB);
+    }
+    return resultArray;
+}
+
+- (NSMutableArray*)getArrSchemesWithGroupID:(NSInteger)groupID{
+    [self copyDatabase];
+    NSMutableArray *resultArray = [[NSMutableArray alloc]init];
+    sqlite3_stmt    *statement;
+    const char *dbpath = [_databasePath UTF8String];
+    OrigamiScheme *scheme;
+    if (sqlite3_open(dbpath, &_contactDB) == SQLITE_OK)
+    {
+        NSString *querySQL = [NSString stringWithFormat:@"select * from origami_scheme where iDGroup = \"%d\"", groupID];
+        const char *query_stmt = [querySQL UTF8String];
+        if (sqlite3_prepare_v2(_contactDB,
+                               query_stmt, -1, &statement, NULL) == SQLITE_OK)
+        {
+            while (sqlite3_step(statement) == SQLITE_ROW)
+            {
+                scheme = [[OrigamiScheme alloc] init];
+                scheme.rowid = [NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 0)];
+                scheme.ident = [NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 1)];
+                scheme.name = [NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 2)];
+                scheme.descr = [NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 3)];
+                scheme.changed = [NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 4)];
+                scheme.steps_count = sqlite3_column_int(statement, 5);
+                scheme.iDGroup = sqlite3_column_int(statement, 7);
+                scheme.steps = [self getArrStepWithIDScheme:scheme.rowid];
+                [resultArray addObject:scheme];
+            }
+            sqlite3_finalize(statement);
+        }
+        
+        
+        sqlite3_close(_contactDB);
+    }
+    return resultArray;
+    
+}
+- (NSMutableArray*)getArrStepWithIDScheme:(NSString*)iDScheme{
+    [self copyDatabase];
+    NSMutableArray *resultArray = [[NSMutableArray alloc]init];
+    sqlite3_stmt    *statement;
+    const char *dbpath = [_databasePath UTF8String];
+    OrigamiStep *step;
+    if (sqlite3_open(dbpath, &_contactDB) == SQLITE_OK)
+    {
+        NSString *querySQL = [NSString stringWithFormat:@"select * from origami_step where schemeID = \"%@\"", iDScheme];
+        const char *query_stmt = [querySQL UTF8String];
+        if (sqlite3_prepare_v2(_contactDB,
+                               query_stmt, -1, &statement, NULL) == SQLITE_OK)
+        {
+            while (sqlite3_step(statement) == SQLITE_ROW)
+            {
+                step = [[OrigamiStep alloc] init];
+                step.schemeID = [NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 0)];
+                step.stepid = [NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 1)];
+                step.sort_order = sqlite3_column_int(statement, 2);
+                step.info = [NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 3)];
+                step.help = sqlite3_column_int(statement, 4);
+                step.size = sqlite3_column_int(statement, 5);
+                step.img = [NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 6)];
+                [resultArray addObject:step];
+            }
+            sqlite3_finalize(statement);
+        }
+        
+        
+        sqlite3_close(_contactDB);
+    }
+    return resultArray;
+    
 }
 @end

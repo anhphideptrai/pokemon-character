@@ -58,13 +58,13 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    result = [[SQLiteManager getInstance] getHowToDrawAllApps];
+    result = [[SQLiteManager getInstance] getArrGroups];
     [self.contentGuideView holdPositionReloadData];
 }
 
 #pragma mark - ContentGuideViewDataSource methods
 - (NSUInteger) numberOfPostersInCarousel:(ContentGuideView*) contentGuide atRowIndex:(NSUInteger) rowIndex{
-    return ((AppObject*)[result objectAtIndex:rowIndex]).lessons.count;
+    return ((OrigamiGroup*)result[rowIndex]).schemes.count;
 }
 - (NSUInteger) numberOfRowsInContentGuide:(ContentGuideView*) contentGuide{
     return result.count;
@@ -86,8 +86,8 @@
     if (!header) {
         header = [[ContentGuideViewRowHeader alloc] initWithStyle:ContentGuideViewRowHeaderStyleDefault reuseIdentifier:identifier];
     }
-    AppObject *app = (AppObject*)[result objectAtIndex:rowIndex];
-    [header  setTextTitleRowHeader:[app.name uppercaseString]];
+    OrigamiGroup *group = (OrigamiGroup*)result[rowIndex];
+    [header  setTextTitleRowHeader:[group.groupName uppercaseString]];
     [header setBackground:[UIImage imageNamed:@"headercell_bg.png"]];
     return header;
 }
@@ -100,14 +100,9 @@
     if (!posterView) {
         posterView = [[ContentGuideViewRowCarouselViewPosterView alloc] initWithStyle:ContentGuideViewRowCarouselViewPosterViewStyleDefault reuseIdentifier:identifier];
     }
-    LessonObject *lesson = [((AppObject*)[result objectAtIndex:rowIndex]).lessons objectAtIndex:index];
-    if (lesson.downloaded) {
-        [posterView setURLImagePoster:[NSURL fileURLWithPath:[Utils documentsPathForFileName:[NSString stringWithFormat:@"%@-%@/icon.png",lesson.appID, lesson.iD]]] placeholderImage:nil];
-    }else{
-        [posterView setBlurredImagePoster:0.3f];
-        [posterView setURLImagePoster:[NSURL URLWithString:lesson.urlIcon] placeholderImage:[UIImage imageNamed:@"icon_placeholder.png"]];
-    }
-    [posterView setTextTitlePoster:lesson.name];
+    OrigamiScheme *scheme = ((OrigamiGroup*)result[rowIndex]).schemes[index];
+    [posterView setImagePoster:[UIImage imageNamed:[NSString stringWithFormat:@"icon-%@.jpg", scheme.ident]]];
+    [posterView setTextTitlePoster:scheme.name];
     return posterView;
     
 }
@@ -145,18 +140,18 @@
 - (void)         contentGuide:(ContentGuideView*) contentGuide
 didSelectPosterViewAtRowIndex:(NSUInteger) rowIndex
                   posterIndex:(NSUInteger) index{
-    lessonSelected = [((AppObject*)[result objectAtIndex:rowIndex]).lessons objectAtIndex:index];
-    if (lessonSelected.downloaded) {
-        [self navigationToDetailView];
-    }else{
-        if (!isDownloading) {
-            isDownloading = YES;
-            [self.squaresLoading setColor:_red_color_];
-            [self.lbDownloading setText:@"Downloading... [0%]"];
-            [self.loadingView setHidden:!isDownloading];
-            [downloadManager downloadFileWithUrl:[NSString stringWithFormat:@"%@app%@/lesson%@.zip", appDelegate.config.urlServer, lessonSelected.appID, [Utils formatLessonID:lessonSelected.iD]]];
-        }
-    }
+//    lessonSelected = [((AppObject*)[result objectAtIndex:rowIndex]).lessons objectAtIndex:index];
+//    if (lessonSelected.downloaded) {
+//        [self navigationToDetailView];
+//    }else{
+//        if (!isDownloading) {
+//            isDownloading = YES;
+//            [self.squaresLoading setColor:_red_color_];
+//            [self.lbDownloading setText:@"Downloading... [0%]"];
+//            [self.loadingView setHidden:!isDownloading];
+//            [downloadManager downloadFileWithUrl:[NSString stringWithFormat:@"%@app%@/lesson%@.zip", appDelegate.config.urlServer, lessonSelected.appID, [Utils formatLessonID:lessonSelected.iD]]];
+//        }
+//    }
 }
 
 #pragma mark - PromoSlidesViewDataSource methods
