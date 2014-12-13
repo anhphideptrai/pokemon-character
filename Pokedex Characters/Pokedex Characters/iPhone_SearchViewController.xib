@@ -85,7 +85,7 @@
                         <constraint firstItem="vyF-tC-Pcu" firstAttribute="top" secondItem="Y1b-8J-wMf" secondAttribute="top" id="vCA-dJ-3e1"/>
                     </constraints>
                 </view>
-                <searchBar contentMode="redraw" backgroundImage="headercell_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="avL-dk-KtW">
+                <searchBar contentMode="redraw" backgroundImage="bg_searchbar.png" translatesAutoresizingMaskIntoConstraints="NO" id="avL-dk-KtW">
                     <rect key="frame" x="0.0" y="30" width="320" height="44"/>
                     <color key="backgroundColor" red="0.1843137255" green="0.1843137255" blue="0.1843137255" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
@@ -168,7 +168,7 @@
         </view>
     </objects>
     <resources>
-        <image name="headercell_bg.png" width="320" height="44"/>
+        <image name="bg_searchbar.png" width="10" height="100"/>
         <image name="reading_topnav_background.jpg" width="1536" height="88"/>
         <image name="topnav_back_grey.png" width="58" height="24"/>
     </resources>

@@ -162,6 +162,9 @@ static SQLiteManager *thisInstance;
         
         sqlite3_close(_contactDB);
     }
+    if (step) {
+        [resultArray insertObject:step atIndex:0];
+    }
     return resultArray;
     
 }

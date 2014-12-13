@@ -67,7 +67,7 @@
                         <constraint firstItem="ddD-69-GfH" firstAttribute="leading" secondItem="Q7N-sD-B7p" secondAttribute="leading" constant="8" id="onP-q3-moo"/>
                     </constraints>
                 </view>
-                <searchBar contentMode="redraw" backgroundImage="headercell_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="Eet-hg-Otw">
+                <searchBar contentMode="redraw" backgroundImage="bg_searchbar.png" translatesAutoresizingMaskIntoConstraints="NO" id="Eet-hg-Otw">
                     <rect key="frame" x="0.0" y="50" width="768" height="44"/>
                     <color key="backgroundColor" red="0.18431372549019609" green="0.18431372549019609" blue="0.18431372549019609" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
@@ -152,7 +152,7 @@
         </view>
     </objects>
     <resources>
-        <image name="headercell_bg.png" width="320" height="44"/>
+        <image name="bg_searchbar.png" width="10" height="100"/>
         <image name="reading_topnav_background.jpg" width="1536" height="88"/>
         <image name="topnav_back_grey.png" width="65" height="44"/>
     </resources>

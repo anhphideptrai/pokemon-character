@@ -17,6 +17,7 @@
 }
 @property (nonatomic, strong)OrigamiScheme *scheme;
 @property (strong, nonatomic) IBOutlet UIImageView *bgNavigationBar;
+@property (strong, nonatomic) IBOutlet UITextView *txtInfo;
 @end
 
 @implementation DetailViewController
@@ -59,7 +60,7 @@
 }
 
 - (IBAction)actionShare:(id)sender {
-    OrigamiStep *step = _scheme.steps[_scheme.steps.count - 1];
+    OrigamiStep *step = _scheme.steps[0];
     SLComposeViewController *controller = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
     [controller setInitialText:[NSString stringWithFormat:@"%@\n\n", _scheme.name]];
     [controller addURL:[NSURL URLWithString:appDelegate.config.urlShare]];
@@ -71,11 +72,13 @@
     _scheme = scheme;
 }
 - (void)updateTitleStep{
-    [self.lbSteps setText:[NSString stringWithFormat:@"%ld/%ld",self.contentView.currentItemIndex, _scheme.steps_count]];
+    NSInteger currentIndex = self.contentView.currentItemIndex;
+    [self.lbSteps setText:[NSString stringWithFormat:@"%ld/%ld",currentIndex, _scheme.steps_count]];
+    [self.txtInfo setText:currentIndex==0 ? _scheme.descr : ((OrigamiStep*)_scheme.steps[currentIndex]).info];
 }
 #pragma mark - iCarouselDataSource methods
 - (NSInteger)numberOfItemsInCarousel:(iCarousel *)carousel{
-    return _scheme.steps_count;
+    return _scheme.steps.count;
 }
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view{
     UIImageView *subView = nil;
