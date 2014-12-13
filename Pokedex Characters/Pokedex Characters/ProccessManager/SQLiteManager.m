@@ -168,4 +168,31 @@ static SQLiteManager *thisInstance;
     return resultArray;
     
 }
+- (OrigamiHelp*)getHelpWithId:(NSInteger)iDHelp{
+    [self copyDatabase];
+    OrigamiHelp *result = [[OrigamiHelp alloc]init];
+    sqlite3_stmt    *statement;
+    const char *dbpath = [_databasePath UTF8String];
+    if (sqlite3_open(dbpath, &_contactDB) == SQLITE_OK)
+    {
+        NSString *querySQL = [NSString stringWithFormat:@"select * from 'origami_help' where id_help = \"%ld\"", (long)iDHelp];
+        const char *query_stmt = [querySQL UTF8String];
+        if (sqlite3_prepare_v2(_contactDB,
+                               query_stmt, -1, &statement, NULL) == SQLITE_OK)
+        {
+            while (sqlite3_step(statement) == SQLITE_ROW)
+            {
+                result.iDHelp = sqlite3_column_int(statement, 0);
+                result.name = [NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 1)];
+                result.images = [[NSArray alloc] initWithArray:[[NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 2)] componentsSeparatedByString:@","]];
+            }
+            sqlite3_finalize(statement);
+        }
+        
+        
+        sqlite3_close(_contactDB);
+    }
+    return result;
+
+}
 @end

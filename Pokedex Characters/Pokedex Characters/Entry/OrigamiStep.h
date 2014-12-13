@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "OrigamiHelp.h"
 @interface OrigamiStep : NSObject
 @property (nonatomic, strong) NSString *schemeID;
 @property (nonatomic, strong) NSString *stepid;
