@@ -63,7 +63,7 @@
 - (void)initCommon{
     [self setPandingLeftTitle:pandingLeft];
     [self setFontTitleRowHeader:fontTitleRowHeader];
-    [self.lbTitleRowHeader setTextColor:[UIColor whiteColor]];
+    [self.lbTitleRowHeader setTextColor:[UIColor blackColor]];
 }
 - (void) setTextTitleRowHeader:(NSString*) txtTitle{
     if (txtTitle) {

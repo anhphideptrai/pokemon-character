@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController">
             <connections>
                 <outlet property="bannerView" destination="yha-4q-gbw" id="VEr-CE-8B2"/>
+                <outlet property="bgNavigationBar" destination="Djb-B8-t2F" id="CsE-Ki-bmv"/>
                 <outlet property="btBackStep" destination="9Dw-xS-Rtq" id="Evu-dX-THU"/>
                 <outlet property="btNextStep" destination="97q-tW-Bz3" id="tMO-9K-V4n"/>
                 <outlet property="contentView" destination="3QX-KV-PSD" id="qpv-OF-Gvo"/>
@@ -24,7 +25,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tdo-ir-JhI">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="30"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reading_topnav_background.png" translatesAutoresizingMaskIntoConstraints="NO" id="Djb-B8-t2F">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reading_topnav_background.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Djb-B8-t2F">
                             <rect key="frame" x="0.0" y="0.0" width="600" height="30"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RWr-Ee-NyK">
@@ -215,7 +216,7 @@
         </view>
     </objects>
     <resources>
-        <image name="reading_topnav_background.png" width="5" height="66"/>
+        <image name="reading_topnav_background.jpg" width="1536" height="88"/>
         <image name="topnav_back_grey.png" width="58" height="24"/>
         <image name="topnav_share_normal.png" width="44" height="44"/>
     </resources>

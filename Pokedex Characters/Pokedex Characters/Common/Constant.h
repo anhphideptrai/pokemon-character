@@ -15,7 +15,7 @@
 #define BACKGROUND_COLOR_CONTENTGUIDEVIEW [UIColor colorWithRed:25.0f/255.0f green:38.0f/255.0f blue:44.0f/255.0f alpha:1.0f]
 #define PANDING_LEFT_CONTENT_GUIDE_ROW_HEADER_DEFAULT 10
 #define HEIGHT_TITLE_POSTER_DEFAULT 50
-#define TEXT_COLOR_TITLE_POSTER_DEFAULT [UIColor colorWithRed:220.0f/255.0f green:198.0f/255.0f blue:152.0f/255.0f alpha:1.0f]
+#define TEXT_COLOR_TITLE_POSTER_DEFAULT [UIColor colorWithRed:.0f/255.0f green:.0f/255.0f blue:.0f/255.0f alpha:1.0f]
 #define TEXT_COLOR_RIGHT_LABEL_POSTER_DEFAULT [UIColor colorWithRed:0.0f/255.0f green:0.0f/255.0f blue:0.0f/255.0f alpha:1.0f]
 #define FONT_TITLE_POSTER_DEFAULT [UIFont fontWithName:@"Arial-BoldMT" size:14.0f]
 #define FONT_RIGHT_LABEL_POSTER_DEFAULT [UIFont fontWithName:@"ArialMT" size:(IS_IPAD?14.0f:12.0f)]
@@ -44,6 +44,7 @@
 
 #define HEIGHT_NAVIGATION_BAR (IS_IPAD?50:30)
 #define WIDTH_DETAIL_PAGE (IS_IPAD?384:320)
+#define BACKGROUND_COLOR_CONTENT_GUIDE_VIEW [UIColor colorWithRed:240.0f/255.0f green:234.0f/255.0f blue:191.0f/255.0f alpha:1.0]
 
 #define BANNER_ID_ADMOB_HOME_PAGE @"ca-app-pub-1775449000819183/7529011957"
 #define BANNER_ID_ADMOB_DETAIL_PAGE @"ca-app-pub-1775449000819183/9005745156"

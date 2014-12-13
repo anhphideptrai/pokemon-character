@@ -22,6 +22,7 @@
     NSString *keySearch;
 }
 @property (strong, nonatomic) IBOutlet UILabel *title_Search;
+@property (strong, nonatomic) IBOutlet UIImageView *bgNavigationBar;
 - (IBAction)clickBack:(id)sender;
 
 @end
@@ -52,7 +53,7 @@
     }
     [[self navigationController] setNavigationBarHidden:YES animated:YES];
 
-    [self.contentGuideView setBackground:[UIImage imageNamed:@"scrollview_bg.png"]];
+    [self.contentGuideView setBackgroundColor:BACKGROUND_COLOR_CONTENT_GUIDE_VIEW];
     [self.contentGuideView reloadData];
     downloadManager = [[DownloadManager alloc] init];
     [downloadManager setDelegate:self];
@@ -110,7 +111,7 @@
     }
     OrigamiGroup *group = (OrigamiGroup*)result[rowIndex];
     [header  setTextTitleRowHeader:[group.groupName uppercaseString]];
-    [header setBackground:[UIImage imageNamed:@"headercell_bg.png"]];
+    [header setBackground:[UIImage imageNamed:@"headercell_bg.jpg"]];
     return header;
 }
 

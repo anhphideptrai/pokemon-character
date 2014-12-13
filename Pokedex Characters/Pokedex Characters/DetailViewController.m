@@ -16,6 +16,7 @@
     AppDelegate *appDelegate;
 }
 @property (nonatomic, strong)OrigamiScheme *scheme;
+@property (strong, nonatomic) IBOutlet UIImageView *bgNavigationBar;
 @end
 
 @implementation DetailViewController

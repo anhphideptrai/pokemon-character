@@ -117,7 +117,7 @@ didScrollToVisibleRowIndex:(NSUInteger) rowIndex
 - (void) changeToSize:(CGSize) newSize;
 
 -(void) setBackground:(UIImage*)image;
-
+-(void) setBackgroundColor:(UIColor *)backgroundColor;
 - (ContentGuideViewRow*)getVisibleViewRowAtIndex:(NSUInteger) index;
 
 - (ContentGuideViewRowCarouselViewPosterView*)getVisiblePosterViewAtRow:(NSUInteger) rowIndex

@@ -9,6 +9,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchViewController">
             <connections>
                 <outlet property="bannerView" destination="qLV-Us-Fo8" id="RAm-Nj-TqV"/>
+                <outlet property="bgNavigationBar" destination="ykF-wu-26V" id="UoM-jh-QoE"/>
                 <outlet property="contentGuideView" destination="4sp-Dt-pVm" id="Rrl-oE-lEO"/>
                 <outlet property="lbDownloading" destination="R4W-CF-thd" id="ufb-kD-tdO"/>
                 <outlet property="loadingView" destination="I2i-0G-xST" id="VPW-xB-k6Y"/>
@@ -26,7 +27,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y1b-8J-wMf">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reading_topnav_background.png" translatesAutoresizingMaskIntoConstraints="NO" id="ykF-wu-26V">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reading_topnav_background.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="ykF-wu-26V">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yzk-o1-NfA">
@@ -168,7 +169,7 @@
     </objects>
     <resources>
         <image name="headercell_bg.png" width="320" height="44"/>
-        <image name="reading_topnav_background.png" width="5" height="66"/>
+        <image name="reading_topnav_background.jpg" width="1536" height="88"/>
         <image name="topnav_back_grey.png" width="58" height="24"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

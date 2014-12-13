@@ -108,6 +108,11 @@
     }
 
 }
+-(void)setBackgroundColor:(UIColor *)backgroundColor{
+    if (backgroundColor) {
+        [backbgroundView setBackgroundColor:backgroundColor];
+    }
+}
 #pragma mark -- Layout methods
 -(void) layoutSubviews{
     [CATransaction begin];

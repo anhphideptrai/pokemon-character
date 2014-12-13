@@ -24,6 +24,7 @@
     OrigamiScheme *schemeSelected;
     BOOL isDownloading;
 }
+@property (strong, nonatomic) IBOutlet UIImageView *bgNavigationBar;
 - (IBAction)clickSearch:(id)sender;
 @end
 
@@ -34,7 +35,7 @@
     [super viewDidLoad];
     [[self navigationController] setNavigationBarHidden:YES animated:YES];
     appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
-    [self.contentGuideView setBackground:[UIImage imageNamed:@"scrollview_bg.png"]];
+    [self.contentGuideView setBackgroundColor:BACKGROUND_COLOR_CONTENT_GUIDE_VIEW];
     [self.contentGuideView reloadData];
     downloadManager = [[DownloadManager alloc] init];
     [downloadManager setDelegate:self];
@@ -86,7 +87,7 @@
     }
     OrigamiGroup *group = (OrigamiGroup*)result[rowIndex];
     [header  setTextTitleRowHeader:[group.groupName uppercaseString]];
-    [header setBackground:[UIImage imageNamed:@"headercell_bg.png"]];
+    [header setBackground:[UIImage imageNamed:@"headercell_bg.jpg"]];
     return header;
 }
 
@@ -164,7 +165,7 @@ didSelectPosterViewAtRowIndex:(NSUInteger) rowIndex
 
 #pragma mark - PromoSlidesViewDataSource methods
 - (NSUInteger) numberOfItemsInPromoSlides:(PromoSlidesView*) promoSlides{
-    return 6;
+    return 7;
 }
 - (NSURL*) promoSlidesView:(PromoSlidesView*) promoSlides
     urlImageForItemAtIndex:(NSInteger) indexItem{

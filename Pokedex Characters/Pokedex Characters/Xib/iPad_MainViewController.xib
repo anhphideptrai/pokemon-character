@@ -9,6 +9,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ViewController">
             <connections>
                 <outlet property="bannerView" destination="ZlV-l9-dFr" id="pPk-lg-STN"/>
+                <outlet property="bgNavigationBar" destination="3MD-eR-7lx" id="tjt-GN-9bZ"/>
                 <outlet property="contentGuideView" destination="VWa-wm-iXD" id="lb0-bf-dO7"/>
                 <outlet property="lbDownloading" destination="11p-1Y-eHM" id="Zrh-rX-OZN"/>
                 <outlet property="loadingView" destination="U3Y-sq-ryB" id="Ecd-iE-Fk0"/>
@@ -24,7 +25,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tZ7-Ix-8tZ">
                     <rect key="frame" x="0.0" y="0.0" width="768" height="50"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reading_topnav_background.png" translatesAutoresizingMaskIntoConstraints="NO" id="3MD-eR-7lx">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reading_topnav_background.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="3MD-eR-7lx">
                             <rect key="frame" x="0.0" y="0.0" width="768" height="50"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="FqC-17-o3E"/>
@@ -133,7 +134,7 @@
     </objects>
     <resources>
         <image name="placeholder_center.png" width="42" height="32"/>
-        <image name="reading_topnav_background.png" width="5" height="66"/>
+        <image name="reading_topnav_background.jpg" width="1536" height="88"/>
         <image name="topnav_search.png" width="44" height="44"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
