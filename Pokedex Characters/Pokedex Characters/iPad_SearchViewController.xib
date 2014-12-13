@@ -67,7 +67,7 @@
                         <constraint firstItem="ddD-69-GfH" firstAttribute="leading" secondItem="Q7N-sD-B7p" secondAttribute="leading" constant="8" id="onP-q3-moo"/>
                     </constraints>
                 </view>
-                <searchBar contentMode="redraw" backgroundImage="bg_searchbar.png" translatesAutoresizingMaskIntoConstraints="NO" id="Eet-hg-Otw">
+                <searchBar contentMode="redraw" placeholder="Search" backgroundImage="bg_searchbar.png" translatesAutoresizingMaskIntoConstraints="NO" id="Eet-hg-Otw">
                     <rect key="frame" x="0.0" y="50" width="768" height="44"/>
                     <color key="backgroundColor" red="0.18431372549019609" green="0.18431372549019609" blue="0.18431372549019609" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>

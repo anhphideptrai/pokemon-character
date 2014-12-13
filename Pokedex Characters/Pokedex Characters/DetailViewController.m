@@ -14,10 +14,13 @@
 
 @interface DetailViewController (){
     AppDelegate *appDelegate;
+    OrigamiStep *currentStep;
 }
 @property (nonatomic, strong)OrigamiScheme *scheme;
 @property (strong, nonatomic) IBOutlet UIImageView *bgNavigationBar;
 @property (strong, nonatomic) IBOutlet UITextView *txtInfo;
+@property (strong, nonatomic) IBOutlet UIButton *btHelp;
+- (IBAction)actionHelp:(id)sender;
 @end
 
 @implementation DetailViewController
@@ -33,6 +36,8 @@
     [self.btBackStep.layer setMasksToBounds:YES];
     [self.btNextStep.layer setCornerRadius:4.0f];
     [self.btNextStep.layer setMasksToBounds:YES];
+    [self.btHelp.layer setCornerRadius:4.0f];
+    [self.btHelp.layer setMasksToBounds:YES];
     [self.lbLessonName setText:_scheme.name];
     appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
     
@@ -74,7 +79,8 @@
 - (void)updateTitleStep{
     NSInteger currentIndex = self.contentView.currentItemIndex;
     [self.lbSteps setText:[NSString stringWithFormat:@"%ld/%ld",currentIndex, _scheme.steps_count]];
-    [self.txtInfo setText:currentIndex==0 ? _scheme.descr : ((OrigamiStep*)_scheme.steps[currentIndex]).info];
+    [self.txtInfo setText:currentIndex == 0 ? _scheme.descr : currentStep.info];
+    [self.btHelp setHidden:currentStep.help == 0];
 }
 #pragma mark - iCarouselDataSource methods
 - (NSInteger)numberOfItemsInCarousel:(iCarousel *)carousel{
@@ -104,6 +110,7 @@
     [self.btNextStep setEnabled:enableButtonNextStep];
     [self.btBackStep setAlpha:enableButtonBackStep?1.0f:0.5f];
     [self.btNextStep setAlpha:enableButtonNextStep?1.0f:0.5f];
+    currentStep = _scheme.steps[carousel.currentItemIndex];
     [self updateTitleStep];
 }
 - (CGFloat)carouselItemWidth:(iCarousel *)carousel{
@@ -126,5 +133,7 @@
             break;
     }
     
+}
+- (IBAction)actionHelp:(id)sender {
 }
 @end

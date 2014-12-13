@@ -11,8 +11,6 @@
 #import "PromoSlidesView.h"
 #import "SearchViewController.h"
 #import "AppDelegate.h"
-#import "AppObject.h"
-#import "LessonObject.h"
 #import "DetailViewController.h"
 #import "DownloadManager.h"
 

@@ -10,6 +10,7 @@
                 <outlet property="bannerView" destination="oWj-lY-GdV" id="Uid-oV-f1i"/>
                 <outlet property="bgNavigationBar" destination="wEo-4Y-J5W" id="ULA-Gh-n7Q"/>
                 <outlet property="btBackStep" destination="F18-yG-Z2T" id="pvC-99-5kW"/>
+                <outlet property="btHelp" destination="XFb-0z-Gv8" id="Q9Y-oS-eNi"/>
                 <outlet property="btNextStep" destination="nyP-aQ-oU4" id="Zy4-sT-YpU"/>
                 <outlet property="contentView" destination="SmO-Kp-Lwc" id="YvW-sh-8wm"/>
                 <outlet property="lbLessonName" destination="k3n-Jr-TdI" id="vwl-5M-6uj"/>
@@ -175,6 +176,23 @@
                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XFb-0z-Gv8">
+                            <rect key="frame" x="265" y="10" width="70" height="50"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="70" id="75y-Kp-np2"/>
+                                <constraint firstAttribute="height" constant="50" id="UUe-1J-PYu"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <state key="normal" title="Help">
+                                <color key="titleColor" red="0.0" green="0.4549019608" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleShadowColor" red="0.0" green="0.4549019608" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="actionHelp:" destination="-1" eventType="touchUpInside" id="gho-Dj-qTL"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -187,8 +205,10 @@
                         <constraint firstItem="002-z9-ewk" firstAttribute="leading" secondItem="vFt-iQ-L17" secondAttribute="leading" id="dka-7T-G9k"/>
                         <constraint firstItem="ZBv-n4-2Os" firstAttribute="top" secondItem="SmO-Kp-Lwc" secondAttribute="bottom" id="f1b-rd-3F5"/>
                         <constraint firstAttribute="bottom" secondItem="ZBv-n4-2Os" secondAttribute="bottom" id="fFD-qi-0Jj"/>
+                        <constraint firstAttribute="centerX" secondItem="XFb-0z-Gv8" secondAttribute="centerX" id="kEj-dq-YSL"/>
                         <constraint firstItem="SmO-Kp-Lwc" firstAttribute="leading" secondItem="vFt-iQ-L17" secondAttribute="leading" id="oj0-Kz-H4m"/>
                         <constraint firstItem="002-z9-ewk" firstAttribute="top" secondItem="vFt-iQ-L17" secondAttribute="top" constant="10" id="pRx-DU-ACq"/>
+                        <constraint firstItem="XFb-0z-Gv8" firstAttribute="top" secondItem="vFt-iQ-L17" secondAttribute="top" constant="10" id="pjM-I6-Izy"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oWj-lY-GdV" customClass="GADBannerView">
