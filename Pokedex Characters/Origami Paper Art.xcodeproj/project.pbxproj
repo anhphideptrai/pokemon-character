@@ -121,6 +121,9 @@
 		B2012C9F1A3CAED60002556E /* 165.png in Resources */ = {isa = PBXBuildFile; fileRef = B2012C341A3CAED60002556E /* 165.png */; };
 		B2012CA01A3CAED60002556E /* 166.png in Resources */ = {isa = PBXBuildFile; fileRef = B2012C351A3CAED60002556E /* 166.png */; };
 		B2012CA31A3CAF300002556E /* OrigamiHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = B2012CA21A3CAF300002556E /* OrigamiHelp.m */; };
+		B2012CA51A3CB3330002556E /* iPhone_HelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2012CA41A3CB3330002556E /* iPhone_HelpViewController.xib */; };
+		B2012CA71A3CB3500002556E /* iPad_HelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2012CA61A3CB3500002556E /* iPad_HelpViewController.xib */; };
+		B2012CAA1A3CB37B0002556E /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2012CA91A3CB37B0002556E /* HelpViewController.m */; };
 		B203F8AC19BB1AEA00767698 /* Default~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = B203F8A519BB1AEA00767698 /* Default~ipad.png */; };
 		B203F8AE19BB1AEA00767698 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B203F8A619BB1AEA00767698 /* Default@2x.png */; };
 		B203F8B019BB1AEA00767698 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = B203F8A719BB1AEA00767698 /* Default.png */; };
@@ -409,6 +412,10 @@
 		B2012C351A3CAED60002556E /* 166.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 166.png; path = Resources/Images/Help/166.png; sourceTree = "<group>"; };
 		B2012CA11A3CAF300002556E /* OrigamiHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OrigamiHelp.h; path = Entry/OrigamiHelp.h; sourceTree = "<group>"; };
 		B2012CA21A3CAF300002556E /* OrigamiHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OrigamiHelp.m; path = Entry/OrigamiHelp.m; sourceTree = "<group>"; };
+		B2012CA41A3CB3330002556E /* iPhone_HelpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = iPhone_HelpViewController.xib; path = Xib/iPhone_HelpViewController.xib; sourceTree = "<group>"; };
+		B2012CA61A3CB3500002556E /* iPad_HelpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = iPad_HelpViewController.xib; path = Xib/iPad_HelpViewController.xib; sourceTree = "<group>"; };
+		B2012CA81A3CB37B0002556E /* HelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpViewController.h; sourceTree = "<group>"; };
+		B2012CA91A3CB37B0002556E /* HelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpViewController.m; sourceTree = "<group>"; };
 		B203F8A519BB1AEA00767698 /* Default~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default~ipad.png"; sourceTree = "<group>"; };
 		B203F8A619BB1AEA00767698 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		B203F8A719BB1AEA00767698 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -968,6 +975,8 @@
 				B2EDFED219EE416E0055D4E7 /* SplashScreenViewController.m */,
 				B25638D01A30A84700FAF531 /* DetailViewController.h */,
 				B25638D11A30A84700FAF531 /* DetailViewController.m */,
+				B2012CA81A3CB37B0002556E /* HelpViewController.h */,
+				B2012CA91A3CB37B0002556E /* HelpViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -1056,6 +1065,8 @@
 				B2137B1319BD39E100184C56 /* iPhone_SearchViewController.xib */,
 				B25638CC1A30A36C00FAF531 /* iPhone_DetailViewController.xib */,
 				B25638CE1A30A39300FAF531 /* iPad_DetailViewController.xib */,
+				B2012CA41A3CB3330002556E /* iPhone_HelpViewController.xib */,
+				B2012CA61A3CB3500002556E /* iPad_HelpViewController.xib */,
 			);
 			name = Xib;
 			sourceTree = "<group>";
@@ -1289,6 +1300,7 @@
 				B2121A681A37601A00DBE8B1 /* icon-5036.jpg in Resources */,
 				B2012C541A3CAED60002556E /* 055.png in Resources */,
 				B2012C971A3CAED60002556E /* 157.png in Resources */,
+				B2012CA51A3CB3330002556E /* iPhone_HelpViewController.xib in Resources */,
 				B2012BC51A3C269A0002556E /* headercell_bg.jpg in Resources */,
 				B2012C731A3CAED60002556E /* 103.png in Resources */,
 				B2012C901A3CAED60002556E /* 150.png in Resources */,
@@ -1340,6 +1352,7 @@
 				B24EF6C319BA313C00A56926 /* topnav_search@2x.png in Resources */,
 				B2121A931A37601A00DBE8B1 /* icon-5079.jpg in Resources */,
 				B2121A661A37601A00DBE8B1 /* icon-5034.jpg in Resources */,
+				B2012CA71A3CB3500002556E /* iPad_HelpViewController.xib in Resources */,
 				B2012C741A3CAED60002556E /* 104.png in Resources */,
 				B2121A691A37601A00DBE8B1 /* icon-5037.jpg in Resources */,
 				B2012C801A3CAED60002556E /* 122.png in Resources */,
@@ -1443,6 +1456,7 @@
 				B213CC3719ED2C5E00B79AF1 /* ConfigManager.m in Sources */,
 				B2CC859219B36D8E00BD1ABF /* ViewController.m in Sources */,
 				B2CC858919B36D8E00BD1ABF /* AppDelegate.m in Sources */,
+				B2012CAA1A3CB37B0002556E /* HelpViewController.m in Sources */,
 				B21219D51A375FF900DBE8B1 /* OrigamiStep.m in Sources */,
 				B2CC861A19B36E3500BD1ABF /* ContentGuideView.m in Sources */,
 				B2CC862019B36E3500BD1ABF /* ContentGuideViewRowHeader.m in Sources */,
