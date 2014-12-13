@@ -7,8 +7,17 @@
 //
 
 #import "HelpViewController.h"
-
-@interface HelpViewController ()
+#import "SQLiteManager.h"
+#import <UIImageView+AFNetworking.h>
+@interface HelpViewController (){
+    OrigamiHelp *data;
+    NSTimer *animationTimer;
+    NSInteger currentIndex;
+}
+@property (strong, nonatomic) IBOutlet UIButton *btClose;
+@property (strong, nonatomic) IBOutlet UILabel *lbName;
+@property (strong, nonatomic) IBOutlet UIImageView *imageView;
+- (IBAction)actionClose:(id)sender;
 
 @end
 
@@ -16,22 +25,26 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self.lbName setText:data.name];
+    currentIndex = 0;
+    [self.imageView setImageWithURL:[[NSBundle mainBundle] URLForResource:[NSString stringWithFormat:@"%@", data.images[currentIndex++]] withExtension:@"png"]];
+    animationTimer = [NSTimer scheduledTimerWithTimeInterval:.2f target:self selector:@selector(animationHelpsImage) userInfo:nil repeats:YES];
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (BOOL)prefersStatusBarHidden {
+    return YES;
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)setIDOrigamiHelp:(NSInteger)iDhelp{
+    data = [[SQLiteManager getInstance] getHelpWithId:iDhelp];
 }
-*/
-
+- (void)animationHelpsImage{
+    if (currentIndex == data.images.count) {
+        currentIndex = 0;
+    }
+    [self.imageView setImageWithURL:[[NSBundle mainBundle] URLForResource:[NSString stringWithFormat:@"%@", data.images[currentIndex++]] withExtension:@"png"]];
+}
+- (IBAction)actionClose:(id)sender {
+    [animationTimer invalidate];
+    animationTimer = nil;
+    [self dismissViewControllerAnimated:YES completion:^{}];
+}
 @end

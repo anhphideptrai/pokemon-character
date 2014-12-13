@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OrigamiHelp.h"
 
 @interface HelpViewController : UIViewController
-
+- (void)setIDOrigamiHelp:(NSInteger)iDhelp;
 @end

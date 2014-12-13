@@ -11,6 +11,7 @@
 #import "Utils.h"
 #import <Social/Social.h>
 #import "AppDelegate.h"
+#import "HelpViewController.h"
 
 @interface DetailViewController (){
     AppDelegate *appDelegate;
@@ -135,5 +136,8 @@
     
 }
 - (IBAction)actionHelp:(id)sender {
+    HelpViewController *helpVC = [[HelpViewController alloc] initWithNibName:NAME_XIB_FILE_HELP_VIEW_CONTROLLER bundle:nil];
+    [helpVC setIDOrigamiHelp:currentStep.help];
+    [self presentViewController:helpVC animated:YES completion:^{}];
 }
 @end

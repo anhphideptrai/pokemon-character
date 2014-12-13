@@ -5,12 +5,88 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HelpViewController">
+            <connections>
+                <outlet property="btClose" destination="0be-3B-HUl" id="iox-EV-Y3o"/>
+                <outlet property="imageView" destination="j3t-cT-lJq" id="QtJ-Ae-sqV"/>
+                <outlet property="lbName" destination="Lfv-N2-S2A" id="TqL-E4-YkC"/>
+                <outlet property="view" destination="iN0-l3-epB" id="o8o-wK-LTn"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yun-uj-8S6">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reading_topnav_background.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="jnF-Oi-L10">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0be-3B-HUl">
+                            <rect key="frame" x="520" y="0.0" width="70" height="50"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="6py-3s-VJA"/>
+                                <constraint firstAttribute="width" constant="70" id="m1t-M5-BrY"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <state key="normal" title="Close">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="actionClose:" destination="-1" eventType="touchUpInside" id="XDU-AS-oS2"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="0be-3B-HUl" secondAttribute="trailing" constant="10" id="Gty-qK-dt2"/>
+                        <constraint firstAttribute="bottom" secondItem="0be-3B-HUl" secondAttribute="bottom" id="MM3-wH-mQC"/>
+                        <constraint firstAttribute="height" constant="50" id="gia-9k-Bkp"/>
+                        <constraint firstAttribute="trailing" secondItem="jnF-Oi-L10" secondAttribute="trailing" id="hoU-HX-3Rx"/>
+                        <constraint firstAttribute="bottom" secondItem="jnF-Oi-L10" secondAttribute="bottom" id="ifQ-IR-5Kf"/>
+                        <constraint firstItem="jnF-Oi-L10" firstAttribute="top" secondItem="yun-uj-8S6" secondAttribute="top" id="l6m-Tm-zhq"/>
+                        <constraint firstItem="jnF-Oi-L10" firstAttribute="leading" secondItem="yun-uj-8S6" secondAttribute="leading" id="lz5-GR-lOg"/>
+                        <constraint firstItem="0be-3B-HUl" firstAttribute="top" secondItem="yun-uj-8S6" secondAttribute="top" id="yhh-tm-VMm"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lfv-N2-S2A">
+                    <rect key="frame" x="0.0" y="70" width="600" height="50"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="6gi-pb-pFW"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="j3t-cT-lJq">
+                    <rect key="frame" x="50" y="160" width="500" height="500"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="500" id="MOG-aI-rzs"/>
+                        <constraint firstAttribute="width" constant="500" id="cAg-hg-FBo"/>
+                    </constraints>
+                </imageView>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="j3t-cT-lJq" firstAttribute="top" secondItem="Lfv-N2-S2A" secondAttribute="bottom" constant="40" id="3XD-h4-f7U"/>
+                <constraint firstItem="Lfv-N2-S2A" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="8eq-L0-neq"/>
+                <constraint firstAttribute="centerX" secondItem="j3t-cT-lJq" secondAttribute="centerX" id="E19-W0-Z6V"/>
+                <constraint firstItem="yun-uj-8S6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Ekj-dJ-Pub"/>
+                <constraint firstItem="Lfv-N2-S2A" firstAttribute="top" secondItem="yun-uj-8S6" secondAttribute="bottom" constant="20" id="SXV-Ux-MHC"/>
+                <constraint firstAttribute="trailing" secondItem="Lfv-N2-S2A" secondAttribute="trailing" id="kVC-b0-Q5U"/>
+                <constraint firstItem="yun-uj-8S6" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="nga-8y-M6S"/>
+                <constraint firstAttribute="trailing" secondItem="yun-uj-8S6" secondAttribute="trailing" id="vjX-pb-Us7"/>
+            </constraints>
         </view>
     </objects>
+    <resources>
+        <image name="reading_topnav_background.jpg" width="1536" height="88"/>
+    </resources>
 </document>

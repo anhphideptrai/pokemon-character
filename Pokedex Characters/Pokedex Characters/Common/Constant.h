@@ -33,6 +33,8 @@
 #define NAME_XIB_FILE_MAIN_VIEW_CONTROLLER (IS_IPAD?@"iPad_MainViewController":@"iPhone_MainViewController")
 #define NAME_XIB_FILE_SEARCH_VIEW_CONTROLLER (IS_IPAD?@"iPad_SearchViewController":@"iPhone_SearchViewController")
 #define NAME_XIB_FILE_DETAIL_VIEW_CONTROLLER (IS_IPAD?@"iPad_DetailViewController":@"iPhone_DetailViewController")
+#define NAME_XIB_FILE_HELP_VIEW_CONTROLLER (IS_IPAD?@"iPad_HelpViewController":@"iPhone_HelpViewController")
+
 
 #define FRAME_PROMO_SLIDES (IS_IPAD?CGRectMake(0, 0, 768, 350):CGRectMake(0, 0, 320, 145))
 #define HEIGHT_CONTENT_GUIDE_VIEW_ROW (IS_IPAD?218:175)
