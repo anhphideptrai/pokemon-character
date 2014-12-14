@@ -243,7 +243,7 @@
 		B2121AB21A37601A00DBE8B1 /* icon-5110.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B2121A431A37601A00DBE8B1 /* icon-5110.jpg */; };
 		B2121AB31A37601A00DBE8B1 /* icon-5111.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B2121A441A37601A00DBE8B1 /* icon-5111.jpg */; };
 		B2121AB41A37601A00DBE8B1 /* icon-5112.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B2121A451A37601A00DBE8B1 /* icon-5112.jpg */; };
-		B2121AB61A37602C00DBE8B1 /* origami.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = B2121AB51A37602C00DBE8B1 /* origami.sqlite */; };
+		B2121AB61A37602C00DBE8B1 /* 0c5e5229e5a754da68c2257516ed1c19 in Resources */ = {isa = PBXBuildFile; fileRef = B2121AB51A37602C00DBE8B1 /* 0c5e5229e5a754da68c2257516ed1c19 */; };
 		B2137B0E19BD39A000184C56 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2137B0D19BD39A000184C56 /* SearchViewController.m */; };
 		B2137B1119BD39CA00184C56 /* iPad_SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2137B1019BD39CA00184C56 /* iPad_SearchViewController.xib */; };
 		B2137B1419BD39E100184C56 /* iPhone_SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2137B1319BD39E100184C56 /* iPhone_SearchViewController.xib */; };
@@ -538,7 +538,7 @@
 		B2121A431A37601A00DBE8B1 /* icon-5110.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "icon-5110.jpg"; path = "Resources/Images/Icon/icon-5110.jpg"; sourceTree = "<group>"; };
 		B2121A441A37601A00DBE8B1 /* icon-5111.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "icon-5111.jpg"; path = "Resources/Images/Icon/icon-5111.jpg"; sourceTree = "<group>"; };
 		B2121A451A37601A00DBE8B1 /* icon-5112.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "icon-5112.jpg"; path = "Resources/Images/Icon/icon-5112.jpg"; sourceTree = "<group>"; };
-		B2121AB51A37602C00DBE8B1 /* origami.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = origami.sqlite; path = Resources/DB/origami.sqlite; sourceTree = "<group>"; };
+		B2121AB51A37602C00DBE8B1 /* 0c5e5229e5a754da68c2257516ed1c19 */ = {isa = PBXFileReference; lastKnownFileType = file; name = 0c5e5229e5a754da68c2257516ed1c19; path = Resources/DB/0c5e5229e5a754da68c2257516ed1c19; sourceTree = "<group>"; };
 		B2137B0C19BD39A000184C56 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		B2137B0D19BD39A000184C56 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		B2137B1019BD39CA00184C56 /* iPad_SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = iPad_SearchViewController.xib; sourceTree = "<group>"; };
@@ -993,7 +993,7 @@
 		B2CC862819B3795400BD1ABF /* DB */ = {
 			isa = PBXGroup;
 			children = (
-				B2121AB51A37602C00DBE8B1 /* origami.sqlite */,
+				B2121AB51A37602C00DBE8B1 /* 0c5e5229e5a754da68c2257516ed1c19 */,
 			);
 			name = DB;
 			sourceTree = "<group>";
@@ -1406,7 +1406,7 @@
 				B2012C9D1A3CAED60002556E /* 163.png in Resources */,
 				B2121A621A37601A00DBE8B1 /* icon-5028.jpg in Resources */,
 				B2121A571A37601A00DBE8B1 /* icon-5017.jpg in Resources */,
-				B2121AB61A37602C00DBE8B1 /* origami.sqlite in Resources */,
+				B2121AB61A37602C00DBE8B1 /* 0c5e5229e5a754da68c2257516ed1c19 in Resources */,
 				B2012C481A3CAED60002556E /* 034.png in Resources */,
 				B2121A671A37601A00DBE8B1 /* icon-5035.jpg in Resources */,
 			);

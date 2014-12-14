@@ -43,12 +43,12 @@
     appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
     
     //Add Admob
-//  if (![appDelegate.config.statusApp isEqualToString:STATUS_APP_DEFAUL]) {
-//        self.bannerView.adUnitID = BANNER_ID_ADMOB_DETAIL_PAGE;
-//        self.bannerView.rootViewController = self;
-//        GADRequest *request = [GADRequest request];
-//        [self.bannerView loadRequest:request];
-//    }
+  if (![appDelegate.config.statusApp isEqualToString:STATUS_APP_DEFAUL]) {
+        self.bannerView.adUnitID = BANNER_ID_ADMOB_DETAIL_PAGE;
+        self.bannerView.rootViewController = self;
+        GADRequest *request = [GADRequest request];
+        [self.bannerView loadRequest:request];
+    }
 }
 - (BOOL)prefersStatusBarHidden {
     return YES;

@@ -8,7 +8,7 @@
 
 #import "SQLiteManager.h"
 
-#define DB_NAME_STRING @"origami.sqlite"
+#define DB_NAME_STRING @"0c5e5229e5a754da68c2257516ed1c19"
 @interface SQLiteManager()
 
 @property (strong, nonatomic) NSString *databasePath;

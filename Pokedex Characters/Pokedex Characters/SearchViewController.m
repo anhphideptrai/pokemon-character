@@ -61,12 +61,12 @@
     [self.loadingView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:.3f]];
     [self.loadingView setHidden:!isDownloading];
     //Add Admob
-//    if (![appDelegate.config.statusApp isEqualToString:STATUS_APP_DEFAUL]) {
-//        self.bannerView.adUnitID = BANNER_ID_ADMOB_SEARCH_PAGE;
-//        self.bannerView.rootViewController = self;
-//        GADRequest *request = [GADRequest request];
-//        [self.bannerView loadRequest:request];
-//    }
+    if (![appDelegate.config.statusApp isEqualToString:STATUS_APP_DEFAUL]) {
+        self.bannerView.adUnitID = BANNER_ID_ADMOB_SEARCH_PAGE;
+        self.bannerView.rootViewController = self;
+        GADRequest *request = [GADRequest request];
+        [self.bannerView loadRequest:request];
+    }
 }
 - (BOOL)prefersStatusBarHidden {
     return YES;

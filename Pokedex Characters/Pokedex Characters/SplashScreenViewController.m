@@ -29,7 +29,7 @@
     [super viewDidLoad];
     [[self navigationController] setNavigationBarHidden:YES animated:YES];
     [self initSubView];
-    [[ConfigManager getInstance] loadConfig:@"https://how-to-draw-everything.googlecode.com/git/get_config_character_app.json" finished:^(BOOL success, ConfigApp *configApp) {
+    [[ConfigManager getInstance] loadConfig:@"https://origami-paper-art.googlecode.com/git/get_config_origami_app.json" finished:^(BOOL success, ConfigApp *configApp) {
         [loadingView stopAnimating];
         AppDelegate *appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
         if (success) {
