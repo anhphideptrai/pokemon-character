@@ -11,5 +11,6 @@
 @interface Utils : NSObject
 + (NSURL*)getURLImageWith:(NSString*)schemeID andWithStep:(NSInteger)step;
 + (NSString *)documentsPathForFileName:(NSString *)name;
++ (BOOL)addSkipBackupAttributeToItemAtURL:(NSURL *)URL;
 //+ (NSString *) admobDeviceID;
 @end

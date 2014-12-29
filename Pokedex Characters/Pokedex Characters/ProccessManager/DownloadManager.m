@@ -38,6 +38,7 @@
     NSURL *dirURL = [documentsDirectoryURL URLByAppendingPathComponent:entry.dir];
     if ([fileManager fileExistsAtPath:dirURL.path] == NO) {
         [fileManager createDirectoryAtPath:dirURL.path withIntermediateDirectories:NO attributes:nil error:nil];
+        [Utils addSkipBackupAttributeToItemAtURL:dirURL];
     }
     NSURL *url = [NSURL URLWithString:entry.strUrl];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];

@@ -26,7 +26,18 @@
 + (NSString*)formatLessonID:(NSString*)lessonID{
     return lessonID.length < 2 ? [NSString stringWithFormat:@"0%@", lessonID] : lessonID;
 }
-
++ (BOOL)addSkipBackupAttributeToItemAtURL:(NSURL *)URL
+{
+    assert([[NSFileManager defaultManager] fileExistsAtPath: [URL path]]);
+    
+    NSError *error = nil;
+    BOOL success = [URL setResourceValue: [NSNumber numberWithBool: YES]
+                                  forKey: NSURLIsExcludedFromBackupKey error: &error];
+    if(!success){
+        NSLog(@"Error excluding %@ from backup %@", [URL lastPathComponent], error);
+    }
+    return success;
+}
 // + (NSString *) admobDeviceID
 // {
 // NSUUID* adid = [[ASIdentifierManager sharedManager] advertisingIdentifier];
