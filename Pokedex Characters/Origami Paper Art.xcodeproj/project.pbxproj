@@ -1126,6 +1126,11 @@
 			attributes = {
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Duc Thien";
+				TargetAttributes = {
+					B2CC857419B36D8E00BD1ABF = {
+						DevelopmentTeam = J8EBSP3JMS;
+					};
+				};
 			};
 			buildConfigurationList = B2CC857019B36D8E00BD1ABF /* Build configuration list for PBXProject "Origami Paper Art" */;
 			compatibilityVersion = "Xcode 3.2";
