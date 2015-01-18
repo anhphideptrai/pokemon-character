@@ -23,10 +23,10 @@
 #define TYPE_FRAME IS_IPAD?CGRectMake(0, WIDTH_DETAIL_PAGE, self.frame.size.width, 30):CGRectMake(0, (BASE_STATS_FRAME).size.height + (BASE_STATS_FRAME).origin.y, self.frame.size.width, 30)
 #define WEAKNESSES_FRAME CGRectMake(0, (TYPE_FRAME).size.height + (TYPE_FRAME).origin.y, self.frame.size.width, 30)
 #define EVOLUTION_FRAME CGRectMake(0, WEAKNESSES_FRAME.size.height + WEAKNESSES_FRAME.origin.y, self.frame.size.width, IS_IPAD?150:90)
+#define MOVE_FRAME CGRectMake(0, IS_IPAD?(self.frame.size.height - 55 - 90):(EVOLUTION_FRAME.size.height + EVOLUTION_FRAME.origin.y), self.frame.size.width, 55)
 
 
-
-@interface DetailView()<EvolutionsViewDelegate>{
+@interface DetailView()<EvolutionsViewDelegate, MoveViewDelegate>{
     UIScrollView *scrollView;
     PosterDetail *posterDetail;
     TypeView *typeView;
@@ -34,6 +34,7 @@
     DescriptionView *descriptionView;
     EvolutionsView * evolutionsView;
     BaseStatsView *baseStatsView;
+    MoveView *moveView;
     AppDelegate *appDelegate;
 }
 @end
@@ -60,6 +61,8 @@
     typeView = [[TypeView alloc] initWithFrame:TYPE_FRAME];
     weaknessView = [[TypeView alloc] initWithFrame:WEAKNESSES_FRAME];
     evolutionsView = [[EvolutionsView alloc] initWithFrame:EVOLUTION_FRAME];
+    moveView = [[MoveView alloc] initWithFrame:MOVE_FRAME];
+    [moveView setDelegate:self];
     [scrollView setBackgroundColor:[UIColor clearColor]];
     [evolutionsView setDelegate:self];
     [self addSubview:scrollView];
@@ -69,13 +72,14 @@
     [scrollView addSubview:descriptionView];
     [scrollView addSubview:evolutionsView];
     [scrollView addSubview:baseStatsView];
+    [scrollView addSubview:moveView];
     CGRect frameTmp = CGRectZero;
     for (UIView *subView in scrollView.subviews) {
         if (frameTmp.origin.y < subView.frame.origin.y) {
             frameTmp = subView.frame;
         }
     }
-    [scrollView setContentSize:CGSizeMake(scrollView.frame.size.width, frameTmp.size.height + frameTmp.origin.y + 10)];
+    [scrollView setContentSize:CGSizeMake(scrollView.frame.size.width, frameTmp.size.height + frameTmp.origin.y + (IS_IPAD?90:50))];
 }
 - (void)setData:(Pokemon*)pokemon{
     [posterDetail.posterImageView setImageWithURL:[NSURL URLWithString:pokemon.ThumbnailImage] placeholderImage:[UIImage imageNamed:@"icon_placeholder.png"]];
@@ -86,6 +90,7 @@
     [descriptionView reLoadData:[NSArray arrayWithObjects:pokemon.descriptionX, pokemon.descriptionY, nil]];
     [evolutionsView reLoadData:pokemon.evolutions];
     [baseStatsView reLoadData:pokemon.baseStats];
+    [moveView reloadViewWithEnableLeft:[self.delegate enableMoveLeftOfDetailView] andEnableRigth:[self.delegate enableMoveRightOfDetailView]];
     [scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
 }
 - (UIImage*)getImageDetail{
@@ -98,6 +103,11 @@
         if (self.delegate && [self.delegate respondsToSelector:@selector(didChangeCurrentPokemon:withNewPokemon:)]) {
             [self.delegate didChangeCurrentPokemon:self withNewPokemon:pokemon];
         }
+    }
+}
+- (void)shouldMoveCharacterTo:(MoveDirection)move{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(shouldMoveCharacter:withDirection:)]) {
+        [self.delegate shouldMoveCharacter:self withDirection:move];
     }
 }
 @end

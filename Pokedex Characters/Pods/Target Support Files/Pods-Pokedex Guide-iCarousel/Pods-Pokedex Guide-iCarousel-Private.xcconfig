@@ -1,0 +1,5 @@
+#include "Pods-Pokedex Guide-iCarousel.xcconfig"
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Build" "${PODS_ROOT}/Headers/Build/iCarousel" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AFNetworking" "${PODS_ROOT}/Headers/Public/ASOAnimatedButton" "${PODS_ROOT}/Headers/Public/Google-AdMob-Ads-SDK" "${PODS_ROOT}/Headers/Public/iCarousel"
+OTHER_LDFLAGS = ${PODS_POKEDEX_GUIDE_ICAROUSEL_OTHER_LDFLAGS} -ObjC
+PODS_ROOT = ${SRCROOT}

@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 #import "Pokemon.h"
 @interface DetailViewController : UIViewController
-- (void)setPokemonForDetail:(Pokemon*)pokemon;
+- (void)setPokemonForDetail:(NSArray*)pokemons withCurrentIndex:(NSInteger)index;
 @end

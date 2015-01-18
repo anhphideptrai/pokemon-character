@@ -8,10 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "Pokemon.h"
+#import "MoveView.h"
 @class DetailView;
 @protocol DetailViewDelegate <NSObject>
 @optional
 - (void)didChangeCurrentPokemon:(DetailView*)detailView withNewPokemon:(Pokemon*)pokemonNew;
+- (void)shouldMoveCharacter:(DetailView*)detailView withDirection:(MoveDirection)direction;
+- (BOOL)enableMoveLeftOfDetailView;
+- (BOOL)enableMoveRightOfDetailView;
 @end
 @interface DetailView : UIView
 @property (nonatomic, assign) IBOutlet id  <DetailViewDelegate> delegate;

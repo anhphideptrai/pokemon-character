@@ -58,16 +58,10 @@
     // Set as delegate of 'menu item view'
     [self.menuItemView setDelegate:self];
     // Add Admob
-  //  if (![appDelegate.config.statusApp isEqualToString:STATUS_APP_DEFAUL]) {
-        // Replace this ad unit ID with your own ad unit ID.
-        self.bannerView.adUnitID = BANNER_ID_ADMOB;
-        self.bannerView.rootViewController = self;
-        GADRequest *request = [GADRequest request];
-        // Requests test ads on devices you specify. Your test device ID is printed to the console when
-        // an ad request is made.
-        // request.testDevices = @[ GAD_SIMULATOR_ID, [Utils admobDeviceID] ];
-        [self.bannerView loadRequest:request];
-   // }
+    self.bannerView.adUnitID = BANNER_ID_ADMOB;
+    self.bannerView.rootViewController = self;
+    GADRequest *request = [GADRequest request];
+    [self.bannerView loadRequest:request];
 }
 
 - (BOOL)prefersStatusBarHidden {
@@ -193,10 +187,9 @@
 didSelectPosterViewAtRowIndex:(NSUInteger) rowIndex
                   posterIndex:(NSUInteger) index{
     DetailViewController *detailViewController = [[DetailViewController alloc] init];
-    [detailViewController setPokemonForDetail:[((PokemonType*)[result objectAtIndex:rowIndex]).pokemons objectAtIndex:index]];
+    [detailViewController setPokemonForDetail:((PokemonType*)result[rowIndex]).pokemons withCurrentIndex:index];
     [self.navigationController pushViewController:detailViewController animated:YES];
 }
-
 #pragma mark - PromoSlidesViewDataSource methods
 - (NSUInteger) numberOfItemsInPromoSlides:(PromoSlidesView*) promoSlides{
     return 6;

@@ -13,15 +13,18 @@
 #import <Social/Social.h>
 #import "AppDelegate.h"
 #import "UIImageView+AFNetworking.h"
-#import "GADInterstitial.h"
+#import "GADBannerView.h"
+#import "GADRequest.h"
 
-@interface DetailViewController ()<CustomNavigationBarDelegate, DetailViewDelegate, GADInterstitialDelegate>{
+@interface DetailViewController ()<CustomNavigationBarDelegate, DetailViewDelegate>{
     CustomNavigationBar *customNavigation;
     Pokemon *currentPokemon;
     DetailView *detailPoster;
     AppDelegate *appDelegate;
+    NSInteger currentIndex;
+    NSArray *pokemons;
 }
-@property(nonatomic, strong) GADInterstitial *interstitial;
+@property (strong, nonatomic) GADBannerView *bannerView;
 @end
 
 @implementation DetailViewController
@@ -48,7 +51,12 @@
     [self.view addGestureRecognizer: swipeGestureRight];
     //Add Admob
     if (![appDelegate.config.statusApp isEqualToString:STATUS_APP_DEFAUL]) {
-        self.interstitial = [self createAndLoadInterstitial];
+        self.bannerView = [[GADBannerView alloc] initWithAdSize:IS_IPAD?kGADAdSizeLeaderboard:kGADAdSizeBanner origin:CGPointMake(IS_IPAD?(self.view.frame.size.width - 728)/2:0, self.view.frame.size.height - (IS_IPAD?90:50))];
+        self.bannerView.adUnitID = BANNER_DETAIL_ADMOB;
+        self.bannerView.rootViewController = self;
+        GADRequest *request = [GADRequest request];
+        [self.bannerView loadRequest:request];
+        [self.view addSubview:self.bannerView];
     }
 }
 
@@ -65,32 +73,39 @@
     [controller addImage:detailPoster.getImageDetail];
     [self presentViewController:controller animated:YES completion:Nil];
 }
-- (void)setPokemonForDetail:(Pokemon*)pokemon{
-    currentPokemon = pokemon;
+- (void)setPokemonForDetail:(NSArray*)_pokemons withCurrentIndex:(NSInteger)index{
+    if (_pokemons && _pokemons.count > index) {
+        currentIndex = index;
+        pokemons = _pokemons;
+    }
 }
 - (void)reLoadData{
-    [detailPoster setData:currentPokemon];
+    if (pokemons && pokemons.count && pokemons.count > currentIndex) {
+        currentPokemon = pokemons[currentIndex];
+        [detailPoster setData:currentPokemon];
+    }
 }
 - (void)didChangeCurrentPokemon:(DetailView*)detailView withNewPokemon:(Pokemon*)pokemonNew{
     if (pokemonNew) {
         currentPokemon = pokemonNew;
     }
 }
-
-- (GADInterstitial *)createAndLoadInterstitial {
-    GADInterstitial *interstitial = [[GADInterstitial alloc] init];
-    interstitial.adUnitID = INTERSTITIAL_ID_ADMOB;
-    interstitial.delegate = self;
-    GADRequest *request = [GADRequest request];
-    // Requests test ads on simulators.
-    // request.testDevices = @[ GAD_SIMULATOR_ID, [Utils admobDeviceID] ];
-    [interstitial loadRequest:request];
-    return interstitial;
-}
-
-- (void)interstitialDidReceiveAd:(GADInterstitial *)interstitial {
-    if (![appDelegate.config.statusApp isEqualToString:STATUS_APP_DEFAUL]) {
-        [self.interstitial presentFromRootViewController:self];
+- (void)shouldMoveCharacter:(DetailView*)detailView withDirection:(MoveDirection)direction{
+    switch (direction) {
+        case LEFT_MOVE:
+            --currentIndex;
+            break;
+         case RIGHT_MOVE:
+            ++currentIndex;
+            break;
     }
+    currentPokemon = pokemons[currentIndex];
+    [self reLoadData];
+}
+-(BOOL)enableMoveLeftOfDetailView{
+    return currentIndex != 0;
+}
+-(BOOL)enableMoveRightOfDetailView{
+    return currentIndex < pokemons.count - 1;
 }
 @end
