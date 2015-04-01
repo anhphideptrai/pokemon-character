@@ -20,6 +20,13 @@
 		B2137B1419BD39E100184C56 /* iPhone_SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2137B1319BD39E100184C56 /* iPhone_SearchViewController.xib */; };
 		B213CC3419ED2A5700B79AF1 /* ConfigApp.m in Sources */ = {isa = PBXBuildFile; fileRef = B213CC3319ED2A5700B79AF1 /* ConfigApp.m */; };
 		B213CC3719ED2C5E00B79AF1 /* ConfigManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B213CC3619ED2C5E00B79AF1 /* ConfigManager.m */; };
+		B2163F411ACC4EE300727994 /* iPad_MoreAppsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2163F3F1ACC4EE300727994 /* iPad_MoreAppsViewController.xib */; };
+		B2163F421ACC4EE300727994 /* iPhone_MoreAppsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2163F401ACC4EE300727994 /* iPhone_MoreAppsViewController.xib */; };
+		B2163F451ACC4EED00727994 /* MoreAppsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2163F431ACC4EED00727994 /* MoreAppsViewController.m */; };
+		B2163F4B1ACC4F3E00727994 /* ic_2048.png in Resources */ = {isa = PBXBuildFile; fileRef = B2163F471ACC4F3E00727994 /* ic_2048.png */; };
+		B2163F4C1ACC4F3E00727994 /* ic_knots.png in Resources */ = {isa = PBXBuildFile; fileRef = B2163F481ACC4F3E00727994 /* ic_knots.png */; };
+		B2163F4D1ACC4F3E00727994 /* ic_origami.png in Resources */ = {isa = PBXBuildFile; fileRef = B2163F491ACC4F3E00727994 /* ic_origami.png */; };
+		B2163F4E1ACC4F3E00727994 /* ic_pokemon.png in Resources */ = {isa = PBXBuildFile; fileRef = B2163F4A1ACC4F3E00727994 /* ic_pokemon.png */; };
 		B2251E241A6B7F2800C4ED2B /* MoveView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2251E231A6B7F2800C4ED2B /* MoveView.m */; };
 		B227792319E23162000B1033 /* flag_fr.png in Resources */ = {isa = PBXBuildFile; fileRef = B227791F19E23162000B1033 /* flag_fr.png */; };
 		B227792419E23162000B1033 /* flag_it.png in Resources */ = {isa = PBXBuildFile; fileRef = B227792019E23162000B1033 /* flag_it.png */; };
@@ -140,6 +147,14 @@
 		B213CC3319ED2A5700B79AF1 /* ConfigApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConfigApp.m; path = Entry/ConfigApp.m; sourceTree = "<group>"; };
 		B213CC3519ED2C5E00B79AF1 /* ConfigManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConfigManager.h; path = Common/ConfigManager.h; sourceTree = "<group>"; };
 		B213CC3619ED2C5E00B79AF1 /* ConfigManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConfigManager.m; path = Common/ConfigManager.m; sourceTree = "<group>"; };
+		B2163F3F1ACC4EE300727994 /* iPad_MoreAppsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = iPad_MoreAppsViewController.xib; path = Xib/iPad_MoreAppsViewController.xib; sourceTree = "<group>"; };
+		B2163F401ACC4EE300727994 /* iPhone_MoreAppsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = iPhone_MoreAppsViewController.xib; path = Xib/iPhone_MoreAppsViewController.xib; sourceTree = "<group>"; };
+		B2163F431ACC4EED00727994 /* MoreAppsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreAppsViewController.m; sourceTree = "<group>"; };
+		B2163F441ACC4EED00727994 /* MoreAppsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreAppsViewController.h; sourceTree = "<group>"; };
+		B2163F471ACC4F3E00727994 /* ic_2048.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_2048.png; sourceTree = "<group>"; };
+		B2163F481ACC4F3E00727994 /* ic_knots.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_knots.png; sourceTree = "<group>"; };
+		B2163F491ACC4F3E00727994 /* ic_origami.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_origami.png; sourceTree = "<group>"; };
+		B2163F4A1ACC4F3E00727994 /* ic_pokemon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_pokemon.png; sourceTree = "<group>"; };
 		B2251E221A6B7F2800C4ED2B /* MoveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoveView.h; path = CustomView/DetailView/MoveView.h; sourceTree = "<group>"; };
 		B2251E231A6B7F2800C4ED2B /* MoveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoveView.m; path = CustomView/DetailView/MoveView.m; sourceTree = "<group>"; };
 		B227791F19E23162000B1033 /* flag_fr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = flag_fr.png; path = Resources/Images/PromoSlides/flag_fr.png; sourceTree = "<group>"; };
@@ -289,6 +304,18 @@
 				E7F513708BA235439A693D9D /* Pods-Pokedex Guide.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		B2163F461ACC4F3E00727994 /* MoreApps */ = {
+			isa = PBXGroup;
+			children = (
+				B2163F471ACC4F3E00727994 /* ic_2048.png */,
+				B2163F481ACC4F3E00727994 /* ic_knots.png */,
+				B2163F491ACC4F3E00727994 /* ic_origami.png */,
+				B2163F4A1ACC4F3E00727994 /* ic_pokemon.png */,
+			);
+			name = MoreApps;
+			path = Resources/Images/MoreApps;
 			sourceTree = "<group>";
 		};
 		B227792F19E2319C000B1033 /* AnimationMenu */ = {
@@ -452,6 +479,8 @@
 				B2E9122719B60BB500A715F0 /* Xib */,
 				B2CC859019B36D8E00BD1ABF /* ViewController.h */,
 				B2CC859119B36D8E00BD1ABF /* ViewController.m */,
+				B2163F441ACC4EED00727994 /* MoreAppsViewController.h */,
+				B2163F431ACC4EED00727994 /* MoreAppsViewController.m */,
 				B2137B0C19BD39A000184C56 /* SearchViewController.h */,
 				B2137B0D19BD39A000184C56 /* SearchViewController.m */,
 				B2E1562B19D083AC0084C8FF /* DetailViewController.h */,
@@ -485,6 +514,7 @@
 		B2CC862919B3795A00BD1ABF /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				B2163F461ACC4F3E00727994 /* MoreApps */,
 				B2940C3919ECF117008A97C3 /* icon */,
 				B203F8A519BB1AEA00767698 /* Default~ipad.png */,
 				B203F8A619BB1AEA00767698 /* Default@2x.png */,
@@ -565,6 +595,8 @@
 		B2E9122719B60BB500A715F0 /* Xib */ = {
 			isa = PBXGroup;
 			children = (
+				B2163F3F1ACC4EE300727994 /* iPad_MoreAppsViewController.xib */,
+				B2163F401ACC4EE300727994 /* iPhone_MoreAppsViewController.xib */,
 				B2E9122B19B60C7C00A715F0 /* iPad_MainViewController.xib */,
 				B2E9122E19B60C9A00A715F0 /* iPhone_MainViewController.xib */,
 				B2137B1019BD39CA00184C56 /* iPad_SearchViewController.xib */,
@@ -676,6 +708,7 @@
 				B2E9124019B62A7E00A715F0 /* scrollview_bg.png in Resources */,
 				B2CC8ED119B37D3700BD1ABF /* psychic.png in Resources */,
 				B2940C4619ECF129008A97C3 /* icon_144X144.png in Resources */,
+				B2163F4B1ACC4F3E00727994 /* ic_2048.png in Resources */,
 				B2E9122F19B60C9A00A715F0 /* iPhone_MainViewController.xib in Resources */,
 				B24EF6A519BA313C00A56926 /* placeholder_center@2x.png in Resources */,
 				B230170319D8640E00D570B8 /* x_normal.png in Resources */,
@@ -715,6 +748,7 @@
 				B24EF6B719BA313C00A56926 /* topnav_back_grey@2x~iphone.png in Resources */,
 				B227793319E231AF000B1033 /* iPad_AnimationMenuCustom.xib in Resources */,
 				B2E9124219B62A7E00A715F0 /* scrollview_bg@2x.png in Resources */,
+				B2163F4C1ACC4F3E00727994 /* ic_knots.png in Resources */,
 				B230170119D8640E00D570B8 /* x_selected.png in Resources */,
 				B2940C4319ECF129008A97C3 /* icon_76X76.png in Resources */,
 				B2CC8ED919B37D3700BD1ABF /* bug.png in Resources */,
@@ -732,6 +766,7 @@
 				B2940C4119ECF129008A97C3 /* icon_57X57.png in Resources */,
 				B2CC92C619E4363F00FE0127 /* 00A2C633-5090-4F9E-A1DA-EF8E508FDC9A in Resources */,
 				B2CC8EB519B37D3700BD1ABF /* unknow.png in Resources */,
+				B2163F411ACC4EE300727994 /* iPad_MoreAppsViewController.xib in Resources */,
 				B2CC8EC119B37D3700BD1ABF /* fire.png in Resources */,
 				B227792419E23162000B1033 /* flag_it.png in Resources */,
 				B203F8B819BB1AEA00767698 /* Default-568h@2x.png in Resources */,
@@ -743,10 +778,13 @@
 				B230170019D8640E00D570B8 /* y_normal.png in Resources */,
 				B2CC8ED519B37D3700BD1ABF /* polson.png in Resources */,
 				B2137B1119BD39CA00184C56 /* iPad_SearchViewController.xib in Resources */,
+				B2163F4E1ACC4F3E00727994 /* ic_pokemon.png in Resources */,
 				B2E9122C19B60C7C00A715F0 /* iPad_MainViewController.xib in Resources */,
 				B2CC858319B36D8E00BD1ABF /* InfoPlist.strings in Resources */,
 				B2CC8EC919B37D3700BD1ABF /* ground.png in Resources */,
+				B2163F421ACC4EE300727994 /* iPhone_MoreAppsViewController.xib in Resources */,
 				B2CC92C919E4363F00FE0127 /* 0407126C-F70D-4DF4-929D-474BCA9D6E87 in Resources */,
+				B2163F4D1ACC4F3E00727994 /* ic_origami.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -803,6 +841,7 @@
 				B2CC858919B36D8E00BD1ABF /* AppDelegate.m in Sources */,
 				B2CC861A19B36E3500BD1ABF /* ContentGuideView.m in Sources */,
 				B2CC862019B36E3500BD1ABF /* ContentGuideViewRowHeader.m in Sources */,
+				B2163F451ACC4EED00727994 /* MoreAppsViewController.m in Sources */,
 				B2E1562D19D083AC0084C8FF /* DetailViewController.m in Sources */,
 				B2C8DB5619C303AD0095DE72 /* DetailView.m in Sources */,
 				B213CC3419ED2A5700B79AF1 /* ConfigApp.m in Sources */,

@@ -13,6 +13,7 @@
 @property(nonatomic, strong) NSString *urlShare;
 @property(nonatomic, strong) NSString *version;
 @property(nonatomic, strong) NSString *expriredDay;
+@property(nonatomic, strong) NSString *urlApp1;
 - (id)init;
 - (void)parser:(id)json;
 @end

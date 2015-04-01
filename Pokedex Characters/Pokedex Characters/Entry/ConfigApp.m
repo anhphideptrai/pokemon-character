@@ -11,6 +11,7 @@
 #define key_url_share @"url.share"
 #define key_version @"version"
 #define key_expired_day @"expired.day"
+#define key_url_app_1 @"url.app1"
 
 @implementation ConfigApp
 - (id)init{
@@ -20,6 +21,7 @@
         self.urlShare = @"";
         self.version = @"";
         self.expriredDay = @"";
+        self.urlApp1 = @"";
     }
     return self;
 }
@@ -29,6 +31,7 @@
     self.urlShare = [json valueForKey:key_url_share];
     self.version = [json valueForKey:key_version];
     self.expriredDay = [json valueForKey:key_expired_day];
+    self.urlApp1 = [json valueForKey:key_url_app_1];
     
 }
 @end

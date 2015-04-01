@@ -36,13 +36,19 @@
         if (success) {
             appDelegate.config = configApp;
             [[NSUserDefaults standardUserDefaults] setValue:appDelegate.config.statusApp forKey:CONFIG_SETTING_TAG];
+            [[NSUserDefaults standardUserDefaults] setValue:appDelegate.config.urlApp1 forKey:CONFIG_URL_APP_1];
             [[NSUserDefaults standardUserDefaults] synchronize];
         }else{
             appDelegate.config = [[ConfigApp alloc] init];
+            appDelegate.config.urlShare = @"https://itunes.apple.com/app/guide-for-pokedex/id929955668?mt=8";
             if ([[NSUserDefaults standardUserDefaults] objectForKey:CONFIG_SETTING_TAG]) {
                 appDelegate.config.statusApp = [[NSUserDefaults standardUserDefaults] objectForKey:CONFIG_SETTING_TAG];
             }else{
                 appDelegate.config.statusApp = STATUS_APP_DEFAUL;
+            }
+            
+            if ([[NSUserDefaults standardUserDefaults] objectForKey:CONFIG_URL_APP_1]) {
+                appDelegate.config.statusApp = [[NSUserDefaults standardUserDefaults] objectForKey:CONFIG_URL_APP_1];
             }
         }
         ViewController *mainViewController = [[ViewController alloc] initWithNibName:NAME_XIB_FILE_MAIN_VIEW_CONTROLLER bundle:nil];

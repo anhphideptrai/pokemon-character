@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MoreAppsViewController">
+            <connections>
+                <outlet property="view" destination="iN0-l3-epB" id="gWU-S5-9pq"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JsE-HF-LkI">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reading_topnav_background.png" translatesAutoresizingMaskIntoConstraints="NO" id="KMp-a1-ClL">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5hz-iO-4ZG">
+                            <rect key="frame" x="10" y="10" width="60" height="30"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="OYF-12-t1q"/>
+                                <constraint firstAttribute="width" constant="60" id="Xov-vm-q2e"/>
+                            </constraints>
+                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <state key="normal" title="Close">
+                                <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="actionClose:" destination="-1" eventType="touchUpInside" id="ZyU-g7-CRm"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="KMp-a1-ClL" secondAttribute="trailing" id="1eE-gu-WoG"/>
+                        <constraint firstAttribute="height" constant="50" id="FZM-xr-URm"/>
+                        <constraint firstAttribute="bottom" secondItem="KMp-a1-ClL" secondAttribute="bottom" id="Fdg-EE-oCx"/>
+                        <constraint firstItem="5hz-iO-4ZG" firstAttribute="leading" secondItem="JsE-HF-LkI" secondAttribute="leading" constant="10" id="IpU-5f-QMd"/>
+                        <constraint firstItem="KMp-a1-ClL" firstAttribute="top" secondItem="JsE-HF-LkI" secondAttribute="top" id="JzN-Nx-ApD"/>
+                        <constraint firstItem="KMp-a1-ClL" firstAttribute="leading" secondItem="JsE-HF-LkI" secondAttribute="leading" id="ev5-xZ-O1Y"/>
+                        <constraint firstItem="5hz-iO-4ZG" firstAttribute="top" secondItem="JsE-HF-LkI" secondAttribute="top" constant="10" id="kzK-d7-0gI"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="9zy-dM-ffO">
+                    <rect key="frame" x="0.0" y="50" width="600" height="550"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="TdO-yE-Y0X"/>
+                        <outlet property="delegate" destination="-1" id="WbG-6L-lmk"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="JsE-HF-LkI" secondAttribute="trailing" id="1fM-dg-bnj"/>
+                <constraint firstAttribute="trailing" secondItem="9zy-dM-ffO" secondAttribute="trailing" id="Ah2-VI-1IM"/>
+                <constraint firstItem="JsE-HF-LkI" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="DrP-YF-hRk"/>
+                <constraint firstItem="JsE-HF-LkI" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="GoA-7R-Qer"/>
+                <constraint firstItem="9zy-dM-ffO" firstAttribute="top" secondItem="JsE-HF-LkI" secondAttribute="bottom" id="NlK-1Q-Z3A"/>
+                <constraint firstAttribute="bottom" secondItem="9zy-dM-ffO" secondAttribute="bottom" id="kBI-9v-uQd"/>
+                <constraint firstItem="9zy-dM-ffO" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="lse-N3-Qrd"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="reading_topnav_background.png" width="5" height="66"/>
+    </resources>
+</document>

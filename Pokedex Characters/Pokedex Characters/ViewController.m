@@ -15,6 +15,7 @@
 #import "SearchViewController.h"
 #import "DetailViewController.h"
 #import "AppDelegate.h"
+#import "MoreAppsViewController.h"
 
 @interface ViewController () <PromoSlidesViewDataSource, PromoSlidesViewDelegate>
 {
@@ -74,6 +75,11 @@
 {
     // Tell 'menu button' position to 'menu item view'
     [self.menuItemView setAnimationStartFromHere:self.menuButton.frame];
+    NSUInteger r = arc4random_uniform(8) + 1;
+    if (r == 8) {
+        MoreAppsViewController *moreAppVC = [[MoreAppsViewController alloc] initWithNibName:NAME_XIB_FILE_MORE_APPS_VIEW_CONTROLLER bundle:nil];
+        [self.navigationController presentViewController:moreAppVC animated:YES completion:^{}];
+    }
 }
 - (void)didReceiveMemoryWarning
 {

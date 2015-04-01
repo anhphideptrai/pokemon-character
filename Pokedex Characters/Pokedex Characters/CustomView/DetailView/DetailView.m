@@ -23,7 +23,7 @@
 #define TYPE_FRAME IS_IPAD?CGRectMake(0, WIDTH_DETAIL_PAGE, self.frame.size.width, 30):CGRectMake(0, (BASE_STATS_FRAME).size.height + (BASE_STATS_FRAME).origin.y, self.frame.size.width, 30)
 #define WEAKNESSES_FRAME CGRectMake(0, (TYPE_FRAME).size.height + (TYPE_FRAME).origin.y, self.frame.size.width, 30)
 #define EVOLUTION_FRAME CGRectMake(0, WEAKNESSES_FRAME.size.height + WEAKNESSES_FRAME.origin.y, self.frame.size.width, IS_IPAD?150:90)
-#define MOVE_FRAME CGRectMake(0, IS_IPAD?(self.frame.size.height - 55 - 90):(EVOLUTION_FRAME.size.height + EVOLUTION_FRAME.origin.y), self.frame.size.width, 55)
+#define MOVE_FRAME CGRectMake(0, IS_IPAD?(self.frame.size.height - 55 - 10):(EVOLUTION_FRAME.size.height + EVOLUTION_FRAME.origin.y), self.frame.size.width, 55)
 
 
 @interface DetailView()<EvolutionsViewDelegate, MoveViewDelegate>{

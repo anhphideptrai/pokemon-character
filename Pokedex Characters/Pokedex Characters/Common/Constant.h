@@ -36,6 +36,7 @@
 #define NAME_XIB_FILE_MAIN_VIEW_CONTROLLER (IS_IPAD?@"iPad_MainViewController":@"iPhone_MainViewController")
 #define NAME_XIB_FILE_SEARCH_VIEW_CONTROLLER (IS_IPAD?@"iPad_SearchViewController":@"iPhone_SearchViewController")
 #define NAME_XIB_ANIMATION_MENU_VIEW_CONTROLLER (IS_IPAD?@"iPad_AnimationMenuCustom":@"iPhone_AnimationMenuCustom")
+#define NAME_XIB_FILE_MORE_APPS_VIEW_CONTROLLER (IS_IPAD?@"iPad_MoreAppsViewController":@"iPhone_MoreAppsViewController")
 
 #define FRAME_PROMO_SLIDES (IS_IPAD?CGRectMake(0, 0, 768, 350):CGRectMake(0, 0, 320, 145))
 #define HEIGHT_CONTENT_GUIDE_VIEW_ROW (IS_IPAD?255:175)
@@ -54,5 +55,6 @@
 #define BANNER_SEARCH_ADMOB @"ca-app-pub-1775449000819183/2234925158"
 #define LANGUAGE_SETTING_TAG @"LANGUAGE_SETTING_TAG"
 #define CONFIG_SETTING_TAG @"CONFIG_SETTING_TAG"
+#define CONFIG_URL_APP_1 @"CONFIG_URL_APP_1"
 #define STATUS_APP_DEFAUL @"beta1"
 #endif
