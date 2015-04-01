@@ -1,0 +1,5 @@
+#include "Pods-Pokedex Guide-SVSegmentedControl@PTEz.xcconfig"
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Build" "${PODS_ROOT}/Headers/Build/SVSegmentedControl@PTEz" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AFNetworking" "${PODS_ROOT}/Headers/Public/ASOAnimatedButton" "${PODS_ROOT}/Headers/Public/Google-Mobile-Ads-SDK" "${PODS_ROOT}/Headers/Public/SVSegmentedControl@PTEz" "${PODS_ROOT}/Headers/Public/iCarousel"
+OTHER_LDFLAGS = ${PODS_POKEDEX_GUIDE_SVSEGMENTEDCONTROL_PTEZ_OTHER_LDFLAGS} -ObjC
+PODS_ROOT = ${SRCROOT}

@@ -30,7 +30,7 @@
     [super viewDidLoad];
     [[self navigationController] setNavigationBarHidden:YES animated:YES];
     [self initSubView];
-    [[ConfigManager getInstance] loadConfig:@"https://character-app.googlecode.com/git/get_config_character_app.json" finished:^(BOOL success, ConfigApp *configApp) {
+    [[ConfigManager getInstance] loadConfig:@"https://raw.githubusercontent.com/anhphideptrai/pokemon-character/master/config%20app/get_config_character_app.json" finished:^(BOOL success, ConfigApp *configApp) {
         [loadingView stopAnimating];
         AppDelegate *appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
         if (success) {

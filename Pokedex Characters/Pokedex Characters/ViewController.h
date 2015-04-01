@@ -12,8 +12,7 @@
 #import "ASOBounceButtonViewDelegate.h"
 #import "AnimationMenuCustom.h"
 #import "ContentGuideView.h"
-#import "GADBannerView.h"
-#import "GADRequest.h"
+#import <GoogleMobileAds/GoogleMobileAds.h>
 
 @interface ViewController : UIViewController <ContentGuideViewDataSource, ContentGuideViewDelegate, ASOBounceButtonViewDelegate>
 @property (strong, nonatomic) IBOutlet ASOTwoStateButton *menuButton;

@@ -51,11 +51,6 @@
 
     [self.contentGuideView setBackground:[UIImage imageNamed:@"scrollview_bg.png"]];
     [self.contentGuideView reloadData];
-    //Add Admob
-    self.bannerView.adUnitID = BANNER_SEARCH_ADMOB;
-    self.bannerView.rootViewController = self;
-    GADRequest *request = [GADRequest request];
-    [self.bannerView loadRequest:request];
 }
 - (BOOL)prefersStatusBarHidden {
     return YES;

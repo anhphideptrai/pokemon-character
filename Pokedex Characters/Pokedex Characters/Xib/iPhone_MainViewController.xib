@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment version="1792" identifier="iOS"/>
         <development version="5100" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ViewController">
@@ -19,22 +19,26 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kqB-O4-ptg" customClass="ContentGuideView">
-                    <rect key="frame" x="0.0" y="30" width="320" height="300"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kqB-O4-ptg" customClass="ContentGuideView">
+                    <rect key="frame" x="0.0" y="30" width="320" height="538"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="7TW-hL-g6d"/>
                         <outlet property="delegate" destination="-1" id="W7t-UW-eN6"/>
                     </connections>
                 </view>
-                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SNc-RJ-Baa">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SNc-RJ-Baa">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="reading_topnav_background.png" translatesAutoresizingMaskIntoConstraints="NO" id="U2Y-fS-0Lz">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reading_topnav_background.png" translatesAutoresizingMaskIntoConstraints="NO" id="U2Y-fS-0Lz">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
                         </imageView>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZDI-cK-bfQ">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZDI-cK-bfQ">
                             <rect key="frame" x="9" y="2" width="26" height="26"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="26" id="pX3-xO-MT0"/>
+                                <constraint firstAttribute="height" constant="26" id="tBg-Zg-NiB"/>
+                            </constraints>
                             <state key="normal" image="topnav_search.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -42,12 +46,19 @@
                                 <action selector="clickSearch:" destination="-1" eventType="touchUpInside" id="5dy-cc-Alf"/>
                             </connections>
                         </button>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="placeholder_center.png" translatesAutoresizingMaskIntoConstraints="NO" id="5Qb-ip-Y55">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_center.png" translatesAutoresizingMaskIntoConstraints="NO" id="5Qb-ip-Y55">
                             <rect key="frame" x="144" y="5" width="32" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="1mX-Ls-sXS"/>
+                                <constraint firstAttribute="width" constant="32" id="Ymp-Zx-0K0"/>
+                            </constraints>
                         </imageView>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Opw-RW-nDr">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Opw-RW-nDr">
                             <rect key="frame" x="0.0" y="0.0" width="60" height="30"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="60" id="vu3-vm-k3X"/>
+                            </constraints>
                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <state key="normal">
                                 <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -57,9 +68,12 @@
                                 <action selector="clickSearch:" destination="-1" eventType="touchUpInside" id="6cd-z4-P47"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s6u-fx-92S">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s6u-fx-92S">
                             <rect key="frame" x="260" y="0.0" width="60" height="30"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="60" id="NWw-Kg-wy8"/>
+                            </constraints>
                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <state key="normal">
                                 <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -71,9 +85,30 @@
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="s6u-fx-92S" secondAttribute="trailing" id="3qc-xB-7fH"/>
+                        <constraint firstItem="ZDI-cK-bfQ" firstAttribute="leading" secondItem="SNc-RJ-Baa" secondAttribute="leading" constant="9" id="6ll-F4-e4n"/>
+                        <constraint firstAttribute="trailing" secondItem="U2Y-fS-0Lz" secondAttribute="trailing" id="CrE-Ao-ee1"/>
+                        <constraint firstAttribute="bottom" secondItem="U2Y-fS-0Lz" secondAttribute="bottom" id="Eh6-Xs-JYW"/>
+                        <constraint firstAttribute="bottom" secondItem="s6u-fx-92S" secondAttribute="bottom" id="MRN-eK-un8"/>
+                        <constraint firstAttribute="bottom" secondItem="Opw-RW-nDr" secondAttribute="bottom" id="NCA-Fg-krI"/>
+                        <constraint firstItem="5Qb-ip-Y55" firstAttribute="top" secondItem="SNc-RJ-Baa" secondAttribute="top" constant="5" id="Pty-i5-7jM"/>
+                        <constraint firstItem="U2Y-fS-0Lz" firstAttribute="top" secondItem="SNc-RJ-Baa" secondAttribute="top" id="StF-0S-5xM"/>
+                        <constraint firstItem="ZDI-cK-bfQ" firstAttribute="top" secondItem="SNc-RJ-Baa" secondAttribute="top" constant="2" id="XlR-uQ-ZrO"/>
+                        <constraint firstItem="s6u-fx-92S" firstAttribute="top" secondItem="SNc-RJ-Baa" secondAttribute="top" id="cYG-7Y-glY"/>
+                        <constraint firstAttribute="centerX" secondItem="5Qb-ip-Y55" secondAttribute="centerX" id="mSw-Uq-h7L"/>
+                        <constraint firstItem="Opw-RW-nDr" firstAttribute="top" secondItem="SNc-RJ-Baa" secondAttribute="top" id="mss-us-Sxm"/>
+                        <constraint firstItem="Opw-RW-nDr" firstAttribute="leading" secondItem="SNc-RJ-Baa" secondAttribute="leading" id="qwE-LB-FUi"/>
+                        <constraint firstItem="U2Y-fS-0Lz" firstAttribute="leading" secondItem="SNc-RJ-Baa" secondAttribute="leading" id="vkZ-ZE-7Xf"/>
+                        <constraint firstAttribute="height" constant="30" id="wZH-jd-shq"/>
+                    </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J4g-zr-HFZ" customClass="ASOTwoStateButton">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J4g-zr-HFZ" customClass="ASOTwoStateButton">
                     <rect key="frame" x="285" y="2" width="26" height="26"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="26" id="YX4-cv-4Ku"/>
+                        <constraint firstAttribute="width" constant="26" id="rBb-qe-aLt"/>
+                    </constraints>
                     <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -81,16 +116,28 @@
                         <action selector="menuButtonAction:" destination="-1" eventType="touchUpInside" id="h29-13-inZ"/>
                     </connections>
                 </button>
-                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xbl-XB-PgT" customClass="GADBannerView">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xbl-XB-PgT" customClass="GADBannerView">
+                    <rect key="frame" x="0.0" y="518" width="320" height="50"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="320" id="1v9-Xz-ryj"/>
+                        <constraint firstAttribute="height" constant="50" id="Yrp-Ka-NnY"/>
+                    </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="kqB-O4-ptg" firstAttribute="top" secondItem="SNc-RJ-Baa" secondAttribute="bottom" id="bia-2d-NxW"/>
-                <constraint firstAttribute="bottom" secondItem="xbl-XB-PgT" secondAttribute="bottom" id="gDb-c2-Ik8"/>
-                <constraint firstAttribute="bottom" secondItem="kqB-O4-ptg" secondAttribute="bottom" id="pV0-tn-TlK"/>
+                <constraint firstAttribute="trailing" secondItem="kqB-O4-ptg" secondAttribute="trailing" id="1nz-me-X4b"/>
+                <constraint firstItem="SNc-RJ-Baa" firstAttribute="top" secondItem="gfO-0Z-yUg" secondAttribute="top" id="5Oh-Mv-g3G"/>
+                <constraint firstAttribute="centerX" secondItem="xbl-XB-PgT" secondAttribute="centerX" id="Cwx-C4-PEf"/>
+                <constraint firstItem="kqB-O4-ptg" firstAttribute="top" secondItem="SNc-RJ-Baa" secondAttribute="bottom" id="InQ-es-4Fj"/>
+                <constraint firstItem="SNc-RJ-Baa" firstAttribute="leading" secondItem="gfO-0Z-yUg" secondAttribute="leading" id="LbR-fe-osU"/>
+                <constraint firstAttribute="bottom" secondItem="xbl-XB-PgT" secondAttribute="bottom" id="SA2-Fl-xdi"/>
+                <constraint firstAttribute="trailing" secondItem="SNc-RJ-Baa" secondAttribute="trailing" id="Thx-De-Zao"/>
+                <constraint firstItem="kqB-O4-ptg" firstAttribute="leading" secondItem="gfO-0Z-yUg" secondAttribute="leading" id="Tzy-BU-EvL"/>
+                <constraint firstAttribute="trailing" secondItem="J4g-zr-HFZ" secondAttribute="trailing" constant="9" id="ecb-n5-T9W"/>
+                <constraint firstItem="J4g-zr-HFZ" firstAttribute="top" secondItem="gfO-0Z-yUg" secondAttribute="top" constant="2" id="wIn-SV-hIp"/>
+                <constraint firstAttribute="bottom" secondItem="kqB-O4-ptg" secondAttribute="bottom" id="z6S-Hz-Ezl"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>

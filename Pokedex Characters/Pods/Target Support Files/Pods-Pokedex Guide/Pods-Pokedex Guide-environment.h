@@ -66,11 +66,18 @@
 #define COCOAPODS_VERSION_MINOR_ASOAnimatedButton_TwoStateButton 0
 #define COCOAPODS_VERSION_PATCH_ASOAnimatedButton_TwoStateButton 1
 
-// Google-AdMob-Ads-SDK
-#define COCOAPODS_POD_AVAILABLE_Google_AdMob_Ads_SDK
-#define COCOAPODS_VERSION_MAJOR_Google_AdMob_Ads_SDK 6
-#define COCOAPODS_VERSION_MINOR_Google_AdMob_Ads_SDK 12
-#define COCOAPODS_VERSION_PATCH_Google_AdMob_Ads_SDK 2
+// Google-Mobile-Ads-SDK
+#define COCOAPODS_POD_AVAILABLE_Google_Mobile_Ads_SDK
+#define COCOAPODS_VERSION_MAJOR_Google_Mobile_Ads_SDK 7
+#define COCOAPODS_VERSION_MINOR_Google_Mobile_Ads_SDK 0
+#define COCOAPODS_VERSION_PATCH_Google_Mobile_Ads_SDK 0
+
+// SVSegmentedControl@PTEz
+#define COCOAPODS_POD_AVAILABLE_SVSegmentedControl_PTEz
+// This library does not follow semantic-versioning,
+// so we were not able to define version macros.
+// Please contact the author.
+// Version: 0.2.0.1.
 
 // iCarousel
 #define COCOAPODS_POD_AVAILABLE_iCarousel
