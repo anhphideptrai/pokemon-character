@@ -50,7 +50,7 @@
     [self.view addGestureRecognizer: swipeGestureRight];
     //Add Admob
     if (![appDelegate.config.statusApp isEqualToString:STATUS_APP_DEFAUL]) {
-        self.bannerView = [[GADBannerView alloc] initWithAdSize:IS_IPAD?kGADAdSizeLeaderboard:kGADAdSizeBanner origin:CGPointMake(IS_IPAD?(self.view.frame.size.width - 728)/2:0, self.view.frame.size.height - (IS_IPAD?90:50))];
+        self.bannerView = [[GADBannerView alloc] initWithAdSize:IS_IPAD?kGADAdSizeLeaderboard:kGADAdSizeBanner origin:CGPointMake(IS_IPAD?(self.view.frame.size.width - 728)/2:0, HEIGHT_NAVIGATION_BAR)];
         self.bannerView.adUnitID = BANNER_DETAIL_ADMOB;
         self.bannerView.rootViewController = self;
         GADRequest *request = [GADRequest request];
