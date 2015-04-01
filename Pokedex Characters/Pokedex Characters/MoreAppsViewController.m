@@ -42,10 +42,10 @@
     [arrApps addObject:app];
     
     app = [MoreAppsData new];
-    app.img = [UIImage imageNamed:@"ic_pokemon.png"];
-    app.name = @"Guide For Pokedex";
-    app.desc = @"Pokedex Guide is one of my favorite apps. I have been loving Pokemon for ages, I even have some cards physically for my owns.";
-    app.linkApp = @"https://itunes.apple.com/sg/app/guide-for-pokedex/id929955668?mt=8";
+    app.img = [UIImage imageNamed:@"ic_draw.png"];
+    app.name = @"How To Draw Everything";
+    app.desc = @"When you were a child, have you ever wished that you were an artist? Is you a fan of anime, picture and cartoon? Have you ever wished that you can draw those favorite actors?";
+    app.linkApp = @"https://itunes.apple.com/sg/app/how-to-draw-everything-step/id948768878?mt=8";
     [arrApps addObject:app];
     
     app = [MoreAppsData new];

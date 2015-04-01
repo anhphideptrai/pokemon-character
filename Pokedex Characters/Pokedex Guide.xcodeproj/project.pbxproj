@@ -26,7 +26,7 @@
 		B2163F4B1ACC4F3E00727994 /* ic_2048.png in Resources */ = {isa = PBXBuildFile; fileRef = B2163F471ACC4F3E00727994 /* ic_2048.png */; };
 		B2163F4C1ACC4F3E00727994 /* ic_knots.png in Resources */ = {isa = PBXBuildFile; fileRef = B2163F481ACC4F3E00727994 /* ic_knots.png */; };
 		B2163F4D1ACC4F3E00727994 /* ic_origami.png in Resources */ = {isa = PBXBuildFile; fileRef = B2163F491ACC4F3E00727994 /* ic_origami.png */; };
-		B2163F4E1ACC4F3E00727994 /* ic_pokemon.png in Resources */ = {isa = PBXBuildFile; fileRef = B2163F4A1ACC4F3E00727994 /* ic_pokemon.png */; };
+		B2163F501ACC538500727994 /* ic_draw.png in Resources */ = {isa = PBXBuildFile; fileRef = B2163F4F1ACC538500727994 /* ic_draw.png */; };
 		B2251E241A6B7F2800C4ED2B /* MoveView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2251E231A6B7F2800C4ED2B /* MoveView.m */; };
 		B227792319E23162000B1033 /* flag_fr.png in Resources */ = {isa = PBXBuildFile; fileRef = B227791F19E23162000B1033 /* flag_fr.png */; };
 		B227792419E23162000B1033 /* flag_it.png in Resources */ = {isa = PBXBuildFile; fileRef = B227792019E23162000B1033 /* flag_it.png */; };
@@ -154,7 +154,7 @@
 		B2163F471ACC4F3E00727994 /* ic_2048.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_2048.png; sourceTree = "<group>"; };
 		B2163F481ACC4F3E00727994 /* ic_knots.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_knots.png; sourceTree = "<group>"; };
 		B2163F491ACC4F3E00727994 /* ic_origami.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_origami.png; sourceTree = "<group>"; };
-		B2163F4A1ACC4F3E00727994 /* ic_pokemon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_pokemon.png; sourceTree = "<group>"; };
+		B2163F4F1ACC538500727994 /* ic_draw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_draw.png; sourceTree = "<group>"; };
 		B2251E221A6B7F2800C4ED2B /* MoveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoveView.h; path = CustomView/DetailView/MoveView.h; sourceTree = "<group>"; };
 		B2251E231A6B7F2800C4ED2B /* MoveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoveView.m; path = CustomView/DetailView/MoveView.m; sourceTree = "<group>"; };
 		B227791F19E23162000B1033 /* flag_fr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = flag_fr.png; path = Resources/Images/PromoSlides/flag_fr.png; sourceTree = "<group>"; };
@@ -309,10 +309,10 @@
 		B2163F461ACC4F3E00727994 /* MoreApps */ = {
 			isa = PBXGroup;
 			children = (
+				B2163F4F1ACC538500727994 /* ic_draw.png */,
 				B2163F471ACC4F3E00727994 /* ic_2048.png */,
 				B2163F481ACC4F3E00727994 /* ic_knots.png */,
 				B2163F491ACC4F3E00727994 /* ic_origami.png */,
-				B2163F4A1ACC4F3E00727994 /* ic_pokemon.png */,
 			);
 			name = MoreApps;
 			path = Resources/Images/MoreApps;
@@ -778,13 +778,13 @@
 				B230170019D8640E00D570B8 /* y_normal.png in Resources */,
 				B2CC8ED519B37D3700BD1ABF /* polson.png in Resources */,
 				B2137B1119BD39CA00184C56 /* iPad_SearchViewController.xib in Resources */,
-				B2163F4E1ACC4F3E00727994 /* ic_pokemon.png in Resources */,
 				B2E9122C19B60C7C00A715F0 /* iPad_MainViewController.xib in Resources */,
 				B2CC858319B36D8E00BD1ABF /* InfoPlist.strings in Resources */,
 				B2CC8EC919B37D3700BD1ABF /* ground.png in Resources */,
 				B2163F421ACC4EE300727994 /* iPhone_MoreAppsViewController.xib in Resources */,
 				B2CC92C919E4363F00FE0127 /* 0407126C-F70D-4DF4-929D-474BCA9D6E87 in Resources */,
 				B2163F4D1ACC4F3E00727994 /* ic_origami.png in Resources */,
+				B2163F501ACC538500727994 /* ic_draw.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
