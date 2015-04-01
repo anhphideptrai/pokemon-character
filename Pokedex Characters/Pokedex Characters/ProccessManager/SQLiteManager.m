@@ -146,4 +146,21 @@ static SQLiteManager *thisInstance;
     }
     return result;
 }
+-(BOOL)insertFavoriteColumn{
+    [self copyDatabase];
+    BOOL result = NO;
+    sqlite3_stmt *statement;
+    const char *dbpath = [_databasePath UTF8String];
+    if (sqlite3_open(dbpath, &_contactDB) == SQLITE_OK)
+    {
+        NSString *insertSQL = @"ALTER TABLE \"Pokemon\" ADD COLUMN \"FAVORITE\" BOOL DEFAULT 0";
+        const char *insert_stmt = [insertSQL UTF8String];
+        sqlite3_prepare_v2(_contactDB, insert_stmt,
+                           -1, &statement, NULL);
+        result = (sqlite3_step(statement) == SQLITE_DONE);
+        sqlite3_finalize(statement);
+        sqlite3_close(_contactDB);
+    }
+    return result;
+}
 @end

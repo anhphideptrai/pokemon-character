@@ -17,4 +17,5 @@
 - (NSMutableArray*)getArrPokemonWithSearchKey:(NSString*)searchKey;
 - (Pokemon*)getPokemonWithID:(NSString*)iDPokemon;
 - (NSMutableArray*)getArrPokemonWithArrID:(NSArray*)arrID;
+-(BOOL)insertFavoriteColumn;
 @end

@@ -12,6 +12,7 @@
 #import "ViewController.h"
 #import "AppDelegate.h"
 #import "Constant.h"
+#import "SQLiteManager.h"
 
 @interface SplashScreenViewController (){
     UIImageView *bgView;
@@ -56,6 +57,11 @@
         appDelegate.window.rootViewController = appDelegate.navigationController;
         [appDelegate.window makeKeyAndVisible];
     }];
+    if (![[NSUserDefaults standardUserDefaults] objectForKey:INSERT_FAVORITE_COLUMN_TAG]){
+        BOOL inserted = [[SQLiteManager getInstance] insertFavoriteColumn];
+        [[NSUserDefaults standardUserDefaults] setValue:@(inserted) forKey:INSERT_FAVORITE_COLUMN_TAG];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
 }
 - (BOOL)prefersStatusBarHidden {
     return YES;
