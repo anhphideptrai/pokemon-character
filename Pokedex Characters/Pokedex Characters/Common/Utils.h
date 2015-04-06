@@ -16,6 +16,10 @@ typedef enum {
 } LanguageSetting;
 
 typedef enum {
+    ALL_STRING,
+    FAVORITE_STRING,
+    NEXT_STRING,
+    PREVIUS_STRING,
     SEARCH_STRING,
     VERSION_STRING,
     HEIGHT_STRING,

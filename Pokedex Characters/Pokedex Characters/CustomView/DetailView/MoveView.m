@@ -8,9 +8,10 @@
 
 #import "MoveView.h"
 #import "Constant.h"
+#import "AppDelegate.h"
 
-#define BUTTON_PREVIUS_FRAME CGRectMake(10, self.frame.size.height - 30, 70, 30)
-#define BUTTON_NEXT_FRAME CGRectMake(self.frame.size.width - 80, self.frame.size.height - 30, 70, 30)
+#define BUTTON_PREVIUS_FRAME CGRectMake(10, self.frame.size.height - 30, 80, 30)
+#define BUTTON_NEXT_FRAME CGRectMake(self.frame.size.width - 90, self.frame.size.height - 30, 80, 30)
 #define BUTTON_LOVE_FRAME CGRectMake((self.frame.size.width - 3*79/7)/2, self.frame.size.height - 30, 3*79/7, 30)
 @interface MoveView(){
     UIButton *buttonPrevius;
@@ -27,7 +28,7 @@
     }
     
     [self setBackgroundColor:[UIColor clearColor]];
-    
+    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
     buttonPrevius        = [[UIButton alloc] initWithFrame:BUTTON_PREVIUS_FRAME];
     buttonNext        = [[UIButton alloc] initWithFrame:BUTTON_NEXT_FRAME];
     buttonLove        = [[UIButton alloc] initWithFrame:BUTTON_LOVE_FRAME];
@@ -42,8 +43,8 @@
     [buttonPrevius setTag:LEFT_MOVE];
     [buttonNext setTag:RIGHT_MOVE];
     
-    [buttonPrevius setTitle:@"<Previus" forState:UIControlStateNormal];
-    [buttonNext setTitle:@"Next>" forState:UIControlStateNormal];
+    [buttonPrevius setTitle:[Utils getStringOf:PREVIUS_STRING withLanguage:appDelegate.languageDefault] forState:UIControlStateNormal];
+    [buttonNext setTitle:[Utils getStringOf:NEXT_STRING withLanguage:appDelegate.languageDefault] forState:UIControlStateNormal];
     
     [buttonNext setUserInteractionEnabled:enableRight];
     [buttonPrevius setUserInteractionEnabled:enableLeft];

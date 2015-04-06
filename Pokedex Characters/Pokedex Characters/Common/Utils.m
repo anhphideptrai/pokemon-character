@@ -85,6 +85,26 @@
 #define order_id_name_string_fr @"No. "
 #define order_id_name_string_it @"N° "
 
+#define next_string_en @"Next >"
+#define next_string_es @"Proximo >"
+#define next_string_fr @"prochaine >"
+#define next_string_it @"Accanto >"
+
+#define previus_string_en @"< Previus"
+#define previus_string_es @"< Anterior"
+#define previus_string_fr @"< Previus"
+#define previus_string_it @"< Previus"
+
+#define all_string_en @"All"
+#define all_string_es @"Todo"
+#define all_string_fr @"Tous"
+#define all_string_it @"Tutti"
+
+#define favorite_string_en @"Favorite"
+#define favorite_string_es @"Favorito"
+#define favorite_string_fr @"Preferee"
+#define favorite_string_it @"Preferiti"
+
 #define db_name_string_en @"00A2C633-5090-4F9E-A1DA-EF8E508FDC9A"
 #define db_name_string_es @"08E7CCA3-E0A7-48FA-8F09-BAEE19B835A9"
 #define db_name_string_fr @"020D14C1-66CF-4B4B-9727-6A54C6B7A5F2"
@@ -135,6 +155,14 @@
 
 + (NSString*)getStringOfLanguageEN:(STRING_APP)stringApp{
     switch (stringApp) {
+        case ALL_STRING:
+            return all_string_en;
+        case FAVORITE_STRING:
+            return favorite_string_en;
+        case NEXT_STRING:
+            return next_string_en;
+        case PREVIUS_STRING:
+            return previus_string_en;
         case SEARCH_STRING:
             return search_string_en;
         case VERSION_STRING:
@@ -171,6 +199,14 @@
 }
 + (NSString*)getStringOfLanguageES:(STRING_APP)stringApp{
     switch (stringApp) {
+        case ALL_STRING:
+            return all_string_es;
+        case FAVORITE_STRING:
+            return favorite_string_es;
+        case NEXT_STRING:
+            return next_string_es;
+        case PREVIUS_STRING:
+            return previus_string_es;
         case SEARCH_STRING:
             return search_string_es;
         case VERSION_STRING:
@@ -207,6 +243,14 @@
 }
 + (NSString*)getStringOfLanguageFR:(STRING_APP)stringApp{
     switch (stringApp) {
+        case ALL_STRING:
+            return all_string_fr;
+        case FAVORITE_STRING:
+            return favorite_string_fr;
+        case NEXT_STRING:
+            return next_string_fr;
+        case PREVIUS_STRING:
+            return previus_string_fr;
         case SEARCH_STRING:
             return search_string_fr;
         case VERSION_STRING:
@@ -243,6 +287,14 @@
 }
 + (NSString*)getStringOfLanguageIT:(STRING_APP)stringApp{
     switch (stringApp) {
+        case ALL_STRING:
+            return all_string_it;
+        case FAVORITE_STRING:
+            return favorite_string_it;
+        case NEXT_STRING:
+            return next_string_it;
+        case PREVIUS_STRING:
+            return previus_string_it;
         case SEARCH_STRING:
             return search_string_it;
         case VERSION_STRING:

@@ -24,6 +24,7 @@
     AppDelegate *appDelegate;
     SVSegmentedControl *redSC;
     BOOL shouldReload;
+    NSUInteger currentSegmentIndex;
 }
 @property (nonatomic) ASOAnimationStyle progressiveORConcurrentStyle;
 @property (weak, nonatomic) IBOutlet UIView *naviView;
@@ -36,6 +37,7 @@
 {
     [super viewDidLoad];
     [[self navigationController] setNavigationBarHidden:YES animated:YES];
+    currentSegmentIndex = 0;
     appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
     
     result = [[SQLiteManager getInstance] getPokemonWithAllTypes];
@@ -63,14 +65,7 @@
     // Set as delegate of 'menu item view'
     [self.menuItemView setDelegate:self];
     
-    redSC = [[SVSegmentedControl alloc] initWithSectionTitles:[NSArray arrayWithObjects:@"All", @"Favorite", nil]];
-    [redSC addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
-    redSC.crossFadeLabelsOnDrag = YES;
-    redSC.height = IS_IPAD?40.f:28.f;
-    redSC.thumb.tintColor = _orange_color_;
-    [redSC setSelectedSegmentIndex:0 animated:NO];
-    [self.naviView addSubview:redSC];
-    [redSC setHidden:YES];
+    [self setupSegment];
     
     // Add Admob
     self.bannerView.adUnitID = BANNER_ID_ADMOB;
@@ -81,7 +76,20 @@
                            nil];
     [self.bannerView loadRequest:request];
 }
-
+- (void)setupSegment{
+    if (redSC) {
+        [redSC removeFromSuperview];
+        redSC = nil;
+    }
+    redSC = [[SVSegmentedControl alloc] initWithSectionTitles:[NSArray arrayWithObjects:[Utils getStringOf:ALL_STRING withLanguage:appDelegate.languageDefault], [Utils getStringOf:FAVORITE_STRING withLanguage:appDelegate.languageDefault], nil]];
+    [redSC addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
+    redSC.crossFadeLabelsOnDrag = YES;
+    redSC.height = IS_IPAD?40.f:28.f;
+    redSC.thumb.tintColor = _orange_color_;
+    [redSC setSelectedSegmentIndex:currentSegmentIndex animated:NO];
+    [self.naviView addSubview:redSC];
+    [redSC setHidden:YES];
+}
 - (BOOL)prefersStatusBarHidden {
     return YES;
 }
@@ -98,7 +106,7 @@
         MoreAppsViewController *moreAppVC = [[MoreAppsViewController alloc] initWithNibName:NAME_XIB_FILE_MORE_APPS_VIEW_CONTROLLER bundle:nil];
         [self.navigationController presentViewController:moreAppVC animated:YES completion:^{}];
     }
-    if(shouldReload && redSC.selectedSegmentIndex != 0){
+    if(shouldReload && currentSegmentIndex != 0){
         [self loadDataFromDataBase];
         [self.contentGuideView holdPositionReloadData];
     }
@@ -112,11 +120,12 @@
 
 #pragma mark - UIControlEventValueChanged
 - (void)segmentedControlChangedValue:(SVSegmentedControl*)segmentedControl {
+    currentSegmentIndex = segmentedControl.selectedSegmentIndex;
     [self loadDataFromDataBase];
     [self.contentGuideView reloadData];
 }
 - (void)loadDataFromDataBase{
-    result = (redSC.selectedSegmentIndex == 0)?
+    result = (currentSegmentIndex == 0)?
     [[SQLiteManager getInstance] getPokemonWithAllTypes]:
     [[SQLiteManager getInstance] getPokemonFavoriteWithAllTypes];
 }
@@ -140,8 +149,11 @@
     [[NSUserDefaults standardUserDefaults] setValue:@(index) forKey:LANGUAGE_SETTING_TAG];
     [[NSUserDefaults standardUserDefaults] synchronize];
     appDelegate.languageDefault = (LanguageSetting)index;
-    result = (redSC.selectedSegmentIndex == 0)?[[SQLiteManager getInstance] getPokemonWithAllTypes]:[[SQLiteManager getInstance] getPokemonFavoriteWithAllTypes];
+    result = (currentSegmentIndex == 0)?[[SQLiteManager getInstance] getPokemonWithAllTypes]:[[SQLiteManager getInstance] getPokemonFavoriteWithAllTypes];
     [self.contentGuideView holdPositionReloadData];
+    [self setupSegment];
+    redSC.center = CGPointMake(self.naviView.frame.size.width/2, self.naviView.frame.size.height/2);
+    [redSC setHidden:NO];
 }
 
 - (IBAction)sendActionForMenuButton:(id)sender{
@@ -194,7 +206,7 @@
     
 }
 - (UIView*) topCustomViewForContentGuideView:(ContentGuideView*) contentGuide{
-    if (redSC.selectedSegmentIndex != 0) {
+    if (currentSegmentIndex != 0) {
         return nil;
     }else{
         PromoSlidesView* promoSlidesView = [[PromoSlidesView alloc] initWithFrame:FRAME_PROMO_SLIDES];
@@ -226,7 +238,7 @@
 }
 
 - (CGFloat)offsetYOfFirstRow:(ContentGuideView*) contentGuide{
-    return redSC.selectedSegmentIndex != 0?0:OFFSET_Y_OF_FIRST_ROW;
+    return currentSegmentIndex != 0?0:OFFSET_Y_OF_FIRST_ROW;
 }
 - (void)         contentGuide:(ContentGuideView*) contentGuide
 didSelectPosterViewAtRowIndex:(NSUInteger) rowIndex
