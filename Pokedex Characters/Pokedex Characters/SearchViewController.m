@@ -14,10 +14,11 @@
 #import "DetailViewController.h"
 #import "AppDelegate.h"
 
-@interface SearchViewController (){
+@interface SearchViewController ()<DetailViewControllerDelegate>{
     NSMutableArray *result;
     NSTimer *timerSearch;
     AppDelegate *appDelegate;
+    BOOL shouldReload;
 }
 @property (strong, nonatomic) IBOutlet UILabel *title_Search;
 - (IBAction)clickBack:(id)sender;
@@ -126,6 +127,7 @@ didSelectPosterViewAtRowIndex:(NSUInteger) rowIndex
                   posterIndex:(NSUInteger) index{
     DetailViewController *detailViewController = [[DetailViewController alloc] init];
     [detailViewController setPokemonForDetail:((PokemonType*)result[rowIndex]).pokemons withCurrentIndex:index];
+    [detailViewController setDelegate:self];
     [self.navigationController pushViewController:detailViewController animated:YES];
     
 }
@@ -158,5 +160,9 @@ didSelectPosterViewAtRowIndex:(NSUInteger) rowIndex
             [self.contentGuideView reloadData];
         });
     });
+}
+#pragma mark - DetailViewControllerDelegate methods
+- (void)shouldReloadWhenBackFromDetailPage:(DetailViewController*)detailPage{
+    shouldReload = YES;
 }
 @end

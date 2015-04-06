@@ -22,6 +22,7 @@
     AppDelegate *appDelegate;
     NSInteger currentIndex;
     NSArray *pokemons;
+    BOOL shouldReload;
 }
 @property (strong, nonatomic) GADBannerView *bannerView;
 @end
@@ -66,6 +67,9 @@
     return YES;
 }
 -(void)clickBtnBack:(CustomNavigationBar *)customNavigationBar{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(shouldReloadWhenBackFromDetailPage:)]) {
+        [self.delegate shouldReloadWhenBackFromDetailPage:self];
+    }
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)clickBtnShare:(CustomNavigationBar *)customNavigationBar{

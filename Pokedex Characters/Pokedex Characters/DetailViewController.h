@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "Pokemon.h"
+@class DetailViewController;
+@protocol DetailViewControllerDelegate <NSObject>
+- (void)shouldReloadWhenBackFromDetailPage:(DetailViewController*)detailPage;
+@end
 @interface DetailViewController : UIViewController
-- (void)setPokemonForDetail:(NSArray*)pokemons withCurrentIndex:(NSInteger)index;
+@property(nonatomic,assign) id<DetailViewControllerDelegate> delegate;
+- (void)setPokemonForDetail:(NSArray*)pokemons
+           withCurrentIndex:(NSInteger)index;
 @end

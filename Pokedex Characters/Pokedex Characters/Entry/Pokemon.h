@@ -21,4 +21,5 @@
 @property (nonatomic, strong) NSMutableArray* baseStats;
 @property (nonatomic, strong) NSString* descriptionX;
 @property (nonatomic, strong) NSString* descriptionY;
+@property (nonatomic) BOOL isFavorite;
 @end

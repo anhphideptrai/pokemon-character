@@ -15,6 +15,10 @@
 @property (strong, nonatomic) NSString *databasePath;
 @property (nonatomic) sqlite3 *contactDB;
 
+- (NSMutableArray*)getArrPokemonWithType:(NSString*)type
+                            andSearchKey:(NSString*)searchKey
+                             andFavorite:(BOOL)isFavorite;
+
 @end
 
 @implementation SQLiteManager
@@ -42,7 +46,7 @@ static SQLiteManager *thisInstance;
         [fileManager copyItemAtPath:resourcePath toPath:_databasePath error:&error];
     }
 }
-- (NSMutableArray*)getArrPokemonWithType:(NSString*)type andSearchKey:(NSString*)searchKey{
+- (NSMutableArray*)getArrPokemonWithType:(NSString*)type andSearchKey:(NSString*)searchKey andFavorite:(BOOL)isFovarite{
     [self copyDatabase];
     NSMutableArray *resultArray = [[NSMutableArray alloc]init];
     sqlite3_stmt    *statement;
@@ -50,7 +54,7 @@ static SQLiteManager *thisInstance;
     Pokemon *pokemonItem;
     if (sqlite3_open(dbpath, &_contactDB) == SQLITE_OK)
     {
-        NSString *querySQL = [NSString stringWithFormat:@"select * from Pokemon WHERE TYPE LIKE \'%%%@%%\' AND (Name LIKE \'%%%@%%\' OR IDPokemon LIKE \'%%%@%%\') group by iDPokemon", type, searchKey, searchKey];
+        NSString *querySQL = isFovarite?[NSString stringWithFormat:@"select * from Pokemon WHERE TYPE LIKE \'%%%@%%\' AND (Name LIKE \'%%%@%%\' OR IDPokemon LIKE \'%%%@%%\') AND FAVORITE != '0' group by iDPokemon", type, searchKey, searchKey]:[NSString stringWithFormat:@"select * from Pokemon WHERE TYPE LIKE \'%%%@%%\' AND (Name LIKE \'%%%@%%\' OR IDPokemon LIKE \'%%%@%%\') group by iDPokemon", type, searchKey, searchKey];
         const char *query_stmt = [querySQL UTF8String];
         if (sqlite3_prepare_v2(_contactDB,
                                query_stmt, -1, &statement, NULL) == SQLITE_OK)
@@ -70,6 +74,7 @@ static SQLiteManager *thisInstance;
                 pokemonItem.descriptionY = [NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 9)];
                 pokemonItem.evolutions = [[NSMutableArray alloc] initWithArray:[[NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 10)] componentsSeparatedByString:@"---"]];
                 pokemonItem.baseStats = [[NSMutableArray alloc] initWithArray:[[NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 11)] componentsSeparatedByString:@"---"]];
+                pokemonItem.isFavorite = sqlite3_column_int(statement, 12);
                 [resultArray addObject:pokemonItem];
             }
             sqlite3_finalize(statement);
@@ -86,11 +91,22 @@ static SQLiteManager *thisInstance;
     for (NSString *type in arrType) {
         PokemonType *pokemonType = [[PokemonType alloc] init];
         [pokemonType setType:type];
-        [pokemonType setPokemons:[self getArrPokemonWithType:pokemonType.type andSearchKey:@""]];
+        [pokemonType setPokemons:[self getArrPokemonWithType:pokemonType.type andSearchKey:@"" andFavorite:NO]];
         [resultArray addObject:pokemonType];
     }
     return resultArray;
 
+}
+- (NSMutableArray*)getPokemonFavoriteWithAllTypes{
+    NSMutableArray *resultArray = [[NSMutableArray alloc]init];
+    NSArray *arrType = [self getTypes];
+    for (NSString *type in arrType) {
+        PokemonType *pokemonType = [[PokemonType alloc] init];
+        [pokemonType setType:type];
+        [pokemonType setPokemons:[self getArrPokemonWithType:pokemonType.type andSearchKey:@"" andFavorite:YES]];
+        [resultArray addObject:pokemonType];
+    }
+    return resultArray;
 }
 - (NSMutableArray*)getTypes{
     [self copyDatabase];
@@ -123,7 +139,7 @@ static SQLiteManager *thisInstance;
     for (NSString *type in arrType) {
         PokemonType *pokemonType = [[PokemonType alloc] init];
         [pokemonType setType:type];
-        [pokemonType setPokemons:[self getArrPokemonWithType:pokemonType.type andSearchKey:searchKey]];
+        [pokemonType setPokemons:[self getArrPokemonWithType:pokemonType.type andSearchKey:searchKey andFavorite:NO]];
         if (pokemonType.pokemons.count > 0) {
             [resultArray addObject:pokemonType];
         }
@@ -132,7 +148,7 @@ static SQLiteManager *thisInstance;
 }
 - (Pokemon*)getPokemonWithID:(NSString*)iDPokemon{
     Pokemon* result = nil;
-    NSArray* arr = [self getArrPokemonWithType:@"" andSearchKey:iDPokemon];
+    NSArray* arr = [self getArrPokemonWithType:@"" andSearchKey:iDPokemon andFavorite:NO];
     if (arr && arr.count > 0) {
         result = [arr objectAtIndex:0];
     }
@@ -146,21 +162,51 @@ static SQLiteManager *thisInstance;
     }
     return result;
 }
--(BOOL)insertFavoriteColumn{
-    [self copyDatabase];
+- (BOOL)updateFavoritePokemon:(Pokemon*)pokemon{
     BOOL result = NO;
-    sqlite3_stmt *statement;
-    const char *dbpath = [_databasePath UTF8String];
-    if (sqlite3_open(dbpath, &_contactDB) == SQLITE_OK)
-    {
-        NSString *insertSQL = @"ALTER TABLE \"Pokemon\" ADD COLUMN \"FAVORITE\" BOOL DEFAULT 0";
-        const char *insert_stmt = [insertSQL UTF8String];
-        sqlite3_prepare_v2(_contactDB, insert_stmt,
-                           -1, &statement, NULL);
-        result = (sqlite3_step(statement) == SQLITE_DONE);
-        sqlite3_finalize(statement);
-        sqlite3_close(_contactDB);
+    AppDelegate *appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    LanguageSetting bkLanguageSetting = appDelegate.languageDefault;
+    for (int i = 0; i < 4; i++) {
+        appDelegate.languageDefault = (LanguageSetting)i;
+        [self copyDatabase];
+        sqlite3_stmt *statement;
+        const char *dbpath = [_databasePath UTF8String];
+        if (sqlite3_open(dbpath, &_contactDB) == SQLITE_OK)
+        {
+            NSString *insertSQL = [NSString stringWithFormat:
+                                   @"UPDATE Pokemon SET FAVORITE = \"%d\" WHERE IDPokemon = '%@'", pokemon.isFavorite, pokemon.iD];
+            const char *insert_stmt = [insertSQL UTF8String];
+            sqlite3_prepare_v2(_contactDB, insert_stmt,
+                               -1, &statement, NULL);
+            result = (sqlite3_step(statement) == SQLITE_DONE);
+            sqlite3_finalize(statement);
+            sqlite3_close(_contactDB);
+        }
     }
+    appDelegate.languageDefault = bkLanguageSetting;
+    return result;
+}
+-(BOOL)insertFavoriteColumn{
+    BOOL result = NO;
+    AppDelegate *appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    LanguageSetting bkLanguageSetting = appDelegate.languageDefault;
+    for (int i = 0; i < 4; i++) {
+        appDelegate.languageDefault = (LanguageSetting)i;
+        [self copyDatabase];
+        sqlite3_stmt *statement;
+        const char *dbpath = [_databasePath UTF8String];
+        if (sqlite3_open(dbpath, &_contactDB) == SQLITE_OK)
+        {
+            NSString *insertSQL = @"ALTER TABLE \"Pokemon\" ADD COLUMN \"FAVORITE\" BOOL DEFAULT 0";
+            const char *insert_stmt = [insertSQL UTF8String];
+            sqlite3_prepare_v2(_contactDB, insert_stmt,
+                               -1, &statement, NULL);
+            result = (sqlite3_step(statement) == SQLITE_DONE);
+            sqlite3_finalize(statement);
+            sqlite3_close(_contactDB);
+        }
+    }
+    appDelegate.languageDefault = bkLanguageSetting;
     return result;
 }
 @end

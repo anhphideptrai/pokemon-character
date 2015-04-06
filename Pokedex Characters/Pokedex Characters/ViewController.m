@@ -18,11 +18,12 @@
 #import "MoreAppsViewController.h"
 #import <SVSegmentedControl.h>
 
-@interface ViewController () <PromoSlidesViewDataSource, PromoSlidesViewDelegate>
+@interface ViewController () <PromoSlidesViewDataSource, PromoSlidesViewDelegate, DetailViewControllerDelegate>
 {
     NSMutableArray *result;
     AppDelegate *appDelegate;
     SVSegmentedControl *redSC;
+    BOOL shouldReload;
 }
 @property (nonatomic) ASOAnimationStyle progressiveORConcurrentStyle;
 @property (weak, nonatomic) IBOutlet UIView *naviView;
@@ -97,6 +98,11 @@
         MoreAppsViewController *moreAppVC = [[MoreAppsViewController alloc] initWithNibName:NAME_XIB_FILE_MORE_APPS_VIEW_CONTROLLER bundle:nil];
         [self.navigationController presentViewController:moreAppVC animated:YES completion:^{}];
     }
+    if(shouldReload){
+        shouldReload = NO;
+        [self loadDataFromDataBase];
+        [self.contentGuideView holdPositionReloadData];
+    }
 }
 - (void)didReceiveMemoryWarning
 {
@@ -110,7 +116,9 @@
     [self.contentGuideView reloadData];
 }
 - (void)loadDataFromDataBase{
-
+    result = (redSC.selectedSegmentIndex == 0)?
+    [[SQLiteManager getInstance] getPokemonWithAllTypes]:
+    [[SQLiteManager getInstance] getPokemonFavoriteWithAllTypes];
 }
 - (IBAction)menuButtonAction:(id)sender
 {
@@ -132,7 +140,7 @@
     [[NSUserDefaults standardUserDefaults] setValue:@(index) forKey:LANGUAGE_SETTING_TAG];
     [[NSUserDefaults standardUserDefaults] synchronize];
     appDelegate.languageDefault = (LanguageSetting)index;
-    result = [[SQLiteManager getInstance] getPokemonWithAllTypes];
+    result = (redSC.selectedSegmentIndex == 0)?[[SQLiteManager getInstance] getPokemonWithAllTypes]:[[SQLiteManager getInstance] getPokemonFavoriteWithAllTypes];
     [self.contentGuideView holdPositionReloadData];
 }
 
@@ -225,6 +233,7 @@ didSelectPosterViewAtRowIndex:(NSUInteger) rowIndex
                   posterIndex:(NSUInteger) index{
     DetailViewController *detailViewController = [[DetailViewController alloc] init];
     [detailViewController setPokemonForDetail:((PokemonType*)result[rowIndex]).pokemons withCurrentIndex:index];
+    [detailViewController setDelegate:self];
     [self.navigationController pushViewController:detailViewController animated:YES];
 }
 #pragma mark - PromoSlidesViewDataSource methods
@@ -240,5 +249,9 @@ didSelectPosterViewAtRowIndex:(NSUInteger) rowIndex
 - (IBAction)clickSearch:(id)sender {
     SearchViewController *searchViewCotroller = [[SearchViewController alloc] initWithNibName:NAME_XIB_FILE_SEARCH_VIEW_CONTROLLER bundle:nil];
     [self.navigationController pushViewController:searchViewCotroller animated:YES ];
+}
+#pragma mark - DetailViewControllerDelegate methods
+- (void)shouldReloadWhenBackFromDetailPage:(DetailViewController*)detailPage{
+    shouldReload = YES;
 }
 @end

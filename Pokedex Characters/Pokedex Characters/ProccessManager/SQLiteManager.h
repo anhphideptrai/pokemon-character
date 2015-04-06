@@ -12,10 +12,11 @@
 
 @interface SQLiteManager : NSObject
 + (SQLiteManager *) getInstance;
-- (NSMutableArray*)getArrPokemonWithType:(NSString*)type andSearchKey:(NSString*)searchKey;
 - (NSMutableArray*)getPokemonWithAllTypes;
+- (NSMutableArray*)getPokemonFavoriteWithAllTypes;
 - (NSMutableArray*)getArrPokemonWithSearchKey:(NSString*)searchKey;
 - (Pokemon*)getPokemonWithID:(NSString*)iDPokemon;
 - (NSMutableArray*)getArrPokemonWithArrID:(NSArray*)arrID;
--(BOOL)insertFavoriteColumn;
+- (BOOL)updateFavoritePokemon:(Pokemon*)pokemon;
+- (BOOL)insertFavoriteColumn;
 @end
