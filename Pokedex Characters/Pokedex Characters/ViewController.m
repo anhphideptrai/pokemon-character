@@ -18,7 +18,7 @@
 #import "MoreAppsViewController.h"
 #import <SVSegmentedControl.h>
 
-@interface ViewController () <PromoSlidesViewDataSource, PromoSlidesViewDelegate, DetailViewControllerDelegate>
+@interface ViewController () <PromoSlidesViewDataSource, PromoSlidesViewDelegate, DetailViewControllerDelegate, SearchViewControllerDelegate>
 {
     NSMutableArray *result;
     AppDelegate *appDelegate;
@@ -98,11 +98,11 @@
         MoreAppsViewController *moreAppVC = [[MoreAppsViewController alloc] initWithNibName:NAME_XIB_FILE_MORE_APPS_VIEW_CONTROLLER bundle:nil];
         [self.navigationController presentViewController:moreAppVC animated:YES completion:^{}];
     }
-    if(shouldReload){
-        shouldReload = NO;
+    if(shouldReload && redSC.selectedSegmentIndex != 0){
         [self loadDataFromDataBase];
         [self.contentGuideView holdPositionReloadData];
     }
+    shouldReload = NO;
 }
 - (void)didReceiveMemoryWarning
 {
@@ -248,10 +248,15 @@ didSelectPosterViewAtRowIndex:(NSUInteger) rowIndex
 
 - (IBAction)clickSearch:(id)sender {
     SearchViewController *searchViewCotroller = [[SearchViewController alloc] initWithNibName:NAME_XIB_FILE_SEARCH_VIEW_CONTROLLER bundle:nil];
+    [searchViewCotroller setDelegate:self];
     [self.navigationController pushViewController:searchViewCotroller animated:YES ];
 }
 #pragma mark - DetailViewControllerDelegate methods
 - (void)shouldReloadWhenBackFromDetailPage:(DetailViewController*)detailPage{
+    shouldReload = YES;
+}
+#pragma mark - SearchViewControllerDelegate methods
+- (void)shouldReloadParrentViewWhenBackFromSearchPage{
     shouldReload = YES;
 }
 @end

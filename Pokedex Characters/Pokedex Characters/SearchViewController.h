@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "ContentGuideView.h"
-
+@protocol SearchViewControllerDelegate <NSObject>
+@optional
+- (void)shouldReloadParrentViewWhenBackFromSearchPage;
+@end
 @interface SearchViewController : UIViewController <ContentGuideViewDataSource, ContentGuideViewDelegate, UISearchBarDelegate>
-
+@property (nonatomic, assign) id<SearchViewControllerDelegate> delegate;
 @property (strong, nonatomic) IBOutlet ContentGuideView *contentGuideView;
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 @end

@@ -36,6 +36,7 @@
     BaseStatsView *baseStatsView;
     MoveView *moveView;
     AppDelegate *appDelegate;
+    Pokemon *currentPokemon;
 }
 @end
 @implementation DetailView
@@ -82,6 +83,7 @@
     [scrollView setContentSize:CGSizeMake(scrollView.frame.size.width, frameTmp.size.height + frameTmp.origin.y + 10)];
 }
 - (void)setData:(Pokemon*)pokemon{
+    currentPokemon = pokemon;
     [posterDetail.posterImageView setImageWithURL:[NSURL URLWithString:pokemon.ThumbnailImage] placeholderImage:[UIImage imageNamed:@"icon_placeholder.png"]];
     [posterDetail.lbTitle setText:[NSString stringWithFormat:@"%@ %@%@", pokemon.name, [Utils getStringOf:ORDER_ID_NAME_STRING withLanguage:appDelegate.languageDefault],pokemon.iD]];
     [posterDetail.lbDescription setText:[NSString stringWithFormat:@"%@ %@  %@ %@", [Utils getStringOf:HEIGHT_STRING withLanguage:appDelegate.languageDefault], pokemon.height, [Utils getStringOf:WEIGHT_STRING withLanguage:appDelegate.languageDefault], pokemon.weight]];
@@ -91,6 +93,7 @@
     [evolutionsView reLoadData:pokemon.evolutions];
     [baseStatsView reLoadData:pokemon.baseStats];
     [moveView reloadViewWithEnableLeft:[self.delegate enableMoveLeftOfDetailView] andEnableRigth:[self.delegate enableMoveRightOfDetailView]];
+    [moveView setLove:pokemon.isFavorite];
 }
 - (UIImage*)getImageDetail{
     return posterDetail.posterImageView.image;
@@ -108,5 +111,12 @@
     if (self.delegate && [self.delegate respondsToSelector:@selector(shouldMoveCharacter:withDirection:)]) {
         [self.delegate shouldMoveCharacter:self withDirection:move];
     }
+}
+- (void)didSelectedLoveIconWith:(BOOL)isLove{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(shouldReloadParrentView:)]) {
+        [self.delegate shouldReloadParrentView:self];
+    }
+    currentPokemon.isFavorite = isLove;
+    [[SQLiteManager getInstance] updateFavoritePokemon:currentPokemon];
 }
 @end

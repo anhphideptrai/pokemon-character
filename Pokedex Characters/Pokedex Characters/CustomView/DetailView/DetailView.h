@@ -16,6 +16,7 @@
 - (void)shouldMoveCharacter:(DetailView*)detailView withDirection:(MoveDirection)direction;
 - (BOOL)enableMoveLeftOfDetailView;
 - (BOOL)enableMoveRightOfDetailView;
+- (void)shouldReloadParrentView:(DetailView*)detailPage;
 @end
 @interface DetailView : UIView
 @property (nonatomic, assign) IBOutlet id  <DetailViewDelegate> delegate;

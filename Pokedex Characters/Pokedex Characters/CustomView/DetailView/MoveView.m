@@ -11,9 +11,12 @@
 
 #define BUTTON_PREVIUS_FRAME CGRectMake(10, self.frame.size.height - 30, 70, 30)
 #define BUTTON_NEXT_FRAME CGRectMake(self.frame.size.width - 80, self.frame.size.height - 30, 70, 30)
+#define BUTTON_LOVE_FRAME CGRectMake((self.frame.size.width - 3*79/7)/2, self.frame.size.height - 30, 3*79/7, 30)
 @interface MoveView(){
     UIButton *buttonPrevius;
     UIButton *buttonNext;
+    UIButton *buttonLove;
+    BOOL _isLove;
 }
 @end
 
@@ -27,9 +30,11 @@
     
     buttonPrevius        = [[UIButton alloc] initWithFrame:BUTTON_PREVIUS_FRAME];
     buttonNext        = [[UIButton alloc] initWithFrame:BUTTON_NEXT_FRAME];
+    buttonLove        = [[UIButton alloc] initWithFrame:BUTTON_LOVE_FRAME];
     
     [buttonNext setBackgroundColor:[UIColor clearColor]];
     [buttonPrevius setBackgroundColor:[UIColor clearColor]];
+    [buttonLove setBackgroundColor:[UIColor clearColor]];
     [buttonNext.layer setCornerRadius:4.0f];
     [buttonNext.layer setMasksToBounds:YES];
     [buttonPrevius.layer setCornerRadius:4.0f];
@@ -50,9 +55,12 @@
     
     [buttonPrevius addTarget:self action:@selector(clickButton:) forControlEvents:UIControlEventTouchUpInside];
     [buttonNext addTarget:self action:@selector(clickButton:) forControlEvents:UIControlEventTouchUpInside];
+    [buttonLove addTarget:self action:@selector(clickLoveButton:) forControlEvents:UIControlEventTouchUpInside];
+    [self setLove:NO];
     
     [self addSubview:buttonPrevius];
     [self addSubview:buttonNext];
+    [self addSubview:buttonLove];
     
 }
 - (IBAction)clickButton:(id)sender{
@@ -60,5 +68,15 @@
         UIButton *btSender = (UIButton*)sender;
         [self.delegate shouldMoveCharacterTo:(MoveDirection)btSender.tag];
     }
+}
+- (void)setLove:(BOOL)isLove{
+    _isLove = isLove;
+    [buttonLove setImage:[UIImage imageNamed:(_isLove?@"love_on.png":@"love_off.png")] forState:UIControlStateNormal];
+}
+- (IBAction)clickLoveButton:(id)sender{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(didSelectedLoveIconWith:)]) {
+        [self.delegate didSelectedLoveIconWith:!_isLove];
+    }
+    [self setLove:!_isLove];
 }
 @end

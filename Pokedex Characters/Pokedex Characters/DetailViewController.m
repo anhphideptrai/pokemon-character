@@ -67,9 +67,10 @@
     return YES;
 }
 -(void)clickBtnBack:(CustomNavigationBar *)customNavigationBar{
-    if (self.delegate && [self.delegate respondsToSelector:@selector(shouldReloadWhenBackFromDetailPage:)]) {
+    if (shouldReload && self.delegate && [self.delegate respondsToSelector:@selector(shouldReloadWhenBackFromDetailPage:)]) {
         [self.delegate shouldReloadWhenBackFromDetailPage:self];
     }
+    shouldReload = NO;
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)clickBtnShare:(CustomNavigationBar *)customNavigationBar{
@@ -113,5 +114,8 @@
 }
 -(BOOL)enableMoveRightOfDetailView{
     return currentIndex < pokemons.count - 1;
+}
+- (void)shouldReloadParrentView:(DetailView*)detailPage{
+    shouldReload = YES;
 }
 @end

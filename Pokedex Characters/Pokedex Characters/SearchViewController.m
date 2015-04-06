@@ -132,6 +132,10 @@ didSelectPosterViewAtRowIndex:(NSUInteger) rowIndex
     
 }
 - (IBAction)clickBack:(id)sender {
+    if (shouldReload && self.delegate && [self.delegate respondsToSelector:@selector(shouldReloadParrentViewWhenBackFromSearchPage)]) {
+        shouldReload = NO;
+        [self.delegate shouldReloadParrentViewWhenBackFromSearchPage];
+    }
      [self.navigationController popViewControllerAnimated:YES];
 }
 #pragma mark - UISearchBarDelegate methods
