@@ -99,15 +99,10 @@ static SQLiteManager *thisInstance;
 }
 - (NSMutableArray*)getPokemonFavoriteWithAllTypes{
     NSMutableArray *resultArray = [[NSMutableArray alloc]init];
-    NSArray *arrType = [self getTypes];
-    for (NSString *type in arrType) {
-        PokemonType *pokemonType = [[PokemonType alloc] init];
-        [pokemonType setType:type];
-        [pokemonType setPokemons:[self getArrPokemonWithType:pokemonType.type andSearchKey:@"" andFavorite:YES]];
-        if (pokemonType.pokemons.count > 0) {
-            [resultArray addObject:pokemonType];
-        }
-    }
+    PokemonType *pokemonType = [[PokemonType alloc] init];
+    [pokemonType setType:@""];
+    [pokemonType setPokemons:[self getArrPokemonWithType:@"" andSearchKey:@"" andFavorite:YES]];
+    [resultArray addObject:pokemonType];
     return resultArray;
 }
 - (NSMutableArray*)getTypes{
@@ -137,14 +132,11 @@ static SQLiteManager *thisInstance;
 }
 - (NSMutableArray*)getArrPokemonWithSearchKey:(NSString*)searchKey{
     NSMutableArray *resultArray = [[NSMutableArray alloc]init];
-    NSArray *arrType = [self getTypes];
-    for (NSString *type in arrType) {
-        PokemonType *pokemonType = [[PokemonType alloc] init];
-        [pokemonType setType:type];
-        [pokemonType setPokemons:[self getArrPokemonWithType:pokemonType.type andSearchKey:searchKey andFavorite:NO]];
-        if (pokemonType.pokemons.count > 0) {
-            [resultArray addObject:pokemonType];
-        }
+    PokemonType *pokemonType = [[PokemonType alloc] init];
+    [pokemonType setType:@""];
+    [pokemonType setPokemons:[self getArrPokemonWithType:@"" andSearchKey:searchKey andFavorite:NO]];
+    if (pokemonType.pokemons.count > 0) {
+        [resultArray addObject:pokemonType];
     }
     return resultArray;
 }

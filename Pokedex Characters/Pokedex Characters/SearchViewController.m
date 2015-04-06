@@ -58,10 +58,16 @@
 }
 #pragma mark - ContentGuideViewDataSource methods
 - (NSUInteger) numberOfPostersInCarousel:(ContentGuideView*) contentGuide atRowIndex:(NSUInteger) rowIndex{
-    return ((PokemonType*)[result objectAtIndex:rowIndex]).pokemons.count;
+    NSUInteger _numberOfRows = (((PokemonType*)[result firstObject]).pokemons.count - 1)/NUMBER_POSTERS_IN_A_ROW + 1;
+    NSUInteger _numberOfItems = ((PokemonType*)[result firstObject]).pokemons.count;
+    if ((rowIndex == _numberOfRows -1) && _numberOfItems % NUMBER_POSTERS_IN_A_ROW > 0) {
+        return _numberOfItems % NUMBER_POSTERS_IN_A_ROW;
+    }
+    return NUMBER_POSTERS_IN_A_ROW;
 }
 - (NSUInteger) numberOfRowsInContentGuide:(ContentGuideView*) contentGuide{
-    return result.count;
+    NSUInteger numberPokemons = ((PokemonType*)[result firstObject]).pokemons.count;
+    return numberPokemons == 0 ? 0 : (numberPokemons - 1)/NUMBER_POSTERS_IN_A_ROW + 1;
 }
 - (ContentGuideViewRow*) contentGuide:(ContentGuideView*) contentGuide
                        rowForRowIndex:(NSUInteger)rowIndex{
@@ -72,21 +78,6 @@
     }
     return row;
 }
-
-- (ContentGuideViewRowHeader*) contentGuide:(ContentGuideView*) contentGuide
-                       rowHeaderForRowIndex:(NSUInteger)rowIndex{
-    static NSString *identifier = @"ContentGuideViewRowHeaderStyleDefault";
-    ContentGuideViewRowHeader *header = [contentGuide dequeueReusableRowHeaderWithIdentifier:identifier];
-    if (!header) {
-        header = [[ContentGuideViewRowHeader alloc] initWithStyle:ContentGuideViewRowHeaderStyleDefault reuseIdentifier:identifier];
-    }
-    NSString *type = ((PokemonType*)[result objectAtIndex:rowIndex]).type;
-    [header  setTextTitleRowHeader:[[Utils getStringType:type withLanguage:appDelegate.languageDefault] uppercaseString]];
-    [header setBackground:[UIImage imageNamed:@"headercell_bg.png"]];
-    [header setIconLeft:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png", [[Utils getStringType:type withLanguage:LanguageSettingEN] lowercaseString]]]];
-    return header;
-}
-
 - (ContentGuideViewRowCarouselViewPosterView*)contentGuide:(ContentGuideView*) contentGuide
                                      posterViewForRowIndex:(NSUInteger)rowIndex
                                            posterViewIndex:(NSUInteger)index{
@@ -95,7 +86,7 @@
     if (!posterView) {
         posterView = [[ContentGuideViewRowCarouselViewPosterView alloc] initWithStyle:ContentGuideViewRowCarouselViewPosterViewStyleDefault reuseIdentifier:identifier];
     }
-    Pokemon *pokemon = [((PokemonType*)[result objectAtIndex:rowIndex]).pokemons objectAtIndex:index];
+    Pokemon *pokemon = [((PokemonType*)[result firstObject]).pokemons objectAtIndex:(rowIndex*NUMBER_POSTERS_IN_A_ROW + index)];
     [posterView setURLImagePoster:pokemon.ThumbnailImage placeholderImage:[UIImage imageNamed:@"icon_placeholder.png"]];
     [posterView setTextTitlePoster:[NSString stringWithFormat:@"%@\n%@%@",pokemon.name, [Utils getStringOf:ORDER_ID_NAME_STRING withLanguage:appDelegate.languageDefault], pokemon.iD]];
     return posterView;
@@ -104,15 +95,15 @@
 
 #pragma mark - ContentGuideViewDelegate methods
 - (CGFloat)heightForContentGuideViewRow:(ContentGuideView*) contentGuide atRowIndex:(NSUInteger) rowIndex{
-    return HEIGHT_CONTENT_GUIDE_VIEW_ROW;
+    return (contentGuide.frame.size.width/NUMBER_POSTERS_IN_A_ROW - SPACE_BETWEEN_POSTER_VIEWS + HEIGHT_TITLE_POSTER_DEFAULT);
 }
 
 - (CGFloat)heightForContentGuideViewRowHeader:(ContentGuideView*) contentGuide atRowIndex:(NSUInteger) rowIndex{
-    return HEIGHT_CONTENT_GUIDE_VIEW_ROW_HEADER;
+    return 0;
 }
 
 - (CGFloat)widthForContentGuideViewRowCarouselViewPosterView:(ContentGuideView*) contentGuide atRowIndex:(NSUInteger) rowIndex{
-    return WIDTH_POSTER_VIEW;
+    return (contentGuide.frame.size.width/NUMBER_POSTERS_IN_A_ROW - SPACE_BETWEEN_POSTER_VIEWS);
 }
 - (CGFloat)spaceBetweenCarouselViewPosterViews:(ContentGuideView*) contentGuide  atRowIndex:(NSUInteger) rowIndex{
     return SPACE_BETWEEN_POSTER_VIEWS;
@@ -126,7 +117,7 @@
 didSelectPosterViewAtRowIndex:(NSUInteger) rowIndex
                   posterIndex:(NSUInteger) index{
     DetailViewController *detailViewController = [[DetailViewController alloc] init];
-    [detailViewController setPokemonForDetail:((PokemonType*)result[rowIndex]).pokemons withCurrentIndex:index];
+    [detailViewController setPokemonForDetail:((PokemonType*)result[0]).pokemons withCurrentIndex:index];
     [detailViewController setDelegate:self];
     [self.navigationController pushViewController:detailViewController animated:YES];
     
