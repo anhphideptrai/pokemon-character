@@ -101,7 +101,7 @@
     redSC.center = CGPointMake(self.naviView.frame.size.width/2, self.naviView.frame.size.height/2);
     [redSC setHidden:NO];
     
-    NSUInteger r = arc4random_uniform(8) + 1;
+    NSUInteger r = arc4random_uniform(10) + 1;
     if (r == 8) {
         MoreAppsViewController *moreAppVC = [[MoreAppsViewController alloc] initWithNibName:NAME_XIB_FILE_MORE_APPS_VIEW_CONTROLLER bundle:nil];
         [self.navigationController presentViewController:moreAppVC animated:YES completion:^{}];
