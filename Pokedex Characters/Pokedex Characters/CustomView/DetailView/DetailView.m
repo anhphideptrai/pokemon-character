@@ -20,7 +20,7 @@
 #define POSTER_FRAME CGRectMake(0, IS_IPAD?90:50, WIDTH_DETAIL_PAGE, WIDTH_DETAIL_PAGE)
 #define DESCRIPTION_FRAME IS_IPAD?CGRectMake(WIDTH_DETAIL_PAGE, 90, self.frame.size.width - WIDTH_DETAIL_PAGE - 5, WIDTH_DETAIL_PAGE - 160):CGRectMake(0, WIDTH_DETAIL_PAGE + 50, self.frame.size.width, 130)
 #define BASE_STATS_FRAME IS_IPAD?CGRectMake(WIDTH_DETAIL_PAGE, WIDTH_DETAIL_PAGE - 160, self.frame.size.width - WIDTH_DETAIL_PAGE - 5, 160):CGRectMake(0, (DESCRIPTION_FRAME).size.height + (DESCRIPTION_FRAME).origin.y, self.frame.size.width, 142)
-#define TYPE_FRAME IS_IPAD?CGRectMake(0, WIDTH_DETAIL_PAGE, self.frame.size.width, 30):CGRectMake(0, (BASE_STATS_FRAME).size.height + (BASE_STATS_FRAME).origin.y, self.frame.size.width, 30)
+#define TYPE_FRAME IS_IPAD?CGRectMake(0, WIDTH_DETAIL_PAGE + 90, self.frame.size.width, 30):CGRectMake(0, (BASE_STATS_FRAME).size.height + (BASE_STATS_FRAME).origin.y, self.frame.size.width, 30)
 #define WEAKNESSES_FRAME CGRectMake(0, (TYPE_FRAME).size.height + (TYPE_FRAME).origin.y, self.frame.size.width, 30)
 #define EVOLUTION_FRAME CGRectMake(0, WEAKNESSES_FRAME.size.height + WEAKNESSES_FRAME.origin.y, self.frame.size.width, IS_IPAD?150:90)
 #define MOVE_FRAME CGRectMake(0, IS_IPAD?(self.frame.size.height - 55 - 10):(EVOLUTION_FRAME.size.height + EVOLUTION_FRAME.origin.y), self.frame.size.width, 55)
