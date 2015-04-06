@@ -117,7 +117,7 @@
 didSelectPosterViewAtRowIndex:(NSUInteger) rowIndex
                   posterIndex:(NSUInteger) index{
     DetailViewController *detailViewController = [[DetailViewController alloc] init];
-    [detailViewController setPokemonForDetail:((PokemonType*)result[0]).pokemons withCurrentIndex:index];
+    [detailViewController setPokemonForDetail:((PokemonType*)result[0]).pokemons withCurrentIndex:rowIndex*NUMBER_POSTERS_IN_A_ROW + index];
     [detailViewController setDelegate:self];
     [self.navigationController pushViewController:detailViewController animated:YES];
     
