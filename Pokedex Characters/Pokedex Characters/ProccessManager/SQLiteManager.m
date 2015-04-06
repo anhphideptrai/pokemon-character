@@ -104,7 +104,9 @@ static SQLiteManager *thisInstance;
         PokemonType *pokemonType = [[PokemonType alloc] init];
         [pokemonType setType:type];
         [pokemonType setPokemons:[self getArrPokemonWithType:pokemonType.type andSearchKey:@"" andFavorite:YES]];
-        [resultArray addObject:pokemonType];
+        if (pokemonType.pokemons.count > 0) {
+            [resultArray addObject:pokemonType];
+        }
     }
     return resultArray;
 }
