@@ -16,13 +16,16 @@
 #import "DetailViewController.h"
 #import "AppDelegate.h"
 #import "MoreAppsViewController.h"
+#import <SVSegmentedControl.h>
 
 @interface ViewController () <PromoSlidesViewDataSource, PromoSlidesViewDelegate>
 {
     NSMutableArray *result;
     AppDelegate *appDelegate;
+    SVSegmentedControl *redSC;
 }
 @property (nonatomic) ASOAnimationStyle progressiveORConcurrentStyle;
+@property (weak, nonatomic) IBOutlet UIView *naviView;
 - (IBAction)clickSearch:(id)sender;
 @end
 
@@ -58,6 +61,16 @@
     
     // Set as delegate of 'menu item view'
     [self.menuItemView setDelegate:self];
+    
+    redSC = [[SVSegmentedControl alloc] initWithSectionTitles:[NSArray arrayWithObjects:@"All", @"Favorite", nil]];
+    [redSC addTarget:self action:@selector(segmentedControlChangedValue:) forControlEvents:UIControlEventValueChanged];
+    redSC.crossFadeLabelsOnDrag = YES;
+    redSC.height = IS_IPAD?40.f:28.f;
+    redSC.thumb.tintColor = _orange_color_;
+    [redSC setSelectedSegmentIndex:0 animated:NO];
+    [self.naviView addSubview:redSC];
+    [redSC setHidden:YES];
+    
     // Add Admob
     self.bannerView.adUnitID = BANNER_ID_ADMOB;
     self.bannerView.rootViewController = self;
@@ -75,6 +88,10 @@
 {
     // Tell 'menu button' position to 'menu item view'
     [self.menuItemView setAnimationStartFromHere:self.menuButton.frame];
+    
+    redSC.center = CGPointMake(self.naviView.frame.size.width/2, self.naviView.frame.size.height/2);
+    [redSC setHidden:NO];
+    
     NSUInteger r = arc4random_uniform(8) + 1;
     if (r == 8) {
         MoreAppsViewController *moreAppVC = [[MoreAppsViewController alloc] initWithNibName:NAME_XIB_FILE_MORE_APPS_VIEW_CONTROLLER bundle:nil];
@@ -87,7 +104,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - UIControlEventValueChanged
+- (void)segmentedControlChangedValue:(SVSegmentedControl*)segmentedControl {
+    [self loadDataFromDataBase];
+    [self.contentGuideView reloadData];
+}
+- (void)loadDataFromDataBase{
 
+}
 - (IBAction)menuButtonAction:(id)sender
 {
     if ([sender isOn]) {
@@ -162,11 +186,15 @@
     
 }
 - (UIView*) topCustomViewForContentGuideView:(ContentGuideView*) contentGuide{
-    PromoSlidesView* promoSlidesView = [[PromoSlidesView alloc] initWithFrame:FRAME_PROMO_SLIDES];
-    [promoSlidesView setDataSource:self];
-    [promoSlidesView setDelegate:self];
-    [promoSlidesView reloadData];
-    return promoSlidesView;
+    if (redSC.selectedSegmentIndex != 0) {
+        return nil;
+    }else{
+        PromoSlidesView* promoSlidesView = [[PromoSlidesView alloc] initWithFrame:FRAME_PROMO_SLIDES];
+        [promoSlidesView setDataSource:self];
+        [promoSlidesView setDelegate:self];
+        [promoSlidesView reloadData];
+        return promoSlidesView;
+    }
 }
 
 #pragma mark - ContentGuideViewDelegate methods
@@ -190,7 +218,7 @@
 }
 
 - (CGFloat)offsetYOfFirstRow:(ContentGuideView*) contentGuide{
-    return OFFSET_Y_OF_FIRST_ROW;
+    return redSC.selectedSegmentIndex != 0?0:OFFSET_Y_OF_FIRST_ROW;
 }
 - (void)         contentGuide:(ContentGuideView*) contentGuide
 didSelectPosterViewAtRowIndex:(NSUInteger) rowIndex

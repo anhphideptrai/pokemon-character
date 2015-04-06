@@ -11,6 +11,7 @@
                 <outlet property="bannerView" destination="xbl-XB-PgT" id="XG0-JK-5S1"/>
                 <outlet property="contentGuideView" destination="kqB-O4-ptg" id="9Hx-kW-BSi"/>
                 <outlet property="menuButton" destination="J4g-zr-HFZ" id="kgQ-0E-Oqj"/>
+                <outlet property="naviView" destination="SNc-RJ-Baa" id="twh-ne-uf3"/>
                 <outlet property="view" destination="gfO-0Z-yUg" id="Crm-pC-P1e"/>
             </connections>
         </placeholder>
@@ -46,13 +47,6 @@
                                 <action selector="clickSearch:" destination="-1" eventType="touchUpInside" id="5dy-cc-Alf"/>
                             </connections>
                         </button>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_center.png" translatesAutoresizingMaskIntoConstraints="NO" id="5Qb-ip-Y55">
-                            <rect key="frame" x="144" y="5" width="32" height="20"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="20" id="1mX-Ls-sXS"/>
-                                <constraint firstAttribute="width" constant="32" id="Ymp-Zx-0K0"/>
-                            </constraints>
-                        </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Opw-RW-nDr">
                             <rect key="frame" x="0.0" y="0.0" width="60" height="30"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -92,11 +86,9 @@
                         <constraint firstAttribute="bottom" secondItem="U2Y-fS-0Lz" secondAttribute="bottom" id="Eh6-Xs-JYW"/>
                         <constraint firstAttribute="bottom" secondItem="s6u-fx-92S" secondAttribute="bottom" id="MRN-eK-un8"/>
                         <constraint firstAttribute="bottom" secondItem="Opw-RW-nDr" secondAttribute="bottom" id="NCA-Fg-krI"/>
-                        <constraint firstItem="5Qb-ip-Y55" firstAttribute="top" secondItem="SNc-RJ-Baa" secondAttribute="top" constant="5" id="Pty-i5-7jM"/>
                         <constraint firstItem="U2Y-fS-0Lz" firstAttribute="top" secondItem="SNc-RJ-Baa" secondAttribute="top" id="StF-0S-5xM"/>
                         <constraint firstItem="ZDI-cK-bfQ" firstAttribute="top" secondItem="SNc-RJ-Baa" secondAttribute="top" constant="2" id="XlR-uQ-ZrO"/>
                         <constraint firstItem="s6u-fx-92S" firstAttribute="top" secondItem="SNc-RJ-Baa" secondAttribute="top" id="cYG-7Y-glY"/>
-                        <constraint firstAttribute="centerX" secondItem="5Qb-ip-Y55" secondAttribute="centerX" id="mSw-Uq-h7L"/>
                         <constraint firstItem="Opw-RW-nDr" firstAttribute="top" secondItem="SNc-RJ-Baa" secondAttribute="top" id="mss-us-Sxm"/>
                         <constraint firstItem="Opw-RW-nDr" firstAttribute="leading" secondItem="SNc-RJ-Baa" secondAttribute="leading" id="qwE-LB-FUi"/>
                         <constraint firstItem="U2Y-fS-0Lz" firstAttribute="leading" secondItem="SNc-RJ-Baa" secondAttribute="leading" id="vkZ-ZE-7Xf"/>
@@ -143,7 +135,6 @@
         </view>
     </objects>
     <resources>
-        <image name="placeholder_center.png" width="42" height="32"/>
         <image name="reading_topnav_background.png" width="5" height="66"/>
         <image name="topnav_search.png" width="44" height="44"/>
     </resources>
