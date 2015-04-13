@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment version="1792" identifier="iOS"/>
         <development version="5100" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ViewController">
             <connections>
                 <outlet property="bannerView" destination="xbl-XB-PgT" id="XG0-JK-5S1"/>
                 <outlet property="bgNavigationBar" destination="U2Y-fS-0Lz" id="A3o-td-tRf"/>
+                <outlet property="btnMore" destination="eR1-k1-5oz" id="1Hs-Co-QA2"/>
                 <outlet property="contentGuideView" destination="kqB-O4-ptg" id="9Hx-kW-BSi"/>
                 <outlet property="lbDownloading" destination="LFu-Cy-8YV" id="Kaz-j1-fPt"/>
                 <outlet property="loadingView" destination="Fi6-va-fJq" id="vmx-hC-SMq"/>
@@ -72,12 +73,30 @@
                                 <action selector="clickSearch:" destination="-1" eventType="touchUpInside" id="6cd-z4-P47"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eR1-k1-5oz">
+                            <rect key="frame" x="260" y="0.0" width="60" height="30"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="FgO-fC-AfB"/>
+                                <constraint firstAttribute="width" constant="60" id="WP8-sh-5Sa"/>
+                            </constraints>
+                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <state key="normal" title="More">
+                                <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="actionMoreApps:" destination="-1" eventType="touchUpInside" id="4wS-EG-ggt"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="ZDI-cK-bfQ" secondAttribute="bottom" constant="2" id="4EZ-no-zLp"/>
                         <constraint firstItem="U2Y-fS-0Lz" firstAttribute="top" secondItem="SNc-RJ-Baa" secondAttribute="top" id="ED8-xN-WsD"/>
+                        <constraint firstItem="eR1-k1-5oz" firstAttribute="top" secondItem="SNc-RJ-Baa" secondAttribute="top" id="GVm-49-r5S"/>
                         <constraint firstItem="Opw-RW-nDr" firstAttribute="leading" secondItem="SNc-RJ-Baa" secondAttribute="leading" id="PwX-Hx-XZJ"/>
+                        <constraint firstAttribute="trailing" secondItem="eR1-k1-5oz" secondAttribute="trailing" id="SfY-0a-nlz"/>
                         <constraint firstItem="U2Y-fS-0Lz" firstAttribute="leading" secondItem="SNc-RJ-Baa" secondAttribute="leading" id="TW0-VE-E0G"/>
                         <constraint firstItem="5Qb-ip-Y55" firstAttribute="top" secondItem="SNc-RJ-Baa" secondAttribute="top" constant="5" id="VD8-qI-ko2"/>
                         <constraint firstAttribute="bottom" secondItem="U2Y-fS-0Lz" secondAttribute="bottom" id="YVj-sn-IiE"/>

@@ -29,13 +29,14 @@
     [super viewDidLoad];
     [[self navigationController] setNavigationBarHidden:YES animated:YES];
     [self initSubView];
-    [[ConfigManager getInstance] loadConfig:@"https://origami-paper-art.googlecode.com/git/get_config_origami_app.json" finished:^(BOOL success, ConfigApp *configApp) {
+    [[ConfigManager getInstance] loadConfig:@"https://raw.githubusercontent.com/anhphideptrai/pokemon-character/OrigamiPaperArt/Config-app/get_config_origami_app.json" finished:^(BOOL success, ConfigApp *configApp) {
         [loadingView stopAnimating];
         AppDelegate *appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
         if (success) {
             appDelegate.config = configApp;
             [[NSUserDefaults standardUserDefaults] setValue:appDelegate.config.urlServer forKey:CONFIG_URL_SERVER_TAG];
             [[NSUserDefaults standardUserDefaults] setValue:appDelegate.config.statusApp forKey:CONFIG_STATUS_APP_TAG];
+            [[NSUserDefaults standardUserDefaults] setValue:appDelegate.config.urlShare forKey:CONFIG_URL_SHARE_TAG];
             [[NSUserDefaults standardUserDefaults] synchronize];
         }else{
             appDelegate.config = [[ConfigApp alloc] init];
@@ -49,6 +50,12 @@
                 appDelegate.config.statusApp = [[NSUserDefaults standardUserDefaults] objectForKey:CONFIG_STATUS_APP_TAG];
             }else{
                 appDelegate.config.statusApp = STATUS_APP_DEFAUL;
+            }
+            
+            if ([[NSUserDefaults standardUserDefaults] objectForKey:CONFIG_URL_SHARE_TAG]) {
+                appDelegate.config.urlShare = [[NSUserDefaults standardUserDefaults] objectForKey:CONFIG_URL_SHARE_TAG];
+            }else{
+                appDelegate.config.urlShare = _url_share_;
             }
         }
         ViewController *mainViewController = [[ViewController alloc] initWithNibName:NAME_XIB_FILE_MAIN_VIEW_CONTROLLER bundle:nil];

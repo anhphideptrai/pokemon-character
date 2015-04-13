@@ -94,7 +94,9 @@ static SQLiteManager *thisInstance;
 - (NSMutableArray*)getArrGroups{
     return [self getArrGroupsWithSearchKey:@""];
 }
-
+- (NSMutableArray*)getOrigamiSchemesWithSearchKey:(NSString*)searchKey{
+    return [self getArrSchemesWithGroupID:-100 andSearchKey:searchKey];
+}
 - (NSMutableArray*)getArrSchemesWithGroupID:(NSInteger)groupID andSearchKey:(NSString*)searchKey{
     [self copyDatabase];
     NSMutableArray *resultArray = [[NSMutableArray alloc]init];
@@ -103,7 +105,12 @@ static SQLiteManager *thisInstance;
     OrigamiScheme *scheme;
     if (sqlite3_open(dbpath, &_contactDB) == SQLITE_OK)
     {
-        NSString *querySQL = [NSString stringWithFormat:@"select * from origami_scheme where iDGroup = \"%ld\" and name LIKE \'%%%@%%\'", (long)groupID, searchKey];
+        NSString *querySQL;
+        if (groupID == -100) {
+            querySQL = [NSString stringWithFormat:@"select * from origami_scheme where name LIKE \'%%%@%%\'", searchKey];
+        }else{
+            querySQL = [NSString stringWithFormat:@"select * from origami_scheme where iDGroup = \"%ld\" and name LIKE \'%%%@%%\'", (long)groupID, searchKey];
+        }
         const char *query_stmt = [querySQL UTF8String];
         if (sqlite3_prepare_v2(_contactDB,
                                query_stmt, -1, &statement, NULL) == SQLITE_OK)
@@ -119,7 +126,6 @@ static SQLiteManager *thisInstance;
                 scheme.steps_count = sqlite3_column_int(statement, 5);
                 scheme.iDGroup = sqlite3_column_int(statement, 7);
                 scheme.isDownloaded = sqlite3_column_int(statement, 8) > 0;
-                scheme.steps = [self getArrStepWithIDScheme:scheme.rowid];
                 [resultArray addObject:scheme];
             }
             sqlite3_finalize(statement);

@@ -24,6 +24,7 @@ static ConfigManager *thisInstance;
 
 - (void)loadConfig:(NSString *)url
           finished:(void (^)(BOOL success, ConfigApp *configApp))finished{
+    self.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/plain", nil];
     [self GET:url parameters:nil
       success:^(AFHTTPRequestOperation *operation, id responseObject) {
           ConfigApp *config = [[ConfigApp alloc] init];

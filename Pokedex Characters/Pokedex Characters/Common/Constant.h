@@ -34,6 +34,7 @@
 #define NAME_XIB_FILE_SEARCH_VIEW_CONTROLLER (IS_IPAD?@"iPad_SearchViewController":@"iPhone_SearchViewController")
 #define NAME_XIB_FILE_DETAIL_VIEW_CONTROLLER (IS_IPAD?@"iPad_DetailViewController":@"iPhone_DetailViewController")
 #define NAME_XIB_FILE_HELP_VIEW_CONTROLLER (IS_IPAD?@"iPad_HelpViewController":@"iPhone_HelpViewController")
+#define NAME_XIB_FILE_MORE_APPS_VIEW_CONTROLLER (IS_IPAD?@"iPad_MoreAppsViewController":@"iPhone_MoreAppsViewController")
 
 
 #define FRAME_PROMO_SLIDES (IS_IPAD?CGRectMake(0, 0, 768, 350):CGRectMake(0, 0, 320, 145))
@@ -43,6 +44,7 @@
 #define SPACE_BETWEEN_POSTER_VIEWS 10
 #define PANDING_TOP_AND_BOTTOM_OF_ROW_HEADER (IS_IPAD?0:0)
 #define OFFSET_Y_OF_FIRST_ROW (IS_IPAD?350:145)
+#define NUMBER_POSTERS_IN_A_ROW (IS_IPAD?5:3)
 
 #define HEIGHT_NAVIGATION_BAR (IS_IPAD?50:30)
 #define WIDTH_DETAIL_PAGE (IS_IPAD?384:320)
@@ -55,6 +57,7 @@
 #define LANGUAGE_SETTING_TAG @"LANGUAGE_SETTING_TAG"
 #define CONFIG_URL_SERVER_TAG @"CONFIG_URL_SERVER_TAG"
 #define CONFIG_STATUS_APP_TAG @"CONFIG_STATUS_APP_TAG"
+#define CONFIG_URL_SHARE_TAG @"CONFIG_URL_SHARE_TAG"
 #define STATUS_APP_DEFAUL @"beta1"
 
 #define _red_color_         [UIColor colorWithRed:1.0 green:65.0/255 blue:54.0/255 alpha:1.0]
@@ -63,6 +66,7 @@
 #define _orange_color_      [UIColor colorWithRed:1.0 green:133.0/255 blue:27.0/255 alpha:1.0]
 #define _grayButton_color_  [UIColor darkGrayColor]
 #define _url_server_default_ @"http://www.how2draw.biz/how2draw/"
+#define _url_share_ @"https://itunes.apple.com/app/id951371381"
 #define search_string_en @"SEARCH"
 #define _IMAGE_NAME_STEP_(STEP) [NSString stringWithFormat:@"%ld.jpg", STEP]
 #endif

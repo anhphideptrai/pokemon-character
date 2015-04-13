@@ -13,7 +13,8 @@
 @interface SQLiteManager : NSObject
 + (SQLiteManager *) getInstance;
 - (BOOL)didDownloadedScheme:(OrigamiScheme*)scheme;
-- (NSMutableArray*)getArrGroupsWithSearchKey:(NSString*)searchKey;
+- (NSMutableArray*)getOrigamiSchemesWithSearchKey:(NSString*)searchKey;
+- (NSMutableArray*)getArrStepWithIDScheme:(NSString*)iDScheme;
 - (NSMutableArray*)getArrGroups;
 - (OrigamiHelp*)getHelpWithId:(NSInteger)iDHelp;
 @end

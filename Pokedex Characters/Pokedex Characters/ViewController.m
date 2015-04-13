@@ -13,6 +13,7 @@
 #import "AppDelegate.h"
 #import "DetailViewController.h"
 #import "DownloadManager.h"
+#import "MoreAppsViewController.h"
 
 @interface ViewController () <PromoSlidesViewDataSource, PromoSlidesViewDelegate, DownloadManagerDelegate>
 {
@@ -23,7 +24,9 @@
     BOOL isDownloading;
 }
 @property (strong, nonatomic) IBOutlet UIImageView *bgNavigationBar;
+@property (strong, nonatomic) IBOutlet UIButton *btnMore;
 - (IBAction)clickSearch:(id)sender;
+- (IBAction)actionMoreApps:(id)sender;
 @end
 
 @implementation ViewController
@@ -142,6 +145,7 @@
 didSelectPosterViewAtRowIndex:(NSUInteger) rowIndex
                   posterIndex:(NSUInteger) index{
     schemeSelected = ((OrigamiGroup*)result[rowIndex]).schemes[index];
+    schemeSelected.steps = [[SQLiteManager getInstance] getArrStepWithIDScheme:schemeSelected.rowid];
     if (schemeSelected.isDownloaded) {
         [self navigationToDetailView];
     }else{
@@ -175,6 +179,10 @@ didSelectPosterViewAtRowIndex:(NSUInteger) rowIndex
 - (IBAction)clickSearch:(id)sender {
     SearchViewController *searchViewCotroller = [[SearchViewController alloc] initWithNibName:NAME_XIB_FILE_SEARCH_VIEW_CONTROLLER bundle:nil];
     [self.navigationController pushViewController:searchViewCotroller animated:YES ];
+}
+- (IBAction)actionMoreApps:(id)sender {
+    MoreAppsViewController *moreAppsVC = [[MoreAppsViewController alloc] initWithNibName:NAME_XIB_FILE_MORE_APPS_VIEW_CONTROLLER bundle:nil];
+    [self presentViewController:moreAppsVC animated:YES completion:^{}];
 }
 - (void)navigationToDetailView{
     DetailViewController *detailViewController = [[DetailViewController alloc] initWithNibName:NAME_XIB_FILE_DETAIL_VIEW_CONTROLLER bundle:nil];

@@ -70,7 +70,7 @@
           [NSCharacterSet whitespaceAndNewlineCharacterSet]] isEqualToString:@""]) {
         [result removeAllObjects];
     }else{
-        result = [[SQLiteManager getInstance] getArrGroupsWithSearchKey:keySearch];
+        result = [[SQLiteManager getInstance] getOrigamiSchemesWithSearchKey:keySearch];
         
     }
     [self.contentGuideView holdPositionReloadData];
@@ -80,10 +80,16 @@
 }
 #pragma mark - ContentGuideViewDataSource methods
 - (NSUInteger) numberOfPostersInCarousel:(ContentGuideView*) contentGuide atRowIndex:(NSUInteger) rowIndex{
-    return ((OrigamiGroup*)result[rowIndex]).schemes.count;
+    NSUInteger _numberOfRows = (result.count - 1)/NUMBER_POSTERS_IN_A_ROW + 1;
+    NSUInteger _numberOfItems = result.count;
+    if ((rowIndex == _numberOfRows -1) && _numberOfItems % NUMBER_POSTERS_IN_A_ROW > 0) {
+        return _numberOfItems % NUMBER_POSTERS_IN_A_ROW;
+    }
+    return NUMBER_POSTERS_IN_A_ROW;
 }
 - (NSUInteger) numberOfRowsInContentGuide:(ContentGuideView*) contentGuide{
-    return result.count;
+    NSUInteger numberPokemons = result.count;
+    return numberPokemons == 0 ? 0 : (numberPokemons - 1)/NUMBER_POSTERS_IN_A_ROW + 1;
 }
 - (ContentGuideViewRow*) contentGuide:(ContentGuideView*) contentGuide
                        rowForRowIndex:(NSUInteger)rowIndex{
@@ -95,19 +101,6 @@
     return row;
 }
 
-- (ContentGuideViewRowHeader*) contentGuide:(ContentGuideView*) contentGuide
-                       rowHeaderForRowIndex:(NSUInteger)rowIndex{
-    static NSString *identifier = @"ContentGuideViewRowHeaderStyleDefault";
-    ContentGuideViewRowHeader *header = [contentGuide dequeueReusableRowHeaderWithIdentifier:identifier];
-    if (!header) {
-        header = [[ContentGuideViewRowHeader alloc] initWithStyle:ContentGuideViewRowHeaderStyleDefault reuseIdentifier:identifier];
-    }
-    OrigamiGroup *group = (OrigamiGroup*)result[rowIndex];
-    [header  setTextTitleRowHeader:[group.groupName uppercaseString]];
-    [header setBackground:[UIImage imageNamed:@"headercell_bg.jpg"]];
-    return header;
-}
-
 - (ContentGuideViewRowCarouselViewPosterView*)contentGuide:(ContentGuideView*) contentGuide
                                      posterViewForRowIndex:(NSUInteger)rowIndex
                                            posterViewIndex:(NSUInteger)index{
@@ -116,7 +109,7 @@
     if (!posterView) {
         posterView = [[ContentGuideViewRowCarouselViewPosterView alloc] initWithStyle:ContentGuideViewRowCarouselViewPosterViewStyleDefault reuseIdentifier:identifier];
     }
-    OrigamiScheme *scheme = ((OrigamiGroup*)result[rowIndex]).schemes[index];
+    OrigamiScheme *scheme = result[rowIndex*NUMBER_POSTERS_IN_A_ROW + index];
     [posterView setURLImagePoster: [[NSBundle mainBundle] URLForResource:[NSString stringWithFormat:@"icon-%@", scheme.ident] withExtension:@"jpg"] placeholderImage:nil];
     [posterView setBlurredImagePoster:scheme.isDownloaded?1.f:0.3f];
     [posterView setTextTitlePoster:scheme.name];
@@ -126,15 +119,15 @@
 
 #pragma mark - ContentGuideViewDelegate methods
 - (CGFloat)heightForContentGuideViewRow:(ContentGuideView*) contentGuide atRowIndex:(NSUInteger) rowIndex{
-    return HEIGHT_CONTENT_GUIDE_VIEW_ROW;
+    return (contentGuide.frame.size.width/NUMBER_POSTERS_IN_A_ROW - SPACE_BETWEEN_POSTER_VIEWS + HEIGHT_TITLE_POSTER_DEFAULT);
 }
 
 - (CGFloat)heightForContentGuideViewRowHeader:(ContentGuideView*) contentGuide atRowIndex:(NSUInteger) rowIndex{
-    return HEIGHT_CONTENT_GUIDE_VIEW_ROW_HEADER;
+    return 0;
 }
 
 - (CGFloat)widthForContentGuideViewRowCarouselViewPosterView:(ContentGuideView*) contentGuide atRowIndex:(NSUInteger) rowIndex{
-    return WIDTH_POSTER_VIEW;
+    return (contentGuide.frame.size.width/NUMBER_POSTERS_IN_A_ROW - SPACE_BETWEEN_POSTER_VIEWS);
 }
 - (CGFloat)spaceBetweenCarouselViewPosterViews:(ContentGuideView*) contentGuide  atRowIndex:(NSUInteger) rowIndex{
     return SPACE_BETWEEN_POSTER_VIEWS;
@@ -147,7 +140,8 @@
 - (void)         contentGuide:(ContentGuideView*) contentGuide
 didSelectPosterViewAtRowIndex:(NSUInteger) rowIndex
                   posterIndex:(NSUInteger) index{
-    schemeSelected = ((OrigamiGroup*)result[rowIndex]).schemes[index];
+    schemeSelected = result[rowIndex*NUMBER_POSTERS_IN_A_ROW + index];
+    schemeSelected.steps = [[SQLiteManager getInstance] getArrStepWithIDScheme:schemeSelected.rowid];
     if (schemeSelected.isDownloaded) {
         [self navigationToDetailView];
     }else{
@@ -199,7 +193,7 @@ didSelectPosterViewAtRowIndex:(NSUInteger) rowIndex
               [NSCharacterSet whitespaceAndNewlineCharacterSet]] isEqualToString:@""]) {
             [result removeAllObjects];
         }else{
-            result = [[SQLiteManager getInstance] getArrGroupsWithSearchKey:keySearch];
+            result = [[SQLiteManager getInstance] getOrigamiSchemesWithSearchKey:keySearch];
             
         }
         dispatch_async(dispatch_get_main_queue(), ^{

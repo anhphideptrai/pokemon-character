@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="7531" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment version="1792" identifier="iOS"/>
         <development version="5100" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ViewController">
             <connections>
                 <outlet property="bannerView" destination="ZlV-l9-dFr" id="pPk-lg-STN"/>
                 <outlet property="bgNavigationBar" destination="3MD-eR-7lx" id="tjt-GN-9bZ"/>
+                <outlet property="btnMore" destination="wTl-gy-CnE" id="fTX-dY-JMA"/>
                 <outlet property="contentGuideView" destination="VWa-wm-iXD" id="lb0-bf-dO7"/>
                 <outlet property="lbDownloading" destination="11p-1Y-eHM" id="Zrh-rX-OZN"/>
                 <outlet property="loadingView" destination="U3Y-sq-ryB" id="Ecd-iE-Fk0"/>
@@ -47,10 +48,27 @@
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_center.png" translatesAutoresizingMaskIntoConstraints="NO" id="zfy-9S-KC7">
                             <rect key="frame" x="363" y="10" width="42" height="32"/>
                         </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wTl-gy-CnE">
+                            <rect key="frame" x="708" y="10" width="50" height="30"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="50" id="NAZ-Ai-dTh"/>
+                                <constraint firstAttribute="height" constant="30" id="peG-bL-kp5"/>
+                            </constraints>
+                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <state key="normal" title="More">
+                                <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="actionMoreApps:" destination="-1" eventType="touchUpInside" id="YlO-m4-SWH"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="3MD-eR-7lx" secondAttribute="bottom" id="9A6-TP-1bO"/>
+                        <constraint firstAttribute="trailing" secondItem="wTl-gy-CnE" secondAttribute="trailing" constant="10" id="Lwm-md-Vtf"/>
                         <constraint firstItem="zfy-9S-KC7" firstAttribute="top" secondItem="tZ7-Ix-8tZ" secondAttribute="top" constant="10" id="PgZ-mf-eMY"/>
                         <constraint firstItem="3MD-eR-7lx" firstAttribute="top" secondItem="tZ7-Ix-8tZ" secondAttribute="top" id="UiE-nV-Mbo"/>
                         <constraint firstAttribute="height" constant="50" id="Xao-t1-Zfo"/>
@@ -59,6 +77,7 @@
                         <constraint firstItem="3UJ-gK-9gB" firstAttribute="top" secondItem="tZ7-Ix-8tZ" secondAttribute="top" constant="10" id="gbo-5k-w3M"/>
                         <constraint firstAttribute="centerX" secondItem="zfy-9S-KC7" secondAttribute="centerX" id="gzj-Jp-F6u"/>
                         <constraint firstAttribute="trailing" secondItem="3MD-eR-7lx" secondAttribute="trailing" id="h17-hB-qCX"/>
+                        <constraint firstItem="wTl-gy-CnE" firstAttribute="top" secondItem="tZ7-Ix-8tZ" secondAttribute="top" constant="10" id="xyd-Gn-LiF"/>
                         <constraint firstItem="3UJ-gK-9gB" firstAttribute="leading" secondItem="tZ7-Ix-8tZ" secondAttribute="leading" constant="8" id="zw5-9k-Jpn"/>
                     </constraints>
                 </view>
