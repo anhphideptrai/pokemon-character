@@ -66,11 +66,23 @@
 #define COCOAPODS_VERSION_MINOR_ASOAnimatedButton_TwoStateButton 0
 #define COCOAPODS_VERSION_PATCH_ASOAnimatedButton_TwoStateButton 1
 
-// Google-AdMob-Ads-SDK
-#define COCOAPODS_POD_AVAILABLE_Google_AdMob_Ads_SDK
-#define COCOAPODS_VERSION_MAJOR_Google_AdMob_Ads_SDK 6
-#define COCOAPODS_VERSION_MINOR_Google_AdMob_Ads_SDK 12
-#define COCOAPODS_VERSION_PATCH_Google_AdMob_Ads_SDK 2
+// DBCamera
+#define COCOAPODS_POD_AVAILABLE_DBCamera
+#define COCOAPODS_VERSION_MAJOR_DBCamera 2
+#define COCOAPODS_VERSION_MINOR_DBCamera 3
+#define COCOAPODS_VERSION_PATCH_DBCamera 14
+
+// GPUImage
+#define COCOAPODS_POD_AVAILABLE_GPUImage
+#define COCOAPODS_VERSION_MAJOR_GPUImage 0
+#define COCOAPODS_VERSION_MINOR_GPUImage 1
+#define COCOAPODS_VERSION_PATCH_GPUImage 6
+
+// Google-Mobile-Ads-SDK
+#define COCOAPODS_POD_AVAILABLE_Google_Mobile_Ads_SDK
+#define COCOAPODS_VERSION_MAJOR_Google_Mobile_Ads_SDK 7
+#define COCOAPODS_VERSION_MINOR_Google_Mobile_Ads_SDK 1
+#define COCOAPODS_VERSION_PATCH_Google_Mobile_Ads_SDK 0
 
 // RZSquaresLoading
 #define COCOAPODS_POD_AVAILABLE_RZSquaresLoading

@@ -8,15 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "ContentGuideView.h"
-#import "GADBannerView.h"
-#import "GADRequest.h"
 #import <RZSquaresLoading.h>
 
 @interface SearchViewController : UIViewController <ContentGuideViewDataSource, ContentGuideViewDelegate, UISearchBarDelegate>
 
 @property (strong, nonatomic) IBOutlet ContentGuideView *contentGuideView;
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
-@property (weak, nonatomic) IBOutlet GADBannerView *bannerView;
 @property (strong, nonatomic) IBOutlet UIView *loadingView;
 @property (strong, nonatomic) IBOutlet RZSquaresLoading *squaresLoading;
 @property (strong, nonatomic) IBOutlet UILabel *lbDownloading;

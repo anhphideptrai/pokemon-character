@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment version="1792" identifier="iOS"/>
         <development version="5100" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchViewController">
             <connections>
-                <outlet property="bannerView" destination="qLV-Us-Fo8" id="RAm-Nj-TqV"/>
                 <outlet property="bgNavigationBar" destination="ykF-wu-26V" id="UoM-jh-QoE"/>
                 <outlet property="contentGuideView" destination="4sp-Dt-pVm" id="Rrl-oE-lEO"/>
                 <outlet property="lbDownloading" destination="R4W-CF-thd" id="ufb-kD-tdO"/>
@@ -136,14 +135,6 @@
                         <constraint firstItem="R4W-CF-thd" firstAttribute="top" secondItem="wks-u8-jhl" secondAttribute="bottom" id="dqW-Ut-qV9"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qLV-Us-Fo8" customClass="GADBannerView">
-                    <rect key="frame" x="0.0" y="518" width="320" height="50"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="320" id="0FG-JJ-XV5"/>
-                        <constraint firstAttribute="height" constant="50" id="zQK-cL-V8v"/>
-                    </constraints>
-                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -155,11 +146,9 @@
                 <constraint firstItem="avL-dk-KtW" firstAttribute="top" secondItem="Y1b-8J-wMf" secondAttribute="bottom" id="Ows-pD-0Zh"/>
                 <constraint firstItem="I2i-0G-xST" firstAttribute="leading" secondItem="pom-yE-HTU" secondAttribute="leading" id="Rf2-gM-paH"/>
                 <constraint firstAttribute="trailing" secondItem="Y1b-8J-wMf" secondAttribute="trailing" id="WU5-Fq-CTL"/>
-                <constraint firstAttribute="centerX" secondItem="qLV-Us-Fo8" secondAttribute="centerX" id="Wmf-ua-Fr7"/>
                 <constraint firstItem="Y1b-8J-wMf" firstAttribute="top" secondItem="pom-yE-HTU" secondAttribute="top" id="dTK-7G-0A5"/>
                 <constraint firstItem="Y1b-8J-wMf" firstAttribute="leading" secondItem="pom-yE-HTU" secondAttribute="leading" id="fdo-eM-7RF"/>
                 <constraint firstAttribute="trailing" secondItem="avL-dk-KtW" secondAttribute="trailing" id="gbg-q8-Iiu"/>
-                <constraint firstAttribute="bottom" secondItem="qLV-Us-Fo8" secondAttribute="bottom" id="hrv-Xt-brN"/>
                 <constraint firstAttribute="bottom" secondItem="I2i-0G-xST" secondAttribute="bottom" id="qEA-dD-s6v"/>
                 <constraint firstAttribute="trailing" secondItem="4sp-Dt-pVm" secondAttribute="trailing" id="xSQ-vH-9bK"/>
                 <constraint firstAttribute="trailing" secondItem="I2i-0G-xST" secondAttribute="trailing" id="yDy-vm-VL8"/>

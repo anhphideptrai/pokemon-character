@@ -8,8 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ContentGuideView.h"
-#import "GADBannerView.h"
-#import "GADRequest.h"
+#import <GoogleMobileAds/GoogleMobileAds.h>
 #import <RZSquaresLoading.h>
 
 @interface ViewController : UIViewController <ContentGuideViewDataSource, ContentGuideViewDelegate>

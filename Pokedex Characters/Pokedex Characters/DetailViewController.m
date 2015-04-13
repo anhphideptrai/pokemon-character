@@ -44,10 +44,13 @@
     
     //Add Admob
   if (![appDelegate.config.statusApp isEqualToString:STATUS_APP_DEFAUL]) {
-        self.bannerView.adUnitID = BANNER_ID_ADMOB_DETAIL_PAGE;
-        self.bannerView.rootViewController = self;
-        GADRequest *request = [GADRequest request];
-        [self.bannerView loadRequest:request];
+      self.bannerView.adUnitID = BANNER_ID_ADMOB_DETAIL_PAGE;
+      self.bannerView.rootViewController = self;
+      GADRequest *request = [GADRequest request];
+      request.testDevices = [NSArray arrayWithObjects:@"GAD_SIMULATOR_ID",
+                             @"1485d1faa4c1010a54b384ca9e9944b7", @"f2b1a55b050ac3483e1c17a21a2073f5",
+                             nil];
+      [self.bannerView loadRequest:request];
     }
 }
 - (BOOL)prefersStatusBarHidden {

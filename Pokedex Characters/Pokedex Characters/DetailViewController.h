@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GADBannerView.h"
-#import "GADRequest.h"
+#import <GoogleMobileAds/GoogleMobileAds.h>
 #import <iCarousel.h>
 #import "OrigamiScheme.h"
 @interface DetailViewController : UIViewController <iCarouselDataSource, iCarouselDelegate>
