@@ -64,7 +64,9 @@
     result = [[SQLiteManager getInstance] getArrGroups];
     [self.contentGuideView holdPositionReloadData];
 }
-
+-(void)delayEnableView{
+    [self.view setUserInteractionEnabled:YES];
+}
 #pragma mark - ContentGuideViewDataSource methods
 - (NSUInteger) numberOfPostersInCarousel:(ContentGuideView*) contentGuide atRowIndex:(NSUInteger) rowIndex{
     return ((OrigamiGroup*)result[rowIndex]).schemes.count;
@@ -144,26 +146,30 @@
 - (void)         contentGuide:(ContentGuideView*) contentGuide
 didSelectPosterViewAtRowIndex:(NSUInteger) rowIndex
                   posterIndex:(NSUInteger) index{
+    [self.view setUserInteractionEnabled:NO];
+    [NSTimer scheduledTimerWithTimeInterval:1.f target:self selector:@selector(delayEnableView) userInfo:nil repeats:NO];
     schemeSelected = ((OrigamiGroup*)result[rowIndex]).schemes[index];
     schemeSelected.steps = [[SQLiteManager getInstance] getArrStepWithIDScheme:schemeSelected.rowid];
-    if (schemeSelected.isDownloaded) {
-        [self navigationToDetailView];
-    }else{
-        if (!isDownloading) {
-            isDownloading = YES;
-            [self.squaresLoading setColor:_red_color_];
-            [self.lbDownloading setText:@"Downloading... [0%]"];
-            [self.loadingView setHidden:!isDownloading];
-            NSMutableArray *files = [[NSMutableArray alloc] init];
-            for (OrigamiStep *step in schemeSelected.steps) {
-                DownloadEntry *entry = [[DownloadEntry alloc] init];
-                entry.strUrl = step.img;
-                entry.dir = step.schemeID;
-                entry.fileName = _IMAGE_NAME_STEP_(step.sort_order);
-                entry.size = step.size;
-                [files addObject:entry];
+    if (schemeSelected.steps.count > 0) {
+        if (schemeSelected.isDownloaded) {
+            [self navigationToDetailView];
+        }else{
+            if (!isDownloading) {
+                isDownloading = YES;
+                [self.squaresLoading setColor:_red_color_];
+                [self.lbDownloading setText:@"Downloading... [0%]"];
+                [self.loadingView setHidden:!isDownloading];
+                NSMutableArray *files = [[NSMutableArray alloc] init];
+                for (OrigamiStep *step in schemeSelected.steps) {
+                    DownloadEntry *entry = [[DownloadEntry alloc] init];
+                    entry.strUrl = step.img;
+                    entry.dir = step.schemeID;
+                    entry.fileName = _IMAGE_NAME_STEP_(step.sort_order);
+                    entry.size = step.size;
+                    [files addObject:entry];
+                }
+                [downloadManager dowloadFilesWith:files];
             }
-            [downloadManager dowloadFilesWith:files];
         }
     }
 }

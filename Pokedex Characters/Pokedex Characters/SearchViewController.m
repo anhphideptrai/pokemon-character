@@ -140,28 +140,35 @@
 - (void)         contentGuide:(ContentGuideView*) contentGuide
 didSelectPosterViewAtRowIndex:(NSUInteger) rowIndex
                   posterIndex:(NSUInteger) index{
+    [self.view setUserInteractionEnabled:NO];
+    [NSTimer scheduledTimerWithTimeInterval:1.f target:self selector:@selector(delayEnableView) userInfo:nil repeats:NO];
     schemeSelected = result[rowIndex*NUMBER_POSTERS_IN_A_ROW + index];
     schemeSelected.steps = [[SQLiteManager getInstance] getArrStepWithIDScheme:schemeSelected.rowid];
-    if (schemeSelected.isDownloaded) {
-        [self navigationToDetailView];
-    }else{
-        if (!isDownloading) {
-            isDownloading = YES;
-            [self.squaresLoading setColor:_red_color_];
-            [self.lbDownloading setText:@"Downloading... [0%]"];
-            [self.loadingView setHidden:!isDownloading];
-            NSMutableArray *files = [[NSMutableArray alloc] init];
-            for (OrigamiStep *step in schemeSelected.steps) {
-                DownloadEntry *entry = [[DownloadEntry alloc] init];
-                entry.strUrl = step.img;
-                entry.dir = step.schemeID;
-                entry.fileName = _IMAGE_NAME_STEP_(step.sort_order);
-                entry.size = step.size;
-                [files addObject:entry];
+    if (schemeSelected.steps.count > 0) {
+        if (schemeSelected.isDownloaded) {
+            [self navigationToDetailView];
+        }else{
+            if (!isDownloading) {
+                isDownloading = YES;
+                [self.squaresLoading setColor:_red_color_];
+                [self.lbDownloading setText:@"Downloading... [0%]"];
+                [self.loadingView setHidden:!isDownloading];
+                NSMutableArray *files = [[NSMutableArray alloc] init];
+                for (OrigamiStep *step in schemeSelected.steps) {
+                    DownloadEntry *entry = [[DownloadEntry alloc] init];
+                    entry.strUrl = step.img;
+                    entry.dir = step.schemeID;
+                    entry.fileName = _IMAGE_NAME_STEP_(step.sort_order);
+                    entry.size = step.size;
+                    [files addObject:entry];
+                }
+                [downloadManager dowloadFilesWith:files];
             }
-            [downloadManager dowloadFilesWith:files];
         }
     }
+}
+-(void)delayEnableView{
+    [self.view setUserInteractionEnabled:YES];
 }
 - (void)navigationToDetailView{
     DetailViewController *detailViewController = [[DetailViewController alloc] initWithNibName:NAME_XIB_FILE_DETAIL_VIEW_CONTROLLER bundle:nil];
