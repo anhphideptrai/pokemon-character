@@ -105,12 +105,34 @@
     if (r == 8) {
         MoreAppsViewController *moreAppVC = [[MoreAppsViewController alloc] initWithNibName:NAME_XIB_FILE_MORE_APPS_VIEW_CONTROLLER bundle:nil];
         [self.navigationController presentViewController:moreAppVC animated:YES completion:^{}];
+    }else{
+        if (![[NSUserDefaults standardUserDefaults] objectForKey:_DID_RATING_FOR_THIS_APP_]) {
+            NSUInteger r = arc4random_uniform(8) + 1;
+            if (r == 5) {
+                [self openPopupRating];
+            }
+        }
     }
     if(shouldReload && currentSegmentIndex != 0){
         [self loadDataFromDataBase];
         [self.contentGuideView holdPositionReloadData];
     }
     shouldReload = NO;
+}
+-(void)openPopupRating{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:_msg_rating_ message:nil delegate:self cancelButtonTitle:_msg_dismiss_ otherButtonTitles:_msg_rate_it_5_starts_, _msg_remind_me_later_, nil];
+    [alert show];
+}
+#pragma mark - UIAlertViewDelegate methods
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == alertView.cancelButtonIndex) {
+        [[NSUserDefaults standardUserDefaults] setValue:@(YES) forKey:_DID_RATING_FOR_THIS_APP_];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }else if (buttonIndex == 1){
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:appDelegate.config.urlShare]];
+        [[NSUserDefaults standardUserDefaults] setValue:@(YES) forKey:_DID_RATING_FOR_THIS_APP_];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
 }
 - (void)didReceiveMemoryWarning
 {

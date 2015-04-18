@@ -32,37 +32,34 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [[self navigationController] setNavigationBarHidden:YES animated:YES];
-    AppDelegate *appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
     arrApps = [NSMutableArray new];
     MoreAppsData *app = [MoreAppsData new];
     app.img = [UIImage imageNamed:@"ic_origami.png"];
     app.name = @"Origami Paper Art";
     app.desc = @"Origami (折り紙?, from ori meaning \"folding\", and kami meaning \"paper\" (kami changes to gami due to rendaku) is the art of paper folding, which is often associated with Japanese culture.";
-    app.linkApp = @"https://itunes.apple.com/sg/app/origami-paper-art-step-by-step/id951371381?mt=8";
+    app.linkApp = @"https://itunes.apple.com/sg/app/id951371381";
     [arrApps addObject:app];
     
     app = [MoreAppsData new];
     app.img = [UIImage imageNamed:@"ic_draw.png"];
     app.name = @"How To Draw Everything";
     app.desc = @"When you were a child, have you ever wished that you were an artist? Is you a fan of anime, picture and cartoon? Have you ever wished that you can draw those favorite actors?";
-    app.linkApp = @"https://itunes.apple.com/sg/app/how-to-draw-everything-step/id948768878?mt=8";
+    app.linkApp = @"https://itunes.apple.com/sg/app/id948768878";
     [arrApps addObject:app];
     
     app = [MoreAppsData new];
     app.img = [UIImage imageNamed:@"ic_knots.png"];
     app.name = @"Animated Knots Art - 3D";
     app.desc = @"Nowadays some people are under the mistaken idea that if you can't tie a knot you should just tie a lot. As funny and clever as that sounds it's really not the case.";
-    app.linkApp = @"https://itunes.apple.com/app/animated-knots-art-3d-guide/id967811250?mt=8";
+    app.linkApp = @"https://itunes.apple.com/app/id967811250";
     [arrApps addObject:app];
     
-    if (appDelegate.config.urlApp1 && ![appDelegate.config.urlApp1 isEqualToString:@""]) {
-        app = [MoreAppsData new];
-        app.img = [UIImage imageNamed:@"ic_2048.png"];
-        app.name = @"Super Heroes 2048 Best (Board Size 5x5, 4x4, 3x3)";
-        app.desc = @"Sure that you have already known about 2048 game. 2048 is a single-player puzzle game created in March 2014 by 19-year-old Italian web developer Gabriele Cirulli. Ya, I know that's a great game so this is an upgraded version of it, Super Heroes 2048.";
-        app.linkApp = appDelegate.config.urlApp1;
-        [arrApps addObject:app];
-    }
+    app = [MoreAppsData new];
+    app.img = [UIImage imageNamed:@"ic_2048.png"];
+    app.name = @"Super Heroes 2048 Best (Board Size 5x5, 4x4, 3x3)";
+    app.desc = @"Sure that you have already known about 2048 game. 2048 is a single-player puzzle game created in March 2014 by 19-year-old Italian web developer Gabriele Cirulli. Ya, I know that's a great game so this is an upgraded version of it, Super Heroes 2048.";
+    app.linkApp = @"https://itunes.apple.com/app/id976173648";
+    [arrApps addObject:app];
     
 }
 - (BOOL)prefersStatusBarHidden {

@@ -59,6 +59,11 @@
 #define LANGUAGE_SETTING_TAG @"LANGUAGE_SETTING_TAG"
 #define CONFIG_SETTING_TAG @"CONFIG_SETTING_TAG"
 #define CONFIG_URL_APP_1 @"CONFIG_URL_APP_1"
-#define STATUS_APP_DEFAUL @"beta1"
+#define STATUS_APP_DEFAUL @"beta2"
 #define INSERT_FAVORITE_COLUMN_TAG @"INSERT FAVORITE COLUMN"
+#define _DID_RATING_FOR_THIS_APP_ @"_DID_RATING_FOR_THIS_APP_"
+#define _msg_rating_ @"Help make Pokedex Guide even\nbetter. Rate us 5 stars!"
+#define _msg_rate_it_5_starts_ @"Rate it 5 stars"
+#define _msg_remind_me_later_ @"Remind me later"
+#define _msg_dismiss_ @"Dismiss"
 #endif

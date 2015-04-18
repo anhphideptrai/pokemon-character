@@ -41,7 +41,7 @@
             [[NSUserDefaults standardUserDefaults] synchronize];
         }else{
             appDelegate.config = [[ConfigApp alloc] init];
-            appDelegate.config.urlShare = @"https://itunes.apple.com/app/guide-for-pokedex/id929955668?mt=8";
+            appDelegate.config.urlShare = @"https://itunes.apple.com/app/id929955668";
             if ([[NSUserDefaults standardUserDefaults] objectForKey:CONFIG_SETTING_TAG]) {
                 appDelegate.config.statusApp = [[NSUserDefaults standardUserDefaults] objectForKey:CONFIG_SETTING_TAG];
             }else{
