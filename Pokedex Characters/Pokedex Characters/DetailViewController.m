@@ -13,14 +13,16 @@
 #import "AppDelegate.h"
 #import "HelpViewController.h"
 
-@interface DetailViewController (){
+@interface DetailViewController ()<GADBannerViewDelegate>{
     AppDelegate *appDelegate;
     OrigamiStep *currentStep;
+    NSTimer *timerDelayShowAds;
 }
 @property (nonatomic, strong)OrigamiScheme *scheme;
 @property (strong, nonatomic) IBOutlet UIImageView *bgNavigationBar;
 @property (strong, nonatomic) IBOutlet UITextView *txtInfo;
 @property (strong, nonatomic) IBOutlet UIButton *btHelp;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heigthBottomBar;
 - (IBAction)actionHelp:(id)sender;
 @end
 
@@ -41,16 +43,29 @@
     [self.btHelp.layer setMasksToBounds:YES];
     [self.lbLessonName setText:_scheme.name];
     appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
-    
+    timerDelayShowAds = [NSTimer scheduledTimerWithTimeInterval:4.f target:self selector:@selector(delayShowAds) userInfo:nil repeats:NO];
+}
+- (void)delayShowAds{
     //Add Admob
-  if (![appDelegate.config.statusApp isEqualToString:STATUS_APP_DEFAUL]) {
-      self.bannerView.adUnitID = BANNER_ID_ADMOB_DETAIL_PAGE;
-      self.bannerView.rootViewController = self;
-      GADRequest *request = [GADRequest request];
-      request.testDevices = [NSArray arrayWithObjects:@"GAD_SIMULATOR_ID",
-                             @"1485d1faa4c1010a54b384ca9e9944b7", @"f2b1a55b050ac3483e1c17a21a2073f5",
-                             nil];
-      [self.bannerView loadRequest:request];
+    if (![appDelegate.config.statusApp isEqualToString:STATUS_APP_DEFAUL]) {
+        self.bannerView.adUnitID = BANNER_ID_ADMOB_DETAIL_PAGE;
+        self.bannerView.rootViewController = self;
+        GADRequest *request = [GADRequest request];
+        request.testDevices = [NSArray arrayWithObjects:@"GAD_SIMULATOR_ID",
+                               @"1485d1faa4c1010a54b384ca9e9944b7", @"f2b1a55b050ac3483e1c17a21a2073f5",
+                               nil];
+        [self.bannerView setDelegate:self];
+        [self.bannerView loadRequest:request];
+    }
+}
+- (void)adViewDidReceiveAd:(GADBannerView *)view{
+    _heigthBottomBar.constant = IS_IPAD ? 90 : 50;
+}
+- (void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    if (timerDelayShowAds) {
+        [timerDelayShowAds invalidate];
+        timerDelayShowAds = nil;
     }
 }
 - (BOOL)prefersStatusBarHidden {
