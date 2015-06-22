@@ -10,13 +10,11 @@
 #import "SQLiteManager.h"
 #import "AppDelegate.h"
 #import "DetailViewController.h"
-#import "DownloadManager.h"
 
 @interface SearchViewController () <DownloadManagerDelegate>{
     NSMutableArray *result;
     NSTimer *timerSearch;
     AppDelegate *appDelegate;
-    DownloadManager *downloadManager;
     OrigamiScheme *schemeSelected;
     BOOL isDownloading;
     NSString *keySearch;
@@ -55,8 +53,7 @@
 
     [self.contentGuideView setBackgroundColor:BACKGROUND_COLOR_CONTENT_GUIDE_VIEW];
     [self.contentGuideView reloadData];
-    downloadManager = [[DownloadManager alloc] init];
-    [downloadManager setDelegate:self];
+    [appDelegate.downloadManager setDelegate:self];
     isDownloading = NO;
     [self.loadingView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:.3f]];
     [self.loadingView setHidden:!isDownloading];
@@ -162,7 +159,7 @@ didSelectPosterViewAtRowIndex:(NSUInteger) rowIndex
                     entry.size = step.size;
                     [files addObject:entry];
                 }
-                [downloadManager dowloadFilesWith:files];
+                [appDelegate.downloadManager dowloadFilesWith:files];
             }
         }
     }

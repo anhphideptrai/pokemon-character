@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "ConfigApp.h"
+#import "DownloadManager.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 @property (nonatomic, retain) UINavigationController *navigationController;
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, strong) ConfigApp *config;
 @property (strong, nonatomic) NSArray *moreApps;
+@property (strong, nonatomic) DownloadManager *downloadManager;
 @end

@@ -13,6 +13,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    self.downloadManager = [[DownloadManager alloc] init];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     SplashScreenViewController *splashScreenViewController = [[SplashScreenViewController alloc] init];
     self.window.rootViewController = splashScreenViewController;
