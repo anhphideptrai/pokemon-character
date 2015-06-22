@@ -36,7 +36,6 @@
     appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
     [self.contentGuideView setBackgroundColor:BACKGROUND_COLOR_CONTENT_GUIDE_VIEW];
     [self.contentGuideView reloadData];
-    [appDelegate.downloadManager setDelegate:self];
     isDownloading = NO;
     [self.loadingView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:.5f]];
     [self.loadingView setHidden:!isDownloading];
@@ -58,6 +57,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [appDelegate.downloadManager setDelegate:self];
     result = [[SQLiteManager getInstance] getArrGroups];
     [self.contentGuideView holdPositionReloadData];
 }

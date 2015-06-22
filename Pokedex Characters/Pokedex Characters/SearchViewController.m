@@ -53,7 +53,6 @@
 
     [self.contentGuideView setBackgroundColor:BACKGROUND_COLOR_CONTENT_GUIDE_VIEW];
     [self.contentGuideView reloadData];
-    [appDelegate.downloadManager setDelegate:self];
     isDownloading = NO;
     [self.loadingView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:.3f]];
     [self.loadingView setHidden:!isDownloading];
@@ -63,6 +62,7 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [appDelegate.downloadManager setDelegate:self];
     if ([[keySearch stringByTrimmingCharactersInSet:
           [NSCharacterSet whitespaceAndNewlineCharacterSet]] isEqualToString:@""]) {
         [result removeAllObjects];
