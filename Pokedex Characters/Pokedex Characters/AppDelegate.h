@@ -13,4 +13,5 @@
 @property (nonatomic, retain) UINavigationController *navigationController;
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, strong) ConfigApp *config;
+@property (strong, nonatomic) NSArray *moreApps;
 @end

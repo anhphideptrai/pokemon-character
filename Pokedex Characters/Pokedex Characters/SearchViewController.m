@@ -111,7 +111,7 @@
     }
     OrigamiScheme *scheme = result[rowIndex*NUMBER_POSTERS_IN_A_ROW + index];
     [posterView setURLImagePoster: [[NSBundle mainBundle] URLForResource:[NSString stringWithFormat:@"icon-%@", scheme.ident] withExtension:@"jpg"] placeholderImage:nil];
-    [posterView setBlurredImagePoster:scheme.isDownloaded?1.f:0.3f];
+    [posterView setBlurredImagePoster:scheme.isDownloaded?1.f:0.5f];
     [posterView setTextTitlePoster:scheme.name];
     return posterView;
     
@@ -209,12 +209,16 @@ didSelectPosterViewAtRowIndex:(NSUInteger) rowIndex
     });
 }
 #pragma mark - DownloadManagerDelegate methods
-- (void)didFinishedDownloadFilesWith:(NSArray *)filePaths{
-    [[SQLiteManager getInstance] didDownloadedScheme:schemeSelected];
-    schemeSelected.isDownloaded = YES;
-    [self navigationToDetailView];
+- (void)didFinishedDownloadFilesWith:(NSArray *)filePaths withError:(NSError *)error{
     isDownloading = NO;
     [self.loadingView setHidden:!isDownloading];
+    if (!error) {
+        [[SQLiteManager getInstance] didDownloadedScheme:schemeSelected];
+        schemeSelected.isDownloaded = YES;
+        [self navigationToDetailView];
+    }else{
+        [Utils showAlertWithError:error];
+    }
 }
 - (void)completePercent:(NSInteger)percent{
     dispatch_async(dispatch_get_main_queue(), ^{

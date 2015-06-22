@@ -12,5 +12,6 @@
 + (NSURL*)getURLImageWith:(NSString*)schemeID andWithStep:(NSInteger)step;
 + (NSString *)documentsPathForFileName:(NSString *)name;
 + (BOOL)addSkipBackupAttributeToItemAtURL:(NSURL *)URL;
++ (void)showAlertWithError:(NSError*)err;
 //+ (NSString *) admobDeviceID;
 @end

@@ -8,19 +8,14 @@
 
 #import "MoreAppsViewController.h"
 #import <UIImageView+AFNetworking.h>
-
-@interface MoreAppsData : NSObject
-@property (nonatomic, strong) UIImage *img;
-@property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSString *desc;
-@property (nonatomic, strong) NSString *linkApp;
-@end
-@implementation MoreAppsData
-@end
+#import "AppDelegate.h"
+#import "ConfigManager.h"
 
 @interface MoreAppsViewController (){
-    NSMutableArray *arrApps;
+    NSArray *arrApps;
 }
+@property (weak, nonatomic) IBOutlet UITableView *tbView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *waitingV;
 
 - (IBAction)actionClose:(id)sender;
 @end
@@ -30,34 +25,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [[self navigationController] setNavigationBarHidden:YES animated:YES];
-    arrApps = [NSMutableArray new];
-    MoreAppsData *app = [MoreAppsData new];
-    app.img = [UIImage imageNamed:@"ic_draw.png"];
-    app.name = @"How To Draw Everything";
-    app.desc = @"When you were a child, have you ever wished that you were an artist? Is you a fan of anime, picture and cartoon? Have you ever wished that you can draw those favorite actors?";
-    app.linkApp = @"https://itunes.apple.com/app/id948768878";
-    [arrApps addObject:app];
-    
-    app = [MoreAppsData new];
-    app.img = [UIImage imageNamed:@"ic_origami.png"];
-    app.name = @"Origami Paper Art";
-    app.desc = @"Origami (折り紙?, from ori meaning \"folding\", and kami meaning \"paper\" (kami changes to gami due to rendaku) is the art of paper folding, which is often associated with Japanese culture.";
-    app.linkApp = @"https://itunes.apple.com/app/id951371381";
-    [arrApps addObject:app];
-    
-    app = [MoreAppsData new];
-    app.img = [UIImage imageNamed:@"ic_pokemon.png"];
-    app.name = @"Guide For Pokedex";
-    app.desc = @"Pokedex Guide is one of my favorite apps. I have been loving Pokemon for ages, I even have some cards physically for my owns.";
-    app.linkApp = @"https://itunes.apple.com/app/id929955668";
-    [arrApps addObject:app];
-    
-    app = [MoreAppsData new];
-    app.img = [UIImage imageNamed:@"ic_2048.png"];
-    app.name = @"Super Heroes 2048";
-    app.desc = @"Sure that you have already known about 2048 game. 2048 is a single-player puzzle game created in March 2014 by 19-year-old Italian web developer Gabriele Cirulli. Ya, I know that's a great game so this is an upgraded version of it, Super Heroes 2048.";
-    app.linkApp = @"https://itunes.apple.com/app/id976173648";
-    [arrApps addObject:app];
+    arrApps = [NSArray new];
+    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    if (appDelegate.moreApps) {
+        arrApps = appDelegate.moreApps;
+        [_tbView reloadData];
+        [_waitingV stopAnimating];
+    }else{
+        [_tbView setHidden:YES];
+        [[ConfigManager getInstance] loadMoreApp:_url_more_apps_ finished:^(BOOL success, NSArray *moreApps) {
+            if (success) {
+                arrApps = moreApps;
+                appDelegate.moreApps = moreApps;
+                [_tbView setHidden:NO];
+                [_tbView reloadData];
+                [_waitingV stopAnimating];
+            }
+        }];
+    }
+
     
 }
 - (BOOL)prefersStatusBarHidden {
@@ -90,15 +76,17 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
-    MoreAppsData *data = arrApps[indexPath.row];
+    [cell.imageView cancelImageRequestOperation];
+    [cell.imageView setImage:[UIImage imageNamed:@"ic_more.png"]];
+    MoreApp *data = arrApps[indexPath.row];
     [cell.textLabel setText:data.name];
-    [cell.detailTextLabel setText:data.desc];
-    [cell.imageView setImage:data.img];
+    [cell.detailTextLabel setText:data.descriptionApp];
+    [cell.imageView setImageWithURL:[NSURL URLWithString:data.urlImage]];
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    MoreAppsData *data = arrApps[indexPath.row];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:data.linkApp]];
+    MoreApp *data = arrApps[indexPath.row];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:data.urlItunes]];
 }
 @end

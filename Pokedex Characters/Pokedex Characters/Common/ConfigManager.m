@@ -43,4 +43,24 @@ static ConfigManager *thisInstance;
           }
       }];
 }
+- (void)loadMoreApp:(NSString *)url
+           finished:(void (^)(BOOL success, NSArray *moreApps))finished{
+    [self GET:url parameters:nil
+      success:^(AFHTTPRequestOperation *operation, id responseObject) {
+          id json = [responseObject valueForKey:@"items"];
+          NSArray *result = [MoreApp parser:json];
+          if (finished) {
+              if (result) {
+                  finished(YES, result);
+              }else{
+                  finished(NO, nil);
+              }
+          }
+      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+          if (finished) {
+              finished(NO, nil);
+          }
+      }];
+    
+}
 @end

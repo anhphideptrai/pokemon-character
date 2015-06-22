@@ -69,4 +69,5 @@
 #define _url_share_ @"https://itunes.apple.com/app/id951371381"
 #define search_string_en @"SEARCH"
 #define _IMAGE_NAME_STEP_(STEP) [NSString stringWithFormat:@"%ld.jpg", STEP]
+#define _url_more_apps_ @"https://raw.githubusercontent.com/anhphideptrai/more-apps/master/more_apps_bricks_3d.json"
 #endif
