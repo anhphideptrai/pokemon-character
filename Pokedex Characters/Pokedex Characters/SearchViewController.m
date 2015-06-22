@@ -111,7 +111,7 @@
     }
     OrigamiScheme *scheme = result[rowIndex*NUMBER_POSTERS_IN_A_ROW + index];
     [posterView setURLImagePoster: [[NSBundle mainBundle] URLForResource:[NSString stringWithFormat:@"icon-%@", scheme.ident] withExtension:@"jpg"] placeholderImage:nil];
-    [posterView setBlurredImagePoster:scheme.isDownloaded?1.f:0.5f];
+    [posterView setBlurredImagePoster:scheme.isDownloaded?1.f:0.4f];
     [posterView setTextTitlePoster:scheme.name];
     return posterView;
     

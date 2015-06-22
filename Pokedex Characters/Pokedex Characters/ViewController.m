@@ -64,6 +64,19 @@
     result = [[SQLiteManager getInstance] getArrGroups];
     [self.contentGuideView holdPositionReloadData];
 }
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    NSUInteger r = arc4random_uniform(15) + 1;
+    if (r == 3) {
+        if (!([[NSUserDefaults standardUserDefaults] objectForKey:SHOW_RATING_VIEW_TAG])) {
+            [self actionLike];
+        }
+    }
+}
+- (void)actionLike{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:_msg_rating_ message:nil delegate:self cancelButtonTitle:_msg_dismiss_ otherButtonTitles:_msg_rate_it_5_starts_, nil];
+    [alert show];
+}
 -(void)delayEnableView{
     [self.view setUserInteractionEnabled:YES];
 }
@@ -107,7 +120,7 @@
     }
     OrigamiScheme *scheme = ((OrigamiGroup*)result[rowIndex]).schemes[index];
     [posterView setURLImagePoster: [[NSBundle mainBundle] URLForResource:[NSString stringWithFormat:@"icon-%@", scheme.ident] withExtension:@"jpg"] placeholderImage:nil];
-    [posterView setBlurredImagePoster:scheme.isDownloaded?1.f:0.5f];
+    [posterView setBlurredImagePoster:scheme.isDownloaded?1.f:0.4f];
     [posterView setTextTitlePoster:scheme.name];
     return posterView;
     
@@ -231,5 +244,13 @@ didSelectPosterViewAtRowIndex:(NSUInteger) rowIndex
                 break;
         }
     });
+}
+#pragma mark - UIAlertViewDelegate methods
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex != alertView.cancelButtonIndex) {
+        [[NSUserDefaults standardUserDefaults] setValue:@(true) forKey:SHOW_RATING_VIEW_TAG];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:appDelegate.config.urlShare]];
+    }
 }
 @end

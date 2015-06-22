@@ -69,5 +69,11 @@
 #define _url_share_ @"https://itunes.apple.com/app/id951371381"
 #define search_string_en @"SEARCH"
 #define _IMAGE_NAME_STEP_(STEP) [NSString stringWithFormat:@"%ld.jpg", STEP]
-#define _url_more_apps_ @"https://raw.githubusercontent.com/anhphideptrai/more-apps/master/more_apps_bricks_3d.json"
+#define _url_more_apps_ @"https://raw.githubusercontent.com/anhphideptrai/more-apps/master/more_apps_origami.json"
+
+#define _msg_rating_ @"Help make Origami Paper Art even better. Rate us 5 stars!"
+#define _msg_rate_it_5_starts_ @"Rate it 5 stars"
+#define _msg_dismiss_ @"Dismiss"
+
+#define SHOW_RATING_VIEW_TAG @"SHOW_RATING_VIEW"
 #endif
