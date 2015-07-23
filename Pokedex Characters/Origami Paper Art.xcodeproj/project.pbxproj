@@ -266,6 +266,8 @@
 		B25638CD1A30A36C00FAF531 /* iPhone_DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B25638CC1A30A36C00FAF531 /* iPhone_DetailViewController.xib */; };
 		B25638CF1A30A39300FAF531 /* iPad_DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B25638CE1A30A39300FAF531 /* iPad_DetailViewController.xib */; };
 		B25638D21A30A84700FAF531 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B25638D11A30A84700FAF531 /* DetailViewController.m */; };
+		B2BC93D41B60868100D8DAE6 /* arrow_next.png in Resources */ = {isa = PBXBuildFile; fileRef = B2BC93D21B60868100D8DAE6 /* arrow_next.png */; };
+		B2BC93D51B60868100D8DAE6 /* arrow_back.png in Resources */ = {isa = PBXBuildFile; fileRef = B2BC93D31B60868100D8DAE6 /* arrow_back.png */; };
 		B2C484B91B37C8CD00758CB9 /* MoreApp.m in Sources */ = {isa = PBXBuildFile; fileRef = B2C484B71B37C8CD00758CB9 /* MoreApp.m */; };
 		B2C484BB1B37CB2D00758CB9 /* ic_more.png in Resources */ = {isa = PBXBuildFile; fileRef = B2C484BA1B37CB2D00758CB9 /* ic_more.png */; };
 		B2C54B061ADB59DE0060E244 /* iPad_MoreAppsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2C54B041ADB59DE0060E244 /* iPad_MoreAppsViewController.xib */; };
@@ -570,6 +572,8 @@
 		B25638CE1A30A39300FAF531 /* iPad_DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = iPad_DetailViewController.xib; path = Xib/iPad_DetailViewController.xib; sourceTree = "<group>"; };
 		B25638D01A30A84700FAF531 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		B25638D11A30A84700FAF531 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		B2BC93D21B60868100D8DAE6 /* arrow_next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrow_next.png; path = Resources/Images/common/arrow_next.png; sourceTree = "<group>"; };
+		B2BC93D31B60868100D8DAE6 /* arrow_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrow_back.png; path = Resources/Images/common/arrow_back.png; sourceTree = "<group>"; };
 		B2C484B71B37C8CD00758CB9 /* MoreApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoreApp.m; path = Entry/MoreApp.m; sourceTree = "<group>"; };
 		B2C484B81B37C8CD00758CB9 /* MoreApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoreApp.h; path = Entry/MoreApp.h; sourceTree = "<group>"; };
 		B2C484BA1B37CB2D00758CB9 /* ic_more.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_more.png; path = Resources/Images/MoreApps/ic_more.png; sourceTree = "<group>"; };
@@ -886,6 +890,15 @@
 			name = MoreApps;
 			sourceTree = "<group>";
 		};
+		B2BC93D11B60866000D8DAE6 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				B2BC93D21B60868100D8DAE6 /* arrow_next.png */,
+				B2BC93D31B60868100D8DAE6 /* arrow_back.png */,
+			);
+			name = common;
+			sourceTree = "<group>";
+		};
 		B2CC856C19B36D8E00BD1ABF = {
 			isa = PBXGroup;
 			children = (
@@ -1023,6 +1036,7 @@
 		B2CC862919B3795A00BD1ABF /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				B2BC93D11B60866000D8DAE6 /* common */,
 				B239E95D1ADB5D490041CDD7 /* MoreApps */,
 				B2012BCA1A3CAEC40002556E /* Help */,
 				B21219D61A37600500DBE8B1 /* Icon */,
@@ -1262,6 +1276,7 @@
 				B2121AAA1A37601A00DBE8B1 /* icon-5102.jpg in Resources */,
 				B2121A861A37601A00DBE8B1 /* icon-5066.jpg in Resources */,
 				B2121A6C1A37601A00DBE8B1 /* icon-5040.jpg in Resources */,
+				B2BC93D41B60868100D8DAE6 /* arrow_next.png in Resources */,
 				B2121A461A37601A00DBE8B1 /* icon-5000.jpg in Resources */,
 				B2121A9D1A37601A00DBE8B1 /* icon-5089.jpg in Resources */,
 				B2121AA01A37601A00DBE8B1 /* icon-5092.jpg in Resources */,
@@ -1401,6 +1416,7 @@
 				B2012C511A3CAED60002556E /* 052.png in Resources */,
 				B2012BC91A3C8A9E0002556E /* bg_searchbar.png in Resources */,
 				B24EF6C719BA313C00A56926 /* topnav_share_normal@2x.png in Resources */,
+				B2BC93D51B60868100D8DAE6 /* arrow_back.png in Resources */,
 				B2C484BB1B37CB2D00758CB9 /* ic_more.png in Resources */,
 				B2012C3E1A3CAED60002556E /* 021.png in Resources */,
 				B2121A601A37601A00DBE8B1 /* icon-5026.jpg in Resources */,

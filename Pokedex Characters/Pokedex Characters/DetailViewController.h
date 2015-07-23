@@ -17,6 +17,8 @@
 @property (strong, nonatomic) IBOutlet iCarousel *contentView;
 @property (strong, nonatomic) IBOutlet UIButton *btBackStep;
 @property (strong, nonatomic) IBOutlet UIButton *btNextStep;
+@property (strong, nonatomic) IBOutlet UIImageView *imgVBackStep;
+@property (strong, nonatomic) IBOutlet UIImageView *imgVNextStep;
 - (IBAction)actionBack:(id)sender;
 - (IBAction)actionBackStep:(id)sender;
 - (IBAction)actionNextStep:(id)sender;

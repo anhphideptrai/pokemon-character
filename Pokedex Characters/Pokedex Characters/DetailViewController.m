@@ -33,14 +33,8 @@
     [self.contentView setPagingEnabled:YES];
     [self.contentView setScrollEnabled:NO];
     [self.btBackStep setEnabled:NO];
-    [self.btBackStep setAlpha:0.5f];
+    [self.imgVBackStep setAlpha:0.5f];
     [self updateTitleStep];
-    [self.btBackStep.layer setCornerRadius:4.0f];
-    [self.btBackStep.layer setMasksToBounds:YES];
-    [self.btNextStep.layer setCornerRadius:4.0f];
-    [self.btNextStep.layer setMasksToBounds:YES];
-    [self.btHelp.layer setCornerRadius:4.0f];
-    [self.btHelp.layer setMasksToBounds:YES];
     [self.lbLessonName setText:_scheme.name];
     appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
     timerDelayShowAds = [NSTimer scheduledTimerWithTimeInterval:4.f target:self selector:@selector(delayShowAds) userInfo:nil repeats:NO];
@@ -127,8 +121,9 @@
     BOOL enableButtonNextStep = carousel.currentItemIndex != carousel.numberOfItems - 1;
     [self.btBackStep setEnabled:enableButtonBackStep];
     [self.btNextStep setEnabled:enableButtonNextStep];
-    [self.btBackStep setAlpha:enableButtonBackStep?1.0f:0.5f];
-    [self.btNextStep setAlpha:enableButtonNextStep?1.0f:0.5f];
+    [self.imgVBackStep setAlpha:enableButtonBackStep?1.0f:0.5f];
+    [self.imgVNextStep setAlpha:enableButtonNextStep?1.0f:0.5f];
+    
     currentStep = _scheme.steps[carousel.currentItemIndex];
     [self updateTitleStep];
 }

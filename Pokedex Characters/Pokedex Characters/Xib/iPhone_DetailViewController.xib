@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController">
@@ -14,6 +14,8 @@
                 <outlet property="btNextStep" destination="97q-tW-Bz3" id="tMO-9K-V4n"/>
                 <outlet property="contentView" destination="3QX-KV-PSD" id="qpv-OF-Gvo"/>
                 <outlet property="heigthBottomBar" destination="WQr-do-j6o" id="4JC-Mi-oU0"/>
+                <outlet property="imgVBackStep" destination="KcF-Nm-5TI" id="GyD-PJ-lbC"/>
+                <outlet property="imgVNextStep" destination="SXI-ZN-U9f" id="2Ju-eX-dG7"/>
                 <outlet property="lbLessonName" destination="RWr-Ee-NyK" id="Fjd-fD-o7h"/>
                 <outlet property="lbSteps" destination="ZPl-cP-gC0" id="ssI-qC-2Um"/>
                 <outlet property="txtInfo" destination="2w2-Ch-Byj" id="55c-cM-rrO"/>
@@ -176,16 +178,31 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bIp-Rd-jgR">
                     <rect key="frame" x="0.0" y="540" width="600" height="60"/>
                     <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_next.png" translatesAutoresizingMaskIntoConstraints="NO" id="SXI-ZN-U9f">
+                            <rect key="frame" x="560" y="30" width="30" height="30"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="5EG-gl-S8y"/>
+                                <constraint firstAttribute="width" constant="30" id="vsf-7u-oBU"/>
+                            </constraints>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_back.png" translatesAutoresizingMaskIntoConstraints="NO" id="KcF-Nm-5TI">
+                            <rect key="frame" x="10" y="30" width="30" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="Mx6-SQ-6U4"/>
+                                <constraint firstAttribute="width" constant="30" id="UCu-2x-IG9"/>
+                            </constraints>
+                        </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Dw-xS-Rtq">
-                            <rect key="frame" x="10" y="30" width="50" height="30"/>
-                            <color key="backgroundColor" red="0.3803921569" green="0.89019607840000003" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <rect key="frame" x="0.0" y="30" width="50" height="30"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="9dT-dZ-10o"/>
                                 <constraint firstAttribute="width" constant="50" id="zAA-Wq-TR0"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                            <state key="normal" title="Back">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal">
+                                <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -193,15 +210,15 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="97q-tW-Bz3">
-                            <rect key="frame" x="540" y="30" width="50" height="30"/>
-                            <color key="backgroundColor" red="0.3803921569" green="0.89019607840000003" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <rect key="frame" x="550" y="30" width="50" height="30"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="HOA-kl-2Hu"/>
                                 <constraint firstAttribute="width" constant="50" id="iAG-Cr-42a"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
-                            <state key="normal" title="Next">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal">
+                                <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -209,7 +226,7 @@
                             </connections>
                         </button>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Lorem ipsum dol" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="2w2-Ch-Byj">
-                            <rect key="frame" x="65" y="0.0" width="470" height="60"/>
+                            <rect key="frame" x="55" y="0.0" width="490" height="60"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -222,12 +239,16 @@
                         <constraint firstItem="2w2-Ch-Byj" firstAttribute="top" secondItem="bIp-Rd-jgR" secondAttribute="top" id="4EZ-Hq-ZyU"/>
                         <constraint firstAttribute="bottom" secondItem="2w2-Ch-Byj" secondAttribute="bottom" id="6g1-C2-iwp"/>
                         <constraint firstAttribute="height" constant="60" id="7u3-Ih-bai"/>
-                        <constraint firstAttribute="trailing" secondItem="97q-tW-Bz3" secondAttribute="trailing" constant="10" id="C66-mt-eHG"/>
+                        <constraint firstAttribute="trailing" secondItem="97q-tW-Bz3" secondAttribute="trailing" id="C66-mt-eHG"/>
                         <constraint firstItem="97q-tW-Bz3" firstAttribute="leading" secondItem="2w2-Ch-Byj" secondAttribute="trailing" constant="5" id="Jdf-Wz-cau"/>
-                        <constraint firstItem="9Dw-xS-Rtq" firstAttribute="leading" secondItem="bIp-Rd-jgR" secondAttribute="leading" constant="10" id="MEC-y9-Xay"/>
+                        <constraint firstItem="9Dw-xS-Rtq" firstAttribute="leading" secondItem="bIp-Rd-jgR" secondAttribute="leading" id="MEC-y9-Xay"/>
                         <constraint firstAttribute="bottom" secondItem="9Dw-xS-Rtq" secondAttribute="bottom" id="SR5-qr-V8d"/>
+                        <constraint firstAttribute="trailing" secondItem="SXI-ZN-U9f" secondAttribute="trailing" constant="10" id="eo7-cN-O4w"/>
+                        <constraint firstAttribute="bottom" secondItem="KcF-Nm-5TI" secondAttribute="bottom" id="fMe-UB-vgp"/>
+                        <constraint firstAttribute="bottom" secondItem="SXI-ZN-U9f" secondAttribute="bottom" id="izb-wi-QXy"/>
                         <constraint firstAttribute="bottom" secondItem="97q-tW-Bz3" secondAttribute="bottom" id="jHy-02-V2W"/>
                         <constraint firstItem="2w2-Ch-Byj" firstAttribute="leading" secondItem="9Dw-xS-Rtq" secondAttribute="trailing" constant="5" id="pAc-Nm-EUZ"/>
+                        <constraint firstItem="KcF-Nm-5TI" firstAttribute="leading" secondItem="bIp-Rd-jgR" secondAttribute="leading" constant="10" id="pVa-9w-XqF"/>
                     </constraints>
                 </view>
             </subviews>
@@ -251,6 +272,8 @@
         </view>
     </objects>
     <resources>
+        <image name="arrow_back.png" width="72" height="72"/>
+        <image name="arrow_next.png" width="72" height="72"/>
         <image name="reading_topnav_background.jpg" width="1536" height="88"/>
         <image name="topnav_back_grey.png" width="58" height="24"/>
         <image name="topnav_share_normal.png" width="44" height="44"/>

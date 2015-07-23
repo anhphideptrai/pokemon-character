@@ -58,7 +58,7 @@
 #define CONFIG_URL_SERVER_TAG @"CONFIG_URL_SERVER_TAG"
 #define CONFIG_STATUS_APP_TAG @"CONFIG_STATUS_APP_TAG"
 #define CONFIG_URL_SHARE_TAG @"CONFIG_URL_SHARE_TAG"
-#define STATUS_APP_DEFAUL @"beta1"
+#define STATUS_APP_DEFAUL @"beta2"
 
 #define _red_color_         [UIColor colorWithRed:1.0 green:65.0/255 blue:54.0/255 alpha:1.0]
 #define _green_color_       [UIColor colorWithRed:46.0/255 green:204.0/255 blue:64.0/255 alpha:1.0]
@@ -75,5 +75,5 @@
 #define _msg_rate_it_5_starts_ @"Rate it 5 stars"
 #define _msg_dismiss_ @"Dismiss"
 
-#define SHOW_RATING_VIEW_TAG @"SHOW_RATING_VIEW"
+#define SHOW_RATING_VIEW_TAG @"SHOW_RATING_VIEW_1"
 #endif

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController">
@@ -14,6 +14,8 @@
                 <outlet property="btNextStep" destination="nyP-aQ-oU4" id="Zy4-sT-YpU"/>
                 <outlet property="contentView" destination="SmO-Kp-Lwc" id="YvW-sh-8wm"/>
                 <outlet property="heigthBottomBar" destination="Pl7-64-Z3o" id="Rit-2a-rGl"/>
+                <outlet property="imgVBackStep" destination="sqX-Vo-C9V" id="4CO-v1-1yS"/>
+                <outlet property="imgVNextStep" destination="veU-fs-o3S" id="P9H-b3-1fE"/>
                 <outlet property="lbLessonName" destination="k3n-Jr-TdI" id="vwl-5M-6uj"/>
                 <outlet property="lbSteps" destination="002-z9-ewk" id="Fpe-Pr-w7K"/>
                 <outlet property="txtInfo" destination="bKM-fe-Rbf" id="YuY-2d-pLK"/>
@@ -161,15 +163,30 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZBv-n4-2Os">
                     <rect key="frame" x="0.0" y="560" width="600" height="40"/>
                     <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_next.png" translatesAutoresizingMaskIntoConstraints="NO" id="veU-fs-o3S">
+                            <rect key="frame" x="545" y="0.0" width="40" height="40"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="LS7-DO-giA"/>
+                                <constraint firstAttribute="width" constant="40" id="njZ-0f-6qw"/>
+                            </constraints>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_back.png" translatesAutoresizingMaskIntoConstraints="NO" id="sqX-Vo-C9V">
+                            <rect key="frame" x="15" y="0.0" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="40" id="4fS-0d-vcM"/>
+                                <constraint firstAttribute="height" constant="40" id="tjx-R1-sEE"/>
+                            </constraints>
+                        </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F18-yG-Z2T">
-                            <rect key="frame" x="10" y="0.0" width="70" height="40"/>
-                            <color key="backgroundColor" red="0.3803921569" green="0.89019607840000003" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <rect key="frame" x="0.0" y="0.0" width="70" height="40"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="70" id="flp-xg-SPT"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                            <state key="normal" title="Back">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal">
+                                <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -177,14 +194,14 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nyP-aQ-oU4">
-                            <rect key="frame" x="520" y="0.0" width="70" height="40"/>
-                            <color key="backgroundColor" red="0.3803921569" green="0.89019607840000003" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <rect key="frame" x="530" y="0.0" width="70" height="40"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="70" id="Udt-Xt-pt6"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                            <state key="normal" title="Next">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal">
+                                <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -192,7 +209,7 @@
                             </connections>
                         </button>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu,  civiuda." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="bKM-fe-Rbf">
-                            <rect key="frame" x="90" y="0.0" width="420" height="40"/>
+                            <rect key="frame" x="80" y="0.0" width="440" height="40"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -204,13 +221,17 @@
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="bKM-fe-Rbf" secondAttribute="bottom" id="9hA-KP-4aY"/>
                         <constraint firstItem="nyP-aQ-oU4" firstAttribute="leading" secondItem="bKM-fe-Rbf" secondAttribute="trailing" constant="10" id="Ank-4B-bMb"/>
-                        <constraint firstItem="F18-yG-Z2T" firstAttribute="leading" secondItem="ZBv-n4-2Os" secondAttribute="leading" constant="10" id="H7U-dK-B3m"/>
+                        <constraint firstAttribute="trailing" secondItem="veU-fs-o3S" secondAttribute="trailing" constant="15" id="BOw-ao-kFI"/>
+                        <constraint firstItem="F18-yG-Z2T" firstAttribute="leading" secondItem="ZBv-n4-2Os" secondAttribute="leading" id="H7U-dK-B3m"/>
                         <constraint firstItem="bKM-fe-Rbf" firstAttribute="top" secondItem="ZBv-n4-2Os" secondAttribute="top" id="KgD-4B-XMq"/>
-                        <constraint firstAttribute="trailing" secondItem="nyP-aQ-oU4" secondAttribute="trailing" constant="10" id="NWG-zR-NBA"/>
+                        <constraint firstAttribute="trailing" secondItem="nyP-aQ-oU4" secondAttribute="trailing" id="NWG-zR-NBA"/>
                         <constraint firstAttribute="bottom" secondItem="nyP-aQ-oU4" secondAttribute="bottom" id="Nlk-IE-trB"/>
                         <constraint firstItem="F18-yG-Z2T" firstAttribute="top" secondItem="ZBv-n4-2Os" secondAttribute="top" id="Smc-XA-hNs"/>
                         <constraint firstItem="nyP-aQ-oU4" firstAttribute="top" secondItem="ZBv-n4-2Os" secondAttribute="top" id="TPy-z2-48E"/>
+                        <constraint firstAttribute="bottom" secondItem="sqX-Vo-C9V" secondAttribute="bottom" id="Vkk-sL-8Cv"/>
                         <constraint firstAttribute="height" constant="40" id="ZA2-ma-99Y"/>
+                        <constraint firstAttribute="bottom" secondItem="veU-fs-o3S" secondAttribute="bottom" id="arx-Yk-fRL"/>
+                        <constraint firstItem="sqX-Vo-C9V" firstAttribute="leading" secondItem="ZBv-n4-2Os" secondAttribute="leading" constant="15" id="dkv-sq-KCj"/>
                         <constraint firstAttribute="bottom" secondItem="F18-yG-Z2T" secondAttribute="bottom" id="maZ-DW-HMK"/>
                         <constraint firstItem="bKM-fe-Rbf" firstAttribute="leading" secondItem="F18-yG-Z2T" secondAttribute="trailing" constant="10" id="rKv-Al-y7t"/>
                     </constraints>
@@ -236,6 +257,8 @@
         </view>
     </objects>
     <resources>
+        <image name="arrow_back.png" width="72" height="72"/>
+        <image name="arrow_next.png" width="72" height="72"/>
         <image name="reading_topnav_background.jpg" width="1536" height="88"/>
         <image name="topnav_back_grey.png" width="58" height="24"/>
         <image name="topnav_share_normal.png" width="44" height="44"/>
