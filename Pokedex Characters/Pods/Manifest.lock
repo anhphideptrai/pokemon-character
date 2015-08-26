@@ -27,7 +27,7 @@ PODS:
   - ASOAnimatedButton/TwoStateButton (1.0.1)
   - DBCamera (2.3.14):
     - GPUImage (~> 0.1)
-  - Google-Mobile-Ads-SDK (7.3.1)
+  - Google-Mobile-Ads-SDK (7.4.1)
   - GPUImage (0.1.6)
   - iCarousel (1.8.1)
   - RZSquaresLoading (1.1)
@@ -36,7 +36,7 @@ DEPENDENCIES:
   - AFNetworking (= 2.5.0)
   - ASOAnimatedButton (= 1.0.1)
   - DBCamera (~> 2.3)
-  - Google-Mobile-Ads-SDK (~> 7.3)
+  - Google-Mobile-Ads-SDK (~> 7.4)
   - iCarousel (= 1.8.1)
   - RZSquaresLoading (= 1.1)
 
@@ -44,9 +44,9 @@ SPEC CHECKSUMS:
   AFNetworking: 96ac9bf3eda33582701cb1fcc5b896aa1e20311e
   ASOAnimatedButton: bb540920a97dd1ee7eca6434c6225572d4570042
   DBCamera: f9b7938e10fe8479a1bc4bb4a42d694e94c1ee49
-  Google-Mobile-Ads-SDK: 3647bfddc7384c514ab96a8bed86d98b31e623e4
+  Google-Mobile-Ads-SDK: dce4c2728daa0bcbd88b6e3dc111b718a07b1eb6
   GPUImage: 4675ce4a5370ca92fcea8623b2a08b8f0c51b940
   iCarousel: dace1cb858e3f4dc2614bee3201041247f82feda
   RZSquaresLoading: c0aefa508119a76497424829e439e1b8b0d12fdc
 
-COCOAPODS: 0.35.0
+COCOAPODS: 0.38.2
