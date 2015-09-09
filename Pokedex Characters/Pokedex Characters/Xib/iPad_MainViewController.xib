@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="7531" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment version="1792" identifier="iOS"/>
         <development version="5100" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ViewController">
             <connections>
-                <outlet property="bannerView" destination="ZlV-l9-dFr" id="pPk-lg-STN"/>
                 <outlet property="bgNavigationBar" destination="3MD-eR-7lx" id="tjt-GN-9bZ"/>
                 <outlet property="btnMore" destination="wTl-gy-CnE" id="fTX-dY-JMA"/>
                 <outlet property="contentGuideView" destination="VWa-wm-iXD" id="lb0-bf-dO7"/>
@@ -123,14 +122,6 @@
                         <constraint firstAttribute="centerY" secondItem="7Wh-Cv-Tg9" secondAttribute="centerY" id="ogk-We-k1Z"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZlV-l9-dFr" customClass="GADBannerView">
-                    <rect key="frame" x="224" y="974" width="320" height="50"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="320" id="0IZ-Mb-ab2"/>
-                        <constraint firstAttribute="height" constant="50" id="kqC-FG-MFp"/>
-                    </constraints>
-                </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
@@ -140,11 +131,9 @@
                 <constraint firstItem="VWa-wm-iXD" firstAttribute="leading" secondItem="V02-sy-VCp" secondAttribute="leading" id="QpE-P9-bsd"/>
                 <constraint firstItem="tZ7-Ix-8tZ" firstAttribute="leading" secondItem="V02-sy-VCp" secondAttribute="leading" id="StP-th-dOX"/>
                 <constraint firstAttribute="trailing" secondItem="U3Y-sq-ryB" secondAttribute="trailing" id="Uis-lW-6KL"/>
-                <constraint firstAttribute="centerX" secondItem="ZlV-l9-dFr" secondAttribute="centerX" id="aWK-iq-dAe"/>
                 <constraint firstAttribute="bottom" secondItem="VWa-wm-iXD" secondAttribute="bottom" id="c8b-QJ-PmG"/>
                 <constraint firstAttribute="bottom" secondItem="U3Y-sq-ryB" secondAttribute="bottom" id="mea-hf-qDU"/>
                 <constraint firstItem="U3Y-sq-ryB" firstAttribute="leading" secondItem="V02-sy-VCp" secondAttribute="leading" id="pTe-D6-Rze"/>
-                <constraint firstAttribute="bottom" secondItem="ZlV-l9-dFr" secondAttribute="bottom" id="tuo-bk-aP6"/>
                 <constraint firstAttribute="trailing" secondItem="VWa-wm-iXD" secondAttribute="trailing" id="uyv-Rk-cI5"/>
                 <constraint firstAttribute="trailing" secondItem="tZ7-Ix-8tZ" secondAttribute="trailing" id="xaR-vA-63n"/>
             </constraints>

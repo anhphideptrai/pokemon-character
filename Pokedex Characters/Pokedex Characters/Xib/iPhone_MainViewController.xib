@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment version="1792" identifier="iOS"/>
         <development version="5100" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ViewController">
             <connections>
-                <outlet property="bannerView" destination="xbl-XB-PgT" id="XG0-JK-5S1"/>
                 <outlet property="bgNavigationBar" destination="U2Y-fS-0Lz" id="A3o-td-tRf"/>
                 <outlet property="btnMore" destination="eR1-k1-5oz" id="1Hs-Co-QA2"/>
                 <outlet property="contentGuideView" destination="kqB-O4-ptg" id="9Hx-kW-BSi"/>
@@ -140,32 +139,20 @@
                         <constraint firstAttribute="centerX" secondItem="uJj-YN-a1x" secondAttribute="centerX" id="lfW-aY-Pha"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xbl-XB-PgT" customClass="GADBannerView">
-                    <rect key="frame" x="0.0" y="518" width="320" height="50"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="320" id="TCS-ZI-yXl"/>
-                        <constraint firstAttribute="height" constant="50" id="iw1-Mh-AgT"/>
-                    </constraints>
-                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="kqB-O4-ptg" firstAttribute="leading" secondItem="gfO-0Z-yUg" secondAttribute="leading" id="1bN-08-6kQ"/>
-                <constraint firstAttribute="trailing" secondItem="xbl-XB-PgT" secondAttribute="trailing" id="5MJ-sp-8Ht"/>
                 <constraint firstAttribute="trailing" secondItem="Fi6-va-fJq" secondAttribute="trailing" id="7CU-Lu-aRL"/>
                 <constraint firstAttribute="trailing" secondItem="kqB-O4-ptg" secondAttribute="trailing" id="AN0-aI-7qm"/>
                 <constraint firstItem="kqB-O4-ptg" firstAttribute="top" secondItem="gfO-0Z-yUg" secondAttribute="top" constant="30" id="AoC-4f-ocl"/>
-                <constraint firstItem="xbl-XB-PgT" firstAttribute="leading" secondItem="gfO-0Z-yUg" secondAttribute="leading" id="DBM-SB-ue3"/>
                 <constraint firstAttribute="bottom" secondItem="kqB-O4-ptg" secondAttribute="bottom" id="F2R-Ts-Nxc"/>
                 <constraint firstAttribute="trailing" secondItem="kqB-O4-ptg" secondAttribute="trailing" id="Ikn-Ks-Qny"/>
-                <constraint firstAttribute="centerX" secondItem="xbl-XB-PgT" secondAttribute="centerX" id="NJE-wP-Yei"/>
                 <constraint firstAttribute="bottom" secondItem="kqB-O4-ptg" secondAttribute="bottom" id="VUv-Uj-Du9"/>
                 <constraint firstItem="SNc-RJ-Baa" firstAttribute="top" secondItem="gfO-0Z-yUg" secondAttribute="top" id="XOy-QG-h91"/>
                 <constraint firstAttribute="bottom" secondItem="Fi6-va-fJq" secondAttribute="bottom" id="a1G-m6-XWz"/>
                 <constraint firstItem="SNc-RJ-Baa" firstAttribute="leading" secondItem="gfO-0Z-yUg" secondAttribute="leading" id="d2B-ry-I9u"/>
                 <constraint firstAttribute="bottom" secondItem="kqB-O4-ptg" secondAttribute="bottom" id="ehY-Zc-5aB"/>
-                <constraint firstAttribute="bottom" secondItem="xbl-XB-PgT" secondAttribute="bottom" id="is5-kG-eAG"/>
                 <constraint firstItem="kqB-O4-ptg" firstAttribute="leading" secondItem="gfO-0Z-yUg" secondAttribute="leading" id="mjg-ZU-ori"/>
                 <constraint firstItem="Fi6-va-fJq" firstAttribute="top" secondItem="gfO-0Z-yUg" secondAttribute="top" id="mxL-xv-n3J"/>
                 <constraint firstAttribute="trailing" secondItem="SNc-RJ-Baa" secondAttribute="trailing" id="nro-Y0-vYE"/>

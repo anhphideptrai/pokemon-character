@@ -40,15 +40,6 @@
     [self.loadingView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:.5f]];
     [self.loadingView setHidden:!isDownloading];
     
-    // Add Admob
-    self.bannerView.adUnitID = BANNER_ID_ADMOB_HOME_PAGE;
-    self.bannerView.rootViewController = self;
-    GADRequest *request = [GADRequest request];
-    request.testDevices = [NSArray arrayWithObjects:@"GAD_SIMULATOR_ID",
-                           @"1485d1faa4c1010a54b384ca9e9944b7", @"f2b1a55b050ac3483e1c17a21a2073f5",
-                           nil];
-    [self.bannerView loadRequest:request];
-    
 }
 
 - (BOOL)prefersStatusBarHidden {
