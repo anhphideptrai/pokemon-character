@@ -25,22 +25,22 @@ PODS:
     - ASOAnimatedButton/TwoStateButton (= 1.0.1)
   - ASOAnimatedButton/BounceButton (1.0.1)
   - ASOAnimatedButton/TwoStateButton (1.0.1)
-  - Google-Mobile-Ads-SDK (7.0.0)
+  - Google-Mobile-Ads-SDK (7.5.0)
   - iCarousel (1.8.1)
   - SVSegmentedControl@PTEz (0.2.0.1)
 
 DEPENDENCIES:
   - AFNetworking (= 2.5.0)
   - ASOAnimatedButton (= 1.0.1)
-  - Google-Mobile-Ads-SDK (~> 7.0)
+  - Google-Mobile-Ads-SDK
   - iCarousel (= 1.8.1)
   - SVSegmentedControl@PTEz (= 0.2.0.1)
 
 SPEC CHECKSUMS:
   AFNetworking: 96ac9bf3eda33582701cb1fcc5b896aa1e20311e
   ASOAnimatedButton: bb540920a97dd1ee7eca6434c6225572d4570042
-  Google-Mobile-Ads-SDK: 434b97467d33c64db4767db89e51f49aed9fac08
+  Google-Mobile-Ads-SDK: 24879c6e4d1c2f9767e68bb9e65640a06c711143
   iCarousel: dace1cb858e3f4dc2614bee3201041247f82feda
   SVSegmentedControl@PTEz: 70cd75bfa537ac433bb31b902ba4c6f75759bfe6
 
-COCOAPODS: 0.35.0
+COCOAPODS: 0.38.2

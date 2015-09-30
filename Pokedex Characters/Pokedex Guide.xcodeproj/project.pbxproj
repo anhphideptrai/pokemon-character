@@ -674,7 +674,7 @@
 		B2CC856D19B36D8E00BD1ABF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Duc Thien";
 				TargetAttributes = {
 					B2CC857419B36D8E00BD1ABF = {
@@ -898,6 +898,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -959,10 +960,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Pokedex Characters/Pokedex Guide-Prefix.pch";
 				INFOPLIST_FILE = "Pokedex Characters/Pokedex Guide-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hcm.ducthien.characters.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "Pokedex Guide";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -976,10 +979,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Pokedex Characters/Pokedex Guide-Prefix.pch";
 				INFOPLIST_FILE = "Pokedex Characters/Pokedex Guide-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hcm.ducthien.characters.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "Pokedex Guide";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;

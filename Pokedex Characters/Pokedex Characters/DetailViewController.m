@@ -50,17 +50,15 @@
     [swipeGestureRight setDirection:UISwipeGestureRecognizerDirectionRight];
     [self.view addGestureRecognizer: swipeGestureRight];
     //Add Admob
-    if (![appDelegate.config.statusApp isEqualToString:STATUS_APP_DEFAUL]) {
-        self.bannerView = [[GADBannerView alloc] initWithAdSize:IS_IPAD?kGADAdSizeLeaderboard:kGADAdSizeBanner origin:CGPointMake(IS_IPAD?(self.view.frame.size.width - 728)/2:0, self.view.frame.size.height - (IS_IPAD?90:50))];
-        self.bannerView.adUnitID = BANNER_DETAIL_ADMOB;
-        self.bannerView.rootViewController = self;
-        GADRequest *request = [GADRequest request];
-        request.testDevices = [NSArray arrayWithObjects:@"GAD_SIMULATOR_ID",
-                               @"1485d1faa4c1010a54b384ca9e9944b7", @"f2b1a55b050ac3483e1c17a21a2073f5",
-                               nil];
-        [self.bannerView loadRequest:request];
-        [self.view addSubview:self.bannerView];
-    }
+    self.bannerView = [[GADBannerView alloc] initWithAdSize:IS_IPAD?kGADAdSizeLeaderboard:kGADAdSizeBanner origin:CGPointMake(IS_IPAD?(self.view.frame.size.width - 728)/2:0, self.view.frame.size.height - (IS_IPAD?90:50))];
+    self.bannerView.adUnitID = BANNER_DETAIL_ADMOB;
+    self.bannerView.rootViewController = self;
+    GADRequest *request = [GADRequest request];
+    request.testDevices = [NSArray arrayWithObjects:@"GAD_SIMULATOR_ID",
+                           @"1485d1faa4c1010a54b384ca9e9944b7", @"f2b1a55b050ac3483e1c17a21a2073f5",
+                           nil];
+    [self.bannerView loadRequest:request];
+    [self.view addSubview:self.bannerView];
 }
 
 - (BOOL)prefersStatusBarHidden {

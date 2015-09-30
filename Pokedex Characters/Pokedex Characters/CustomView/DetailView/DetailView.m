@@ -50,6 +50,13 @@
     }
     return self;
 }
+-(instancetype)initWithCoder:(NSCoder *)aDecoder{
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self initCommon];
+    }
+    return self;
+}
 -(void)initCommon{
     [self.layer setCornerRadius:5.0f];
     [self.layer setMasksToBounds:YES];
